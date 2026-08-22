@@ -23,3 +23,61 @@ footer{border-top:1px solid var(--line);padding:55px 0 28px;background:#06121f}.
 /* Keyboard access and print behavior */
 :focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:6px}.menu:focus-visible,.btn:focus-visible,.nav a:focus-visible{outline-color:#8ff5e7}.product-card:focus-within{border-color:rgba(22,217,189,.5)}
 @media print{.topbar,footer,.menu,.actions{display:none!important}body{background:#fff!important;color:#111!important}.page-hero,.legal-doc{padding:18px 0;background:#fff!important}.legal-wrap{width:100%}.page-hero h1,.legal-doc h2,.legal-doc h3,.legal-doc strong{color:#111!important}.legal-doc p,.legal-doc li,.lead{color:#222!important}.legal-meta span{color:#333;border-color:#aaa}.legal-doc a{color:#111;text-decoration:none}.legal-doc{font-size:9pt}.legal-doc h2{break-after:avoid}.legal-doc p,.legal-doc li{orphans:3;widows:3}}
+
+/* Rendering refinements */
+:root { --wrap: 1160px; }
+
+/* Keep reveal content visible if JavaScript is unavailable. */
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(18px); }
+.js .reveal.on { opacity: 1; transform: none; }
+
+/* Prevent long copy and controls from forcing horizontal overflow. */
+body { overflow-x: hidden; }
+.hero-copy, .catalog-copy, .section-head, .cta-lock { min-width: 0; }
+.lead, .copy, .desc, .section-head p { overflow-wrap: anywhere; }
+
+@media (min-width: 901px) and (max-width: 1100px) {
+  .hero-grid { gap: 30px; }
+  .orbit { transform: scale(.88); }
+  .fc1 { left: 8px; }
+  .fc2 { right: 0; }
+  .catalog-copy { padding: 38px; }
+  .catalog-copy h2 { font-size: 36px; }
+}
+
+@media (max-width: 900px) {
+  .hero-grid { gap: 8px; }
+  .orbit { width: min(100%, 560px); margin-inline: auto; }
+  .section-head { align-items: flex-start; }
+}
+
+@media (max-width: 680px) {
+  .wrap { width: min(calc(100% - 32px), var(--wrap)); }
+  .nav { top: 78px; }
+  .hero-copy { text-align: left; }
+  .hero-copy .eyebrow, .hero-copy .actions, .hero-copy .metric-row { justify-content: flex-start; }
+  .hero h1 { font-size: clamp(42px, 13vw, 58px); }
+  .actions .btn { width: 100%; }
+  .metric-row { gap: 16px; justify-content: space-between !important; }
+  .metric { min-width: 0; }
+  .metric b { font-size: 18px; }
+  .metric span { display: block; max-width: 92px; line-height: 1.35; }
+  .orbit { min-height: 290px; width: calc(100% + 32px); margin: -5px -16px -20px; transform: scale(.72); }
+  .halo { width: 400px; height: 400px; }
+  .fc1 { left: 8px; }
+  .fc2 { right: 0; }
+  .fc3 { left: 28px; bottom: 35px; }
+  .section-head h2 { font-size: clamp(32px, 10vw, 44px); }
+  .product-card { min-height: 0; }
+  .catalog-card { border-radius: 24px; }
+  .catalog-copy { padding: 30px 22px 32px; }
+  .catalog-copy h2 { font-size: 34px; }
+  .visual { min-height: 350px; }
+  .cta-box { padding: 28px 22px; }
+  .cta-lock { gap: 16px; }
+  .cta-lock > img { width: 44px; height: 55px; }
+  .cta h2 { font-size: 28px; }
+  .cta-box > .btn { width: 100%; margin: 24px 0 0; }
+  .footer-grid { gap: 28px 20px; }
+}

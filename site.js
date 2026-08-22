@@ -1,3 +1,4 @@
+document.documentElement.classList.add('js');
 const topbar=document.querySelector('.topbar');
 const menu=document.querySelector('.menu');
 const nav=document.querySelector('.nav');
