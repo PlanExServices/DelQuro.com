@@ -1,0 +1,42 @@
+# =============================================================================
+#  Docker build context excludes
+# =============================================================================
+#  Two jobs:
+#    1. Keep the context small. .git alone is ~75 MB and would otherwise be
+#       sent to the daemon and baked into a layer on every build.
+#    2. Keep repository tooling from being publicly served.
+#
+#  NOTE: deploy/ is intentionally NOT excluded - the Dockerfile copies
+#  deploy/nginx/*.conf into the image. Stage 1 removes it from the web root.
+#
+#  Do NOT exclude Sounds/ - that MP3 library is part of the live site.
+# =============================================================================
+
+# Version control
+.git
+.gitignore
+.gitattributes
+.github
+
+# Repo tooling / docs (not part of the published site)
+Dockerfile
+.dockerignore
+docker-compose.yml
+DEPLOYMENT.md
+README.md
+scripts
+
+# GitHub Pages artefacts. Harmless to keep in the repo as a rollback path,
+# but they have no meaning once the site is served by nginx.
+CNAME
+nojekyll
+
+# Local / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.log
+node_modules
+.env
+.env.*
