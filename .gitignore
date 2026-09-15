@@ -1,0 +1,16 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Logs
+*.log
+
+# Secrets and local config. Set environment variables in the Coolify UI
+# instead of committing them.
+.env
+.env.*
+
+# Node, if a build/tooling step is ever added
+node_modules/

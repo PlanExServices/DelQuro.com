@@ -1,0 +1,35 @@
+# =============================================================================
+#  Local smoke test for the DelQuro Labs site image
+# =============================================================================
+#      docker compose up --build
+#      open http://localhost:8080
+#      open http://localhost:8080/Sounds/
+#      curl -I http://localhost:8080/health
+#
+#  Coolify does NOT use this file. When you create the application in Coolify,
+#  choose the "Dockerfile" build pack, not "Docker Compose" - see
+#  DEPLOYMENT.md. This file exists so you can build and test the exact same
+#  image on your laptop before pushing.
+#
+#  If Coolify pre-selects "Docker Compose" because it spots this file, switch
+#  the build pack back to "Dockerfile".
+# =============================================================================
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: delquro-site:local
+    container_name: delquro-site
+    restart: unless-stopped
+    ports:
+      # 8080 on the host so it does not fight a local web server.
+      # Inside the container nginx always listens on 80.
+      - "8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
