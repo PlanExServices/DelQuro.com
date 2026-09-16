@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.delquro.com/</loc></url>
-  <url><loc>https://www.delquro.com/products.html</loc></url>
-  <url><loc>https://www.delquro.com/resources.html</loc></url>
-  <url><loc>https://www.delquro.com/support.html</loc></url>
-  <url><loc>https://www.delquro.com/account-deletion.html</loc></url>
-  <url><loc>https://www.delquro.com/privacy.html</loc></url>
-  <url><loc>https://www.delquro.com/terms.html</loc></url>
+  <url><loc>https://www.delquro.com/</loc><lastmod>2026-09-15</lastmod><priority>1.0</priority></url>
+  <url><loc>https://www.delquro.com/products.html</loc><lastmod>2026-09-15</lastmod><priority>0.95</priority></url>
+  <url><loc>https://www.delquro.com/resources.html</loc><lastmod>2026-09-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.delquro.com/support.html</loc><lastmod>2026-09-15</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.delquro.com/account-deletion.html</loc><lastmod>2026-09-15</lastmod><priority>0.4</priority></url>
+  <url><loc>https://www.delquro.com/privacy.html</loc><lastmod>2026-09-15</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.delquro.com/terms.html</loc><lastmod>2026-09-15</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.delquro.com/apps/note-thyme.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/choremouse.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/plainslang.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/plot-perks.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/delquro-connect.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/vetform-go.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/ai-scripts.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/ghostforge.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/name-generator.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/idea-lab.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/serenade-sleep.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/lulzzz.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/delquro-forge.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/delquro-files.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/phone-heat-map.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/vibe-coding-101.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/delquro-labs.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
+  <url><loc>https://www.delquro.com/apps/helix-studios.html</loc><lastmod>2026-09-15</lastmod><priority>0.8</priority></url>
 </urlset>

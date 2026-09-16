@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Scripts Library — DelQuro Labs</title>
+  <meta name="description" content="One DelQuro library for AI agent playbooks and copy-ready prompts. Search, recommended, random — coming soon as a full product.">
+  <meta name="theme-color" content="#071726">
+  <link rel="icon" href="../assets/app-icon.svg">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="canonical" href="https://www.delquro.com/apps/ai-scripts.html">
+  <link rel="manifest" href="../site.webmanifest">
+  <style>
+    .lib-wrap{padding:0 0 40px}
+    .lib-hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .lib-searchbar{display:grid;grid-template-columns:1fr auto auto;gap:10px;margin:28px 0 18px}
+    .lib-searchbar input,.lib-searchbar select{
+      width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);
+      background:rgba(255,255,255,.05);color:#edf7fb;font:inherit;font-size:15px
+    }
+    .lib-searchbar input:focus,.lib-searchbar select:focus{outline:2px solid var(--cyan);outline-offset:2px}
+    .lib-searchbar select{min-width:140px;cursor:pointer}
+    .lib-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:22px}
+    .lib-toolbar .chip-btn{
+      border:1px solid var(--line);background:rgba(255,255,255,.04);color:#c5d6e3;
+      padding:9px 14px;border-radius:999px;font-size:12px;font-weight:750;cursor:pointer;font:inherit
+    }
+    .lib-toolbar .chip-btn.on,.lib-toolbar .chip-btn:hover{
+      border-color:rgba(124,108,240,.55);background:rgba(124,108,240,.14);color:#fff
+    }
+    .lib-meta-line{font-size:13px;color:var(--muted);margin:0 0 18px}
+    .lib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .lib-card{
+      display:flex;flex-direction:column;padding:22px;border-radius:22px;border:1px solid var(--line);
+      background:linear-gradient(155deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+      min-height:230px;cursor:pointer;text-align:left;color:inherit;font:inherit;
+      transition:transform .22s var(--ease),border-color .22s
+    }
+    .lib-card:hover{transform:translateY(-4px);border-color:rgba(124,108,240,.45)}
+    .lib-card .kind{
+      font-size:10px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--product,#7c6cf0);margin-bottom:10px
+    }
+    .lib-card h3{margin:0 0 6px;font-size:20px;letter-spacing:-.03em}
+    .lib-card .tg{color:var(--product,#7c6cf0);font-weight:700;font-size:13px;margin-bottom:10px}
+    .lib-card p{margin:0 0 14px;color:#9fb3c3;font-size:13px;line-height:1.55;flex:1}
+    .lib-card .tags{display:flex;flex-wrap:wrap;gap:6px}
+    .lib-card .tags span{font-size:10px;font-weight:700;padding:5px 8px;border-radius:999px;border:1px solid var(--line);color:#b9cad6}
+    .lib-card .rec{margin-left:auto;font-size:10px;font-weight:800;color:#f2bd6a;letter-spacing:.08em;text-transform:uppercase}
+    .lib-card-top{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+    .lib-empty{padding:48px 24px;text-align:center;border:1px dashed var(--line);border-radius:22px;color:var(--muted)}
+    .lib-detail{
+      position:fixed;inset:0;z-index:40;background:rgba(3,10,18,.72);backdrop-filter:blur(8px);
+      display:none;align-items:center;justify-content:center;padding:24px
+    }
+    .lib-detail.open{display:flex}
+    .lib-panel{
+      width:min(640px,100%);max-height:min(86vh,820px);overflow:auto;border-radius:28px;
+      border:1px solid var(--line);background:#0a1a2b;padding:28px 28px 24px;
+      box-shadow:0 30px 80px rgba(0,0,0,.45)
+    }
+    .lib-panel h2{margin:8px 0 6px;font-size:28px;letter-spacing:-.035em}
+    .lib-panel .tg{color:#a78bfa;font-weight:700;margin-bottom:12px}
+    .lib-panel pre{
+      white-space:pre-wrap;word-break:break-word;background:rgba(0,0,0,.28);border:1px solid var(--line);
+      border-radius:16px;padding:16px;font-size:13px;line-height:1.55;color:#d7e6f0;margin:12px 0 0
+    }
+    .lib-panel ol{margin:10px 0 0;padding-left:20px;color:#b7c9d6}
+    .lib-panel ol li{margin:6px 0}
+    .lib-panel .close{
+      float:right;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;
+      width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:18px
+    }
+    .soon-banner{
+      display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;
+      border:1px solid rgba(242,189,106,.4);background:rgba(242,189,106,.1);
+      color:#f2bd6a;font-size:11px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px
+    }
+    @media(max-width:900px){
+      .lib-grid{grid-template-columns:1fr 1fr}
+      .lib-searchbar{grid-template-columns:1fr}
+    }
+    @media(max-width:680px){.lib-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body style="--product:#7c6cf0">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="wrap navrow">
+      <a class="brand" href="../index.html" aria-label="DelQuro Labs home">
+        <img src="../assets/logo-mark.svg" alt="">
+        <img class="brand-word" src="../assets/wordmark-light.svg" alt="DelQuro Labs">
+      </a>
+      <button type="button" class="menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+      <nav id="primary-navigation" class="nav" aria-label="Primary">
+        <a href="../index.html">Home</a>
+        <a class="active" href="../products.html">Products</a>
+        <a href="../resources.html">Resources</a>
+        <a class="support" href="../support.html">Get support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="app-hero">
+      <div class="wrap">
+        <div class="crumb">
+          <a href="../index.html">Home</a><span class="sep">/</span>
+          <a href="../products.html">Products</a><span class="sep">/</span>
+          <span>AI Scripts Library</span>
+        </div>
+        <div class="soon-banner">Coming soon · Prototype library</div>
+        <div class="app-icon-lg" aria-hidden="true">📜</div>
+        <div class="app-kicker">AI · Agents &amp; prompts</div>
+        <h1>AI Scripts Library</h1>
+        <p class="tagline">One shelf for agent playbooks and copy-ready prompts.</p>
+        <p class="lead">Search the library, jump to recommended starters, or hit random when you want a push. Agent scripts teach helpers what to do. Prompt scripts are paste-ready instructions for any model. Combined here on purpose — one search box, not two products fighting for the same job.</p>
+        <div class="lib-hero-actions actions">
+          <a class="btn primary" href="#library">Browse the library →</a>
+          <a class="btn secondary" href="mailto:info@delquro.com?subject=AI%20Scripts%20Library">Ask about early access</a>
+        </div>
+        <div class="app-meta" style="margin-top:22px">
+          <span>Search</span>
+          <span>Recommended</span>
+          <span>Random</span>
+          <span>Agents + prompts</span>
+          <span>Coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lib-wrap" id="library">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Library engine</div>
+            <h2>Find a script. Run the idea.</h2>
+          </div>
+          <p>Filter by kind, search by job, pin recommended, or roll the dice. Full product packaging is coming soon — this room is the working prototype shelf.</p>
+        </div>
+
+        <div class="lib-searchbar">
+          <input id="q" type="search" placeholder="Search scripts — research, rewrite, triage, agenda…" autocomplete="off" aria-label="Search scripts">
+          <select id="kind" aria-label="Filter by kind">
+            <option value="all">All kinds</option>
+            <option value="agent">Agents only</option>
+            <option value="prompt">Prompts only</option>
+          </select>
+          <button type="button" class="btn secondary" id="btn-random">Random</button>
+        </div>
+
+        <div class="lib-toolbar" role="toolbar" aria-label="Quick filters">
+          <button type="button" class="chip-btn on" data-filter="all">All</button>
+          <button type="button" class="chip-btn" data-filter="recommended">Recommended</button>
+          <button type="button" class="chip-btn" data-filter="agent">Agent playbooks</button>
+          <button type="button" class="chip-btn" data-filter="prompt">Prompt scripts</button>
+        </div>
+        <p class="lib-meta-line" id="count-line">Loading library…</p>
+        <div class="lib-grid" id="grid" aria-live="polite"></div>
+        <div class="lib-empty" id="empty" hidden>No scripts matched. Try another word or hit Random.</div>
+
+        <div class="status-strip reveal" style="margin-top:40px">
+          <div>
+            <strong>Coming soon as its own product</strong>
+            <p>AI Agent Scripts and AI Prompt Scripts are one library now. A full .com home is on the way — until then, explore the prototype shelf here.</p>
+          </div>
+          <a class="btn primary" href="mailto:info@delquro.com?subject=AI%20Scripts%20Library">Email about access →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-box reveal">
+          <div class="cta-lock">
+            <img src="../assets/logo-mark.svg" alt="">
+            <div>
+              <h2>Want a script added to the shelf?</h2>
+              <p>Tell us the job. We will shape an agent playbook or a prompt.</p>
+            </div>
+          </div>
+          <a class="btn primary" href="mailto:info@delquro.com?subject=AI%20Scripts%20Library">Email info@delquro.com →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="lib-detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden>
+    <div class="lib-panel">
+      <button type="button" class="close" id="detail-close" aria-label="Close">×</button>
+      <div class="kind" id="detail-kind"></div>
+      <h2 id="detail-title"></h2>
+      <div class="tg" id="detail-tagline"></div>
+      <p id="detail-blurb" style="color:#a6bac9;line-height:1.65"></p>
+      <div id="detail-body"></div>
+      <div class="actions" style="margin-top:22px">
+        <button type="button" class="btn primary" id="detail-copy">Copy script text</button>
+        <button type="button" class="btn secondary" id="detail-close-2">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="../index.html">
+            <img src="../assets/logo-mark.svg" alt="">
+            <img class="brand-word" src="../assets/wordmark-light.svg" alt="DelQuro Labs">
+          </a>
+          <p>Focused software for families, teams, and the everyday moments that matter.</p>
+        </div>
+        <div>
+          <div class="footer-title">Explore</div>
+          <div class="footer-links">
+            <a href="../products.html">Products</a>
+            <a href="../resources.html">Resources</a>
+            <a href="../support.html">Support</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">This product</div>
+          <div class="footer-links">
+            <a href="ai-scripts.html">AI Scripts Library</a>
+            <a href="../products.html">All products</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Legal</div>
+          <div class="footer-links">
+            <a href="../privacy.html">Privacy</a>
+            <a href="../terms.html">Terms</a>
+            <a href="mailto:info@delquro.com">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <div>© 2026 DelQuro Labs, LLC. All rights reserved.</div>
+        <span>Built thoughtfully in Virginia.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../site.js"></script>
+  <script>
+  const SCRIPTS = [{"id": "research-scout", "kind": "agent", "title": "Research scout", "tagline": "Web \u2192 notes \u2192 brief", "tags": ["research", "brief", "web"], "blurb": "Gather sources, extract notes, return a short brief with links and open questions.", "steps": ["Scope the question", "Collect sources", "Extract claims", "Write brief", "List open questions"], "recommended": true}, {"id": "inbox-triage", "kind": "agent", "title": "Inbox triage", "tagline": "Label \u00b7 draft \u00b7 escalate", "tags": ["email", "support", "triage"], "blurb": "Sort incoming messages, draft safe replies, escalate anything that needs a human.", "steps": ["Read message", "Assign label", "Draft reply", "Flag risk", "Escalate if needed"], "recommended": true}, {"id": "ops-checklist", "kind": "agent", "title": "Ops checklist", "tagline": "Runbook with guardrails", "tags": ["ops", "runbook", "checklist"], "blurb": "Walk a runbook step by step, stop on failure, and log what happened.", "steps": ["Load runbook", "Execute step", "Verify result", "Stop on fail", "Write log"], "recommended": false}, {"id": "qa-walker", "kind": "agent", "title": "QA walker", "tagline": "Click paths \u00b7 log bugs", "tags": ["qa", "testing", "bugs"], "blurb": "Follow click paths, note broken states, and file structured bug notes.", "steps": ["Open path", "Act", "Observe", "Log issue", "Next path"], "recommended": false}, {"id": "meeting-notes", "kind": "agent", "title": "Meeting notes agent", "tagline": "Transcript \u2192 decisions", "tags": ["meetings", "notes", "actions"], "blurb": "Turn a rough transcript into decisions, owners, and next actions.", "steps": ["Ingest transcript", "Find decisions", "Assign owners", "List actions", "Open questions"], "recommended": true}, {"id": "support-macro", "kind": "agent", "title": "Support macro", "tagline": "Ticket \u2192 safe answer", "tags": ["support", "macros", "helpdesk"], "blurb": "Propose a reply from macros, never invent policy, escalate edge cases.", "steps": ["Read ticket", "Match macro", "Draft answer", "Cite policy", "Escalate gaps"], "recommended": false}, {"id": "rewrite-plain", "kind": "prompt", "title": "Rewrite plain", "tagline": "Clearer \u00b7 same meaning", "tags": ["rewrite", "clarity", "editing"], "blurb": "Rewrite text so a busy adult gets it on the first read. Keep the meaning. Cut fluff.", "prompt": "You are a clarity editor. Rewrite the text below in plain language for a busy adult. Keep the same meaning. Shorten where possible. Do not add new facts.\n\nText:\n{{text}}", "recommended": true}, {"id": "brief-from-notes", "kind": "prompt", "title": "Brief from notes", "tagline": "Bullets \u2192 one-pager", "tags": ["brief", "notes", "summary"], "blurb": "Turn messy bullets into a one-page brief with goal, context, options, and ask.", "prompt": "Turn these notes into a one-page brief with sections: Goal, Context, Key points, Options, Recommendation, Open questions.\n\nNotes:\n{{notes}}", "recommended": true}, {"id": "decision-memo", "kind": "prompt", "title": "Decision memo", "tagline": "Options \u00b7 tradeoffs \u00b7 pick", "tags": ["decision", "memo", "tradeoffs"], "blurb": "Structure a decision: options, tradeoffs, recommendation, and what would change your mind.", "prompt": "Write a decision memo.\nDecision: {{decision}}\nOptions: {{options}}\nInclude: context, options table (pros/cons), recommendation, risks, and kill-criteria.", "recommended": true}, {"id": "creative-spark", "kind": "prompt", "title": "Creative spark", "tagline": "3 directions \u00b7 constraints", "tags": ["creative", "brainstorm", "ideas"], "blurb": "Three creative directions that respect hard constraints \u2014 no infinite sludge.", "prompt": "Give 3 creative directions for {{project}}.\nConstraints: {{constraints}}\nFor each: name, one-sentence pitch, why it fits constraints, first next step.", "recommended": false}, {"id": "teach-like-new", "kind": "prompt", "title": "Teach like I'm new", "tagline": "Explain without jargon first", "tags": ["learning", "explain", "teaching"], "blurb": "Explain a topic like the reader is smart but new \u2014 jargon only after plain words.", "prompt": "Explain {{topic}} to a smart beginner. Start with a plain analogy. Then the real idea. Define jargon only when you use it. End with a 3-bullet recap and one practice question.", "recommended": true}, {"id": "kid-safe-rewrite", "kind": "prompt", "title": "Kid-safe rewrite", "tagline": "Family-friendly tone", "tags": ["family", "tone", "rewrite"], "blurb": "Rewrite for a family audience: clear, kind, no scare tactics or slang flex.", "prompt": "Rewrite for parents and caregivers. Tone: calm, clear, respectful. Avoid slang performance and fear hype.\n\nText:\n{{text}}", "recommended": false}, {"id": "bug-report", "kind": "prompt", "title": "Bug report shaper", "tagline": "Steps \u00b7 expected \u00b7 actual", "tags": ["bugs", "qa", "engineering"], "blurb": "Shape a messy complaint into a bug report engineers can run with.", "prompt": "Turn this report into: Title, Steps to reproduce, Expected, Actual, Environment, Severity guess, Notes.\n\nReport:\n{{report}}", "recommended": false}, {"id": "agenda-builder", "kind": "prompt", "title": "Agenda builder", "tagline": "Meeting that earns its time", "tags": ["meetings", "agenda", "work"], "blurb": "Build a tight agenda with purpose, time boxes, and decisions needed.", "prompt": "Build a meeting agenda.\nPurpose: {{purpose}}\nAttendees: {{who}}\nDuration: {{minutes}} minutes\nInclude time boxes, owner per item, and decisions required.", "recommended": false}];
+  const grid = document.getElementById('grid');
+  const empty = document.getElementById('empty');
+  const countLine = document.getElementById('count-line');
+  const q = document.getElementById('q');
+  const kindSel = document.getElementById('kind');
+  let mode = 'all'; // all | recommended | agent | prompt
+  let activeId = null;
+
+  function norm(s){return (s||'').toLowerCase()}
+
+  function filtered(){
+    const query = norm(q.value).trim();
+    const kind = kindSel.value;
+    return SCRIPTS.filter(s=>{
+      if (mode === 'recommended' && !s.recommended) return false;
+      if (mode === 'agent' && s.kind !== 'agent') return false;
+      if (mode === 'prompt' && s.kind !== 'prompt') return false;
+      if (kind !== 'all' && s.kind !== kind) return false;
+      if (!query) return true;
+      const blob = [s.title,s.tagline,s.blurb,(s.tags||[]).join(' '),s.kind].join(' ');
+      return norm(blob).includes(query);
+    });
+  }
+
+  function render(){
+    const list = filtered();
+    grid.innerHTML = '';
+    empty.hidden = list.length > 0;
+    const rec = list.filter(s=>s.recommended).length;
+    countLine.textContent = list.length + ' script' + (list.length===1?'':'s') +
+      (rec ? ' · ' + rec + ' recommended in view' : '') +
+      ' · ' + SCRIPTS.length + ' in library';
+    list.forEach(s=>{
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'lib-card';
+      btn.style.setProperty('--product', s.kind==='agent' ? '#7c6cf0' : '#e08ec8');
+      btn.innerHTML =
+        '<div class="lib-card-top"><span class="kind">' + (s.kind==='agent'?'Agent playbook':'Prompt script') +
+        '</span>' + (s.recommended?'<span class="rec">Recommended</span>':'') + '</div>' +
+        '<h3>' + s.title + '</h3>' +
+        '<div class="tg">' + s.tagline + '</div>' +
+        '<p>' + s.blurb + '</p>' +
+        '<div class="tags">' + (s.tags||[]).map(t=>'<span>'+t+'</span>').join('') + '</div>';
+      btn.addEventListener('click', ()=>openDetail(s.id));
+      grid.appendChild(btn);
+    });
+  }
+
+  function openDetail(id){
+    const s = SCRIPTS.find(x=>x.id===id);
+    if(!s) return;
+    activeId = id;
+    const detail = document.getElementById('detail');
+    document.getElementById('detail-kind').textContent = s.kind==='agent' ? 'AGENT PLAYBOOK' : 'PROMPT SCRIPT';
+    document.getElementById('detail-kind').style.color = s.kind==='agent' ? '#7c6cf0' : '#e08ec8';
+    document.getElementById('detail-title').textContent = s.title;
+    document.getElementById('detail-tagline').textContent = s.tagline;
+    document.getElementById('detail-blurb').textContent = s.blurb;
+    const body = document.getElementById('detail-body');
+    if (s.kind === 'agent') {
+      body.innerHTML = '<div class="eyebrow" style="margin-top:18px">Steps</div><ol>' +
+        (s.steps||[]).map(step=>'<li>'+step+'</li>').join('') + '</ol>';
+    } else {
+      body.innerHTML = '<div class="eyebrow" style="margin-top:18px">Prompt text</div><pre id="prompt-text"></pre>';
+      document.getElementById('prompt-text').textContent = s.prompt || '';
+    }
+    detail.hidden = false;
+    detail.classList.add('open');
+  }
+
+  function closeDetail(){
+    const detail = document.getElementById('detail');
+    detail.classList.remove('open');
+    detail.hidden = true;
+    activeId = null;
+  }
+
+  document.getElementById('detail-close').onclick = closeDetail;
+  document.getElementById('detail-close-2').onclick = closeDetail;
+  document.getElementById('detail').addEventListener('click', e=>{ if(e.target.id==='detail') closeDetail(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDetail(); });
+
+  document.getElementById('detail-copy').onclick = async ()=>{
+    const s = SCRIPTS.find(x=>x.id===activeId);
+    if(!s) return;
+    const text = s.kind==='prompt' ? (s.prompt||'') :
+      (s.title + '\n' + s.tagline + '\n\n' + s.blurb + '\n\nSteps:\n- ' + (s.steps||[]).join('\n- '));
+    try {
+      await navigator.clipboard.writeText(text);
+      const b = document.getElementById('detail-copy');
+      const old = b.textContent; b.textContent = 'Copied';
+      setTimeout(()=>b.textContent=old, 1200);
+    } catch(err) {
+      alert('Copy failed — select the text manually.');
+    }
+  };
+
+  q.addEventListener('input', render);
+  kindSel.addEventListener('change', render);
+  document.querySelectorAll('.chip-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.chip-btn').forEach(b=>b.classList.remove('on'));
+      btn.classList.add('on');
+      mode = btn.getAttribute('data-filter');
+      render();
+    });
+  });
+  document.getElementById('btn-random').addEventListener('click', ()=>{
+    const pool = filtered();
+    const src = pool.length ? pool : SCRIPTS;
+    const pick = src[Math.floor(Math.random()*src.length)];
+    openDetail(pick.id);
+  });
+
+  render();
+  </script>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"cfb6543e268d4ceb92c8170675caa481","r":1}' crossorigin="anonymous"></script>
+</body>
+</html>
