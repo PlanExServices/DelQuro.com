@@ -1,4 +1,16 @@
 document.documentElement.classList.add('js');
+// easter egg — hidden garden
+// PlotPerks is not on the products shelf, but still lives at /apps/plot-perks.html and https://plotperks.com
+// access via console: type localStorage.getItem('delquro_garden') or just open the URL directly
+try {
+  console.log('%c🌱 DelQuro hidden garden','color:#6bbf7a;font-weight:bold');
+  console.log('PlotPerks lives at /apps/plot-perks.html and https://plotperks.com — hidden from products page');
+  localStorage.setItem('delquro_garden','/apps/plot-perks.html');
+} catch(e) {}
+// click the second orbit dot or the period after Virginia in the footer to find it
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelector('.dot.d2')?.addEventListener('click',()=>{location.href='apps/plot-perks.html'});
+});
 const topbar=document.querySelector('.topbar');
 const menu=document.querySelector('.menu');
 const nav=document.querySelector('.nav');
