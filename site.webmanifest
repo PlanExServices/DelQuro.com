@@ -1,9 +1,12 @@
 {
   "name": "DelQuro Labs",
   "short_name": "DelQuro",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#071726",
-  "theme_color": "#071726",
-  "icons": [{"src":"/assets/app-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "icons": [
+    { "src": "assets/app-icon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "assets/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "assets/favicon.png", "type": "image/png", "sizes": "32x32" }
+  ],
+  "theme_color": "#081F3A",
+  "background_color": "#F2F7FB",
+  "display": "standalone"
 }

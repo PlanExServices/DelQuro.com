@@ -1,0 +1,318 @@
+﻿/* responsive-base.css
+   Delquro Labs responsive foundation.
+   This file is additive and protects mobile, tablet, laptop, and desktop layouts.
+*/
+
+:root {
+  --viewport-padding: 20px;
+  --safe-topbar-gap: 18px;
+  --responsive-section-y: 46px;
+  --responsive-hero-y: 92px;
+  --responsive-card-gap: 18px;
+  --touch-target-min: 44px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a,
+.btn {
+  min-height: var(--touch-target-min);
+}
+
+.wrap {
+  width: min(var(--wrap, 1120px), calc(100% - (var(--viewport-padding) * 2)));
+}
+
+.responsive-grid,
+.hero-grid,
+.card-grid,
+.shell-grid,
+.mini-grid,
+.mock-grid,
+.split-panel {
+  min-width: 0;
+}
+
+.hero-copy,
+.hero-visual,
+.product-stage,
+.product-shell,
+.card,
+.feature-band,
+.split-panel,
+.content-panel {
+  min-width: 0;
+}
+
+.hero h1,
+.section h2,
+.feature-band h2,
+.split-panel h2,
+.content-panel h1,
+.content-panel h2 {
+  overflow-wrap: anywhere;
+}
+
+.hero-text,
+.section-head p,
+.card p,
+.feature-band p,
+.split-panel p,
+.content-panel p,
+.content-panel li {
+  overflow-wrap: anywhere;
+}
+
+/* Desktop */
+@media (min-width: 1180px) {
+  :root {
+    --viewport-padding: 28px;
+  }
+
+  .hero-grid {
+    align-items: center;
+  }
+}
+
+/* Laptop / small desktop */
+@media (max-width: 1180px) {
+  :root {
+    --viewport-padding: 24px;
+  }
+
+  .hero-grid {
+    gap: clamp(32px, 4vw, 48px);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.9rem, 5.2vw, 5rem);
+  }
+
+  .product-stage {
+    width: min(100%, 500px);
+  }
+}
+
+/* Tablet / iPad */
+@media (max-width: 980px) {
+  :root {
+    --viewport-padding: 22px;
+    --responsive-section-y: 38px;
+    --responsive-hero-y: 72px;
+  }
+
+  .topbar-inner {
+    min-height: auto;
+  }
+
+  .hero {
+    padding-top: var(--responsive-hero-y);
+    padding-bottom: 42px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .hero h1 {
+    max-width: 11ch;
+    font-size: clamp(2.7rem, 7vw, 4.2rem);
+  }
+
+  .hero-text {
+    max-width: 42rem;
+  }
+
+  .hero-visual {
+    min-height: auto;
+    width: 100%;
+  }
+
+  .product-stage {
+    width: min(100%, 620px);
+  }
+
+  .product-shell {
+    transform: none !important;
+  }
+
+  .float-note,
+  .hero-note,
+  .product-note,
+  .floating-note {
+    position: relative !important;
+    inset: auto !important;
+    max-width: none;
+    margin-top: 14px;
+  }
+
+  .three-up {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-band {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .feature-actions {
+    justify-content: flex-start;
+  }
+
+  .split-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-inner,
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-nav {
+    gap: 28px;
+  }
+}
+
+/* Tablet portrait / large phones */
+@media (max-width: 760px) {
+  :root {
+    --viewport-padding: 16px;
+    --responsive-section-y: 34px;
+    --responsive-hero-y: 58px;
+    --responsive-card-gap: 14px;
+  }
+
+  .topbar-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--safe-topbar-gap);
+    padding: 14px 0;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 36px;
+  }
+
+  .nav {
+    gap: 14px;
+    row-gap: 8px;
+  }
+
+  .hero {
+    padding-top: var(--responsive-hero-y);
+    padding-bottom: 32px;
+  }
+
+  .hero h1 {
+    max-width: 9.5ch;
+    font-size: clamp(2.35rem, 11vw, 3.85rem);
+    line-height: 0.96;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+
+  .hero-actions,
+  .feature-actions {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .shell-body,
+  .app-frame-content,
+  .screen-body {
+    padding: 14px !important;
+  }
+
+  .shell-grid,
+  .mini-grid,
+  .mock-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: var(--responsive-section-y) 0;
+  }
+
+  .section-tight {
+    padding-top: 14px;
+  }
+
+  .card,
+  .feature-band,
+  .split-panel,
+  .content-panel {
+    padding: 22px;
+    border-radius: 22px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 430px) {
+  :root {
+    --viewport-padding: 14px;
+  }
+
+  .brand-lockup {
+    gap: 12px;
+  }
+
+  .nav {
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.15rem, 13vw, 3.25rem);
+  }
+
+  .eyebrow {
+    letter-spacing: 0.11em;
+    font-size: 0.74rem;
+  }
+
+  .pill-row,
+  .shell-pills,
+  .mock-pills {
+    gap: 8px;
+  }
+
+  .pill-row span,
+  .shell-pills span,
+  .mock-pills span,
+  .status-pill {
+    font-size: 0.82rem;
+    min-height: 32px;
+    padding: 0 10px;
+  }
+
+  .card,
+  .feature-band,
+  .split-panel,
+  .content-panel {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="DelQuro Labs">
+  <g>
+    <rect x="0" y="0" width="36" height="36" rx="10" fill="white" opacity="0.1"/>
+    <path d="M10 10 L18 10 L21 13 L21 18 L18 21 L12 21 L10 19 Z" fill="white"/>
+    <path d="M22 10 L30 10 L30 22 L28 24 L24 24 L22 22 Z" fill="white"/>
+  </g>
+  <text x="44" y="22" font-family="Inter, sans-serif" font-weight="800" font-size="20" letter-spacing="-0.02em" fill="white">DelQuro</text>
+  <text x="44" y="36" font-family="Inter, sans-serif" font-weight="600" font-size="10" letter-spacing="0.08em" fill="#9DB0C9">LABS, LLC</text>
+</svg>

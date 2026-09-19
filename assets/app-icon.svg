@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="DelQuro app icon"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#071d3b"/><stop offset=".7" stop-color="#0a3858"/><stop offset="1" stop-color="#15d9bb"/></linearGradient></defs><rect x="4" y="4" width="120" height="120" rx="32" fill="url(#g)"/><path d="M27 35h28l20 14v31L55 94H27V35Zm15 15v29h9l9-6V56l-9-6h-9Z" fill="#fff"/><path d="m58 43 23-17h19v18H85L68 56 58 43Z" fill="#15d9bb"/><path d="m75 80 14 11-13 10-13-11 12-10Z" fill="#8fece0"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="DelQuro mark">
+  <defs><clipPath id="r"><rect x="4" y="4" width="56" height="56" rx="14"/></clipPath></defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="#0FE6C2"/>
+  <path d="M34 4 L56 4 C60 4 60 8 60 12 L60 20 L48 8 L34 12 Z" fill="#081F3A" opacity="0.25" clip-path="url(#r)"/>
+  <g fill="#081F3A" opacity="0.9">
+    <rect x="0" y="16" width="6" height="2.5" rx="1"/>
+    <rect x="0" y="24" width="6" height="2.5" rx="1"/>
+    <rect x="0" y="32" width="6" height="2.5" rx="1"/>
+    <rect x="0" y="40" width="6" height="2.5" rx="1"/>
+    <rect x="58" y="16" width="6" height="2.5" rx="1"/>
+    <rect x="58" y="24" width="6" height="2.5" rx="1"/>
+    <rect x="58" y="32" width="6" height="2.5" rx="1"/>
+    <rect x="58" y="40" width="6" height="2.5" rx="1"/>
+  </g>
+  <path d="M16 18 L28 18 L34 24 L34 34 L28 40 L16 40 Z M20 22 L20 36 L26 36 L30 32 L30 26 L26 22 Z" fill="#081F3A"/>
+  <path d="M36 18 L52 18 L52 38 L48 42 L40 42 L36 38 L36 34 L42 34 L46 38 L48 36 L48 22 L40 22 L36 26 Z" fill="#081F3A"/>
+  <path d="M38 40 L50 40 L46 46 L38 46 Z" fill="#081F3A"/>
+</svg>
