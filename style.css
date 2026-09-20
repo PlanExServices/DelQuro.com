@@ -1,7 +1,7 @@
 /* Delquro Labs — brand-led responsive site */
 :root{
   --ink:#081F3A;--navy:#0a1d30;--navy-2:#0e2740;--paper:#f4f8fa;--white:#fff;
-  --cyan:#16d9bd;--cyan-2:#8deade;--blue:#5e85ec;--green:#78b394;--gold:#f2bd6a;
+  --cyan:#0FE6C2;--cyan-2:#8deade;--blue:#5e85ec;--green:#78b394;--gold:#f2bd6a;
   --text:#edf7fb;--muted:#9ab0c2;--line:rgba(159,205,224,.16);--shadow:0 24px 70px rgba(0,8,16,.35);
   --wrap:1180px;--r:28px;--ease:cubic-bezier(.2,.8,.2,1)
 }
@@ -83,7 +83,7 @@ body { overflow-x: hidden; }
 }
 
 /* ── App detail pages (one room per product) ── */
-.app-hero{padding:88px 0 64px;border-bottom:1px solid var(--line);background:radial-gradient(700px 420px at 88% 0,color-mix(in srgb,var(--product,#16d9bd) 22%,transparent),transparent 68%),radial-gradient(520px 360px at 8% 40%,rgba(22,217,189,.08),transparent 70%)}
+.app-hero{padding:88px 0 64px;border-bottom:1px solid var(--line);background:radial-gradient(700px 420px at 88% 0,color-mix(in srgb,var(--product,#0FE6C2) 22%,transparent),transparent 68%),radial-gradient(520px 360px at 8% 40%,rgba(22,217,189,.08),transparent 70%)}
 .app-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
 .app-kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--product) 40%,var(--line));background:color-mix(in srgb,var(--product) 12%,transparent);color:var(--product);font-size:11px;font-weight:850;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px}
 .app-hero h1{font-size:clamp(44px,6vw,76px);line-height:1.02;letter-spacing:-.055em;margin:0 0 14px}
@@ -272,9 +272,9 @@ body { overflow-x: hidden; }
 
 /* status badges on catalog */
 .status-badge{display:inline-flex;align-items:center;padding:6px 11px;border-radius:999px;font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;border:1px solid transparent}
-.status-badge.live{color:#16d9bd;border-color:rgba(22,217,189,.4);background:rgba(22,217,189,.1)}
+.status-badge.live{color:#0FE6C2;border-color:rgba(22,217,189,.4);background:rgba(22,217,189,.1)}
 .status-badge.soon{color:#f2bd6a;border-color:rgba(242,189,106,.4);background:rgba(242,189,106,.1)}
 .status-badge.proto{color:#c4b5fd;border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.12)}
 .app-hero .soon-banner,.soon-banner{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;border:1px solid rgba(242,189,106,.4);background:rgba(242,189,106,.1);color:#f2bd6a;font-size:11px;font-weight:850;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
 .soon-banner.proto{border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.12);color:#c4b5fd}
-.soon-banner.live{border-color:rgba(22,217,189,.4);background:rgba(22,217,189,.1);color:#16d9bd}
+.soon-banner.live{border-color:rgba(22,217,189,.4);background:rgba(22,217,189,.1);color:#0FE6C2}
