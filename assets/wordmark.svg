@@ -1,5 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="180" height="40" role="img" aria-label="DelQuro">
-  <text x="0" y="28" font-family="Inter, sans-serif" font-weight="800" font-size="30" letter-spacing="-0.03em" fill="#081F3A">DelQuro</text>
-  <circle cx="168" cy="22" r="9" fill="#0FE6C2"/>
-  <text x="161" y="27" font-family="Inter, sans-serif" font-weight="800" font-size="14" fill="white">o</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 40" width="216" height="40" role="img" aria-label="DelQuro Labs">
+  <text x="0" y="28" font-family="Inter, ui-sans-serif, -apple-system, 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="29" letter-spacing="-0.5" textLength="212" lengthAdjust="spacingAndGlyphs"><tspan fill="#1B2226">DelQuro</tspan><tspan dx="7" fill="#1E7E72">Labs</tspan></text>
 </svg>

@@ -4,9 +4,9 @@
   "icons": [
     { "src": "assets/app-icon.svg", "type": "image/svg+xml", "sizes": "any" },
     { "src": "assets/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" },
-    { "src": "assets/favicon.png", "type": "image/png", "sizes": "32x32" }
+    { "src": "assets/favicon.png", "type": "image/png", "sizes": "64x64" }
   ],
-  "theme_color": "#081F3A",
-  "background_color": "#F2F7FB",
+  "theme_color": "#0B1218",
+  "background_color": "#0B1218",
   "display": "standalone"
 }

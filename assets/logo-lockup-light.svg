@@ -1,9 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="DelQuro Labs">
-  <g>
-    <rect x="0" y="0" width="36" height="36" rx="10" fill="white" opacity="0.1"/>
-    <path d="M10 10 L18 10 L21 13 L21 18 L18 21 L12 21 L10 19 Z" fill="white"/>
-    <path d="M22 10 L30 10 L30 22 L28 24 L24 24 L22 22 Z" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 56" width="300" height="56" role="img" aria-label="DelQuro Labs">
+  <defs>
+    <linearGradient id="t2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6AD3BF"/><stop offset="1" stop-color="#1E7E72"/>
+    </linearGradient>
+    <linearGradient id="s2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F0F1EF"/><stop offset="1" stop-color="#98A1A2"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#t2)" stroke-width="1.8" stroke-linecap="round">
+    <path d="M4.5 15 H10 L13 18"/><path d="M4.5 28 H13"/><path d="M4.5 41 H10 L13 38"/>
   </g>
-  <text x="44" y="22" font-family="Inter, sans-serif" font-weight="800" font-size="20" letter-spacing="-0.02em" fill="white">DelQuro</text>
-  <text x="44" y="36" font-family="Inter, sans-serif" font-weight="600" font-size="10" letter-spacing="0.08em" fill="#9DB0C9">LABS, LLC</text>
+  <g fill="#0B1218" stroke="url(#t2)" stroke-width="1.5">
+    <circle cx="3" cy="15" r="1.9"/><circle cx="3" cy="28" r="1.9"/><circle cx="3" cy="41" r="1.9"/>
+  </g>
+  <path fill="url(#t2)" fill-rule="evenodd" d="M13 8 H25 A20 20 0 0 1 25 48 H13 Z M19 14 H24 A14 14 0 0 1 24 42 H19 Z"/>
+  <path fill="url(#s2)" fill-rule="evenodd" d="M40 8 A20 20 0 1 0 40 48 A20 20 0 1 0 40 8 Z M40 18 A10 10 0 1 1 40 38 A10 10 0 1 1 40 18 Z"/>
+  <path fill="url(#s2)" d="M41 33 L46 30 L55 41 L50 44 Z"/>
+  <text x="70" y="37" font-family="Inter, ui-sans-serif, -apple-system, 'Segoe UI', Arial, sans-serif" font-weight="800" font-size="31" letter-spacing="-0.5" textLength="224" lengthAdjust="spacingAndGlyphs"><tspan fill="#DCE2E1">DelQuro</tspan><tspan dx="7" fill="#4FC5AE">Labs</tspan></text>
 </svg>

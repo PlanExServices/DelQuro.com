@@ -3,13 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DelQuro Labs — Thoughtful software for real life</title>
-  <meta name="description" content="DelQuro Labs builds focused apps for families, veterinary teams, creators, and everyday life — thoughtfully designed, dependable, and easy to use.">
-  <meta name="theme-color" content="#081F3A">
-  <link rel="icon" href="assets/app-icon.svg">
-  <link rel="stylesheet" href="style.css">
+  <title>DelQuro Labs — One studio, a library of small, focused apps</title>
+  <meta name="description" content="DelQuro Labs is an independent product studio building a living library of small, focused apps — each one designed to solve a single real problem well, from family kitchens to veterinary front desks.">
+  <meta name="theme-color" content="#060C12">
+  <link rel="icon" href="assets/app-icon.svg?v=5">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=5" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=5">
+  <link rel="stylesheet" href="style.css?v=5">
   <link rel="canonical" href="https://www.delquro.com/">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="manifest" href="site.webmanifest?v=5">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DelQuro Labs">
+  <meta property="og:title" content="DelQuro Labs — One studio, a library of small, focused apps">
+  <meta property="og:description" content="23 volumes and growing — each app small on purpose, each one built to solve a single real problem well.">
+  <meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg">
+  <meta property="og:url" content="https://www.delquro.com/">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -17,8 +26,8 @@
   <header class="topbar">
     <div class="wrap navrow">
       <a class="brand" href="index.html" aria-label="DelQuro Labs home">
-        <img src="assets/logo-mark.svg" alt="">
-        <img class="brand-word" src="assets/wordmark-light.svg" alt="DelQuro Labs">
+        <img src="assets/dq-mark.png?v=5" alt="">
+        <img class="brand-word" src="assets/wordmark-light.svg?v=5" alt="DelQuro Labs">
       </a>
       <button type="button" class="menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button>
       <nav id="primary-navigation" class="nav" aria-label="Primary">
@@ -31,133 +40,188 @@
   </header>
 
   <main id="main">
+    <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">Independent product studio</div>
-          <h1>Small software.<br><span>Meaningful impact.</span></h1>
-          <p class="lead">DelQuro Labs builds focused applications for the moments that keep life moving — feeding a family, building good habits, aligning a veterinary team, winding down at night, and shipping the next small idea.</p>
+        <div>
+          <div class="kicker">Independent product studio</div>
+          <h1>One studio.<br><span>A library of small,<br>focused apps.</span></h1>
+          <p class="lead">We design, build, and quietly maintain a growing shelf of applications — each one small on purpose, each one engineered to solve a single real problem well. From family meal plans to veterinary front desks, every volume earns its place.</p>
           <div class="actions">
-            <a class="btn primary" href="products.html">Explore all 23 products <span class="arrow">→</span></a>
+            <a class="btn primary" href="products.html">Browse the library <span class="arrow">→</span></a>
             <a class="btn secondary" href="mailto:info@delquro.com">Talk to us</a>
           </div>
-          <div class="metric-row">
-            <div class="metric"><b>23</b><span>Focused products</span></div>
-            <div class="metric"><b>0</b><span>Features for feature's sake</span></div>
-            <div class="metric"><b>Daily</b><span>Designed to earn its place</span></div>
+          <div class="stackline" aria-label="Technologies we build with">
+            <span class="chip">React Native</span>
+            <span class="chip">Expo</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">MongoDB</span>
+            <span class="chip">PWA</span>
+            <span class="chip">On-device AI</span>
           </div>
         </div>
 
-        <div class="orbit" aria-label="DelQuro product ecosystem">
-          <div class="halo"></div>
-          <div class="core"><img src="assets/logo-mark.svg" alt="DelQuro Labs"></div>
-          <div class="float-card fc1"><i>🌿</i><span>Note Thyme</span></div>
-          <div class="float-card fc2"><i>🐭</i><span>ChoreMouse</span></div>
-          <div class="float-card fc3"><i>✦</i><span>Connect</span></div>
-          <div class="float-card fc4"><i>📦</i><span>Megatory Live</span></div>
-          <div class="float-card fc5"><i>📞</i><span>VMTA</span></div>
-          <div class="float-card fc6"><i>🤖</i><span>JARVIS</span></div>
-          <i class="dot d1"></i>
-          <i class="dot d2" data-garden="apps/plot-perks.html"></i>
-          <!-- hidden garden: /apps/plot-perks.html -->
+        <div class="hero-visual reveal">
+          <div class="sys-tag">identity_v3.final</div>
+          <figure class="plate">
+            <img src="assets/dq-hero3d.jpg?v=5" alt="The DelQuro Labs logo — a brushed-metal DQ monogram. The D is teal with circuit traces; the Q is silver. Wordmark and delquro.com beneath." width="582" height="362">
+            <figcaption>The adopted mark · DelQuro Labs</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- terminal: library index -->
+      <div class="wrap term-wrap reveal">
+        <div class="term">
+          <div class="term-bar"><i></i><i></i><i></i><span class="term-title">delquro — library index</span></div>
+          <div class="term-body">
+            <div><span class="prompt">~ $</span> <span class="cmd">dq library --list --status</span></div>
+            <div class="dim"># 23 volumes · 4 live on the open web · updated 2026.09</div>
+            <div class="term-grid">
+              <span>note-thyme <span class="st2">[soon]</span></span>
+              <span>choremouse <span class="st2">[soon]</span></span>
+              <span>delquro-connect <span class="st2">[soon]</span></span>
+              <span>megatory-live <span class="st">[live ✓]</span></span>
+              <span>vmta <span class="st">[live ✓]</span></span>
+              <span>jarvis <span class="st3">[concept]</span></span>
+              <span>plainslang <span class="st">[live ✓]</span></span>
+              <span>solar <span class="st">[live ✓]</span></span>
+              <span>vetform-go <span class="st2">[soon]</span></span>
+              <span>ai-scripts <span class="st3">[proto]</span></span>
+              <span>delquro-echo <span class="st2">[soon]</span></span>
+              <span>ghostforge <span class="st2">[soon]</span></span>
+              <span>name-generator <span class="st2">[soon]</span></span>
+              <span>idea-lab <span class="st2">[soon]</span></span>
+              <span>serenade-sleep <span class="st2">[soon]</span></span>
+              <span>lulzzz <span class="st2">[soon]</span></span>
+              <span>delquro-zen <span class="st2">[soon]</span></span>
+              <span>delquro-forge <span class="st2">[soon]</span></span>
+              <span>delquro-files <span class="st2">[soon]</span></span>
+              <span>phone-heat-map <span class="st2">[soon]</span></span>
+              <span>vibe-coding-101 <span class="st2">[soon]</span></span>
+              <span>helix-studios <span class="st2">[soon]</span></span>
+              <span class="dim">…and counting_</span>
+            </div>
+            <div><span class="prompt">~ $</span> <span class="cursor"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- statline -->
+      <div class="wrap">
+        <div class="statline reveal">
+          <div class="stat"><b>23</b><span>Apps in the library</span></div>
+          <div class="stat"><b><span class="live-dot"></span>4</b><span>Live on the web</span></div>
+          <div class="stat"><b>7</b><span>Shelves / categories</span></div>
+          <div class="stat"><b>0</b><span>Trackers sold to anyone</span></div>
         </div>
       </div>
     </section>
 
+    <!-- ═══ FEATURED VOLUMES ═══ -->
     <section class="section" id="products">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <div class="eyebrow">Our products</div>
-            <h2>Clear tools for the work that matters.</h2>
+            <div class="shead-kicker">[01] — Featured volumes</div>
+            <h2>Current releases from the shelf.</h2>
           </div>
-          <p>Each product starts with a real problem, stays close to the people solving it, and ships only what earns its place. Here are a few doors in — the full shelf has 23, including Megatory Live and VMTA live at delqurolabs.app.</p>
+          <p>Six titles from a library of twenty-three — spanning Family, Veterinary, AI, Inventory, Create, Sleep, and Studio. Megatory Live and VMTA are live now at delqurolabs.app.</p>
         </div>
 
         <div class="home-cats reveal" aria-label="Browse by category">
           <a href="products.html#family">Family</a>
           <a href="products.html#veterinary">Veterinary</a>
           <a href="products.html#ai">AI</a>
+          <a href="products.html#inventory">Inventory</a>
           <a href="products.html#create">Create</a>
           <a href="products.html#sleep">Sleep</a>
           <a href="products.html#build">Build &amp; learn</a>
           <a href="products.html#studio">Studio</a>
         </div>
 
-        <div class="product-grid featured" style="margin-top:28px">
-          <article class="product-card compact reveal" style="--product:#78b394">
+        <div class="product-grid" style="margin-top:28px">
+          <article class="product-card reveal" style="--product:#7BC49A">
             <div class="product-top"><div class="app-icon">🌿</div><span class="status">Family · Meals</span></div>
             <h3>Note Thyme</h3>
             <div class="tagline">Real family meal plans, powered by real recipes.</div>
             <p class="copy">Trusted publishers, allergen filters, lockable weeks, and one clean grocery list.</p>
+            <div class="chips"><span>Expo</span><span>TypeScript</span><span>GPT parsing</span><span>JSON-LD</span></div>
             <a class="product-link" href="apps/note-thyme.html"><span>Explore Note Thyme</span><span>→</span></a>
           </article>
 
-          <article class="product-card compact reveal" style="--product:#f2bd6a">
+          <article class="product-card reveal" style="--product:#F2BA6C">
             <div class="product-top"><div class="app-icon">🐭</div><span class="status">Family · Habits</span></div>
             <h3>ChoreMouse</h3>
             <div class="tagline">Chores kids love, allowance parents trust.</div>
             <p class="copy">Coins, streaks, badges, and a Treat Shop — parent-approved and ad-free.</p>
+            <div class="chips"><span>React PWA</span><span>Stripe</span><span>RevenueCat</span><span>Capacitor</span></div>
             <a class="product-link" href="apps/choremouse.html"><span>Explore ChoreMouse</span><span>→</span></a>
           </article>
 
-          <article class="product-card compact reveal" style="--product:#5e85ec">
+          <article class="product-card reveal" style="--product:#6E97F0">
             <div class="product-top"><div class="app-icon">✦</div><span class="status">Veterinary · Teams</span></div>
             <h3>DelQuro Connect</h3>
             <div class="tagline">Your veterinary team, aligned every shift.</div>
             <p class="copy">Huddles, chat, schedules, time off, and WAG's for busy hospitals.</p>
+            <div class="chips"><span>React Native</span><span>FastAPI</span><span>JWT · RBAC</span><span>MongoDB</span></div>
             <a class="product-link" href="apps/delquro-connect.html"><span>Explore Connect</span><span>→</span></a>
           </article>
 
-          <article class="product-card compact reveal" style="--product:#0FE6C2">
-            <div class="product-top"><div class="app-icon">📦</div><span class="status">Live • megatory-live.delqurolabs.app</span></div>
+          <article class="product-card reveal" style="--product:#2FD9BC">
+            <div class="product-top"><div class="app-icon">📦</div><span class="status" style="color:var(--teal)">● Live · megatory-live.delqurolabs.app</span></div>
             <h3>Megatory Live</h3>
-            <div class="tagline">Phone-first inventory counts that live on the phone.</div>
-            <p class="copy">Scan bottles, QR multi-phone, Files export. 0 counted • 0 in sheet • this phone. Live 200.</p>
+            <div class="tagline">Inventory counts that live on the phone.</div>
+            <p class="copy">Scan, count, and reconcile a full stockroom from one phone — multi-phone QR, CSV export. Live now.</p>
+            <div class="chips"><span>PWA</span><span>Camera scan</span><span>QR sync</span><span>CSV export</span></div>
             <a class="product-link" href="apps/megatory-live.html"><span>Explore Megatory Live</span><span>→</span></a>
           </article>
 
-          <article class="product-card compact reveal" style="--product:#ff8a5b">
-            <div class="product-top"><div class="app-icon">📞</div><span class="status">Live • vmta.delqurolabs.app</span></div>
+          <article class="product-card reveal" style="--product:#FF9A62">
+            <div class="product-top"><div class="app-icon">📞</div><span class="status" style="color:#FF9A62">● Live · vmta.delqurolabs.app</span></div>
             <h3>VMTA</h3>
-            <div class="tagline">Voicemail Triage Assistant — real front-desk processing.</div>
-            <p class="copy">Clinical triage, concurrency locking, 1-click PMS slips for AVImark/ezyVet. Active Queue 3.</p>
+            <div class="tagline">Voicemails triaged to the right queue, every time.</div>
+            <p class="copy">Clinical voicemail triage with concurrency locking and 1-click PMS slips for AVImark and ezyVet. Live now.</p>
+            <div class="chips"><span>Web</span><span>Queue locking</span><span>PMS export</span><span>Triage rules</span></div>
             <a class="product-link" href="apps/vmta.html"><span>Explore VMTA</span><span>→</span></a>
           </article>
 
-          <article class="product-card compact reveal" style="--product:#7b8cff">
-            <div class="product-top"><div class="app-icon">🤖</div><span class="status">Agent • JARVIS • Concept</span></div>
+          <article class="product-card reveal" style="--product:#9B8CFF">
+            <div class="product-top"><div class="app-icon">🤖</div><span class="status" style="color:#9B8CFF">AI · Agent · Concept</span></div>
             <h3>JARVIS</h3>
-            <div class="tagline">J.A.R.V.I.S for automating daily ops — brain + face.</div>
-            <p class="copy">Chrome voice, tool calling, MCP, sub-agents. Planned at jarvis.delqurolabs.app.</p>
+            <div class="tagline">A brain and a face for daily operations.</div>
+            <p class="copy">Voice, tool calling, MCP, and sub-agents — the studio's agent concept, planned for jarvis.delqurolabs.app.</p>
+            <div class="chips"><span>MCP</span><span>Sub-agents</span><span>Voice</span><span>Tool calling</span></div>
             <a class="product-link" href="apps/jarvis.html"><span>Explore JARVIS</span><span>→</span></a>
           </article>
         </div>
 
         <div class="shelf-more reveal">
           <div>
-            <strong>More rooms on the shelf</strong>
-            <p>S.O.L.A.R. (live at solar.delquro.com), PlainSlang (live at plainslang.com), DelQuro Zen, DelQuro Echo, VetForm GO, AI scripts, Lulzzz, Helix Studios, Vibe Coding 101, and 11 more — plus Megatory Live and VMTA live at delqurolabs.app and JARVIS concept.</p>
+            <strong>The rest of the library</strong>
+            <p>S.O.L.A.R. (live at solar.delquro.com), PlainSlang (live at plainslang.com), DelQuro Zen, DelQuro Echo, VetForm GO, AI Scripts Library, Lulzzz, Helix Studios, Vibe Coding 101 — and eleven more volumes.</p>
           </div>
           <a class="btn primary" href="products.html">See all 23 products →</a>
         </div>
       </div>
     </section>
 
+    <!-- ═══ PROTOCOL ═══ -->
     <section class="section alt">
       <div class="wrap">
         <div class="section-head reveal">
           <div>
-            <div class="eyebrow">How we build</div>
+            <div class="shead-kicker">[02] — Build protocol</div>
             <h2>Focused by design.</h2>
           </div>
-          <p>We believe the best software is calm, clear, and quietly indispensable.</p>
+          <p>The shelf grows slowly and on purpose. The best software is calm, clear, and quietly indispensable.</p>
         </div>
         <div class="principles">
           <article class="principle reveal">
             <div class="num">01 / REAL NEEDS</div>
             <h3>Start with the day</h3>
-            <p>We map the real-life friction first. The product begins where people lose time, context, or confidence.</p>
+            <p>Every volume begins with real-life friction — where people lose time, context, or confidence.</p>
           </article>
           <article class="principle reveal">
             <div class="num">02 / RESTRAINT</div>
@@ -173,14 +237,15 @@
       </div>
     </section>
 
+    <!-- ═══ CTA ═══ -->
     <section class="cta">
       <div class="wrap">
         <div class="cta-box reveal">
           <div class="cta-lock">
-            <img src="assets/logo-mark.svg" alt="">
+            <img src="assets/dq-mark.png?v=5" alt="">
             <div>
-              <h2>Let's make everyday life clearer.</h2>
-              <p>Questions about a product, access, or working with DelQuro Labs?</p>
+              <h2>The library keeps growing.</h2>
+              <p>Questions about a product, early access, or an idea worth a new volume?</p>
             </div>
           </div>
           <a class="btn primary" href="mailto:info@delquro.com">Email info@delquro.com →</a>
@@ -194,10 +259,10 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand" href="index.html">
-            <img src="assets/logo-mark.svg" alt="">
-            <img class="brand-word" src="assets/wordmark-light.svg" alt="DelQuro Labs">
+            <img src="assets/dq-mark.png?v=5" alt="">
+            <img class="brand-word" src="assets/wordmark-light.svg?v=5" alt="DelQuro Labs">
           </a>
-          <p>Focused software for families, teams, and the everyday moments that matter.</p>
+          <p>An independent product studio building a library of small, focused apps.</p>
         </div>
         <div>
           <div class="footer-title">Explore</div>
@@ -235,7 +300,7 @@
     </div>
   </footer>
 
-  <script src="site.js"></script>
+  <script src="site.js?v=5"></script>
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"cfb6543e268d4ceb92c8170675caa481","r":1}' crossorigin="anonymous"></script>
 </body>
 </html>
