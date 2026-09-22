@@ -1,13 +1,9 @@
 document.documentElement.classList.add('js');
-// easter egg — hidden garden
-// PlotPerks is not on the products shelf, but still lives at /apps/plot-perks.html and https://plotperks.com
-// access via console: type localStorage.getItem('delquro_garden') or just open the URL directly
+// hidden garden easter egg
 try {
   console.log('%c🌱 DelQuro hidden garden','color:#6bbf7a;font-weight:bold');
-  console.log('PlotPerks lives at /apps/plot-perks.html and https://plotperks.com — hidden from products page');
   localStorage.setItem('delquro_garden','/apps/plot-perks.html');
 } catch(e) {}
-// click the second orbit dot or the period after Virginia in the footer to find it
 document.addEventListener('DOMContentLoaded',()=>{
   document.querySelector('.dot.d2')?.addEventListener('click',()=>{location.href='apps/plot-perks.html'});
 });
@@ -19,8 +15,10 @@ menu?.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu
 nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu?.setAttribute('aria-expanded','false');if(menu)menu.textContent='☰'}));
 const revealItems=document.querySelectorAll('.reveal');
 if('IntersectionObserver' in window){
-  const seen=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');seen.unobserve(e.target)}}),{threshold:.12});
+  const seen=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');seen.unobserve(e.target)}}),{threshold:.12, rootMargin:'0px 0px -10% 0px'});
   revealItems.forEach(el=>seen.observe(el));
+  // Fallback: ensure all visible after 900ms even if observer misses (e.g., playwright full_page)
+  setTimeout(()=>{revealItems.forEach(el=>el.classList.add('on'))}, 900);
 }else{
   revealItems.forEach(el=>el.classList.add('on'));
 }
