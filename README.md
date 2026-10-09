@@ -1,42 +1,42 @@
-# DelQuro Labs — delquro.com
+# DelQuro.com website
 
-Modern high-tech startup site ("DQ/OS" design system, v5) — ink charcoal `#060C12` + circuit teal `#2FD9BC` + brushed silver, monospace engineering accents, engineering grid backdrop, terminal-style library index. Vision: *"One studio. A library of small, focused apps."*
+This repository is the editing home for the public [DelQuro Labs website](https://www.delquro.com/). On 2026-10-09, the live homepage, Products, About, Resources, CSS, JavaScript, a product page, and a logo asset matched this repository's `main` branch byte for byte. Fetch `main` before starting a new edit.
 
-All static references are cache-busted (`?v=5`) — deploys take effect immediately and stale-CSS rendering bugs cannot recur. nginx serves HTML as `no-cache` and versioned statics as 30-day immutable.
+The site is plain HTML, CSS, and JavaScript. It has no application build step or package dependencies. The repository also contains a Dockerfile for serving the files through nginx.
 
-## Brand (Sep 2026 redesign)
-- Palette matched to the adopted logo: ink `#0B1218`, teal `#2FD9BC`, silver `#C9CFCE`
-- `assets/logo-mark.svg` — flat transparent monogram derived from the master art "DQ Labs logo.png" (used site-wide in topbar, CTA, footers)
-- `assets/wordmark-light.svg` / `wordmark.svg` — two-tone "DelQuro Labs" text lockups
-- `assets/dq-lockup.png` (59KB) — flat adopted logo lockup (monogram + wordmark, dark-bg variant), centerpiece of the home hero
-- `assets/dq-mark.png` (10KB) — transparent monogram used in topbar, CTA, and every footer
-- `assets/og-image.jpg` (34KB) — social card from the adopted end card
-- `assets/apple-touch-icon.png`, `favicon.png`, `favicon.ico` — D-with-circuits from the flat mark
-- `assets/app-icon.svg` — rounded-chip vector icon (site favicon)
+## Where to edit
 
-## Pages
-- `index.html` — centered brand hero (logo plate), library metrics (23 / 4 live / 1 studio), 6 featured volumes, category chips, principles, CTA
-- `products.html` — "The Library": 23-product catalog in 7 shelves (Family, Veterinary, AI, Inventory, Create, Sleep, Build & learn, Studio)
-- `apps/` — 6 expanded product pages (note-thyme, choremouse, delquro-connect, megatory-live, vmta, jarvis)
-- `privacy.html` (incl. COPPA / children section), `terms.html`, `support.html`, `resources.html`, `account-deletion.html`
+| Area | Files |
+| --- | --- |
+| Homepage and navigation | `index.html`, `site.js`, `style.css` |
+| Product library | `products.html`, `apps/*.html` |
+| Company and support | `about.html`, `resources.html`, `support.html` |
+| Legal and account help | `privacy.html`, `terms.html`, `account-deletion.html` |
+| Images and logos | `assets/` |
+| Web server | `Dockerfile`, root `nginx.conf`, `docker-compose.yml` |
 
-## Notes
-- Live volumes: PlainSlang (plainslang.com), S.O.L.A.R. (solar.delquro.com), Megatory Live (megatory-live.delqurolabs.app), VMTA (vmta.delqurolabs.app)
-- Catalog cards for unreleased volumes link to `apps/*.html` pages that are not yet built (they 404 until written — same as the previous release)
-- No JavaScript framework; single `style.css` + `site.js` (reveal-on-scroll, sticky topbar, mobile menu)
+The homepage currently describes a 23-app library. Product pages and catalog entries are hand-written; update related links and navigation when changing them.
 
-## Deployable size
-≈460KB total · largest single file is `products.html` at 56KB
+## Preview and check
 
-## Deploy
-### Coolify (Docker)
-- Build pack: **Dockerfile** (nginx:1.27-alpine) · Port: **80**
-- Private repo: add a GitHub PAT or GitHub App in Coolify → see `COOLIFY_FIX.md`
-- Or upload these files directly to the repo's `main` branch
+From the repository root:
 
-### Cloudflare Pages
-1. `wrangler pages deploy . --project-name=delquro-com --branch=main`
-2. Custom domains: delquro.com + www.delquro.com
+```sh
+python -m http.server 8000
+```
 
-### Manual preview
-`python3 -m http.server 8000` → http://localhost:8000/
+Open `http://localhost:8000/`. To check local relative links, run:
+
+```sh
+node scripts/check-links.mjs
+```
+
+As of 2026-10-09, that check reports two existing missing assets: `assets/dq-sun.svg` referenced from `Sounds/index.html`, and `assets/William_DelQuro_Intro.webm` referenced from `about.html`. Verify them during the next content edit.
+
+For an nginx preview, `docker compose up --build` serves the site at `http://localhost:3000/`.
+
+## Releasing
+
+Read [DEPLOYMENT.md](DEPLOYMENT.md) before publishing. The live server currently behaves like the root `Dockerfile` and `nginx.conf`, but the deployment dashboard and automatic deploy trigger have not been verified. A Git push must not be assumed to deploy the site. Do not use force-push or embed a GitHub token in a remote URL.
+
+`PlanExServices/delquro-site` is an older marketing site; `PlanExServices/DelQuroLabs` is a separate site concept. `DelQuroLabs/DelQuroLabs.app` is a different product launchpad. Confirm deployment links before archiving any of them.
