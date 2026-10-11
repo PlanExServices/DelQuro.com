@@ -45,8 +45,9 @@ repository in `C:\Users\plane\Nexus-Forge\delquro-com-refresh-evidence`.
 
 ## Logo and founding-year follow-up — 2026-10-11
 
-The user confirmed the founding year is 2022. The homepage hero now reads
-`DQ / EST. 2022`. The previous hero lockup and shared navigation mark were
-raster assets that looked soft at display size. They now use a scalable DQ
-vector extracted from the site's existing vector lockup, alongside the existing
-vector wordmark. The 404-page mark uses the same asset for consistency.
+The user confirmed the founding year is 2022. The homepage hero reads
+`DQ / EST. 2022`. An attempted flat vector substitution changed the identity
+of the original dimensional DQ mark, and the user rejected it. Preserve the
+original logo artwork. The original PNG sources have cleaner edges than the
+lossy WebP versions; use `dq-lockup.png` in the hero and `dq-mark.png` in
+navigation, footer, and the 404 page. Do not substitute the flat vector mark.
