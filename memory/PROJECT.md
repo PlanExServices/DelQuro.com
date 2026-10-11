@@ -42,3 +42,11 @@ transcript; that limitation is recorded for future media work.
 Local preview: `node scripts/preview.mjs` at http://127.0.0.1:4173/.
 Screenshots and the final verification report are saved outside the published
 repository in `C:\Users\plane\Nexus-Forge\delquro-com-refresh-evidence`.
+
+## Logo and founding-year follow-up — 2026-10-11
+
+The user confirmed the founding year is 2022. The homepage hero now reads
+`DQ / EST. 2022`. The previous hero lockup and shared navigation mark were
+raster assets that looked soft at display size. They now use a scalable DQ
+vector extracted from the site's existing vector lockup, alongside the existing
+vector wordmark. The 404-page mark uses the same asset for consistency.
