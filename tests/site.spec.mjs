@@ -54,7 +54,21 @@ test('the catalog and mobile navigation work without JavaScript',async({browser,
   await expect(page.locator('#catalog-filters')).toBeHidden();
   await expect(page.locator('#result-count')).toHaveText('Showing all 30 projects');
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
+  await page.goto(baseURL+'/');
+  await expect(page.getByRole('heading',{name:'See what is on the horizon.'})).toBeVisible();
+  await expect(page.locator('.studio-art img')).toHaveAttribute('src','/assets/dq-lockup.png');
   await context.close();
+});
+
+test('Radar renders as an optional enhancement while the original logo stays visible',async({page})=>{
+  await page.goto('/');
+  await expect(page.locator('.studio-art img')).toHaveAttribute('src','/assets/dq-lockup.png');
+  const radar=page.locator('[data-radar]');
+  await radar.scrollIntoViewIfNeeded();
+  await expect(radar).toHaveAttribute('data-radar-state',/^active-(webgl|2d)$/);
+  expect(await radar.locator('canvas').evaluate(canvas=>canvas.width)).toBeGreaterThan(300);
+  await expect(page.getByRole('link',{name:'Browse the full collection'})).toHaveAttribute('href','/products.html');
+  expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
 });
 
 test('mobile keyboard navigation exposes links, Escape closes and restores focus',async({page})=>{
@@ -85,6 +99,8 @@ test('reduced motion is static immediately and content stays visible',async({pag
   await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');
   expect(await page.locator('.gradient-text').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   expect(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length)).toBe(0);
+  await expect(page.locator('.radar-canvas')).toBeHidden();
+  await expect(page.getByRole('heading',{name:'See what is on the horizon.'})).toBeVisible();
   await page.goto('/products.html');await expect(visible(page)).toHaveCount(30);
   await page.mouse.move(200,620);
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);

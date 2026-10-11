@@ -51,3 +51,15 @@ of the original dimensional DQ mark, and the user rejected it. Preserve the
 original logo artwork. The original PNG sources have cleaner edges than the
 lossy WebP versions; use `dq-lockup.png` in the hero and `dq-mark.png` in
 navigation, footer, and the 404 page. Do not substitute the flat vector mark.
+
+## Radar integration — 2026-10-11
+
+The user supplied React Bits' JavaScript/CSS Radar component. This site remains
+static, so `radar.js` adapts the supplied WebGL renderer without adding React.
+It loads only on the homepage, only when the decorative panel approaches the
+viewport, and falls back to a small Canvas 2D scope where WebGL2 is unavailable.
+The HTML/CSS scope remains visible without JavaScript or with reduced motion;
+the animation pauses offscreen or in a hidden tab. The panel follows the
+available-app section and leaves the original DQ logo artwork unchanged.
+`radar.css` and `radar.js` carry source notices; the full React Bits license is
+still published at `/assets/react-bits-LICENSE.txt`.
