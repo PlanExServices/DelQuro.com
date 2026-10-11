@@ -144,6 +144,26 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await context.close();
 });
 
+test('vector product artwork and card backgrounds respond to pointer and keyboard focus',async({page})=>{
+  await page.goto('/');
+  const card=page.locator('.app-card').first();
+  await expect(page.locator('.app-card svg use')).toHaveCount(6);
+  await expect(card.locator('use')).toHaveAttribute('href','/assets/product-icons.svg#choremouse');
+  expect(await card.evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('radial-gradient');
+  await card.hover();
+  await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');
+  await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  await card.getByRole('link',{name:/Details/}).focus();
+  await page.mouse.move(0,0);
+  await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  const tile=page.locator('.category-tile').first();
+  await tile.focus();
+  await expect.poll(()=>tile.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  await page.goto('/products.html');
+  await expect(page.locator('.app-card svg use')).toHaveCount(29);
+  await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(1);
+});
+
 test('reduced motion is static immediately and content stays visible',async({page})=>{
   await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');
   expect(await page.locator('.gradient-text').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');

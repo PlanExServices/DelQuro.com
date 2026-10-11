@@ -33,3 +33,59 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 .script-filters{display:grid;grid-template-columns:1.7fr 1fr auto auto;gap:18px;align-items:end;padding:22px;border:1px solid var(--line);border-radius:13px;background:#102126}.script-filters label{display:block;font-size:12px;margin-bottom:8px}.script-filters input[type=search],.script-filters select{width:100%;min-height:46px;padding:10px 13px;border:1px solid #3d5658;border-radius:7px;color:var(--text);background:#0a191e;color-scheme:dark}.script-filters .script-filter-check{display:flex;gap:10px;align-items:center;min-height:46px;margin:0}.script-filter-check input{width:18px;height:18px;accent-color:var(--teal)}.script-results{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:24px 0;color:var(--muted);font-size:13px}.script-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.script-card{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:27px;scroll-margin-top:110px}.script-card h2{font-size:24px;margin:20px 0 12px}.script-card>p{color:var(--muted);font-size:14px}.script-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.script-recommended{color:var(--teal);font-size:10px}.script-card summary{cursor:pointer;font-size:13px;min-height:44px;padding-block:12px;color:var(--text)}.script-template{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid var(--line);background:#09191c;padding:18px;border-radius:8px;font-size:13px;line-height:1.8;color:#c5d8d2;font-family:ui-monospace,monospace}.script-actions{margin-top:12px}.script-status{font-size:12px;min-height:20px;line-height:1.8;color:var(--muted)}.script-empty{padding:35px;border:1px dashed var(--line-2);border-radius:13px}.script-empty h2{font-size:26px}.script-results button:disabled{opacity:.5;cursor:default}
 @media(max-width:1000px){.script-filters{grid-template-columns:1fr 1fr}.script-filter-check{grid-column:1}.script-filters .btn{justify-self:end}}
 @media(max-width:760px){.catalog-section{padding-top:0}.script-grid{grid-template-columns:1fr}.script-filters{gap:12px;padding:18px}.script-filters>div:first-child{grid-column:1/-1}.script-filter-check{grid-column:1/-1}.script-filters .btn{justify-self:start}.script-card{padding:22px}.script-template{font-size:12px}.script-results{align-items:flex-start}}
+
+/* Catalog artwork and responsive card surfaces. Icon glyphs live in one SVG sprite. */
+.product-symbol,
+.detail-symbol{
+  color:var(--product);
+  flex:none;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.product-symbol{
+  width:52px;
+  height:52px;
+  border-radius:15px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--product) 19%,#102227),#102227);
+  border:1px solid color-mix(in srgb,var(--product) 42%,transparent);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 8px 23px rgba(0,0,0,.12);
+}
+.product-symbol svg{width:30px;height:30px;display:block}
+.product-symbol img{width:43px;height:43px;object-fit:contain}
+.detail-symbol{width:126px;height:126px;border-radius:31px;background:color-mix(in srgb,var(--product) 12%,#102227);border:1px solid color-mix(in srgb,var(--product) 40%,transparent)}
+.detail-symbol svg{width:86px;height:86px;display:block}
+.detail-symbol img{width:112px;height:112px;object-fit:contain}
+
+.app-card,.category-tile,.detail-art{
+  background:linear-gradient(145deg,#13292c 0%,#0d1f25 68%,#0c1c21 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 12px 32px rgba(0,0,0,.1);
+}
+.app-card::before,.category-tile::before,.detail-art::before{
+  z-index:0;
+  opacity:.47;
+  background:
+    radial-gradient(300px circle at var(--spot-x) var(--spot-y),color-mix(in srgb,var(--product,#55dfc5) 24%,transparent),transparent 76%),
+    radial-gradient(circle at 100% 0%,color-mix(in srgb,var(--product,#55dfc5) 12%,transparent),transparent 48%),
+    linear-gradient(rgba(188,238,226,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(188,238,226,.035) 1px,transparent 1px);
+  background-size:auto,auto,24px 24px,24px 24px;
+  transition:opacity .25s ease;
+}
+.app-card>* , .category-tile>* , .detail-art>*{position:relative;z-index:1}
+@media (hover:hover) and (pointer:fine){
+  .app-card:hover,.category-tile:hover{border-color:color-mix(in srgb,var(--product,#55dfc5) 50%,transparent)}
+  .app-card:hover::before,.category-tile:hover::before,.detail-art:hover::before{opacity:1}
+}
+.app-card:focus-within::before,.category-tile:focus-visible::before{
+  opacity:1;
+  background:
+    radial-gradient(320px circle at 50% 45%,color-mix(in srgb,var(--product,#55dfc5) 26%,transparent),transparent 76%),
+    linear-gradient(rgba(188,238,226,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(188,238,226,.04) 1px,transparent 1px);
+  background-size:auto,24px 24px,24px 24px;
+}
+@media(prefers-reduced-motion:reduce){
+  .app-card::before,.category-tile::before,.detail-art::before{background:radial-gradient(circle at 90% 5%,color-mix(in srgb,var(--product,#55dfc5) 13%,transparent),transparent 55%)}
+}
+@media(forced-colors:active){.app-card::before,.category-tile::before,.detail-art::before{display:none}.product-symbol,.detail-symbol{border-color:CanvasText}}

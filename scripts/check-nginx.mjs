@@ -87,6 +87,15 @@ await check('asset caching and headers', async () => {
   headers(response);
 });
 
+await check('catalog icon sprite is published as SVG', async () => {
+  const response = await request('/assets/product-icons.svg');
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get('content-type') || '', /^image\/svg\+xml/);
+  assert.equal(response.headers.get('cache-control'), 'public, max-age=86400, must-revalidate');
+  headers(response);
+  assert.match(await response.text(), /<symbol id="choremouse"/);
+});
+
 await check('conditional CSS revalidation', async () => {
   const first = await request('/style.css', { method: 'HEAD' });
   const etag = first.headers.get('etag');

@@ -10,14 +10,21 @@ assert.equal(new Set(products.map(p=>p.id)).size,products.length,'Unique product
 assert.equal(new Set(products.map(p=>p.detail)).size,products.length,'Unique detail pages');
 const allowed=new Set(['available','coming-soon','prototype','access-pending','studio']);
 const catalog=read('products.html'),home=read('index.html'),sitemap=read('sitemap.xml');
+const iconSprite=read('assets/product-icons.svg');
 assert.equal([...catalog.matchAll(/data-product /g)].length,products.length);
 for(const p of products){
+  assert.equal(p.icon,p.id,`Manifest icon key for ${p.id}`);
+  if(p.id!=='delquro-labs'){
+    assert(iconSprite.includes(`<symbol id="${p.icon}"`),`Vector artwork for ${p.id}`);
+    assert(catalog.includes(`/assets/product-icons.svg#${p.icon}`),`Catalog icon for ${p.id}`);
+  }
   assert(categories.some(c=>c.id===p.category),`Category for ${p.id}`);
   assert(allowed.has(p.availability),`Availability for ${p.id}`);
   assert.equal(Boolean(p.launch),p.availability==='available',`Only approved available apps may launch: ${p.id}`);
   if(p.launch)assert.equal(new URL(p.launch).protocol,'https:');
   assert.match(p.detail,/^apps\/[a-z0-9-]+\.html$/);
   const detail=read(p.detail);
+  if(p.id!=='ai-scripts'&&p.id!=='delquro-labs')assert(detail.includes(`/assets/product-icons.svg#${p.icon}`),`Detail icon for ${p.id}`);
   assert(detail.includes(`data-product-status="${p.id}" data-availability="${p.availability}"`),`Detail status for ${p.id}`);
   assert(sitemap.includes(`/${p.detail}</loc>`),`Sitemap for ${p.id}`);
   assert(catalog.includes(`id="${p.id}" data-product data-category="${p.category}" data-availability="${p.availability}"`),`Card for ${p.id}`);

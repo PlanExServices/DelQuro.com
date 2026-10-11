@@ -86,3 +86,17 @@ input can select letters; the native heading remains readable without JS or
 with reduced motion/forced colors. The script is homepage-only, has no React
 runtime, and stops its sweep offscreen. Source notices are in `tech-text.js`
 and `tech-text.css`; the full React Bits notice remains published.
+
+## Catalog icon and mini-card refresh — 2026-10-11
+
+The user asked for more polished icons and interactive backgrounds on the mini
+cards. Product emoji were replaced with original, consistent line artwork in
+`assets/product-icons.svg`; the generator uses the manifest icon key for both
+catalog cards and generated detail pages. The DelQuro Labs product continues to
+use the original dimensional `dq-mark.png`, and the homepage logo is unchanged.
+`refresh.css` gives product and category cards a restrained grid and a
+product-colored spotlight that follows a fine pointer. Keyboard focus gets a
+centered highlight; touch and reduced-motion visitors see a static surface.
+The browser test verifies icon coverage, pointer/focus response, and the existing
+touch and reduced-motion checks. The nginx check verifies the SVG sprite is
+served with the correct content type and cache headers.
