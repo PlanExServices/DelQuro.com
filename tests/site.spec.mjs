@@ -136,6 +136,8 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.locator('[data-product]').first().tap();
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
   await page.goto(baseURL+'/');
+  await page.locator('.app-card').first().scrollIntoViewIfNeeded();
+  await page.screenshot({path:'test-results/mini-cards-mobile.png'});
   await page.locator('.hero-logo-glitch').tap();
   expect(await page.locator('.hero-logo-glitch').evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('0');
   await page.locator('[data-tech-text]').tap();
@@ -153,6 +155,7 @@ test('vector product artwork and card backgrounds respond to pointer and keyboar
   await card.hover();
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  await page.screenshot({path:'test-results/mini-cards-desktop.png'});
   await card.getByRole('link',{name:/Details/}).focus();
   await page.mouse.move(0,0);
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
