@@ -60,7 +60,7 @@ test('the catalog and mobile navigation work without JavaScript',async({browser,
 test('mobile keyboard navigation exposes links, Escape closes and restores focus',async({page})=>{
   await page.setViewportSize({width:390,height:844});await page.goto('/');
   await page.keyboard.press('Tab');await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
-  const menu=page.getByRole('button',{name:'Open navigation'});
+  const menu=page.locator('button.menu');
   await menu.press('Enter');
   await expect(page.getByRole('navigation',{name:'Primary'})).toBeVisible();
   await menu.press('Tab');await expect(page.getByRole('link',{name:'Home',exact:true})).toBeFocused();
@@ -96,13 +96,17 @@ test('video and audio load, play and seek without missing sources',async({page})
   await video.evaluate(async el=>{el.muted=true;await el.play()});
   await expect.poll(()=>video.evaluate(el=>el.currentTime)).toBeGreaterThan(0);
   expect(await video.evaluate(el=>el.error)).toBeNull();
-  await video.evaluate(el=>{el.currentTime=2;el.pause()});
+  await video.evaluate(el=>{el.currentTime=2});
+  await expect.poll(()=>video.evaluate(el=>!el.seeking&&el.currentTime>=2)).toBe(true);
+  await video.evaluate(el=>el.pause());
   await page.goto('/Sounds/');
   await page.locator('.sound-list a').first().click();
   const audio=page.locator('audio');
   await expect.poll(()=>audio.evaluate(el=>el.currentTime)).toBeGreaterThan(0);
   expect(await audio.evaluate(el=>el.error)).toBeNull();
-  await audio.evaluate(el=>{el.currentTime=1;el.pause()});
+  await audio.evaluate(el=>{el.currentTime=1});
+  await expect.poll(()=>audio.evaluate(el=>!el.seeking&&el.currentTime>=1)).toBe(true);
+  await audio.evaluate(el=>el.pause());
 });
 
 test('legacy aliases still reach their current product pages',async({page})=>{
