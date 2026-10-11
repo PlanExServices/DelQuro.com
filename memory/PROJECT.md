@@ -63,3 +63,14 @@ the animation pauses offscreen or in a hidden tab. The panel follows the
 available-app section and leaves the original DQ logo artwork unchanged.
 `radar.css` and `radar.js` carry source notices; the full React Bits license is
 still published at `/assets/react-bits-LICENSE.txt`.
+
+## Homepage logo GlitchText adaptation — 2026-10-11
+
+The user requested React Bits' GlitchText treatment for the main homepage logo.
+Keep the original `/assets/dq-lockup.png` image as the visible foreground; CSS
+in `glitch-logo.css` adds clipped, offset copies only on hover or keyboard focus.
+The effect is disabled for reduced motion and coarse touch pointers. The hero
+logo is a home link so keyboard users can reach the effect. The nav/footer marks
+and founding-year label remain untouched. No React runtime is needed for this
+static-site adaptation. The CSS carries a source notice and links to the full
+published React Bits notice.

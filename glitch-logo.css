@@ -1,0 +1,68 @@
+/* GlitchText image adaptation from React Bits, © 2026 David Haz.
+   The original dimensional DQ artwork remains the foreground image.
+   Full source notice: /assets/react-bits-LICENSE.txt. */
+.studio-art .hero-logo-glitch {
+  position: relative;
+  display: block;
+  width: 85%;
+  line-height: 0;
+  isolation: isolate;
+}
+
+.studio-art .hero-logo-glitch img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 35px rgba(0, 0, 0, .28));
+}
+
+.hero-logo-glitch::before,
+.hero-logo-glitch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  background: url("/assets/dq-lockup.png") center / 100% 100% no-repeat;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .hero-logo-glitch:hover::before,
+  .hero-logo-glitch:focus-visible::before {
+    opacity: .8;
+    transform: translateX(-4px);
+    filter: drop-shadow(3px 0 rgba(85, 223, 197, .8));
+    animation: logo-glitch 2s infinite linear alternate-reverse;
+  }
+
+  .hero-logo-glitch:hover::after,
+  .hero-logo-glitch:focus-visible::after {
+    opacity: .8;
+    transform: translateX(4px);
+    filter: drop-shadow(-3px 0 rgba(255, 107, 125, .7));
+    animation: logo-glitch 3s infinite linear alternate-reverse;
+  }
+}
+
+@keyframes logo-glitch {
+  0%, 50%, 100% { clip-path: inset(20% 0 50% 0); }
+  5%, 30%, 55% { clip-path: inset(10% 0 60% 0); }
+  10%, 35%, 60% { clip-path: inset(15% 0 55% 0); }
+  15%, 40%, 65% { clip-path: inset(25% 0 35% 0); }
+  20%, 45%, 70% { clip-path: inset(30% 0 40% 0); }
+  25%, 75% { clip-path: inset(40% 0 20% 0); }
+  80% { clip-path: inset(20% 0 50% 0); }
+  85% { clip-path: inset(10% 0 60% 0); }
+  90% { clip-path: inset(15% 0 55% 0); }
+  95% { clip-path: inset(25% 0 35% 0); }
+}
+
+@media (max-width: 760px) {
+  .studio-art .hero-logo-glitch { width: 72%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo-glitch::before,
+  .hero-logo-glitch::after { opacity: 0 !important; animation: none !important; }
+}

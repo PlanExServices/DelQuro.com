@@ -71,6 +71,24 @@ test('Radar renders as an optional enhancement while the original logo stays vis
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
 });
 
+test('original hero logo glitches on hover and keyboard focus only when motion is allowed',async({page})=>{
+  await page.goto('/');
+  const logo=page.locator('.hero-logo-glitch');
+  await expect(logo.locator('img')).toHaveAttribute('src','/assets/dq-lockup.png');
+  const before=()=>logo.evaluate(el=>({opacity:getComputedStyle(el,'::before').opacity,animation:getComputedStyle(el,'::before').animationName}));
+  expect(await before()).toEqual({opacity:'0',animation:'none'});
+  await logo.hover();
+  await expect.poll(async()=>(await before()).animation).toBe('logo-glitch');
+  await expect.poll(async()=>(await before()).opacity).toBe('0.8');
+  await page.mouse.move(0,0);
+  for(let i=0;i<12 && !(await logo.evaluate(el=>document.activeElement===el));i++) await page.keyboard.press('Tab');
+  await expect(logo).toBeFocused();
+  await expect.poll(async()=>(await before()).animation).toBe('logo-glitch');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  expect(await before()).toEqual({opacity:'0',animation:'none'});
+  await expect(logo.locator('img')).toBeVisible();
+});
+
 test('mobile keyboard navigation exposes links, Escape closes and restores focus',async({page})=>{
   await page.setViewportSize({width:390,height:844});await page.goto('/');
   await page.keyboard.press('Tab');await expect(page.getByRole('link',{name:'Skip to content'})).toBeFocused();
@@ -92,6 +110,9 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.getByRole('button',{name:'Close navigation'}).tap();
   await page.locator('[data-product]').first().tap();
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
+  await page.goto(baseURL+'/');
+  await page.locator('.hero-logo-glitch').tap();
+  expect(await page.locator('.hero-logo-glitch').evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('0');
   await context.close();
 });
 
