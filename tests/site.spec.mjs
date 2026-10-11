@@ -52,7 +52,7 @@ test('the catalog and mobile navigation work without JavaScript',async({browser,
   await expect(visible(page)).toHaveCount(30);
   await expect(page.getByRole('navigation',{name:'Primary'})).toBeVisible();
   await expect(page.locator('#catalog-filters')).toBeHidden();
-  await expect(page.getByText('All 30 projects are shown below.',{exact:false})).toBeVisible();
+  await expect(page.locator('#result-count')).toHaveText('Showing all 30 projects');
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
   await context.close();
 });
