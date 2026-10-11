@@ -1,42 +1,38 @@
-# DelQuro Labs — delquro.com
+# DelQuro.com
 
-Modern high-tech startup site ("DQ/OS" design system, v5) — ink charcoal `#060C12` + circuit teal `#2FD9BC` + brushed silver, monospace engineering accents, engineering grid backdrop, terminal-style library index. Vision: *"One studio. A library of small, focused apps."*
+Static HTML, CSS, and native JavaScript. No application framework or runtime npm
+dependency is required. The published image contains only public site files.
 
-All static references are cache-busted (`?v=5`) — deploys take effect immediately and stale-CSS rendering bugs cannot recur. nginx serves HTML as `no-cache` and versioned statics as 30-day immutable.
+## Catalog and shared layout
 
-## Brand (Sep 2026 redesign)
-- Palette matched to the adopted logo: ink `#0B1218`, teal `#2FD9BC`, silver `#C9CFCE`
-- `assets/logo-mark.svg` — flat transparent monogram derived from the master art "DQ Labs logo.png" (used site-wide in topbar, CTA, footers)
-- `assets/wordmark-light.svg` / `wordmark.svg` — two-tone "DelQuro Labs" text lockups
-- `assets/dq-lockup.png` (59KB) — flat adopted logo lockup (monogram + wordmark, dark-bg variant), centerpiece of the home hero
-- `assets/dq-mark.png` (10KB) — transparent monogram used in topbar, CTA, and every footer
-- `assets/og-image.jpg` (34KB) — social card from the adopted end card
-- `assets/apple-touch-icon.png`, `favicon.png`, `favicon.ico` — D-with-circuits from the flat mark
-- `assets/app-icon.svg` — rounded-chip vector icon (site favicon)
+Edit `catalog/products.json`, then run `node scripts/generate-site.mjs`. Commit the
+generated HTML. The generator produces the homepage, catalog, detail pages,
+availability sections, sitemap, and shared navigation/footer. Supporting-page
+bodies and the interactive AI Scripts library stay hand authored.
 
-## Pages
-- `index.html` — centered brand hero (logo plate), library metrics (23 / 4 live / 1 studio), 6 featured volumes, category chips, principles, CTA
-- `products.html` — "The Library": 23-product catalog in 7 shelves (Family, Veterinary, AI, Inventory, Create, Sleep, Build & learn, Studio)
-- `apps/` — 6 expanded product pages (note-thyme, choremouse, delquro-connect, megatory-live, vmta, jarvis)
-- `privacy.html` (incl. COPPA / children section), `terms.html`, `support.html`, `resources.html`, `account-deletion.html`
+Product availability and approved launch URLs are separate from project existence.
+Connect and VMTA have detail/contact actions only, pending confirmed security
+releases. Do not add unshipped feature claims. Source map: PR #8 at
+`be07b229f5bbefb77ab9f027b04962b311e10bca`; this branch does not merge #8 or #7.
 
-## Notes
-- Live volumes: PlainSlang (plainslang.com), S.O.L.A.R. (solar.delquro.com), Megatory Live (megatory-live.delqurolabs.app), VMTA (vmta.delqurolabs.app)
-- Catalog cards for unreleased volumes link to `apps/*.html` pages that are not yet built (they 404 until written — same as the previous release)
-- No JavaScript framework; single `style.css` + `site.js` (reveal-on-scroll, sticky topbar, mobile menu)
+## Preview and verification
 
-## Deployable size
-≈460KB total · largest single file is `products.html` at 56KB
+Run `node scripts/preview.mjs` and open http://127.0.0.1:4173/. This local review
+server does not replace production nginx verification.
 
-## Deploy
-### Coolify (Docker)
-- Build pack: **Dockerfile** (nginx:1.27-alpine) · Port: **80**
-- Private repo: add a GitHub PAT or GitHub App in Coolify → see `COOLIFY_FIX.md`
-- Or upload these files directly to the repo's `main` branch
+Run `npm run check` for generated-file consistency, catalog gates, local assets,
+and anchors. These checks use Node only and do not require npm installation.
+Browser verification uses the development-only Playwright dependency:
+`npm ci`, `npx playwright install chromium`, and `SITE_URL` pointing to the site
+under test (default http://127.0.0.1:8080), then `npm run test:browser`.
 
-### Cloudflare Pages
-1. `wrangler pages deploy . --project-name=delquro-com --branch=main`
-2. Custom domains: delquro.com + www.delquro.com
+GitHub CI builds the image, validates nginx, and tests actual response statuses,
+headers, caching, redirects, publication boundaries, media ranges, and browser
+behavior. Run the same container checks with
+`node scripts/check-nginx.mjs http://127.0.0.1:8080`.
 
-### Manual preview
-`python3 -m http.server 8000` → http://localhost:8000/
+React Bits adaptations and source revision are recorded in
+`THIRD_PARTY_NOTICES.md`; the full license ships at
+`assets/react-bits-LICENSE.txt`. Persistent project context lives in
+`memory/PROJECT.md`. Deployment, merges, DNS, and linked-app changes require a
+separate request.

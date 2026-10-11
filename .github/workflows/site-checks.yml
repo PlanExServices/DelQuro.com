@@ -1,0 +1,57 @@
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-and-nginx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check committed catalog and local links
+        run: |
+          node scripts/generate-site.mjs --check
+          node scripts/check-catalog.mjs
+          node scripts/check-links.mjs
+      - name: Build the public site image
+        run: docker build --tag delquro-site:ci .
+      - name: Validate nginx configuration
+        run: docker run --rm delquro-site:ci nginx -t
+      - name: Start the site container
+        run: docker run --detach --name delquro-ci --publish 127.0.0.1:8080:80 delquro-site:ci
+      - name: Check nginx responses and published files
+        run: |
+          node scripts/check-nginx.mjs http://127.0.0.1:8080
+          node scripts/check-links.mjs http://127.0.0.1:8080
+          docker exec delquro-ci sh -c 'test ! -e /usr/share/nginx/html/.git && test ! -e /usr/share/nginx/html/catalog && test ! -e /usr/share/nginx/html/scripts && test ! -e /usr/share/nginx/html/README.md && test ! -e /usr/share/nginx/html/deploy'
+      - name: Container logs
+        if: always()
+        run: docker logs delquro-ci || true
+      - name: Install browser verification tools
+        run: |
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+      - name: Verify browser behavior against nginx
+        run: npm run test:browser
+      - name: Save browser verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-verification
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: ignore
+      - name: Remove the test container
+        if: always()
+        run: docker rm --force delquro-ci || true
