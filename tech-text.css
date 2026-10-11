@@ -1,0 +1,30 @@
+/* TechText heading adaptation from React Bits, © 2026 David Haz.
+   Full source notice: /assets/react-bits-LICENSE.txt. */
+.tech-text-heading {
+  position: relative;
+  touch-action: pan-y;
+}
+
+.tech-text-heading.tech-text-ready { color: transparent; }
+
+.tech-text-canvas {
+  display: none;
+  position: absolute;
+  top: -18px;
+  left: -12px;
+  width: calc(100% + 24px);
+  height: calc(100% + 36px);
+  pointer-events: none;
+}
+
+.tech-text-ready .tech-text-canvas { display: block; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-text-heading.tech-text-ready { color: var(--text); }
+  .tech-text-canvas { display: none !important; }
+}
+
+@media (forced-colors: active) {
+  .tech-text-heading.tech-text-ready { color: CanvasText; }
+  .tech-text-canvas { display: none !important; }
+}

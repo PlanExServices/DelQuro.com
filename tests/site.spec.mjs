@@ -56,6 +56,8 @@ test('the catalog and mobile navigation work without JavaScript',async({browser,
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
   await page.goto(baseURL+'/');
   await expect(page.getByRole('heading',{name:'See what is on the horizon.'})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'Useful starts here.'})).toBeVisible();
+  await expect(page.locator('[data-tech-text]')).not.toHaveClass(/tech-text-ready/);
   await expect(page.locator('.studio-art img')).toHaveAttribute('src','/assets/dq-lockup.png');
   await context.close();
 });
@@ -87,6 +89,29 @@ test('original hero logo glitches on hover and keyboard focus only when motion i
   await page.emulateMedia({reducedMotion:'reduce'});
   expect(await before()).toEqual({opacity:'0',animation:'none'});
   await expect(logo.locator('img')).toBeVisible();
+});
+
+test('TechText animates the real heading and supports pointer and keyboard input',async({page})=>{
+  await page.goto('/');
+  const heading=page.getByRole('heading',{name:'Useful starts here.'});
+  await expect(heading).toHaveText('Useful starts here.');
+  await expect(heading).toHaveClass(/tech-text-ready/);
+  expect(await heading.locator('canvas').evaluate(el=>el.width)).toBeGreaterThan(200);
+  await heading.scrollIntoViewIfNeeded();
+  await expect.poll(()=>heading.getAttribute('data-tech-text-state')).toBe('idle');
+  await heading.hover();
+  await expect(heading).toHaveAttribute('data-tech-text-state','active');
+  await expect(heading).toHaveAttribute('data-tech-text-letter',/\S/);
+  await heading.press('End');
+  await expect(heading).toHaveAttribute('data-tech-text-letter','.');
+  await heading.press('ArrowLeft');
+  await expect(heading).toHaveAttribute('data-tech-text-letter','e');
+  await heading.press('Escape');
+  await expect(heading).toHaveAttribute('data-tech-text-state','idle');
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await expect(heading).not.toHaveClass(/tech-text-ready/);
+  await expect(heading).toBeVisible();
+  await expect(heading).toHaveAttribute('data-tech-text-state','reduced');
 });
 
 test('mobile keyboard navigation exposes links, Escape closes and restores focus',async({page})=>{
@@ -121,6 +146,8 @@ test('reduced motion is static immediately and content stays visible',async({pag
   expect(await page.locator('.gradient-text').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   expect(await page.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running').length)).toBe(0);
   await expect(page.locator('.radar-canvas')).toBeHidden();
+  await expect(page.locator('[data-tech-text]')).not.toHaveClass(/tech-text-ready/);
+  await expect(page.getByRole('heading',{name:'Useful starts here.'})).toBeVisible();
   await expect(page.getByRole('heading',{name:'See what is on the horizon.'})).toBeVisible();
   await page.goto('/products.html');await expect(visible(page)).toHaveCount(30);
   await page.mouse.move(200,620);

@@ -74,3 +74,15 @@ logo is a home link so keyboard users can reach the effect. The nav/footer marks
 and founding-year label remain untouched. No React runtime is needed for this
 static-site adaptation. The CSS carries a source notice and links to the full
 published React Bits notice.
+
+## Useful starts here TechText adaptation — 2026-10-11
+
+The user supplied React Bits' JavaScript/CSS TechText component and requested
+it on the homepage, preferably at “Useful starts here.” The real `h2` text is
+kept in generated HTML. `tech-text.js` draws the text on Canvas 2D only when
+motion and canvas are available, with a one-time selection sweep, dashed
+active-letter outline, frame, specks, and label. Pointer, touch, and keyboard
+input can select letters; the native heading remains readable without JS or
+with reduced motion/forced colors. The script is homepage-only, has no React
+runtime, and stops its sweep offscreen. Source notices are in `tech-text.js`
+and `tech-text.css`; the full React Bits notice remains published.
