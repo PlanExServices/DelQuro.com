@@ -138,6 +138,9 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.goto(baseURL+'/');
   await page.locator('.hero-logo-glitch').tap();
   expect(await page.locator('.hero-logo-glitch').evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('0');
+  await page.locator('[data-tech-text]').tap();
+  await expect(page.locator('[data-tech-text]')).toHaveAttribute('data-tech-text-state','active');
+  expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
   await context.close();
 });
 

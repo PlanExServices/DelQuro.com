@@ -26,6 +26,7 @@
   let sweepStart = 0;
   let dpr = 1;
   let fontSize = 0;
+  let touchTimer = 0;
 
   const font = (style, size) => `${style.fontWeight} ${size}px ${style.fontFamily}`;
   const setFont = (style, size) => {
@@ -164,10 +165,15 @@
   heading.addEventListener('pointerdown', e => {
     if (motion.matches || e.pointerType !== 'touch') return;
     if (raf) stopSweep();
+    clearTimeout(touchTimer);
     setActive(nearest(e.clientX));
   }, {passive: true});
   heading.addEventListener('pointerup', e => {
-    if (e.pointerType === 'touch' && document.activeElement !== heading) setActive(-1);
+    if (motion.matches || e.pointerType !== 'touch') return;
+    setActive(nearest(e.clientX));
+    touchTimer = setTimeout(() => {
+      if (document.activeElement !== heading) setActive(-1);
+    }, 700);
   }, {passive: true});
   heading.addEventListener('focus', () => {
     if (!motion.matches) {
@@ -213,6 +219,7 @@
   document.fonts?.ready.then(layout);
   motion.addEventListener('change', () => {
     if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    clearTimeout(touchTimer);
     if (motion.matches) {
       heading.classList.remove('tech-text-ready');
       heading.removeAttribute('tabindex');
