@@ -124,7 +124,21 @@ does not run behind descriptions. Six featured apps have original, task-specific
 SVG scenes: chores, a script storyboard, assistant connections, inventory rows,
 plain-language exchange, and a phone form. Remaining catalog entries use a
 small icon-and-progress motif tied to their manifest motion family. The
-existing category-tile scenes remain. Motion starts on hover or keyboard focus
+category-tile scenes were subsequently replaced by contained emblems. Motion
+starts on hover or keyboard focus
 for fine pointers, while touch and reduced-motion presentations are static.
 The generated HTML contains all card content without JavaScript. The original
 dimensional DQ logo remains unchanged.
+
+## Category emblems and complete available-app previews — 2026-10-11
+
+The seven homepage category tiles now use contained vector emblems and subtle
+manifest-defined accent colors. This removes oversized artwork from behind
+their descriptions while preserving the pointer spotlight, small tilt, and
+purpose-linked icon motion. Mobile tiles keep enough vertical space for the
+emblem and title; touch and reduced-motion layouts remain static.
+
+PlotPerks, Veterinary Workflow Survey, and Coloring Book Forge now have
+specific garden-care, survey, and coloring-page previews. All nine launchable
+apps therefore have distinct previews in the catalog. Unreleased projects
+continue to use abstract icon motifs without implying unshipped features.

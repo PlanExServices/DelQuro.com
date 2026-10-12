@@ -90,134 +90,69 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 }
 @media(forced-colors:active){.app-card::before,.category-tile::before,.detail-art::before{display:none}.product-symbol,.detail-symbol{border-color:CanvasText}}
 
-/* Category artwork stays decorative behind its readable tile content. */
+/* Category symbols are contained at the top right, away from all copy. */
 .app-card.reveal,.category-tile{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-.category-tile>.card-scene{
-  position:absolute;
-  z-index:0;
-  inset:0;
-  display:block;
-  pointer-events:none;
+.category-tile{min-height:232px}
+.category-tile .category-number{margin-bottom:32px}
+.category-tile h3{padding-right:58px}
+.category-emblem{
+  position:absolute!important;
+  z-index:1;
+  top:19px;
+  right:19px;
+  width:66px;
+  height:66px;
+  display:grid;
+  place-items:center;
   overflow:hidden;
-  border-radius:inherit;
-  color:var(--product,#55dfc5);
-  -webkit-mask-image:linear-gradient(90deg,transparent 6%,#000 74%);
-  mask-image:linear-gradient(90deg,transparent 6%,#000 74%);
+  pointer-events:none;
+  border-radius:17px;
+  border:1px solid color-mix(in srgb,var(--product) 43%,transparent);
+  color:var(--product);
+  background:radial-gradient(circle at 68% 30%,color-mix(in srgb,var(--product) 22%,transparent),transparent 76%),#11272b;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 12px 22px rgba(0,0,0,.12);
 }
-.card-scene>*{position:absolute;display:block}
-.scene-mark{
-  width:176px;
-  height:176px;
-  top:59px;
-  right:-18px;
-  opacity:.075;
-  transform:translate3d(0,0,0);
-  transform-origin:50% 70%;
-  transition:opacity .25s ease;
-}
-.scene-mark svg,.scene-mark img{display:block;width:100%;height:100%;object-fit:contain}
-.scene-ring{
-  width:190px;
-  height:190px;
-  top:51px;
-  right:-12px;
-  border:1px solid color-mix(in srgb,currentColor 58%,transparent);
-  border-radius:50%;
-  opacity:.17;
-  transform:scale(.9);
-}
-.scene-ring-two{width:130px;height:130px;top:81px;right:18px;opacity:.23;transform:scale(1.05)}
-.scene-trace{
-  width:224px;
-  height:100px;
-  right:-38px;
-  bottom:15px;
-  opacity:.15;
-  transform:rotate(-18deg);
-  background:repeating-linear-gradient(0deg,transparent 0 17px,currentColor 18px,transparent 19px);
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 55%);
-  mask-image:linear-gradient(90deg,transparent,#000 55%);
-}
-.scene-beam{
-  width:90px;
-  height:150%;
-  top:-25%;
-  left:-40%;
-  opacity:0;
-  transform:rotate(22deg);
-  background:linear-gradient(90deg,transparent,color-mix(in srgb,currentColor 28%,transparent),transparent);
-}
-.category-tile .scene-mark{width:140px;height:140px;top:44px;right:-15px;opacity:.06}
-.category-tile .scene-ring{width:144px;height:144px;top:40px;right:-13px}
-.category-tile .scene-ring-two{width:96px;height:96px;top:64px;right:11px}
-.category-tile .scene-trace{bottom:-25px}
-[data-motion="sequence"] .scene-ring,[data-motion="glide"] .scene-ring,[data-motion="build"] .scene-ring{border-radius:18px;transform:rotate(-18deg)}
-[data-motion="sequence"] .scene-trace{background:repeating-linear-gradient(90deg,currentColor 0 18px,transparent 18px 30px)}
-[data-motion="signal"] .scene-ring,[data-motion="breathe"] .scene-ring{border-width:2px}
-[data-motion="orbit"] .scene-ring{border-style:dashed}
-[data-motion="scan"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 1px,transparent 1px 22px)}
-[data-motion="build"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 9px,transparent 9px 24px)}
-[data-motion="glide"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 2px,transparent 2px 25px)}
-[data-motion="spark"] .scene-ring{border-style:dotted}
-[data-motion="sway"] .scene-ring{border-radius:45% 55% 40% 60%}
-
-[data-motion="sequence"]{--mark-motion:scene-step;--trace-motion:scene-track}
+.category-emblem svg{position:relative;z-index:1;width:38px;height:38px;display:block}
+.category-emblem .emblem-orbit{position:absolute;inset:8px;border:1px dashed currentColor;border-radius:50%;opacity:.22}
+.category-tile::after{content:"";position:absolute;inset:auto 24px 19px;height:1px;background:linear-gradient(90deg,color-mix(in srgb,var(--product,#55dfc5) 55%,transparent),transparent 64%);opacity:.55;pointer-events:none}
+[data-motion="sequence"]{--mark-motion:scene-step}
 [data-motion="signal"]{--mark-motion:scene-nudge;--ring-motion:scene-pulse}
 [data-motion="sway"]{--mark-motion:scene-sway}
-[data-motion="scan"]{--mark-motion:scene-float;--beam-motion:scene-scan}
-[data-motion="build"]{--mark-motion:scene-build;--trace-motion:scene-stack}
+[data-motion="scan"]{--mark-motion:scene-float}
+[data-motion="build"]{--mark-motion:scene-build}
 [data-motion="orbit"]{--mark-motion:scene-orbit;--ring-motion:scene-spin}
-[data-motion="glide"]{--mark-motion:scene-glide;--trace-motion:scene-track}
-[data-motion="spark"]{--mark-motion:scene-spark;--beam-motion:scene-flash}
+[data-motion="glide"]{--mark-motion:scene-glide}
+[data-motion="spark"]{--mark-motion:scene-spark}
 [data-motion="breathe"]{--mark-motion:scene-breathe-mark;--ring-motion:scene-breathe}
-
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
   .app-card.reveal:hover,.category-tile:hover{
     transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 22px 44px rgba(0,0,0,.22);
   }
   .app-card.reveal:focus-within,.category-tile:focus-visible{transform:translateY(-3px)}
-  .category-tile:is(:hover,:focus-visible) .scene-mark{
-    opacity:.15;
-    animation:var(--mark-motion,none) 2.8s ease-in-out infinite;
-  }
-  .category-tile:is(:hover,:focus-visible) .scene-mark{opacity:.12}
-  .category-tile:is(:hover,:focus-visible) .scene-ring{
-    animation:var(--ring-motion,none) 3.4s ease-in-out infinite;
-  }
-  .category-tile:is(:hover,:focus-visible) .scene-ring-two{animation-delay:-1.7s}
-  .category-tile:is(:hover,:focus-visible) .scene-trace{
-    animation:var(--trace-motion,none) 3.2s linear infinite;
-  }
-  .category-tile:is(:hover,:focus-visible) .scene-beam{
-    animation:var(--beam-motion,none) 3.2s ease-in-out infinite;
-  }
+  .category-tile:is(:hover,:focus-visible) .category-emblem svg{animation:var(--mark-motion,scene-nudge) 2.8s ease-in-out infinite}
+  .category-tile:is(:hover,:focus-visible) .emblem-orbit{animation:var(--ring-motion,scene-spin) 4s linear infinite}
 }
-@keyframes scene-step{0%,100%{transform:translateY(0)}35%{transform:translateY(-11px)}70%{transform:translateY(3px)}}
-@keyframes scene-track{0%{background-position:0 0;opacity:.1}50%{opacity:.32}100%{background-position:55px 0;opacity:.1}}
+@keyframes scene-step{0%,100%{transform:translateY(0)}35%{transform:translateY(-7px)}70%{transform:translateY(2px)}}
 @keyframes scene-nudge{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-@keyframes scene-pulse{0%{transform:scale(.75);opacity:.34}100%{transform:scale(1.22);opacity:0}}
+@keyframes scene-pulse{0%{transform:scale(.78);opacity:.33}100%{transform:scale(1.2);opacity:0}}
 @keyframes scene-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg)}}
-@keyframes scene-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes scene-scan{0%,100%{left:-40%;opacity:0}18%{opacity:.38}65%{left:110%;opacity:.3}70%{opacity:0}}
-@keyframes scene-build{0%,100%{transform:translateY(8px);opacity:.13}50%{transform:translateY(-7px);opacity:.24}}
-@keyframes scene-stack{0%,100%{background-position:0 24px;opacity:.12}50%{background-position:0 0;opacity:.3}}
+@keyframes scene-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes scene-build{0%,100%{transform:translateY(4px);opacity:.72}50%{transform:translateY(-4px);opacity:1}}
 @keyframes scene-orbit{0%,100%{transform:rotate(-7deg) scale(.98)}50%{transform:rotate(8deg) scale(1.06)}}
-@keyframes scene-spin{from{transform:rotate(0);opacity:.22}to{transform:rotate(360deg);opacity:.22}}
-@keyframes scene-glide{0%,100%{transform:translateX(-12px)}50%{transform:translateX(9px)}}
+@keyframes scene-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes scene-glide{0%,100%{transform:translateX(-7px)}50%{transform:translateX(7px)}}
 @keyframes scene-spark{0%,100%{transform:scale(.96) rotate(-4deg)}50%{transform:scale(1.09) rotate(5deg)}}
-@keyframes scene-flash{0%,100%{left:-40%;opacity:0}48%{opacity:0}62%{left:110%;opacity:.36}72%{opacity:0}}
-@keyframes scene-breathe-mark{0%,100%{transform:scale(.96);opacity:.13}50%{transform:scale(1.06);opacity:.23}}
+@keyframes scene-breathe-mark{0%,100%{transform:scale(.96)}50%{transform:scale(1.06)}}
 @keyframes scene-breathe{0%,100%{transform:scale(.82);opacity:.19}50%{transform:scale(1.1);opacity:.34}}
 @media(max-width:760px){
-  .category-tile>.card-scene{-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 100%);mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
-  .category-tile .scene-mark{opacity:.04}
-  .scene-ring{opacity:.1}
-  .scene-trace{opacity:.08}
+  .category-emblem{width:54px;height:54px;top:14px;right:14px;border-radius:14px}
+  .category-emblem svg{width:33px;height:33px}
+  .category-tile .category-number{margin-bottom:43px}
+  .category-tile h3{padding-right:0}
 }
-@media(prefers-reduced-motion:reduce){.card-scene *{animation:none!important;transition:none!important}.app-card.reveal,.category-tile{transform:none!important}}
-@media(forced-colors:active){.card-scene{display:none!important}}
-
+@media(prefers-reduced-motion:reduce){.app-card.reveal,.category-tile{transform:none!important}.category-emblem *{animation:none!important}}
+@media(forced-colors:active){.category-emblem{border-color:CanvasText;background:Canvas}.category-tile::after{display:none}}
 /* Small product previews sit above the copy, keeping every description clear. */
 .app-card .card-top{margin-bottom:14px}
 .card-demo{
@@ -257,6 +192,18 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 .card-demo .demo-form-line{opacity:.68}
 .card-demo .demo-form-check{fill:color-mix(in srgb,var(--product) 17%,#102228)}
 .card-demo .demo-form-tick{stroke-width:2.5}
+.card-demo .demo-garden-line{opacity:.18}
+.card-demo .demo-pot{fill:color-mix(in srgb,var(--product) 12%,#102228)}
+.card-demo .demo-leaf{fill:color-mix(in srgb,var(--product) 28%,#102228);transform-origin:160px 38px}
+.card-demo .demo-care{fill:color-mix(in srgb,var(--product) 10%,#102228)}
+.card-demo .demo-care-hand{transform-origin:245px 30px}
+.card-demo .demo-water{fill:color-mix(in srgb,var(--product) 22%,#102228)}
+.card-demo .demo-survey-row{opacity:.72;transform-origin:center;transform-box:fill-box}
+.card-demo .demo-survey-mark{stroke-width:2.4}
+.card-demo .demo-page{fill:color-mix(in srgb,var(--product) 5%,#102228)}
+.card-demo .demo-color-petal{fill:color-mix(in srgb,var(--product) 12%,#102228)}
+.card-demo .demo-color-center{fill:color-mix(in srgb,var(--product) 35%,#102228)}
+.card-demo .demo-color-stroke{stroke-width:2.6;stroke-dasharray:45}
 .demo-generic-glyph{position:absolute;right:24px;top:10px;width:50px;height:50px;display:grid;place-items:center;opacity:.75;transform-origin:center}
 .demo-generic-glyph svg,.demo-generic-glyph img{width:43px;height:43px;object-fit:contain}
 .demo-generic-lines{position:absolute;left:25px;top:19px;display:grid;gap:9px;width:49%;max-width:145px}
@@ -274,10 +221,19 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
   .app-card:is(:hover,:focus-within) .demo-bubble{animation:demo-bubble 2.2s ease-in-out infinite}
   .app-card:is(:hover,:focus-within) .demo-translation{animation:demo-translate 1.8s ease-in-out infinite}
   .app-card:is(:hover,:focus-within) .demo-form-tick{animation:demo-sign 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-leaf{animation:demo-grow 2.6s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-care-hand{animation:demo-clock 2.6s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-water{animation:scene-float 2.6s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-survey-row{animation:demo-check 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-survey-mark{animation:demo-sign 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-color-petal{animation:demo-color 2.8s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-color-stroke{animation:demo-draw 2.8s ease-in-out infinite}
   .app-card:is(:hover,:focus-within) .demo-generic-glyph{animation:var(--mark-motion,scene-nudge) 2.8s ease-in-out infinite}
 }
 .demo-task:nth-of-type(2),.demo-frame:nth-of-type(2),.demo-stock:nth-of-type(2),.demo-bubble:nth-of-type(2){animation-delay:-.55s!important}
 .demo-task:nth-of-type(3),.demo-frame:nth-of-type(3),.demo-stock:nth-of-type(3){animation-delay:-1.1s!important}
+.demo-survey-row:nth-of-type(2),.demo-color-petal:nth-of-type(2){animation-delay:-.7s!important}
+.demo-survey-row:nth-of-type(3),.demo-color-petal:nth-of-type(3){animation-delay:-1.4s!important}
 @keyframes demo-check{0%,100%{transform:translateY(0);opacity:.62}45%{transform:translateY(-3px);opacity:1}}
 @keyframes demo-frame{0%,100%{transform:translateY(0);opacity:.62}50%{transform:translateY(-3px);opacity:1}}
 @keyframes demo-scrub{0%,100%{transform:translateX(0)}80%{transform:translateX(235px)}}
@@ -287,4 +243,8 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 @keyframes demo-bubble{0%,100%{transform:translateY(0);opacity:.68}50%{transform:translateY(-3px);opacity:1}}
 @keyframes demo-translate{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(4px);opacity:1}}
 @keyframes demo-sign{0%,15%{stroke-dasharray:22;stroke-dashoffset:22}45%,100%{stroke-dasharray:22;stroke-dashoffset:0}}
+@keyframes demo-grow{0%,100%{transform:scale(.94)}50%{transform:scale(1.05)}}
+@keyframes demo-clock{0%,100%{transform:rotate(-15deg)}50%{transform:rotate(35deg)}}
+@keyframes demo-color{0%,100%{fill:color-mix(in srgb,var(--product) 12%,#102228)}50%{fill:color-mix(in srgb,var(--product) 38%,#102228)}}
+@keyframes demo-draw{0%,15%{stroke-dashoffset:45}65%,100%{stroke-dashoffset:0}}
 @media(forced-colors:active){.card-demo{border-color:CanvasText;background:Canvas}.card-demo::before{display:none}}

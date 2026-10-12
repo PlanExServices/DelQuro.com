@@ -179,13 +179,20 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
   await page.keyboard.press('Shift+Tab');
   await expect(tile).toBeFocused();
   await expect.poll(()=>tile.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  expect(await tile.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
+  expect(await tile.locator('.category-emblem svg').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
+  expect(await tile.locator('.category-emblem').evaluate(el=>el.getBoundingClientRect().right)).toBeLessThanOrEqual(await tile.evaluate(el=>el.getBoundingClientRect().right));
   await page.screenshot({path:'test-results/category-motion-desktop.png'});
   await page.goto('/products.html');
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(29);
   await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(1);
   await expect(page.locator('.app-card[data-motion]')).toHaveCount(30);
   await expect(page.locator('.app-card .card-demo')).toHaveCount(30);
+  await expect(page.locator('.app-card .card-demo[data-preview="specific"]')).toHaveCount(9);
+  for(const [name,selector,animation] of [['PlotPerks','.demo-leaf','demo-grow'],['Veterinary Workflow Survey','.demo-survey-row','demo-check'],['Coloring Book Forge','.demo-color-petal','demo-color']]){
+    const product=page.locator('.app-card').filter({hasText:name});
+    await product.hover();
+    expect(await product.locator(selector).first().evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
+  }
 });
 
 test('reduced motion is static immediately and content stays visible',async({page})=>{

@@ -15,9 +15,10 @@ const motions=new Set(['sequence','signal','sway','scan','build','orbit','glide'
 assert.equal([...catalog.matchAll(/data-product /g)].length,products.length);
 for(const c of categories){
   assert(motions.has(c.motion),`Category motion for ${c.id}`);
+  assert.match(c.color,/^#[0-9a-f]{6}$/i,`Category color for ${c.id}`);
   assert.equal(c.icon,`category-${c.id}`,`Category artwork key for ${c.id}`);
   assert(iconSprite.includes(`<symbol id="${c.icon}"`),`Category artwork for ${c.id}`);
-  assert(home.includes(`class="category-tile spotlight" data-motion="${c.motion}" href="/products.html#${c.id}"`),`Category scene for ${c.id}`);
+  assert(home.includes(`class="category-tile spotlight" data-motion="${c.motion}" href="/products.html#${c.id}" style="--product:${c.color}"`),`Category emblem for ${c.id}`);
 }
 for(const p of products){
   assert.equal(p.icon,p.id,`Manifest icon key for ${p.id}`);
@@ -41,6 +42,7 @@ for(const p of products){
 }
 for(const id of ['delquro-connect','vmta']){const p=products.find(p=>p.id===id);assert.equal(p.availability,'access-pending');assert(!read(p.detail).includes('target="_blank"'),'Gated detail has no app launcher');}
 assert.equal(products.filter(p=>p.launch).length,9);
+assert.equal([...catalog.matchAll(/data-preview="specific"/g)].length,9,'Every available app has a purpose-specific preview');
 assert.equal(products.find(p=>p.id==='megatory-live').category,'veterinary');
 assert.match(products.find(p=>p.id==='solar').description,/K–12/);
 assert(!/solar\.delquro\.com|plainslang\.com|choremouse\.com|99% Match/.test(catalog+home));

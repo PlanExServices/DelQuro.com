@@ -1,13 +1,13 @@
 {
   "source": "Approved product map; PR #8 be07b229f5bbefb77ab9f027b04962b311e10bca. Access gates take precedence over live labels.",
   "categories": [
-    {"id":"family","icon":"category-family","motion":"sequence","name":"Family","description":"A little more ease at home."},
-    {"id":"veterinary","icon":"category-veterinary","motion":"signal","name":"Veterinary","description":"Tools for the people caring for animals."},
-    {"id":"ai","icon":"category-ai","motion":"orbit","name":"AI","description":"Useful help for everyday work."},
-    {"id":"create","icon":"category-create","motion":"spark","name":"Create","description":"Make room for your next idea."},
-    {"id":"sleep","icon":"category-sleep","motion":"breathe","name":"Sleep","description":"Quieter moments and gentler evenings."},
-    {"id":"build","icon":"category-build","motion":"build","name":"Build & learn","description":"Explore, learn, and make something."},
-    {"id":"studio","icon":"category-studio","motion":"signal","name":"Studio","description":"The places where our work comes together."}
+    {"id":"family","icon":"category-family","motion":"sequence","color":"#e5bb76","name":"Family","description":"A little more ease at home."},
+    {"id":"veterinary","icon":"category-veterinary","motion":"signal","color":"#67d6bd","name":"Veterinary","description":"Tools for the people caring for animals."},
+    {"id":"ai","icon":"category-ai","motion":"orbit","color":"#aa9cf5","name":"AI","description":"Useful help for everyday work."},
+    {"id":"create","icon":"category-create","motion":"spark","color":"#eb9d98","name":"Create","description":"Make room for your next idea."},
+    {"id":"sleep","icon":"category-sleep","motion":"breathe","color":"#a9b7e8","name":"Sleep","description":"Quieter moments and gentler evenings."},
+    {"id":"build","icon":"category-build","motion":"build","color":"#84c8dc","name":"Build & learn","description":"Explore, learn, and make something."},
+    {"id":"studio","icon":"category-studio","motion":"signal","color":"#75d7ba","name":"Studio","description":"The places where our work comes together."}
   ],
   "products": [
     {"id":"note-thyme","name":"Note Thyme","icon":"note-thyme","motion":"sequence","color":"#78b394","category":"family","availability":"coming-soon","description":"A family meal planner bringing recipes, weekly plans, and grocery lists together.","detail":"apps/note-thyme.html"},
