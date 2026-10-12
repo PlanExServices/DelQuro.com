@@ -139,6 +139,12 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.goto(baseURL+'/');
   await page.locator('.app-card').first().scrollIntoViewIfNeeded();
   await page.screenshot({path:'test-results/mini-cards-mobile.png'});
+  const categoryTile=page.locator('.category-tile').first();
+  await categoryTile.scrollIntoViewIfNeeded();
+  const [emblem,title]=await Promise.all([categoryTile.locator('.category-emblem').evaluate(el=>el.getBoundingClientRect().toJSON()),categoryTile.locator('h3').evaluate(el=>el.getBoundingClientRect().toJSON())]);
+  expect(emblem.bottom).toBeLessThanOrEqual(title.top);
+  expect(await categoryTile.locator('.category-emblem svg').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
+  await page.screenshot({path:'test-results/category-motion-mobile.png'});
   await page.locator('.hero-logo-glitch').tap();
   expect(await page.locator('.hero-logo-glitch').evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('0');
   await page.locator('[data-tech-text]').tap();
