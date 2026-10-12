@@ -100,3 +100,17 @@ centered highlight; touch and reduced-motion visitors see a static surface.
 The browser test verifies icon coverage, pointer/focus response, and the existing
 touch and reduced-motion checks. The nginx check verifies the SVG sprite is
 served with the correct content type and cache headers.
+
+## Purpose-led card motion — 2026-10-11
+
+Each product and category now declares a `motion` family in the catalog
+manifest. The generator adds a decorative SVG-backed card scene; category
+tiles use their own neutral category symbols in `assets/product-icons.svg`.
+Nine motion families cover sequences, signals, swaying, scanning, building,
+orbits, gliding, sparks, and breathing. They are assigned by product purpose
+rather than availability. Fine-pointer movement gives a small card tilt and
+positions the existing spotlight; the product-specific scene animates only
+while hovered or keyboard-focused. Touch, reduced-motion, and forced-colors
+presentations remain still and readable, and narrow screens show quieter
+artwork. Scenes are decorative, so product text and actions stay in the
+committed HTML and remain available without JavaScript.

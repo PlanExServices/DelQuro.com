@@ -135,6 +135,7 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.getByRole('button',{name:'Close navigation'}).tap();
   await page.locator('[data-product]').first().tap();
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
+  expect(await page.locator('[data-product] .scene-mark').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   await page.goto(baseURL+'/');
   await page.locator('.app-card').first().scrollIntoViewIfNeeded();
   await page.screenshot({path:'test-results/mini-cards-mobile.png'});
@@ -149,22 +150,39 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
 test('vector product artwork and card backgrounds respond to pointer and keyboard focus',async({page})=>{
   await page.goto('/');
   const card=page.locator('.app-card').first();
-  await expect(page.locator('.app-card svg use')).toHaveCount(6);
-  await expect(card.locator('use')).toHaveAttribute('href','/assets/product-icons.svg#choremouse');
+  await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(6);
+  await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#choremouse');
+  await expect(card).toHaveAttribute('data-motion','sequence');
   expect(await card.evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('radial-gradient');
   await card.hover();
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');
+  await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--tilt-y'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  expect(await card.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
   await page.screenshot({path:'test-results/mini-cards-desktop.png'});
   await card.getByRole('link',{name:/Details/}).focus();
   await page.mouse.move(0,0);
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  expect(await card.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
+  for(const [name,motion,animation] of [['ClipScript Studio','glide','scene-glide'],['JARVIS','orbit','scene-orbit'],['Megatory Live','build','scene-build']]){
+    const product=page.locator('.app-card').filter({hasText:name});
+    await expect(product).toHaveAttribute('data-motion',motion);
+    await product.hover();
+    expect(await product.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
+  }
   const tile=page.locator('.category-tile').first();
+  await expect(tile).toHaveAttribute('data-motion','sequence');
   await tile.focus();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Shift+Tab');
+  await expect(tile).toBeFocused();
   await expect.poll(()=>tile.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
+  expect(await tile.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
+  await page.screenshot({path:'test-results/category-motion-desktop.png'});
   await page.goto('/products.html');
-  await expect(page.locator('.app-card svg use')).toHaveCount(29);
+  await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(29);
   await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(1);
+  await expect(page.locator('.app-card[data-motion]')).toHaveCount(30);
 });
 
 test('reduced motion is static immediately and content stays visible',async({page})=>{
@@ -178,6 +196,7 @@ test('reduced motion is static immediately and content stays visible',async({pag
   await page.goto('/products.html');await expect(visible(page)).toHaveCount(30);
   await page.mouse.move(200,620);
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
+  expect(await page.locator('[data-product] .scene-mark').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
 });
 
 test('video and audio load, play and seek without missing sources',async({page})=>{

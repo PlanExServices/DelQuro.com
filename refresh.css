@@ -89,3 +89,132 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
   .app-card::before,.category-tile::before,.detail-art::before{background:radial-gradient(circle at 90% 5%,color-mix(in srgb,var(--product,#55dfc5) 13%,transparent),transparent 55%)}
 }
 @media(forced-colors:active){.app-card::before,.category-tile::before,.detail-art::before{display:none}.product-symbol,.detail-symbol{border-color:CanvasText}}
+
+/* Product-specific motion scenes live behind the readable card content. */
+.app-card.reveal,.category-tile{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.app-card>.card-scene,.category-tile>.card-scene{
+  position:absolute;
+  z-index:0;
+  inset:0;
+  display:block;
+  pointer-events:none;
+  overflow:hidden;
+  border-radius:inherit;
+  color:var(--product,#55dfc5);
+  -webkit-mask-image:linear-gradient(90deg,transparent 6%,#000 74%);
+  mask-image:linear-gradient(90deg,transparent 6%,#000 74%);
+}
+.card-scene>*{position:absolute;display:block}
+.scene-mark{
+  width:176px;
+  height:176px;
+  top:59px;
+  right:-18px;
+  opacity:.075;
+  transform:translate3d(0,0,0);
+  transform-origin:50% 70%;
+  transition:opacity .25s ease;
+}
+.scene-mark svg,.scene-mark img{display:block;width:100%;height:100%;object-fit:contain}
+.scene-ring{
+  width:190px;
+  height:190px;
+  top:51px;
+  right:-12px;
+  border:1px solid color-mix(in srgb,currentColor 58%,transparent);
+  border-radius:50%;
+  opacity:.17;
+  transform:scale(.9);
+}
+.scene-ring-two{width:130px;height:130px;top:81px;right:18px;opacity:.23;transform:scale(1.05)}
+.scene-trace{
+  width:224px;
+  height:100px;
+  right:-38px;
+  bottom:15px;
+  opacity:.15;
+  transform:rotate(-18deg);
+  background:repeating-linear-gradient(0deg,transparent 0 17px,currentColor 18px,transparent 19px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 55%);
+  mask-image:linear-gradient(90deg,transparent,#000 55%);
+}
+.scene-beam{
+  width:90px;
+  height:150%;
+  top:-25%;
+  left:-40%;
+  opacity:0;
+  transform:rotate(22deg);
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,currentColor 28%,transparent),transparent);
+}
+.category-tile .scene-mark{width:140px;height:140px;top:44px;right:-15px;opacity:.06}
+.category-tile .scene-ring{width:144px;height:144px;top:40px;right:-13px}
+.category-tile .scene-ring-two{width:96px;height:96px;top:64px;right:11px}
+.category-tile .scene-trace{bottom:-25px}
+[data-motion="sequence"] .scene-ring,[data-motion="glide"] .scene-ring,[data-motion="build"] .scene-ring{border-radius:18px;transform:rotate(-18deg)}
+[data-motion="sequence"] .scene-trace{background:repeating-linear-gradient(90deg,currentColor 0 18px,transparent 18px 30px)}
+[data-motion="signal"] .scene-ring,[data-motion="breathe"] .scene-ring{border-width:2px}
+[data-motion="orbit"] .scene-ring{border-style:dashed}
+[data-motion="scan"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 1px,transparent 1px 22px)}
+[data-motion="build"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 9px,transparent 9px 24px)}
+[data-motion="glide"] .scene-trace{background:repeating-linear-gradient(0deg,currentColor 0 2px,transparent 2px 25px)}
+[data-motion="spark"] .scene-ring{border-style:dotted}
+[data-motion="sway"] .scene-ring{border-radius:45% 55% 40% 60%}
+
+[data-motion="sequence"]{--mark-motion:scene-step;--trace-motion:scene-track}
+[data-motion="signal"]{--mark-motion:scene-nudge;--ring-motion:scene-pulse}
+[data-motion="sway"]{--mark-motion:scene-sway}
+[data-motion="scan"]{--mark-motion:scene-float;--beam-motion:scene-scan}
+[data-motion="build"]{--mark-motion:scene-build;--trace-motion:scene-stack}
+[data-motion="orbit"]{--mark-motion:scene-orbit;--ring-motion:scene-spin}
+[data-motion="glide"]{--mark-motion:scene-glide;--trace-motion:scene-track}
+[data-motion="spark"]{--mark-motion:scene-spark;--beam-motion:scene-flash}
+[data-motion="breathe"]{--mark-motion:scene-breathe-mark;--ring-motion:scene-breathe}
+
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .app-card.reveal:hover,.category-tile:hover{
+    transform:perspective(900px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 22px 44px rgba(0,0,0,.22);
+  }
+  .app-card.reveal:focus-within,.category-tile:focus-visible{transform:translateY(-3px)}
+  .app-card:is(:hover,:focus-within) .scene-mark,.category-tile:is(:hover,:focus-visible) .scene-mark{
+    opacity:.15;
+    animation:var(--mark-motion,none) 2.8s ease-in-out infinite;
+  }
+  .category-tile:is(:hover,:focus-visible) .scene-mark{opacity:.12}
+  .app-card:is(:hover,:focus-within) .scene-ring,.category-tile:is(:hover,:focus-visible) .scene-ring{
+    animation:var(--ring-motion,none) 3.4s ease-in-out infinite;
+  }
+  .app-card:is(:hover,:focus-within) .scene-ring-two,.category-tile:is(:hover,:focus-visible) .scene-ring-two{animation-delay:-1.7s}
+  .app-card:is(:hover,:focus-within) .scene-trace,.category-tile:is(:hover,:focus-visible) .scene-trace{
+    animation:var(--trace-motion,none) 3.2s linear infinite;
+  }
+  .app-card:is(:hover,:focus-within) .scene-beam,.category-tile:is(:hover,:focus-visible) .scene-beam{
+    animation:var(--beam-motion,none) 3.2s ease-in-out infinite;
+  }
+}
+@keyframes scene-step{0%,100%{transform:translateY(0)}35%{transform:translateY(-11px)}70%{transform:translateY(3px)}}
+@keyframes scene-track{0%{background-position:0 0;opacity:.1}50%{opacity:.32}100%{background-position:55px 0;opacity:.1}}
+@keyframes scene-nudge{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes scene-pulse{0%{transform:scale(.75);opacity:.34}100%{transform:scale(1.22);opacity:0}}
+@keyframes scene-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(6deg)}}
+@keyframes scene-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes scene-scan{0%,100%{left:-40%;opacity:0}18%{opacity:.38}65%{left:110%;opacity:.3}70%{opacity:0}}
+@keyframes scene-build{0%,100%{transform:translateY(8px);opacity:.13}50%{transform:translateY(-7px);opacity:.24}}
+@keyframes scene-stack{0%,100%{background-position:0 24px;opacity:.12}50%{background-position:0 0;opacity:.3}}
+@keyframes scene-orbit{0%,100%{transform:rotate(-7deg) scale(.98)}50%{transform:rotate(8deg) scale(1.06)}}
+@keyframes scene-spin{from{transform:rotate(0);opacity:.22}to{transform:rotate(360deg);opacity:.22}}
+@keyframes scene-glide{0%,100%{transform:translateX(-12px)}50%{transform:translateX(9px)}}
+@keyframes scene-spark{0%,100%{transform:scale(.96) rotate(-4deg)}50%{transform:scale(1.09) rotate(5deg)}}
+@keyframes scene-flash{0%,100%{left:-40%;opacity:0}48%{opacity:0}62%{left:110%;opacity:.36}72%{opacity:0}}
+@keyframes scene-breathe-mark{0%,100%{transform:scale(.96);opacity:.13}50%{transform:scale(1.06);opacity:.23}}
+@keyframes scene-breathe{0%,100%{transform:scale(.82);opacity:.19}50%{transform:scale(1.1);opacity:.34}}
+@media(max-width:760px){
+  .app-card>.card-scene,.category-tile>.card-scene{-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 100%);mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
+  .app-card .scene-mark{opacity:.045;right:-32px}
+  .category-tile .scene-mark{opacity:.04}
+  .scene-ring{opacity:.1}
+  .scene-trace{opacity:.08}
+}
+@media(prefers-reduced-motion:reduce){.card-scene *{animation:none!important;transition:none!important}.app-card.reveal,.category-tile{transform:none!important}}
+@media(forced-colors:active){.card-scene{display:none!important}}

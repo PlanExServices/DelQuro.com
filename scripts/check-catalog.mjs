@@ -11,9 +11,18 @@ assert.equal(new Set(products.map(p=>p.detail)).size,products.length,'Unique det
 const allowed=new Set(['available','coming-soon','prototype','access-pending','studio']);
 const catalog=read('products.html'),home=read('index.html'),sitemap=read('sitemap.xml');
 const iconSprite=read('assets/product-icons.svg');
+const motions=new Set(['sequence','signal','sway','scan','build','orbit','glide','spark','breathe']);
 assert.equal([...catalog.matchAll(/data-product /g)].length,products.length);
+for(const c of categories){
+  assert(motions.has(c.motion),`Category motion for ${c.id}`);
+  assert.equal(c.icon,`category-${c.id}`,`Category artwork key for ${c.id}`);
+  assert(iconSprite.includes(`<symbol id="${c.icon}"`),`Category artwork for ${c.id}`);
+  assert(home.includes(`class="category-tile spotlight" data-motion="${c.motion}" href="/products.html#${c.id}"`),`Category scene for ${c.id}`);
+}
 for(const p of products){
   assert.equal(p.icon,p.id,`Manifest icon key for ${p.id}`);
+  assert(motions.has(p.motion),`Product motion for ${p.id}`);
+  assert(catalog.includes(`data-motion="${p.motion}" id="${p.id}"`),`Motion scene for ${p.id}`);
   if(p.id!=='delquro-labs'){
     assert(iconSprite.includes(`<symbol id="${p.icon}"`),`Vector artwork for ${p.id}`);
     assert(catalog.includes(`/assets/product-icons.svg#${p.icon}`),`Catalog icon for ${p.id}`);
