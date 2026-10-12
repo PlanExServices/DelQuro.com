@@ -5,7 +5,7 @@
   touch-action: pan-y;
 }
 
-.tech-text-heading.tech-text-ready { color: transparent; }
+.tech-text-heading.tech-text-ready { color: var(--text); }
 
 .tech-text-canvas {
   display: none;

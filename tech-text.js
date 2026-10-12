@@ -16,7 +16,6 @@
   const padX = 12;
   const padY = 18;
   const accent = '#55dfc5';
-  const ink = '#edf4f2';
   let glyphs = [];
   let active = -1;
   let pointerInside = false;
@@ -87,30 +86,20 @@
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
 
-    glyphs.forEach((g, i) => {
-      if (!g.char.trim()) return;
-      if (i === active) {
-        ctx.strokeStyle = ink;
-        ctx.lineWidth = 1.5;
-        ctx.lineJoin = 'round';
-        ctx.setLineDash([4, 2]);
-        ctx.strokeText(g.char, g.x, g.baseline);
-        ctx.setLineDash([]);
-      } else {
-        ctx.fillStyle = ink;
-        ctx.fillText(g.char, g.x, g.baseline);
-      }
-    });
-
+    // Keep the native heading visible and crisp; canvas only adds selection art.
     const g = glyphs[active];
     if (!g) return;
-    const x1 = Math.round(g.x1 - 6) + .5;
-    const x2 = Math.round(g.x2 + 6) + .5;
-    const y1 = Math.round(g.y1 - 6) + .5;
-    const y2 = Math.round(g.y2 + 6) + .5;
+    const x1 = Math.round(g.x1 - 3) + .5;
+    const x2 = Math.round(g.x2 + 3) + .5;
+    const y1 = Math.round(g.y1 - 4) + .5;
+    const y2 = Math.round(g.y2 + 4) + .5;
+    ctx.fillStyle = 'rgba(85,223,197,.06)';
+    ctx.fillRect(x1, y1, x2 - x1, y2 - y1);
     ctx.strokeStyle = 'rgba(85,223,197,.75)';
     ctx.lineWidth = 1;
+    ctx.setLineDash([4, 3]);
     ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+    ctx.setLineDash([]);
     ctx.fillStyle = accent;
     for (const [x, y] of [[x1,y1],[x2,y1],[x2,y2],[x1,y2]]) ctx.fillRect(x - 2, y - 2, 4, 4);
 
@@ -128,6 +117,7 @@
   }
 
   const setActive = index => {
+    if (index === active) return;
     active = index;
     heading.dataset.techTextState = index < 0 ? 'idle' : 'active';
     heading.dataset.techTextLetter = index < 0 ? '' : glyphs[index]?.char || '';

@@ -142,3 +142,12 @@ PlotPerks, Veterinary Workflow Survey, and Coloring Book Forge now have
 specific garden-care, survey, and coloring-page previews. All nine launchable
 apps therefore have distinct previews in the catalog. Unreleased projects
 continue to use abstract icon motifs without implying unshipped features.
+
+## TechText heading clarity — 2026-10-11
+
+The TechText adaptation on “Useful starts here.” now leaves the native HTML
+heading visible and sharp. Its canvas draws only the interactive selection
+frame and small technical accents. Pointer movement skips repainting while
+the selected letter is unchanged. Keyboard and touch behavior, the one-time
+entrance sweep, source notice, and reduced-motion/forced-colors fallbacks
+remain in place.

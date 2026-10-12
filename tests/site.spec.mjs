@@ -96,12 +96,14 @@ test('TechText animates the real heading and supports pointer and keyboard input
   const heading=page.getByRole('heading',{name:'Useful starts here.'});
   await expect(heading).toHaveText('Useful starts here.');
   await expect(heading).toHaveClass(/tech-text-ready/);
+  expect(await heading.evaluate(el=>getComputedStyle(el).color)).toBe('rgb(237, 244, 242)');
   expect(await heading.locator('canvas').evaluate(el=>el.width)).toBeGreaterThan(200);
   await heading.scrollIntoViewIfNeeded();
   await expect.poll(()=>heading.getAttribute('data-tech-text-state')).toBe('idle');
   await heading.hover();
   await expect(heading).toHaveAttribute('data-tech-text-state','active');
   await expect(heading).toHaveAttribute('data-tech-text-letter',/\S/);
+  await page.screenshot({path:'test-results/tech-text-readable.png'});
   await heading.press('End');
   await expect(heading).toHaveAttribute('data-tech-text-letter','.');
   await heading.press('ArrowLeft');
