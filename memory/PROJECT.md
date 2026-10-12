@@ -151,3 +151,11 @@ frame and small technical accents. Pointer movement skips repainting while
 the selected letter is unchanged. Keyboard and touch behavior, the one-time
 entrance sweep, source notice, and reduced-motion/forced-colors fallbacks
 remain in place.
+
+## CI action runtime — 2026-10-11
+
+The site-check workflow moved GitHub-maintained checkout, setup-node, and
+artifact actions from v4 to v7 after the hosted runner warned that their
+Node 20 runtime was deprecated. The site's verification still uses Node 22,
+the pinned nginx container, and Chromium browser checks. This changes CI
+tooling only, not the public site.
