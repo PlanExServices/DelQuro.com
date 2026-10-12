@@ -159,3 +159,6 @@ artifact actions from v4 to v7 after the hosted runner warned that their
 Node 20 runtime was deprecated. The site's verification still uses Node 22,
 the pinned nginx container, and Chromium browser checks. This changes CI
 tooling only, not the public site.
+The runner is pinned to Ubuntu 24.04 so the announced `ubuntu-latest`
+migration to Ubuntu 26.04 does not silently change container and browser
+verification.
