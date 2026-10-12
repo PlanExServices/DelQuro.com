@@ -113,4 +113,18 @@ positions the existing spotlight; the product-specific scene animates only
 while hovered or keyboard-focused. Touch, reduced-motion, and forced-colors
 presentations remain still and readable, and narrow screens show quieter
 artwork. Scenes are decorative, so product text and actions stay in the
-committed HTML and remain available without JavaScript.
+committed HTML and remain available without JavaScript. The product-card
+background art was subsequently replaced by the contained previews below.
+
+## Contained card previews — 2026-10-11
+
+After reviewing the large icon backgrounds, the user asked for a further card
+improvement. Product cards now use a 72px preview above their text, so artwork
+does not run behind descriptions. Six featured apps have original, task-specific
+SVG scenes: chores, a script storyboard, assistant connections, inventory rows,
+plain-language exchange, and a phone form. Remaining catalog entries use a
+small icon-and-progress motif tied to their manifest motion family. The
+existing category-tile scenes remain. Motion starts on hover or keyboard focus
+for fine pointers, while touch and reduced-motion presentations are static.
+The generated HTML contains all card content without JavaScript. The original
+dimensional DQ logo remains unchanged.

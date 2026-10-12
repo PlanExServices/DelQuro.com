@@ -135,7 +135,7 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await page.getByRole('button',{name:'Close navigation'}).tap();
   await page.locator('[data-product]').first().tap();
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
-  expect(await page.locator('[data-product] .scene-mark').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.locator('[data-product] .card-demo .demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   await page.goto(baseURL+'/');
   await page.locator('.app-card').first().scrollIntoViewIfNeeded();
   await page.screenshot({path:'test-results/mini-cards-mobile.png'});
@@ -147,7 +147,7 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await context.close();
 });
 
-test('vector product artwork and card backgrounds respond to pointer and keyboard focus',async({page})=>{
+test('product previews stay clear and animate for pointer and keyboard focus',async({page})=>{
   await page.goto('/');
   const card=page.locator('.app-card').first();
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(6);
@@ -158,17 +158,19 @@ test('vector product artwork and card backgrounds respond to pointer and keyboar
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--tilt-y'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  expect(await card.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
+  expect(await card.locator('.demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('demo-check');
+  const [preview,copy]=await Promise.all([card.locator('.card-demo').evaluate(el=>el.getBoundingClientRect().toJSON()),card.locator('.card-description').evaluate(el=>el.getBoundingClientRect().toJSON())]);
+  expect(preview.bottom).toBeLessThan(copy.top);
   await page.screenshot({path:'test-results/mini-cards-desktop.png'});
   await card.getByRole('link',{name:/Details/}).focus();
   await page.mouse.move(0,0);
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  expect(await card.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe('scene-step');
-  for(const [name,motion,animation] of [['ClipScript Studio','glide','scene-glide'],['JARVIS','orbit','scene-orbit'],['Megatory Live','build','scene-build']]){
+  expect(await card.locator('.demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('demo-check');
+  for(const [name,motion,selector,animation] of [['ClipScript Studio','glide','.demo-playhead-dot','demo-scrub'],['JARVIS','orbit','.demo-hub','demo-hub'],['Megatory Live','build','.demo-stock','demo-stock'],['PlainSlang','signal','.demo-translation','demo-translate'],['VetForm GO','scan','.demo-form-tick','demo-sign']]){
     const product=page.locator('.app-card').filter({hasText:name});
     await expect(product).toHaveAttribute('data-motion',motion);
     await product.hover();
-    expect(await product.locator('.scene-mark').evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
+    expect(await product.locator(selector).first().evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
   }
   const tile=page.locator('.category-tile').first();
   await expect(tile).toHaveAttribute('data-motion','sequence');
@@ -183,6 +185,7 @@ test('vector product artwork and card backgrounds respond to pointer and keyboar
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(29);
   await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(1);
   await expect(page.locator('.app-card[data-motion]')).toHaveCount(30);
+  await expect(page.locator('.app-card .card-demo')).toHaveCount(30);
 });
 
 test('reduced motion is static immediately and content stays visible',async({page})=>{
@@ -196,7 +199,7 @@ test('reduced motion is static immediately and content stays visible',async({pag
   await page.goto('/products.html');await expect(visible(page)).toHaveCount(30);
   await page.mouse.move(200,620);
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
-  expect(await page.locator('[data-product] .scene-mark').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.locator('[data-product] .card-demo .demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
 });
 
 test('video and audio load, play and seek without missing sources',async({page})=>{

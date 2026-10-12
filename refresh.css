@@ -90,9 +90,9 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 }
 @media(forced-colors:active){.app-card::before,.category-tile::before,.detail-art::before{display:none}.product-symbol,.detail-symbol{border-color:CanvasText}}
 
-/* Product-specific motion scenes live behind the readable card content. */
+/* Category artwork stays decorative behind its readable tile content. */
 .app-card.reveal,.category-tile{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
-.app-card>.card-scene,.category-tile>.card-scene{
+.category-tile>.card-scene{
   position:absolute;
   z-index:0;
   inset:0;
@@ -177,19 +177,19 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
     box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 22px 44px rgba(0,0,0,.22);
   }
   .app-card.reveal:focus-within,.category-tile:focus-visible{transform:translateY(-3px)}
-  .app-card:is(:hover,:focus-within) .scene-mark,.category-tile:is(:hover,:focus-visible) .scene-mark{
+  .category-tile:is(:hover,:focus-visible) .scene-mark{
     opacity:.15;
     animation:var(--mark-motion,none) 2.8s ease-in-out infinite;
   }
   .category-tile:is(:hover,:focus-visible) .scene-mark{opacity:.12}
-  .app-card:is(:hover,:focus-within) .scene-ring,.category-tile:is(:hover,:focus-visible) .scene-ring{
+  .category-tile:is(:hover,:focus-visible) .scene-ring{
     animation:var(--ring-motion,none) 3.4s ease-in-out infinite;
   }
-  .app-card:is(:hover,:focus-within) .scene-ring-two,.category-tile:is(:hover,:focus-visible) .scene-ring-two{animation-delay:-1.7s}
-  .app-card:is(:hover,:focus-within) .scene-trace,.category-tile:is(:hover,:focus-visible) .scene-trace{
+  .category-tile:is(:hover,:focus-visible) .scene-ring-two{animation-delay:-1.7s}
+  .category-tile:is(:hover,:focus-visible) .scene-trace{
     animation:var(--trace-motion,none) 3.2s linear infinite;
   }
-  .app-card:is(:hover,:focus-within) .scene-beam,.category-tile:is(:hover,:focus-visible) .scene-beam{
+  .category-tile:is(:hover,:focus-visible) .scene-beam{
     animation:var(--beam-motion,none) 3.2s ease-in-out infinite;
   }
 }
@@ -210,11 +210,81 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 @keyframes scene-breathe-mark{0%,100%{transform:scale(.96);opacity:.13}50%{transform:scale(1.06);opacity:.23}}
 @keyframes scene-breathe{0%,100%{transform:scale(.82);opacity:.19}50%{transform:scale(1.1);opacity:.34}}
 @media(max-width:760px){
-  .app-card>.card-scene,.category-tile>.card-scene{-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 100%);mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
-  .app-card .scene-mark{opacity:.045;right:-32px}
+  .category-tile>.card-scene{-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000 100%);mask-image:linear-gradient(90deg,transparent 30%,#000 100%)}
   .category-tile .scene-mark{opacity:.04}
   .scene-ring{opacity:.1}
   .scene-trace{opacity:.08}
 }
 @media(prefers-reduced-motion:reduce){.card-scene *{animation:none!important;transition:none!important}.app-card.reveal,.category-tile{transform:none!important}}
 @media(forced-colors:active){.card-scene{display:none!important}}
+
+/* Small product previews sit above the copy, keeping every description clear. */
+.app-card .card-top{margin-bottom:14px}
+.card-demo{
+  position:relative;
+  display:block;
+  flex:none;
+  height:72px;
+  margin-bottom:20px;
+  border:1px solid color-mix(in srgb,var(--product) 29%,#284448);
+  border-radius:10px;
+  color:var(--product);
+  overflow:hidden;
+  isolation:isolate;
+  background:radial-gradient(190px 80px at 78% 110%,color-mix(in srgb,var(--product) 17%,transparent),transparent 85%),linear-gradient(105deg,#0b1b20,#142c2e);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045);
+}
+.card-demo::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  opacity:.45;
+  background:linear-gradient(90deg,transparent 24px,rgba(197,239,230,.035) 25px,transparent 26px),linear-gradient(transparent 23px,rgba(197,239,230,.03) 24px,transparent 25px);
+  background-size:26px 26px;
+}
+.card-demo svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card-demo svg rect{fill:color-mix(in srgb,var(--product) 5%,#102228)}
+.card-demo svg circle{fill:#11272b}
+.card-demo .demo-guide{opacity:.13;stroke-dasharray:3 7}
+.card-demo .demo-task,.card-demo .demo-frame,.card-demo .demo-bubble,.card-demo .demo-stock{opacity:.8;transform-origin:center;transform-box:fill-box}
+.card-demo .demo-task circle,.card-demo .demo-stock circle,.card-demo .demo-node,.card-demo .demo-hub{fill:color-mix(in srgb,var(--product) 16%,#102228)}
+.card-demo .demo-link{opacity:.65;stroke-dasharray:4 5}
+.card-demo .demo-hub-mark{stroke-width:2.2}
+.card-demo .demo-playhead{opacity:.35}
+.card-demo .demo-playhead-dot{fill:var(--product)}
+.card-demo .demo-translation{stroke-width:2}
+.card-demo .demo-form-line{opacity:.68}
+.card-demo .demo-form-check{fill:color-mix(in srgb,var(--product) 17%,#102228)}
+.card-demo .demo-form-tick{stroke-width:2.5}
+.demo-generic-glyph{position:absolute;right:24px;top:10px;width:50px;height:50px;display:grid;place-items:center;opacity:.75;transform-origin:center}
+.demo-generic-glyph svg,.demo-generic-glyph img{width:43px;height:43px;object-fit:contain}
+.demo-generic-lines{position:absolute;left:25px;top:19px;display:grid;gap:9px;width:49%;max-width:145px}
+.demo-generic-lines i{height:3px;border-radius:99px;background:color-mix(in srgb,currentColor 55%,transparent)}
+.demo-generic-lines i:nth-child(2){width:75%;opacity:.72}
+.demo-generic-lines i:nth-child(3){width:88%;opacity:.5}
+.demo-generic-dot{position:absolute;left:calc(25px + min(49%,145px));top:18px;width:5px;height:5px;border-radius:50%;background:currentColor;box-shadow:0 10px 0 color-mix(in srgb,currentColor 75%,transparent),0 20px 0 color-mix(in srgb,currentColor 50%,transparent)}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .app-card:is(:hover,:focus-within) .demo-task{animation:demo-check 2.2s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-frame{animation:demo-frame 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-playhead-dot{animation:demo-scrub 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-link{animation:demo-link 2s linear infinite}
+  .app-card:is(:hover,:focus-within) .demo-hub{animation:demo-hub 2s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+  .app-card:is(:hover,:focus-within) .demo-stock{animation:demo-stock 2.2s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-bubble{animation:demo-bubble 2.2s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-translation{animation:demo-translate 1.8s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-form-tick{animation:demo-sign 2.4s ease-in-out infinite}
+  .app-card:is(:hover,:focus-within) .demo-generic-glyph{animation:var(--mark-motion,scene-nudge) 2.8s ease-in-out infinite}
+}
+.demo-task:nth-of-type(2),.demo-frame:nth-of-type(2),.demo-stock:nth-of-type(2),.demo-bubble:nth-of-type(2){animation-delay:-.55s!important}
+.demo-task:nth-of-type(3),.demo-frame:nth-of-type(3),.demo-stock:nth-of-type(3){animation-delay:-1.1s!important}
+@keyframes demo-check{0%,100%{transform:translateY(0);opacity:.62}45%{transform:translateY(-3px);opacity:1}}
+@keyframes demo-frame{0%,100%{transform:translateY(0);opacity:.62}50%{transform:translateY(-3px);opacity:1}}
+@keyframes demo-scrub{0%,100%{transform:translateX(0)}80%{transform:translateX(235px)}}
+@keyframes demo-link{to{stroke-dashoffset:-18}}
+@keyframes demo-hub{0%,100%{transform:scale(.94)}50%{transform:scale(1.08)}}
+@keyframes demo-stock{0%,100%{transform:translateX(0);opacity:.65}45%{transform:translateX(5px);opacity:1}}
+@keyframes demo-bubble{0%,100%{transform:translateY(0);opacity:.68}50%{transform:translateY(-3px);opacity:1}}
+@keyframes demo-translate{0%,100%{transform:translateX(0);opacity:.5}50%{transform:translateX(4px);opacity:1}}
+@keyframes demo-sign{0%,15%{stroke-dasharray:22;stroke-dashoffset:22}45%,100%{stroke-dasharray:22;stroke-dashoffset:0}}
+@media(forced-colors:active){.card-demo{border-color:CanvasText;background:Canvas}.card-demo::before{display:none}}
