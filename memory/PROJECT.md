@@ -36,15 +36,23 @@ Repository/branch match the delivery; independent source review confirms that
 the stored shorthand repository is supported. The owner is correcting the
 secret using the first GitHub row. GitLab's field was open in the original tab;
 it was hidden and the owner was asked to rotate that exposed GitLab secret.
-No secret was copied, entered, or submitted by the agent. Browser password
-values are redacted; do not infer actual secret presence or length from them.
+No secret value was entered or submitted by the agent. Browser password values
+are redacted; do not infer actual secret presence or length from them.
 CI run `38786250691` passed for the test commit. The owner subsequently confirmed
 the GitHub secret correction. Redelivery of latest main `72f8584` still returned
 the generic failure, but that event predates the correction. Test a fresh push
 to eliminate uncertainty over the signature used by an old delivery.
 Coolify's audit deduplicates similar signature failures across applications for
 five minutes; an AI Quest-only audit row does not prove the website was skipped.
-Automatic deployment remains unverified pending the fresh event.
+Fresh main push `8a63ba9` (delivery `727be46c-c8c8-11f1-9b72-c1c44c4640a9`)
+also received the generic signature/application failure and did not deploy.
+To reduce ambiguity, the agent loaded the website's saved Webhooks page afresh
+and used the secret copy button specifically within its GitHub section, without
+reading or displaying the value. The owner confirmed pasting and saving that
+clipboard value in GitHub; the UI confirms the hook was successfully updated.
+CI run `38788123199` passed for `8a63ba9`. This follow-up note triggers a fresh
+verification event after the corrected value was saved. Automatic deployment
+remains unverified until its delivery and Coolify deployment both succeed.
 Finish with a successful GitHub push delivery and a matching webhook-triggered
 Coolify deployment; a ping or manual deployment alone is insufficient proof.
 
