@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
+import http from 'node:http';
+import https from 'node:https';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const base = new URL(process.argv[2] || 'http://127.0.0.1:8080');
@@ -83,11 +85,19 @@ for (const uri of ['/style.css', '/redesign.css', '/site.js', '/site.webmanifest
 await check('apex redirects permanently to canonical www with path and query', async () => {
   const uri='/products.html?ref=canonical-check';
   const local=['localhost','127.0.0.1','[::1]'].includes(base.hostname);
-  const response=local
-    ? await request(uri,{headers:{Host:'delquro.com'}})
-    : await fetch(`https://delquro.com${uri}`,{redirect:'manual',signal:AbortSignal.timeout(5000)});
+  // Native HTTP preserves the explicit Host header across supported Node
+  // versions; fetch implementations may replace it with the connection host.
+  const target=local?new URL(uri,base):new URL(`https://delquro.com${uri}`);
+  const response=await new Promise((resolve,reject)=>{
+    const transport=target.protocol==='https:'?https:http;
+    const req=transport.get(target,{headers:local?{Host:'delquro.com'}:{}},res=>{
+      res.resume();resolve({status:res.statusCode,location:res.headers.location});
+    });
+    req.setTimeout(5000,()=>req.destroy(new Error('Canonical redirect request timed out')));
+    req.on('error',reject);
+  });
   assert.equal(response.status,301);
-  assert.equal(response.headers.get('location'),`https://www.delquro.com${uri}`);
+  assert.equal(response.location,`https://www.delquro.com${uri}`);
 });
 
 await check('asset caching and headers', async () => {
