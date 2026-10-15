@@ -21,16 +21,30 @@ are absent and the old PlotPerks detail route returns 404. No additional catalog
 edit or deployment was necessary.
 
 The repository's Webhooks settings, viewed using the existing PlanExServices
-owner browser session, initially contained no configured hooks. Coolify's website application
-has auto-deploy enabled and provides the GitHub manual endpoint
+owner browser session, initially contained no configured hooks. Coolify's website
+application has auto-deploy enabled and provides the GitHub manual endpoint
 `https://coolify.delquro.com/webhooks/source/github/events/manual`.
 The API deploy URL is a different integration and must not be substituted.
 The owner completed GitHub account reauthentication and the credential handoff.
 GitHub webhook `698684385` is now saved with the correct endpoint, JSON format,
 push-only events, SSL verification, Active selected, and a configured secret.
-The initial delivery succeeded. No secret was generated, read, or changed by the
-agent. Automatic deployment is not yet verified; this project-note push is the
-end-to-end verification event.
+The initial ping succeeded, which proves reachability only. Real main push
+`7bc2b0c28387e72b250d71ed7577ed4fa11c51bd` delivered as
+`8b0b533e-c8c6-11f1-84c9-2df461066022` received HTTP 200 but a failed response:
+`No matching application or invalid signature.` No deployment was queued.
+Repository/branch match the delivery; independent source review confirms that
+the stored shorthand repository is supported. The owner is correcting the
+secret using the first GitHub row. GitLab's field was open in the original tab;
+it was hidden and the owner was asked to rotate that exposed GitLab secret.
+No secret was copied, entered, or submitted by the agent. Browser password
+values are redacted; do not infer actual secret presence or length from them.
+CI run `38786250691` passed for the test commit. The owner subsequently confirmed
+the GitHub secret correction. Redelivery of latest main `72f8584` still returned
+the generic failure, but that event predates the correction. Test a fresh push
+to eliminate uncertainty over the signature used by an old delivery.
+Coolify's audit deduplicates similar signature failures across applications for
+five minutes; an AI Quest-only audit row does not prove the website was skipped.
+Automatic deployment remains unverified pending the fresh event.
 Finish with a successful GitHub push delivery and a matching webhook-triggered
 Coolify deployment; a ping or manual deployment alone is insufficient proof.
 
