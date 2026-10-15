@@ -224,7 +224,7 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
 test('product previews stay clear and animate for pointer and keyboard focus',async({page})=>{
   await page.goto('/');
   const card=page.locator('.app-card').first();
-  const highlighted=['choremouse','plainslang','plotperks','megatory-live','delquro-zen','cats-journey'];
+  const highlighted=['choremouse','plainslang','plotperks','megatory-live','delquro-zen','cats-journey','ai-quest'];
   await expect(page.locator('.app-card')).toHaveCount(highlighted.length);
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(highlighted.length);
   for(const id of highlighted){
@@ -270,7 +270,10 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
   await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(products.filter(p=>p.icon==='delquro-labs').length);
   await expect(page.locator('.app-card[data-motion]')).toHaveCount(products.length);
   await expect(page.locator('.app-card .card-demo')).toHaveCount(products.length);
-  await expect(page.locator('.app-card .card-demo[data-preview="specific"]')).toHaveCount(5);
+  await expect(page.locator('.app-card .card-demo[data-preview="specific"]')).toHaveCount(6);
+  const quest=page.locator('.app-card').filter({has:page.getByRole('heading',{name:'AI Quest',exact:true})});
+  await expect(quest.locator('.card-demo')).toHaveAttribute('data-preview','specific');
+  await expect(quest.locator('.demo-task')).toHaveCount(3);
   for(const [name,selector,animation] of [['ChoreMouse','.demo-task','demo-check'],['PlainSlang','.demo-translation','demo-translate'],['PlotPerks','.demo-leaf','demo-grow'],['Megatory Live','.demo-stock','demo-stock'],['VetForm GO','.demo-form-tick','demo-sign']]){
     const product=page.locator('.app-card').filter({hasText:name});
     await product.hover();
