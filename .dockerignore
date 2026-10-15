@@ -1,28 +1,27 @@
-# Keep repository history, documentation, and tooling out of the public web root.
-.git
-.github
-.gitignore
-.gitattributes
-.dockerignore
-Dockerfile
-docker-compose.yml
-*.md
-*.sh
-*.bat
-scripts/
-deploy/
-index-inline.html
+# Publishable files only; Dockerfile remains available to the builder.
+**
+!Dockerfile
+!nginx.conf
+!*.html
+!*.css
+!*.js
+!favicon.ico
+!robots.txt
+!sitemap.xml
+!site.webmanifest
+!apps/
+!apps/**
+!assets/
+!assets/**
+!Sounds/
+!Sounds/**
 
-# GitHub Pages files are retained in Git history but unused by the nginx image.
-CNAME
-nojekyll
-
-# Local files and secrets.
-.DS_Store
-Thumbs.db
-*.swp
-*~
-*.log
-node_modules/
-.env
-.env.*
+# Exclude local credentials or editor artifacts even in asset directories.
+**/.git
+**/.env
+**/.env.*
+**/node_modules
+**/*.log
+**/*.swp
+**/Thumbs.db
+**/.DS_Store

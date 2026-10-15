@@ -1,16 +1,12 @@
-# OS / editor noise
+# OS and editor noise
 .DS_Store
 Thumbs.db
 *.swp
 *~
-
-# Logs
-*.log
-
-# Secrets and local config. Set environment variables in the Coolify UI
-# instead of committing them.
+# Secrets stay in deployment environment variables.
 .env
 .env.*
-
-# Node, if a build/tooling step is ever added
 node_modules/
+test-results/
+playwright-report/
+*.log

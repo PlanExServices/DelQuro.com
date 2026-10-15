@@ -1,29 +1,50 @@
 # DelQuro.com deployment notes
 
-## Verified state on 2026-10-09
+## Live site and review branch
 
-- `www.delquro.com` and the apex domain resolved to `13.140.43.0`.
-- The live server reported `nginx/1.27.5` and served the same bytes as the `main` branch for sampled HTML, CSS, JavaScript, and image files.
-- `/health` returned `200 ok`. Missing routes returned the homepage with HTTP 200, which matches the repository's root `nginx.conf` behavior.
-- The root `Dockerfile` uses `nginx:1.27-alpine`, copies that root configuration, and serves static files on port 80. The older files under `deploy/nginx/` are not used by this Dockerfile.
-- GitHub metadata reported Pages disabled for `PlanExServices/DelQuro.com`. The old GitHub Pages and DNS restoration instructions in this file no longer describe the live setup.
+The canonical source is `PlanExServices/DelQuro.com`. On 2026-10-09 the sampled
+live HTML, CSS, JavaScript, and images matched main at `86e7a13` byte for byte
+after normalizing text line endings. The October 15 audit still observed the
+older 23-app homepage, nginx 1.27.5, and homepage responses for missing routes.
 
-These observations identify the served source and web server configuration. They do **not** establish which Coolify application or other deployment system builds the image, whether it deploys automatically, or what the rollback procedure is.
+The refreshed site is proposed in draft PR #9 on `codex/delquro-refresh`.
+It is not merged or deployed. Its Dockerfile pins nginx 1.30.5 by digest and
+copies only public site files. Its root `nginx.conf` returns genuine 404s,
+preserves response headers, and uses revalidating asset caches. The older
+configuration under `deploy/nginx/` is not used by that Dockerfile.
 
-## Before publishing a site change
+The observed live server does not establish the hosting application's source
+branch, automatic deploy setting, or rollback method. GitHub Pages was disabled
+when checked on October 9. A successful push to a review branch is not evidence
+of a production deployment.
 
-1. In the deployment dashboard, confirm the application serving `www.delquro.com`, its Git repository, branch, Dockerfile path, automatic deploy setting, and rollback method.
-2. Fetch the latest `main` and compare it with the live page. Resolve any differences before editing.
-3. Make the change in a review branch and preview it locally with `python -m http.server 8000` or `docker compose up --build`.
-4. Run `node scripts/check-links.mjs` and review any failures. Check the pages affected by the edit at desktop and mobile widths.
-5. After approval, merge or publish through the verified deployment path. Confirm the expected version appears at the live domain and that key pages and `/health` respond as intended.
+## Release procedure
 
-Do not change DNS, GitHub Pages, or the older website repositories as part of a content release unless the deployment connection has been confirmed. Do not force-push `main` or put a personal access token in a Git remote URL.
+1. Confirm the deployment application, repository, branch, Dockerfile path,
+   automatic deploy setting, and rollback method in the hosting dashboard.
+2. Fetch remote branches and compare the candidate with main and live content.
+3. Run `npm run check` for generation, catalog, local asset, and anchor checks.
+4. Preview with `node scripts/preview.mjs` at http://127.0.0.1:4173/. Check desktop,
+   mobile, keyboard, reduced motion, and no-JavaScript behavior.
+5. Require passing container CI on the exact candidate commit. It builds the
+   image, runs `nginx -t`, `scripts/check-nginx.mjs`, live-mode link checks, and
+   the Playwright browser suite against the container.
+6. After an explicit release request, merge or publish through the confirmed
+   deployment path. Verify new content, important routes, `/health`, HTTPS,
+   and response headers at the public domain.
+
+Do not change DNS, GitHub Pages, or older repositories as part of a content edit.
+Do not force-push main or embed tokens in Git remote URLs. The current request
+authorizes pushing review work while retaining the earlier no-live-changes
+boundary.
 
 ## Local nginx preview
 
-```sh
-docker compose up --build
-```
+`docker compose up --build` serves the candidate at http://localhost:3000/.
+The container listens on port 80 and its health check uses `/health`. Run
+`node scripts/check-nginx.mjs http://localhost:3000` and
+`node scripts/check-links.mjs http://localhost:3000` against it. Set
+`SITE_URL=http://localhost:3000` before `npm run test:browser`.
 
-The container listens on port 80; Compose maps it to `http://localhost:3000/`. Its health check uses `/health`. A plain static preview uses `python -m http.server 8000`.
+A plain local preview validates content and interactions, but does not prove
+nginx configuration, image publication boundaries, or live hosting behavior.

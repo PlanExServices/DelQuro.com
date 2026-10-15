@@ -1,42 +1,54 @@
-# DelQuro.com website
+# DelQuro.com
 
-This repository is the editing home for the public [DelQuro Labs website](https://www.delquro.com/). On 2026-10-09, the live homepage, Products, About, Resources, CSS, JavaScript, a product page, and a logo asset matched this repository's `main` branch byte for byte. Fetch `main` before starting a new edit.
+The canonical editing home for [DelQuro Labs](https://www.delquro.com/) is
+[PlanExServices/DelQuro.com](https://github.com/PlanExServices/DelQuro.com).
+The site uses static HTML, CSS, and native JavaScript. No application framework
+or runtime npm dependency is required. The published image contains only public
+site files.
 
-The site is plain HTML, CSS, and JavaScript. It has no application build step or package dependencies. The repository also contains a Dockerfile for serving the files through nginx.
+## Catalog and shared layout
 
-## Where to edit
+Edit `catalog/products.json`, then run `node scripts/generate-site.mjs`. Commit
+the generated HTML. The generator produces the homepage, catalog, detail pages,
+availability sections, sitemap, and shared navigation/footer. Supporting-page
+bodies and the interactive AI Scripts library stay hand authored. Homepage
+sections, including client website mockups, are defined in the generator.
 
-| Area | Files |
-| --- | --- |
-| Homepage and navigation | `index.html`, `site.js`, `style.css` |
-| Product library | `products.html`, `apps/*.html` |
-| Company and support | `about.html`, `resources.html`, `support.html` |
-| Legal and account help | `privacy.html`, `terms.html`, `account-deletion.html` |
-| Images and logos | `assets/` |
-| Web server | `Dockerfile`, root `nginx.conf`, `docker-compose.yml` |
+Product availability and approved launch URLs are separate from project existence.
+Connect and VMTA have detail/contact actions only, pending confirmed security
+releases. Do not add unshipped feature claims. Source map: PR #8 at
+`be07b229f5bbefb77ab9f027b04962b311e10bca`; this draft does not merge #8 or #7.
 
-The homepage currently describes a 23-app library. Product pages and catalog entries are hand-written; update related links and navigation when changing them.
+## Preview and verification
 
-## Preview and check
+Run `node scripts/preview.mjs` and open http://127.0.0.1:4173/. This local review
+server does not replace production nginx verification.
 
-From the repository root:
+Run `npm run check` for generated-file consistency, catalog gates, local assets,
+and anchors. These checks use Node only and do not require dependency installation.
+Browser verification uses the development-only Playwright dependency:
+`npm ci`, `npx playwright install chromium`, and `SITE_URL` pointing to the site
+under test (default http://127.0.0.1:8080), then `npm run test:browser`.
 
-```sh
-python -m http.server 8000
-```
+GitHub CI builds the image, validates nginx, and tests actual response statuses,
+headers, caching, redirects, publication boundaries, media ranges, and browser
+behavior. Run the same container checks with
+`node scripts/check-nginx.mjs http://127.0.0.1:8080`.
 
-Open `http://localhost:8000/`. To check local relative links, run:
+React Bits adaptations and source revision are recorded in
+`THIRD_PARTY_NOTICES.md`; the full license ships at
+`assets/react-bits-LICENSE.txt`. Persistent project context lives in
+`memory/PROJECT.md`.
 
-```sh
-node scripts/check-links.mjs
-```
+## Publishing and repository history
 
-As of 2026-10-09, that check reports two existing missing assets: `assets/dq-sun.svg` referenced from `Sounds/index.html`, and `assets/William_DelQuro_Intro.webm` referenced from `about.html`. Verify them during the next content edit.
+Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. Current work is in
+draft PR #9 on `codex/delquro-refresh`. Pushing that review branch does not mean
+the public site has been updated. Deployment, merging to main, DNS, and changes
+to linked apps require a separate request. Do not force-push or put a token in
+a remote URL.
 
-For an nginx preview, `docker compose up --build` serves the site at `http://localhost:3000/`.
-
-## Releasing
-
-Read [DEPLOYMENT.md](DEPLOYMENT.md) before publishing. The live server currently behaves like the root `Dockerfile` and `nginx.conf`, but the deployment dashboard and automatic deploy trigger have not been verified. A Git push must not be assumed to deploy the site. Do not use force-push or embed a GitHub token in a remote URL.
-
-`PlanExServices/delquro-site` is an older marketing site; `PlanExServices/DelQuroLabs` is a separate site concept. `DelQuroLabs/DelQuroLabs.app` is a different product launchpad. Confirm deployment links before archiving any of them.
+`PlanExServices/delquro-site` is an older marketing site;
+`PlanExServices/DelQuroLabs` is a separate site concept; and
+`DelQuroLabs/DelQuroLabs.app` is a different product launchpad. Confirm hosting
+connections before archiving or removing any repository.

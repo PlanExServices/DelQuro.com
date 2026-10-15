@@ -1,0 +1,12 @@
+{
+  "name":"delquro-site-checks",
+  "private":true,
+  "type":"module",
+  "scripts":{
+    "generate":"node scripts/generate-site.mjs",
+    "check":"node scripts/generate-site.mjs --check && node scripts/check-catalog.mjs && node scripts/check-links.mjs",
+    "test:browser":"playwright test",
+    "preview":"node scripts/preview.mjs"
+  },
+  "devDependencies":{"@playwright/test":"1.64.0"}
+}
