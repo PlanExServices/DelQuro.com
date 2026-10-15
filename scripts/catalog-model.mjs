@@ -24,6 +24,10 @@ export function validateCatalog({products, categories, reviewedOn}) {
     assert.equal(p.visibility, 'public', `Explicit public visibility required: ${p.id}`);
     assert(stages[p.availability], `Unsupported release stage: ${p.id}`);
     assert(p.description && p.releaseNote, `Description and release context required: ${p.id}`);
+    assert(typeof p.seoTitle === 'string' && p.seoTitle.trim().length > 0 && p.seoTitle.length <= 90, `SEO title must contain 1–90 characters: ${p.id}`);
+    assert(typeof p.audience === 'string' && p.audience.trim().length > 0, `Audience required: ${p.id}`);
+    assert(Array.isArray(p.useCases) && p.useCases.length >= 2 && p.useCases.length <= 3, `Two or three use cases required: ${p.id}`);
+    assert(p.useCases.every(item => typeof item === 'string' && item.trim().length > 0), `Use cases must be non-empty text: ${p.id}`);
     assert.match(p.reviewedOn || '', /^\d{4}-\d{2}-\d{2}$/);
     assert.match(p.id, /^[a-z0-9-]+$/);
     assert.match(p.detail, /^apps\/[a-z0-9-]+\.html$/);

@@ -1,5 +1,42 @@
 # DelQuro.com project memory
 
+## Modern website and SEO framework — 2026-10-15
+
+The owner requested a modern website redesign incorporating an SEO framework.
+The implementation stays in static HTML/CSS/JavaScript and preserves the original
+dimensional DQ artwork, William's corrected video poster, AI Scripts interactions,
+the MFCC design preview, all 16 public entries, and existing access boundaries.
+
+The homepage now leads with AI Quest and PlainSlang as available apps, followed
+by a separate public-preview collection, a warm MFCC website-concept section,
+six balanced category tiles, studio context, and native HTML questions/answers.
+`redesign.css` supplies the shared responsive visual system. Product details use
+reviewed `audience`, `useCases`, and `seoTitle` catalog fields, matching visible
+breadcrumbs, concept artwork, access explanations, and related public projects.
+Do not restore Garden/PlotPerks or add public launch links to clinic-only tools.
+
+`scripts/seo.mjs` is the shared metadata source for 25 canonical public pages.
+It emits titles/descriptions, canonical/social tags, and connected Organization,
+WebSite, WebPage/CollectionPage, BreadcrumbList, and catalog ItemList data.
+It makes no invented price, review, rating, or software-rich-result claims.
+`scripts/check-seo.mjs` is part of `npm run check` and CI. Maintain the framework
+and its Search Console measurement plan in `docs/SEO.md`; no ranking or traffic
+improvement is implied by passing code checks. The nginx change redirects apex
+requests to www, preserving path/query, and has a dedicated container check.
+
+Local verification passed generation consistency, catalog, 1,065 references /
+191 anchors, all 25-page SEO checks, 18 existing browser cases, and three new
+FAQ/detail/responsive cases. The new layout test isolates the existing external
+analytics script so synthetic visits do not delay or pollute it. Link checking
+excludes unpublished browser reports and test artifacts. Independent design
+review covered desktop/375px captures and corrected preview-footer CTA spacing.
+Container and live release evidence is recorded separately after publication;
+these local results alone do not establish live status.
+
+Screenshots and release receipts are kept outside the public repository in the
+task's `modern-seo-redesign` evidence folder. Continue the already authorized
+website publication workflow; linked applications and DNS remain outside scope.
+
 ## MFCC portfolio screenshot refresh — 2026-10-15
 
 The user requested an updated project image on DelQuro.com. The MFCC mockup

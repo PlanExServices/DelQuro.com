@@ -67,18 +67,28 @@ for (const uri of ['/', '/index.html', '/products.html', '/about.html', '/apps/a
   });
 }
 
-for (const uri of ['/style.css', '/site.js', '/site.webmanifest']) {
+for (const uri of ['/style.css', '/redesign.css', '/site.js', '/site.webmanifest']) {
   await check(`safe caching and headers ${uri}`, async () => {
     const response = await request(uri, { method: 'HEAD' });
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('cache-control'), 'public, max-age=300, must-revalidate');
     assert.doesNotMatch(response.headers.get('cache-control'), /immutable/);
     headers(response);
-    if (uri === '/style.css') assert.match(response.headers.get('content-type') || '', /^text\/css/);
+    if (uri.endsWith('.css')) assert.match(response.headers.get('content-type') || '', /^text\/css/);
     if (uri === '/site.js') assert.match(response.headers.get('content-type') || '', /javascript/);
     if (uri === '/site.webmanifest') assert.match(response.headers.get('content-type') || '', /^application\/manifest\+json/);
   });
 }
+
+await check('apex redirects permanently to canonical www with path and query', async () => {
+  const uri='/products.html?ref=canonical-check';
+  const local=['localhost','127.0.0.1','[::1]'].includes(base.hostname);
+  const response=local
+    ? await request(uri,{headers:{Host:'delquro.com'}})
+    : await fetch(`https://delquro.com${uri}`,{redirect:'manual',signal:AbortSignal.timeout(5000)});
+  assert.equal(response.status,301);
+  assert.equal(response.headers.get('location'),`https://www.delquro.com${uri}`);
+});
 
 await check('asset caching and headers', async () => {
   const response = await request('/assets/app-icon.svg', { method: 'HEAD' });

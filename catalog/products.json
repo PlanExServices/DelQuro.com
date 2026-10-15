@@ -55,11 +55,17 @@
     {
       "id": "note-thyme",
       "name": "Note Thyme",
+      "seoTitle": "Note Thyme — Family Meal Planning Project",
       "icon": "note-thyme",
       "motion": "sequence",
       "color": "#78b394",
       "category": "family",
       "description": "Meal planning with saved recipes, family preferences, and grocery lists.",
+      "audience": "Families exploring meal planning.",
+      "useCases": [
+        "Planned: bring saved recipes and family preferences into meal planning.",
+        "Planned: prepare grocery lists alongside meals."
+      ],
       "detail": "apps/note-thyme.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -69,11 +75,17 @@
     {
       "id": "choremouse",
       "name": "ChoreMouse",
+      "seoTitle": "ChoreMouse — Family Chores, Points & Rewards Preview",
       "icon": "choremouse",
       "motion": "sequence",
       "color": "#f2bd6a",
       "category": "family",
       "description": "Family chores, points, and rewards with parent approvals and a kids’ view.",
+      "audience": "Families coordinating chores and rewards.",
+      "useCases": [
+        "Explore family chores with points and rewards.",
+        "Explore parent approvals and a kids’ view."
+      ],
       "detail": "apps/choremouse.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -88,11 +100,17 @@
     {
       "id": "plainslang",
       "name": "PlainSlang",
+      "seoTitle": "PlainSlang — Modern Slang Meanings & Context for Parents",
       "icon": "plainslang",
       "motion": "signal",
       "color": "#5ec4d4",
       "category": "family",
       "description": "Look up modern slang, meanings, and context in a no-login guide for parents.",
+      "audience": "Parents looking for context around modern slang.",
+      "useCases": [
+        "Look up slang meanings and context without an account.",
+        "Browse the glossary and explore slang by topic."
+      ],
       "detail": "apps/plainslang.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -107,11 +125,17 @@
     {
       "id": "what-list",
       "name": "What List",
+      "seoTitle": "What List — Grocery Lists & Meal Planning Demo",
       "icon": "what-list",
       "motion": "sequence",
       "color": "#6fc3a0",
       "category": "family",
       "description": "Try a grocery-list and meal-planning interface in your browser.",
+      "audience": "People exploring grocery lists and meal planning.",
+      "useCases": [
+        "Try the grocery-list and meal-planning interface.",
+        "Explore recipe imports using sample content."
+      ],
       "detail": "apps/what-list.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -125,11 +149,17 @@
     {
       "id": "delquro-connect",
       "name": "DelQuro Connect",
+      "seoTitle": "DelQuro Connect — Veterinary Team Workspace",
       "icon": "delquro-connect",
       "motion": "signal",
       "color": "#789bed",
       "category": "veterinary",
       "description": "A workspace for veterinary team huddles, schedules, time off, and communication.",
+      "audience": "Participating veterinary teams.",
+      "useCases": [
+        "Use a clinic workspace for team huddles and communication.",
+        "Organize schedules and time off with clinic-arranged access."
+      ],
       "detail": "apps/delquro-connect.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -139,11 +169,17 @@
     {
       "id": "vetform-go",
       "name": "VetForm GO",
+      "seoTitle": "VetForm GO — Clinic Forms & Protected Staff Inbox",
       "icon": "vetform-go",
       "motion": "scan",
       "color": "#64bea4",
       "category": "veterinary",
       "description": "Clinic forms and a protected staff inbox. Pet owners use a form link from their clinic.",
+      "audience": "Clinic staff and pet owners with a clinic-issued form link.",
+      "useCases": [
+        "Access clinic forms through a protected staff inbox.",
+        "Complete a form using an individual link from your clinic."
+      ],
       "detail": "apps/vetform-go.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -153,11 +189,17 @@
     {
       "id": "megatory-live",
       "name": "Megatory Live",
+      "seoTitle": "Megatory Live — Veterinary Inventory Counting Preview",
       "icon": "megatory-live",
       "motion": "build",
       "color": "#2fd9bc",
       "category": "veterinary",
       "description": "A web preview of inventory counting for veterinary teams.",
+      "audience": "Veterinary teams exploring inventory counting.",
+      "useCases": [
+        "Explore inventory counting in the web preview.",
+        "Try the current local clock/PIN entry."
+      ],
       "detail": "apps/megatory-live.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -172,11 +214,17 @@
     {
       "id": "ai-scripts",
       "name": "AI Scripts Library",
+      "seoTitle": "AI Scripts Library — Editable Prompt & Agent Templates",
       "icon": "ai-scripts",
       "motion": "scan",
       "color": "#aaa0fa",
       "category": "ai",
       "description": "Browse eight editable prompt and agent templates and copy a starting point for your next task.",
+      "audience": "People starting a prompt or agent task.",
+      "useCases": [
+        "Browse eight local prompt and agent templates.",
+        "Edit and copy a starting point for a task."
+      ],
       "detail": "apps/ai-scripts.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -186,11 +234,17 @@
     {
       "id": "delquro-echo",
       "name": "DelQuro Echo",
+      "seoTitle": "DelQuro Echo — Inbox Organization & Daily Summaries Project",
       "icon": "delquro-echo",
       "motion": "signal",
       "color": "#829ae4",
       "category": "ai",
       "description": "A communication-assistant project exploring inbox organization and daily summaries.",
+      "audience": "People interested in inbox organization and daily summaries.",
+      "useCases": [
+        "Exploring ways to organize an inbox.",
+        "Exploring daily communication summaries."
+      ],
       "detail": "apps/delquro-echo.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -200,11 +254,17 @@
     {
       "id": "ghostforge",
       "name": "GhostForge",
+      "seoTitle": "GhostForge — Manuscript Writing Project",
       "icon": "ghostforge",
       "motion": "glide",
       "color": "#d494e4",
       "category": "create",
       "description": "A writing project for developing a manuscript from an idea to a draft.",
+      "audience": "People developing an idea into a manuscript.",
+      "useCases": [
+        "Planned: develop a manuscript idea.",
+        "Planned: work from an idea toward a draft."
+      ],
       "detail": "apps/ghostforge.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -214,11 +274,17 @@
     {
       "id": "delquro-zen",
       "name": "DelQuro Zen",
+      "seoTitle": "DelQuro Zen — Calming Sounds & Sleep Timer Prototype",
       "icon": "delquro-zen",
       "motion": "breathe",
       "color": "#8ec8a0",
       "category": "sleep",
       "description": "Explore calming sounds and a sleep timer in a mobile-friendly sound-library prototype.",
+      "audience": "People exploring calming sounds and a sleep timer.",
+      "useCases": [
+        "Browse the calming-sound library prototype.",
+        "Try the prototype’s sleep timer."
+      ],
       "detail": "apps/delquro-zen.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -233,11 +299,17 @@
     {
       "id": "vibe-coding-101",
       "name": "Vibe Coding 101",
+      "seoTitle": "Vibe Coding 101 — AI-Assisted App Development Learning Project",
       "icon": "vibe-coding-101",
       "motion": "scan",
       "color": "#90b9ee",
       "category": "build",
       "description": "An introductory learning project about making apps with AI-assisted coding.",
+      "audience": "People learning about AI-assisted app development.",
+      "useCases": [
+        "Planned: introduce AI-assisted coding.",
+        "Planned: explore making apps with AI."
+      ],
       "detail": "apps/vibe-coding-101.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -247,11 +319,17 @@
     {
       "id": "solar",
       "name": "S.O.L.A.R.",
+      "seoTitle": "S.O.L.A.R. — K–12 Adventure Learning Game in Development",
       "icon": "solar",
       "motion": "orbit",
       "color": "#f5cb67",
       "category": "build",
       "description": "A choose-your-own-adventure learning game for grades K–12.",
+      "audience": "Students in grades K–12.",
+      "useCases": [
+        "Planned: learn through a choose-your-own-adventure game.",
+        "Planned: explore a learning experience for grades K–12."
+      ],
       "detail": "apps/solar.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -261,11 +339,17 @@
     {
       "id": "clt-academy",
       "name": "CLT Academy",
+      "seoTitle": "CLT Academy — Classic Learning Test Study Project",
       "icon": "clt-academy",
       "motion": "sequence",
       "color": "#8dbce0",
       "category": "build",
       "description": "A Classic Learning Test study project with practice exams, topic drills, and flashcards.",
+      "audience": "People studying for the Classic Learning Test.",
+      "useCases": [
+        "Planned: prepare with independent practice exams.",
+        "Planned: review topics through drills and flashcards."
+      ],
       "detail": "apps/clt-academy.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -275,11 +359,17 @@
     {
       "id": "cats-journey",
       "name": "Cat’s Journey",
+      "seoTitle": "Cat’s Journey — FE & PE Civil Exam Study Preview",
       "icon": "cats-journey",
       "motion": "glide",
       "color": "#d8b280",
       "category": "build",
       "description": "An FE and PE Civil exam study guide with quizzes, flashcards, formulas, and local progress.",
+      "audience": "People preparing for FE and PE Civil exams.",
+      "useCases": [
+        "Review formulas, quizzes, and flashcards.",
+        "Keep study progress in the current browser."
+      ],
       "detail": "apps/cats-journey.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
@@ -294,11 +384,18 @@
     {
       "id": "ai-quest",
       "name": "AI Quest",
+      "seoTitle": "AI Quest — Learn AI Through Lessons & Quizzes",
       "icon": "ai-quest",
       "motion": "sequence",
       "color": "#9b9df0",
       "category": "build",
       "description": "Build practical AI skills through 180 progressive lessons, quizzes, and illustrated command, model, and prompt guides.",
+      "audience": "People building practical AI skills.",
+      "useCases": [
+        "Work through 180 progressive lessons and quizzes.",
+        "Explore illustrated command, model, and prompt guides.",
+        "Export or import progress saved in your browser."
+      ],
       "detail": "apps/ai-quest.html",
       "visibility": "public",
       "reviewedOn": "2026-10-15",
