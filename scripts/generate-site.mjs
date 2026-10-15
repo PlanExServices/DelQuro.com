@@ -8,6 +8,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalogData = JSON.parse(fs.readFileSync(path.join(root, 'catalog/products.json'), 'utf8'));
 validateCatalog(catalogData);
 const { products, categories, reviewedOn } = catalogData;
+const clientPreview=JSON.parse(fs.readFileSync(path.join(root,'catalog/client-previews.json'),'utf8'));
+const homepagePreview=clientPreview.screenshots.find(shot=>shot.id==='homepage');
 const check = process.argv.includes('--check');
 const changed = [];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -52,7 +54,7 @@ function footer() {
   return `<footer><div class="wrap"><div class="footer-grid"><div class="footer-brand">${logo}<p>Small, focused software.<br>Made for the everyday.</p></div><div><div class="footer-title">Explore</div><div class="footer-links"><a href="/products.html">All ${products.length} products</a><a href="/#client-websites">Client website mockups</a><a href="/about.html">Our studio</a><a href="/resources.html">Resources</a><a href="/Sounds/">Sound Library</a></div></div><div><div class="footer-title">Get in touch</div><div class="footer-links"><a href="/support.html">Product support</a><a href="mailto:info@delquro.com">info@delquro.com</a></div></div><div><div class="footer-title">Details</div><div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/account-deletion.html">Account deletion</a><a href="/assets/react-bits-LICENSE.txt">Component notices</a></div></div></div><div class="copyright"><span>© 2026 DelQuro Labs, LLC.</span><span>Built thoughtfully in Virginia</span></div></div></footer>`;
 }
 function head(title, description, url, extras = '') {
-  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.delquro.com${url}"><meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://www.delquro.com${url}"><meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-cards">${extras}`;
+  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.delquro.com${url}"><meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://www.delquro.com${url}"><meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-mfcc-pngs">${extras}`;
 }
 const page = (title,description,url,active,body,headExtras='',scripts='') => `<!doctype html>\n<html lang="en"><head>${head(title,description,url,headExtras)}</head><body><a class="skip" href="#main">Skip to content</a>${nav(active)}<main id="main">${body}</main>${footer()}<script src="/site.js" defer></script>${scripts}</body></html>\n`;
 function actions(p, full=false) {
@@ -84,20 +86,24 @@ const clientMockups = `<section class="section client-websites" id="client-websi
   <div class="wrap">
     <div class="section-head">
       <div><p class="eyebrow">Website concepts</p><h2 id="client-websites-heading">Client website mockups</h2></div>
-      <p>A closer look at website designs prepared for review.</p>
+      <p>Preview the design, then explore it for yourself.</p>
     </div>
     <article class="website-mockup" aria-labelledby="mfcc-heading">
-      <div class="mockup-window">
-        <div class="mockup-window-bar" aria-hidden="true"><span class="mockup-window-dots"><i></i><i></i><i></i></span><span>mfcc.delqurolabs.dev</span><span>↗</span></div>
-        <img src="/assets/client-mockups/mfcc-preview-2026-10-15.jpg" width="1280" height="800" loading="lazy" decoding="async" alt="MFCC website concept with a navy and white layout, the headline Chiropractic. Made personal., and a photograph of the two doctors.">
+      <div class="mockup-gallery">
+        <a class="mockup-window" href="${esc(homepagePreview.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open MFCC desktop homepage (opens in a new tab)">
+          <div class="mockup-window-bar" aria-hidden="true"><span class="mockup-window-dots"><i></i><i></i><i></i></span><span>mfcc.delqurolabs.dev</span><span>↗</span></div>
+          <img src="${esc(homepagePreview.src)}" width="${homepagePreview.width}" height="${homepagePreview.height}" loading="lazy" decoding="async" alt="${esc(homepagePreview.alt)}">
+        </a>
+        <div class="mockup-preview-grid" aria-label="More Midlothian website previews">${clientPreview.screenshots.filter(shot=>shot.id!=='homepage').map(shot=>`<a class="mockup-preview${shot.id==='mobile'?' mockup-preview-mobile':''}" href="${esc(shot.url)}" target="_blank" rel="noopener noreferrer" aria-label="Open MFCC ${esc(shot.label.toLowerCase())} (opens in a new tab)"><img src="${esc(shot.src)}" width="${shot.width}" height="${shot.height}" alt="${esc(shot.alt)}" loading="lazy" decoding="async"><span>${esc(shot.label)} <span aria-hidden="true">↗</span></span></a>`).join('')}</div>
       </div>
       <div class="mockup-copy">
         <span class="availability prototype">Design preview</span>
         <p class="mockup-category">Healthcare · Midlothian, Virginia</p>
-        <h3 id="mfcc-heading">Midlothian Family Chiropractic Center</h3>
-        <p>A website concept featuring the practice's doctors, care options, and first-visit information.</p>
-        <p class="mockup-note">Concept mockup prepared for practice review.</p>
-        <a class="btn primary" href="https://mfcc.delqurolabs.dev/" target="_blank" rel="noopener noreferrer">View MFCC mockup <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        <h3 id="mfcc-heading">${esc(clientPreview.name)}</h3>
+        <p>A welcoming website concept featuring the practice's doctors, care options, and patient resources, on desktop and mobile.</p>
+        <p class="mockup-note">Select any image to open its live page.</p>
+        <a class="btn primary" href="${esc(clientPreview.liveUrl)}" target="_blank" rel="noopener noreferrer">Open live preview <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="mockup-download" href="${esc(clientPreview.download)}" download>Download preview PNGs <span aria-hidden="true">↓</span><span class="sr-only"> (ZIP, four images)</span></a>
       </div>
     </article>
   </div>
@@ -140,7 +146,7 @@ for(const name of supporting) {
     html=html.replace(/<section class="section generated-status"[\s\S]*?<\/section>/g,'');
     html=html.replace('</main>',`${status(p)}</main>`);
   }
-  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-cards"></head>');
+  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-mfcc-pngs"></head>');
   html=html.replace(/[ \t]+$/gm,'');
   write(name,html);
 }

@@ -425,3 +425,15 @@ transcript. Confirm hosting and rollback details before any eventual release.
 Detailed audit evidence and desktop/mobile screenshots are stored outside the
 published tree in the task's `website-audit-2026-10-15` evidence folder under
 `C:\Users\plane\.codex\visualizations\2026\10\09\01a1229a-a7af-7db1-937c-a44abf15faa4`.
+
+
+## MFCC PNG proof-of-concept gallery — 2026-10-15
+
+At the user's request, only the Midlothian project gains four real PNG captures:
+desktop homepage, doctors, patient resources and mobile homepage. Their source
+URLs and dimensions live in catalog/client-previews.json. Every gallery image
+links to its matching live MFCC page; the primary button opens the live preview.
+The four original PNGs and a local HTML sheet with live links are bundled in
+assets/client-mockups/mfcc-proof-of-concept-2026-10-15.zip for sharing. Preserve
+the Design preview label, no watermark, no checked dates and unchanged product
+catalog. The gallery is static HTML and supports no-JavaScript navigation.

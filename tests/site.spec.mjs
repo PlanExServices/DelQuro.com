@@ -134,8 +134,12 @@ test('the catalog and mobile navigation work without JavaScript',async({browser,
   await mockups.scrollIntoViewIfNeeded();
   await expect(mockups.getByRole('heading',{name:'Midlothian Family Chiropractic Center'})).toBeVisible();
   await expect(mockups.getByText('Design preview',{exact:true})).toBeVisible();
-  await expect(mockups.getByRole('link',{name:/View MFCC mockup/})).toHaveAttribute('href','https://mfcc.delqurolabs.dev/');
-  await expect(mockups.locator('img')).toHaveJSProperty('naturalWidth',1280);
+  await expect(mockups.getByRole('link',{name:/Open live preview/})).toHaveAttribute('href','https://mfcc.delqurolabs.dev/');
+  await expect(mockups.locator('.mockup-window img')).toHaveJSProperty('naturalWidth',1280);
+  await expect(mockups.locator('.mockup-window')).toHaveAttribute('href','https://mfcc.delqurolabs.dev/');
+  await expect(mockups.getByRole('link',{name:/Open MFCC meet the doctors/})).toHaveAttribute('href','https://mfcc.delqurolabs.dev/about-us/');
+  await expect(mockups.getByRole('link',{name:/Open MFCC patient resources/})).toHaveAttribute('href','https://mfcc.delqurolabs.dev/patients/');
+  await expect(mockups.getByRole('link',{name:/Download preview PNGs/})).toHaveAttribute('download','');
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
   await context.close();
 });
