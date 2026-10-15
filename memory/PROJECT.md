@@ -5,7 +5,7 @@
 The owner clarified that PlotPerks is not public. Remove it from the manifest,
 homepage, catalog, sitemap, icons, and published detail pages; its now-empty
 Garden category is removed too. Do not restore it because its URL responds.
-The current public catalog has 15 entries across six categories: one available,
+The combined public catalog has 16 entries across six categories: two available,
 six public previews, two clinic-access listings, and six in development.
 
 Product cards now receive larger, distinct conceptual illustrations with an
@@ -27,6 +27,43 @@ covered all 15 illustrations, mobile overflow, privacy, and the opening poster.
 The stylesheet is versioned to avoid mixing new markup with cached old CSS.
 This follow-up is part of the authorized website publication; container CI and
 production verification remain release gates.
+
+AI Quest's concurrently merged public listing is retained, with a matching
+sixteenth illustration. Regenerate from the combined manifest when integrating
+catalog work; do not overwrite unrelated product releases.
+
+## AI Quest standalone public release — 2026-10-15
+
+**VERIFIED:** `https://aiquest.delqurolabs.app` is live on a separate Coolify
+application, `ndxae4qh1ehoudeinw7hxryh`, in DelQuro.com / production. Hosting
+PR #10 merged as `86a7794ad7ce635869f9bfccd30f1286f9c92d25` after both CI jobs
+passed run `38774669714` at reviewed head `19988712501eef21f90a55bd5bc6b6864dbc3e88`.
+Deployment `jtj1jid4ohqtmlq9azgaohcs` built that merge and became healthy at
+17:09:37 UTC, with a completed rolling update. The existing DNS already pointed
+to the server; no DNS records were changed. Requested-domain HTTP redirects
+302 to HTTPS, and normal TLS validation succeeds.
+
+The live host passes all eight verification groups, including all 142 delivered
+file hashes, MIME/cache rules, health, security headers, HEAD, and genuine 404s
+for missing assets/private paths. The independent root website checker excludes
+top-level deployment packages; AI Quest has its own full host checker. CI also
+passes its three isolated learning/mobile/progress tests and the root website
+suite. Learner progress remains browser/origin-local; transfer uses explicit
+export/import. Existing private Sites and authenticated Warehouse deployments
+are retained. This launch adds no paid provider dispatch or account sync.
+
+All three fresh-context browser checks also pass against the public HTTPS host:
+searchable illustrated library, 375px navigation without overflow, wrong/correct
+lesson feedback, exactly 50 XP after reload, and official export/import to a
+second fresh context. Desktop (1440px) and phone (375px) captures were reviewed.
+No regular learner browser profile was used for completion tests.
+
+The catalog publication adds one public available AI Quest entry with a unique
+book/trail icon and illustrated preview, generated detail page and launch link.
+The app's live checks precede that listing. All 17 local website browser tests,
+generation/catalog/link checks pass; other product gates and all 16 prior
+entries remain unchanged. The listing itself still needs its merged deployment
+and live verification; do not infer those from this pre-publication receipt.
 
 ## AI Quest public hosting preparation — 2026-10-15
 

@@ -46,3 +46,11 @@ Learner progress, notes and preferences stay in this browser and origin. This pu
 - 170 input hashes, 142 served files, **6,558,735 bytes**, all 138 WebPs byte-identical to canonical and fully raw-decoded.
 - Two full exports produced identical manifest/delivery hashes. TypeScript, Vite production build, exporter check, structural host check and owned-file whitespace checks pass. Vite's existing large-chunk advisory remains.
 - Docker is unavailable on this Windows host. Container build, `nginx -t` and the real nginx HTTP checks are **not run locally**; CI must supply those results before hosting. Structural checks do not claim live verification. Hosting/account changes, commits/pushes and publication are coordinator-owned.
+
+## Verified public release — 2026-10-15
+
+Hosting PR #10 merged as `86a7794ad7ce635869f9bfccd30f1286f9c92d25` after CI run `38774669714` passed both container jobs at reviewed head `19988712501eef21f90a55bd5bc6b6864dbc3e88`. That CI supplies the Docker build, nginx configuration, actual HTTP and isolated browser verification omitted locally.
+
+Coolify application `ndxae4qh1ehoudeinw7hxryh` uses this Dockerfile on main, context `/`, port 80 and the requested HTTPS domain. Deployment `jtj1jid4ohqtmlq9azgaohcs` built the merge above and became healthy at 17:09:37 UTC. The existing DNS matched the server without a record change. `https://aiquest.delqurolabs.app` passes all eight host-check groups, including all 142 byte hashes and private/missing-path exclusions. HTTP redirects 302 to the same HTTPS address; TLS verification succeeds normally. Preserve this separately hosted public version alongside the original private and Warehouse versions.
+
+All three launch browser tests pass against the public HTTPS domain using fresh Edge contexts. They verify the 1.9.0 dashboard and illustrated search, 375px navigation without overflow, lesson feedback, one-time XP across reload, and official progress export/import into a second fresh context. Independently reviewed 1440px desktop and 375px phone screenshots confirm the deployed layout. Completion tests did not use a normal learner profile.

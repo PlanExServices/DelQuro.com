@@ -290,6 +290,25 @@
       "linkCheck": {
         "titleIncludes": "Cat's Journey"
       }
+    },
+    {
+      "id": "ai-quest",
+      "name": "AI Quest",
+      "icon": "ai-quest",
+      "motion": "sequence",
+      "color": "#9b9df0",
+      "category": "build",
+      "description": "Build practical AI skills through 180 progressive lessons, quizzes, and illustrated command, model, and prompt guides.",
+      "detail": "apps/ai-quest.html",
+      "visibility": "public",
+      "reviewedOn": "2026-10-15",
+      "availability": "available",
+      "launch": "https://aiquest.delqurolabs.app",
+      "highlight": true,
+      "releaseNote": "Explore without an AI API key or sign-in. Progress saves in this browser and can be exported or imported. There is no live AI tutor or account-based progress sync.",
+      "linkCheck": {
+        "titleIncludes": "AI Quest"
+      }
     }
   ]
 }

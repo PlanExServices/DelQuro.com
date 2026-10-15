@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" aria-hidden="true">
+  <path class="demo-guide" d="M21 36h278"/>
+  <g class="demo-task">
+    <rect x="20" y="11" width="82" height="50" rx="9"/>
+    <circle cx="34" cy="24" r="6"/>
+    <path d="m31 24 2 2 4-5M46 23h42M46 31h31M32 44h57M32 51h40"/>
+  </g>
+  <g class="demo-task">
+    <rect x="119" y="11" width="82" height="50" rx="9"/>
+    <circle cx="133" cy="24" r="6"/>
+    <path d="m130 24 2 2 4-5M145 23h42M145 31h31M132 44h57M132 51h40"/>
+  </g>
+  <g class="demo-task">
+    <rect x="218" y="11" width="82" height="50" rx="9"/>
+    <path d="M232 21c4-2 8-1 12 2v23c-4-3-8-4-12-2zm24 0c-4-2-8-1-12 2v23c4-3 8-4 12-2zM262 24h24M262 31h20M262 42h23"/>
+    <circle class="demo-node" cx="287" cy="51" r="4"/>
+  </g>
+</svg>
