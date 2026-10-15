@@ -1,0 +1,15 @@
+# This Dockerfile-specific allowlist overrides the root ignore's deploy exclusion.
+**
+!deploy/
+!deploy/ai-quest/
+!deploy/ai-quest/Dockerfile
+!deploy/ai-quest/Dockerfile.dockerignore
+!deploy/ai-quest/nginx.conf
+!deploy/ai-quest/site/
+!deploy/ai-quest/site/index.html
+!deploy/ai-quest/site/maintenance.json
+!deploy/ai-quest/site/assets/
+!deploy/ai-quest/site/assets/*.css
+!deploy/ai-quest/site/assets/*.js
+!deploy/ai-quest/site/art/
+!deploy/ai-quest/site/art/*.webp
