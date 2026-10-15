@@ -2,6 +2,16 @@
 
 ## Live site and release state
 
+Latest verified release: PR #12, merge `4c51e19`, deployed manually through
+Coolify as `vgcrscpleah3bs6pu3actrzf` on October 15. PlotPerks is withheld,
+all 16 current cards have individual linked illustrations, and William's video
+uses a clean opening poster. Both CI jobs passed run `38775985082` on reviewed
+head `b8eedb3`; production passed 35 nginx checks, 79 internal URLs, and all 18
+website browser tests. GitHub push webhook delivery remains unverified.
+The Rollback view had no retained images before this deployment; rebuilding
+a prior source revision is the fallback. The preceding successful website
+deployment was `su8umqxu9ongicna471oawmh` at `05752cf`.
+
 The canonical source is `PlanExServices/DelQuro.com`. On 2026-10-09 the sampled
 live HTML, CSS, JavaScript, and images matched main at `86e7a13` byte for byte
 after normalizing text line endings. The October 15 audit still observed the

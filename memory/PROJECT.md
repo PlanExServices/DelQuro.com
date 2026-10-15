@@ -2,6 +2,15 @@
 
 ## Catalog artwork and William intro correction — 2026-10-15
 
+**VERIFIED LIVE:** PR #12 merged as `4c51e199db3c6698841c39c907aa457afe158ae0`
+after both container CI jobs passed run `38775985082` on reviewed head
+`b8eedb38ab365bb5cdff7d6863ba1b41db8ea81b`. Manual Coolify deployment
+`vgcrscpleah3bs6pu3actrzf` succeeded in 59 seconds. Production passed 35 nginx
+checks, 79 internal URLs, and all 18 website browser tests. The live opening
+poster matches the reviewed frame byte for byte. PlotPerks' former page and
+both character-sheet assets return genuine 404s. Screenshots and receipts are
+in the task's external `cards-video-2026-10-15` evidence folder.
+
 The owner clarified that PlotPerks is not public. Remove it from the manifest,
 homepage, catalog, sitemap, icons, and published detail pages; its now-empty
 Garden category is removed too. Do not restore it because its URL responds.
@@ -25,8 +34,11 @@ All 18 browser cases passed across the full run and a targeted rerun after
 correcting the artwork-hover target in the test. Independent visual review
 covered all 15 illustrations, mobile overflow, privacy, and the opening poster.
 The stylesheet is versioned to avoid mixing new markup with cached old CSS.
-This follow-up is part of the authorized website publication; container CI and
-production verification remain release gates.
+This follow-up was published under the existing website release authorization.
+GitHub webhook delivery is still unverified; this release was manually deployed.
+The Rollback view reported no retained images before this deployment, so a
+rollback would require rebuilding a known prior revision rather than assuming
+an immediately available image.
 
 AI Quest's concurrently merged public listing is retained, with a matching
 sixteenth illustration. Regenerate from the combined manifest when integrating

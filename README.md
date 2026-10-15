@@ -50,6 +50,11 @@ React Bits adaptations and source revision are recorded in
 
 ## Publishing and repository history
 
+The latest verified website release is `4c51e19` (PR #12): private PlotPerks
+removed, illustrated product cards, and William's opening poster corrected.
+It passed container CI and live server, link, and browser checks. AI Quest's
+concurrently merged public listing is retained.
+
 Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. The user approved the
 website release on October 15 and PR #9 was merged into main at `dcb43fe`.
 The owner manually deployed `56b0581` through Coolify; the refreshed live site
