@@ -1,22 +1,28 @@
 # DelQuro.com deployment notes
 
-## Live site and review branch
+## Live site and release state
 
 The canonical source is `PlanExServices/DelQuro.com`. On 2026-10-09 the sampled
 live HTML, CSS, JavaScript, and images matched main at `86e7a13` byte for byte
 after normalizing text line endings. The October 15 audit still observed the
 older 23-app homepage, nginx 1.27.5, and homepage responses for missing routes.
 
-The refreshed site is proposed in draft PR #9 on `codex/delquro-refresh`.
-It is not merged or deployed. Its Dockerfile pins nginx 1.30.5 by digest and
+The user approved publication on October 15. PR #9 was merged into main at
+`dcb43fe992f160111142d01e8b5df0b11acd519e`, and main-branch CI run
+`38771875231` passed. Fresh requests after that merge still returned the old
+homepage and catalog; production publication has not yet been verified.
+
+The refresh Dockerfile pins nginx 1.30.5 by digest and
 copies only public site files. Its root `nginx.conf` returns genuine 404s,
 preserves response headers, and uses revalidating asset caches. The older
 configuration under `deploy/nginx/` is not used by that Dockerfile.
 
 The observed live server does not establish the hosting application's source
 branch, automatic deploy setting, or rollback method. GitHub Pages was disabled
-when checked on October 9. A successful push to a review branch is not evidence
-of a production deployment.
+when checked on October 9. A successful push or merge is not evidence of a
+production deployment. Connect the hosting application and deploy from main,
+then verify the real public content. The previous production content corresponds
+to `86e7a13`; confirm the host's rollback method before using it.
 
 ## Release procedure
 

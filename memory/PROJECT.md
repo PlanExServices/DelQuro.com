@@ -1,11 +1,30 @@
 # DelQuro.com project memory
 
+## Authorized release — 2026-10-15
+
+The user explicitly approved publishing the website fixes after seeing the old
+live links. This supersedes the earlier no-live-changes boundary for this website
+release only; linked apps and DNS are still outside scope.
+
+PR #9 was marked ready and merged with its reviewed head pinned to `e07a237`.
+The merge commit is `dcb43fe992f160111142d01e8b5df0b11acd519e`; main-branch
+CI run `38771875231` passed. The local editing home now follows `main`.
+
+Production publication remains unverified: after the merge, fresh homepage and
+catalog requests still matched the old `86e7a13` content and nginx 1.27.5.
+The session has no connected hosting browser or authenticated Coolify API.
+The owner has been asked to connect the Coolify application using
+`PlanExServices/DelQuro.com`, or deploy it there and report back. Deployment
+approval is already granted; do not ask for that approval again. Confirm the
+hosting app/source/branch and verify actual live content before saying fixed.
+
 ## Current catalog — 2026-10-15
 
 This section supersedes the historical 30-entry catalog and availability claims
 below. The user requested current destinations, honest readiness/access labels,
-and removal of private products from the public site. Work remains in draft
-PR #9 on `codex/delquro-refresh`; no merge, deployment, DNS, or linked-app changes.
+and removal of private products from the public site. This work was prepared in
+PR #9 on `codex/delquro-refresh`; see the authorized-release update above for
+the later merge and current publication status.
 
 The public-only manifest now contains 16 listings: one available guide, seven
 public previews (including the on-site AI Scripts templates), two clinic-access
