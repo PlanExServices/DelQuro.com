@@ -114,10 +114,10 @@ await check('health is exactly plain text', async () => {
   headers(response);
 });
 
-await check('directory redirect and headers', async () => {
+await check('relative directory redirect and headers', async () => {
   const response = await request('/Sounds', { method: 'HEAD' });
   assert.equal(response.status, 301);
-  assert.equal(new URL(response.headers.get('location'), base).pathname, '/Sounds/');
+  assert.equal(response.headers.get('location'), '/Sounds/');
   headers(response);
 });
 

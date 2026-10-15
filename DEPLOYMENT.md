@@ -34,9 +34,8 @@ of a production deployment.
    and response headers at the public domain.
 
 Do not change DNS, GitHub Pages, or older repositories as part of a content edit.
-Do not force-push main or embed tokens in Git remote URLs. The current request
-authorizes pushing review work while retaining the earlier no-live-changes
-boundary.
+Do not force-push main or embed tokens in Git remote URLs. Keep review work on
+its review branch until an explicit release request authorizes publication.
 
 ## Local nginx preview
 
