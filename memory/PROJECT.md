@@ -12,7 +12,7 @@ are preserved. Publication follows passing generation, catalog, link and
 container CI checks. Retain all other catalog releases and product access gates.
 
 
-## Webhook investigation and Garden recheck — 2026-10-15
+## Verified automatic website deployments and Garden recheck — 2026-10-15
 
 The owner requested fixing GitHub deployment webhooks and an independent agent
 to remove the Garden 21+ card. Fresh direct requests to both apex and www
@@ -20,41 +20,33 @@ homepage/catalog/sitemap match the current generated files; Garden and PlotPerks
 are absent and the old PlotPerks detail route returns 404. No additional catalog
 edit or deployment was necessary.
 
-The repository's Webhooks settings, viewed using the existing PlanExServices
-owner browser session, initially contained no configured hooks. Coolify's website
-application has auto-deploy enabled and provides the GitHub manual endpoint
-`https://coolify.delquro.com/webhooks/source/github/events/manual`.
+**VERIFIED:** GitHub webhook `698684385` now sends JSON push events to
+`https://coolify.delquro.com/webhooks/source/github/events/manual`, with SSL
+verification, Active enabled, and the matching saved website GitHub secret.
+Coolify website application `alzcv5djn75qglgxi0du9zyx` uses
+`PlanExServices/DelQuro.com`, `main`, `HEAD`, and Deploy on push (webhooks).
 The API deploy URL is a different integration and must not be substituted.
-The owner completed GitHub account reauthentication and the credential handoff.
-GitHub webhook `698684385` is now saved with the correct endpoint, JSON format,
-push-only events, SSL verification, Active selected, and a configured secret.
-The initial ping succeeded, which proves reachability only. Real main push
-`7bc2b0c28387e72b250d71ed7577ed4fa11c51bd` delivered as
-`8b0b533e-c8c6-11f1-84c9-2df461066022` received HTTP 200 but a failed response:
-`No matching application or invalid signature.` No deployment was queued.
-Repository/branch match the delivery; independent source review confirms that
-the stored shorthand repository is supported. The owner is correcting the
-secret using the first GitHub row. GitLab's field was open in the original tab;
-it was hidden and the owner was asked to rotate that exposed GitLab secret.
-No secret value was entered or submitted by the agent. Browser password values
-are redacted; do not infer actual secret presence or length from them.
-CI run `38786250691` passed for the test commit. The owner subsequently confirmed
-the GitHub secret correction. Redelivery of latest main `72f8584` still returned
-the generic failure, but that event predates the correction. Test a fresh push
-to eliminate uncertainty over the signature used by an old delivery.
-Coolify's audit deduplicates similar signature failures across applications for
-five minutes; an AI Quest-only audit row does not prove the website was skipped.
-Fresh main push `8a63ba9` (delivery `727be46c-c8c8-11f1-9b72-c1c44c4640a9`)
-also received the generic signature/application failure and did not deploy.
-To reduce ambiguity, the agent loaded the website's saved Webhooks page afresh
-and used the secret copy button specifically within its GitHub section, without
-reading or displaying the value. The owner confirmed pasting and saving that
-clipboard value in GitHub; the UI confirms the hook was successfully updated.
-CI run `38788123199` passed for `8a63ba9`. This follow-up note triggers a fresh
-verification event after the corrected value was saved. Automatic deployment
-remains unverified until its delivery and Coolify deployment both succeed.
-Finish with a successful GitHub push delivery and a matching webhook-triggered
-Coolify deployment; a ping or manual deployment alone is insufficient proof.
+
+Fresh push `afe543d9722c2cf2c922410e58e3706c89f7d659` produced GitHub delivery
+`d7f428f4-c8cd-11f1-9e80-896c43e57fef`, returning HTTP 200 with status success,
+Deployment queued, and website deployment `do1gzoxivy0mkuxzcrepoaar`.
+Coolify records source **Webhook** and completed the healthy rolling update at
+19:23:50 UTC (3:23:50 PM Eastern). Both container CI jobs passed run
+`38793452664`; generation/catalog/local links passed (924 references, 147
+anchors), and production passed all 35 nginx checks and 79 crawled internal URLs.
+
+The repository originally had no hook; early tests then failed due to the
+mismatched secret. Using the copy button specifically for the website's saved
+GitHub secret, followed by the owner's paste/save in GitHub, fixed the problem.
+No secret value was displayed, entered, or submitted by the agent during that
+transfer. An earlier exposed GitLab field was hidden and the owner was asked
+to rotate that secret. Keep credentials out of project notes and chat.
+
+Failure-analysis lessons: an HTTP 200 ping proves reachability only; inspect the
+push response body and matching Webhook deployment. Coolify accepts shorthand
+repository names. Its audit deduplicates similar signature failures across apps
+for five minutes, so an AI Quest-only failure row does not prove the website was
+skipped. Browser password values are redacted; never infer their actual length.
 
 ## Catalog artwork and William intro correction — 2026-10-15
 
