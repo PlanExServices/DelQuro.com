@@ -49,5 +49,5 @@ test('redesigned routes fit mobile and tablet and retain forced-color content',a
   await page.goto('/');
   await expect(page.getByRole('link',{name:'Explore available apps',exact:true})).toBeVisible();
   await expect(page.getByRole('heading',{name:'Client website mockups',exact:true})).toBeVisible();
-  await expect(page.getByRole('link',{name:/View MFCC mockup/})).toBeVisible();
+  await expect(page.getByRole('link',{name:/Open live preview/})).toBeVisible();
 });

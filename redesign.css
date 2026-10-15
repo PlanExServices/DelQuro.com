@@ -104,6 +104,7 @@ h1,h2,h3 { text-wrap:balance; }
 .mockup-copy>p.mockup-note { font-size:13px; color:#516560; border-color:#618a77; }
 .mockup-copy .btn { background:#173e32; border-color:#173e32; color:#fff; }
 .mockup-copy .btn:hover { background:#215841; }
+.client-websites .mockup-download { color:#24664f; font-size:14px; }
 .client-websites :focus-visible { outline-color:#1c715a; }
 .category-section { background:var(--bg); border:0; }
 .category-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
@@ -234,6 +235,7 @@ footer { padding-top:64px; }
   .discovery-grid b { font-size:24px; min-width:32px; }
   .website-mockup { grid-template-columns:1fr; }
   .mockup-window { margin:22px 22px 0; }
+  .mockup-gallery { padding:22px 22px 0; }
   .mockup-copy { padding:28px; }
   .mockup-copy h3 { max-width:100%; font-size:30px; }
   .category-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
