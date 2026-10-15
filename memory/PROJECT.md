@@ -1,5 +1,17 @@
 # DelQuro.com project memory
 
+## MFCC portfolio screenshot refresh — 2026-10-15
+
+The user requested an updated project image on DelQuro.com. The MFCC mockup
+now uses assets/client-mockups/mfcc-preview-2026-10-15.jpg, a fresh capture of
+https://mfcc.delqurolabs.dev/ with the watermark removed. The JPEG is normalized
+to the existing 1280 by 800 card dimensions and optimized for delivery. The
+new filename prevents reuse of the prior cached, watermarked screenshot.
+The old screenshot is removed; preview labels, link, dimensions and alt text
+are preserved. Publication follows passing generation, catalog, link and
+container CI checks. Retain all other catalog releases and product access gates.
+
+
 ## Webhook investigation and Garden recheck — 2026-10-15
 
 The owner requested fixing GitHub deployment webhooks and an independent agent
