@@ -68,9 +68,6 @@ test('release labels, notes, and actions match the public catalog',async({page})
   }
 
   await expect(page.locator('#choremouse .card-actions .btn')).toHaveAttribute('href','https://choremouse.app/');
-  await expect(page.locator('#plotperks')).toHaveAttribute('data-category','garden');
-  await expect(page.locator('#plotperks .card-category')).toHaveText('Garden · 21+');
-  await expect(page.locator('#plotperks .card-release-note')).toContainText('For adults 21+');
   await expect(page.locator('#what-list .card-release-note')).toContainText('recipe imports use sample content');
   await expect(page.locator('#what-list .card-release-note')).toContainText('not saved between sessions');
   await expect(page.locator('#megatory-live .card-release-note')).toContainText('still in progress');
@@ -94,7 +91,7 @@ test('clinic-only products have contact actions and no public app links',async({
 });
 
 test('public previews identify their destination and limits on detail pages',async({page})=>{
-  for(const id of ['choremouse','plotperks','what-list','megatory-live']){
+  for(const id of ['choremouse','what-list','megatory-live']){
     const p=product(id);
     expect(p.availability).toBe('preview');
     await page.goto(`/${p.detail}`);
@@ -103,6 +100,21 @@ test('public previews identify their destination and limits on detail pages',asy
     await expect(status.locator('p')).toHaveText(p.releaseNote);
     await expect(status.getByRole('link',{name:/Try preview/})).toHaveAttribute('href',p.launch);
   }
+});
+
+test('private PlotPerks and its empty category are not published',async({page})=>{
+  expect(product('plotperks')).toBeUndefined();
+  expect(categories.some(c=>c.id==='garden')).toBe(false);
+  await page.goto('/products.html');
+  await expect(page.locator('#plotperks,[data-category="garden"]')).toHaveCount(0);
+  await expect(page.getByLabel('Category',{exact:true}).locator('option[value="garden"]')).toHaveCount(0);
+  await expect(page.getByRole('link',{name:/PlotPerks/i})).toHaveCount(0);
+  await page.goto('/');
+  await expect(page.locator('.app-card').filter({hasText:/PlotPerks/i})).toHaveCount(0);
+  await expect(page.locator('a[href="/products.html#garden"]')).toHaveCount(0);
+  const route=await page.goto('/apps/plot-perks.html');
+  expect(route.status()).toBe(404);
+  expect(fs.existsSync(new URL('../apps/plot-perks.html',import.meta.url))).toBe(false);
 });
 
 test('the catalog and mobile navigation work without JavaScript',async({browser,baseURL})=>{
@@ -201,9 +213,9 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   await expect(page.getByRole('navigation',{name:'Primary'})).toBeVisible();
   expect(await page.locator('body').evaluate(el=>el.scrollWidth<=innerWidth)).toBe(true);
   await page.getByRole('button',{name:'Close navigation'}).tap();
-  await page.locator('[data-product]').first().tap();
+  await page.locator('[data-product] .card-top').first().tap();
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
-  expect(await page.locator('[data-product] .card-demo .demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.locator('[data-product] .card-demo .art-focal').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   await page.goto(baseURL+'/');
   await page.locator('.app-card').first().scrollIntoViewIfNeeded();
   await page.screenshot({path:'test-results/mini-cards-mobile.png'});
@@ -224,7 +236,8 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
 test('product previews stay clear and animate for pointer and keyboard focus',async({page})=>{
   await page.goto('/');
   const card=page.locator('.app-card').first();
-  const highlighted=['choremouse','plainslang','plotperks','megatory-live','delquro-zen','cats-journey','ai-quest'];
+  const highlighted=['choremouse','plainslang','megatory-live','delquro-zen','cats-journey','ai-quest'];
+  expect(products.filter(p=>p.highlight).map(p=>p.id)).toEqual(highlighted);
   await expect(page.locator('.app-card')).toHaveCount(highlighted.length);
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(highlighted.length);
   for(const id of highlighted){
@@ -233,6 +246,12 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
     await expect(homeCard).toHaveCount(1);
     await expect(homeCard.locator('.availability')).toHaveText(stages[p.availability].label);
     await expect(homeCard.locator('.card-actions .btn')).toHaveAttribute('href',p.launch);
+    const art=homeCard.locator('.card-demo[data-preview="specific"]');
+    await expect(art).toHaveAttribute('data-demo',id);
+    await expect(art).toHaveAttribute('href',`/${p.detail}`);
+    await expect(art).toHaveAttribute('aria-label',`View ${p.name} details`);
+    await expect(art.locator('svg.card-art')).toHaveAttribute('aria-hidden','true');
+    await expect(art.locator('use.art-focal')).toHaveAttribute('href',`/assets/product-scenes.svg#${id}`);
   }
   await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#choremouse');
   await expect(card).toHaveAttribute('data-motion','sequence');
@@ -241,20 +260,20 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--tilt-y'))).not.toBe('');
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  expect(await card.locator('.demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('demo-check');
+  const art=card.locator('.card-demo');
+  await art.hover();
+  await expect.poll(()=>art.locator('.art-focal').evaluate(el=>getComputedStyle(el).animationName)).not.toBe('none');
   const [preview,copy]=await Promise.all([card.locator('.card-demo').evaluate(el=>el.getBoundingClientRect().toJSON()),card.locator('.card-description').evaluate(el=>el.getBoundingClientRect().toJSON())]);
   expect(preview.bottom).toBeLessThan(copy.top);
+  expect(preview.height).toBeGreaterThan(120);
   await page.screenshot({path:'test-results/mini-cards-desktop.png'});
-  await card.getByRole('link',{name:/Details/}).focus();
+  await art.focus();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Shift+Tab');
+  await expect(art).toBeFocused();
   await page.mouse.move(0,0);
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  expect(await card.locator('.demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('demo-check');
-  for(const [name,motion,selector,animation] of [['PlainSlang','signal','.demo-translation','demo-translate'],['PlotPerks','sway','.demo-leaf','demo-grow'],['Megatory Live','build','.demo-stock','demo-stock'],['DelQuro Zen','breathe','.demo-generic-glyph','scene-breathe-mark'],['Cat’s Journey','glide','.demo-generic-glyph','scene-glide']]){
-    const product=page.locator('.app-card').filter({hasText:name});
-    await expect(product).toHaveAttribute('data-motion',motion);
-    await product.hover();
-    expect(await product.locator(selector).first().evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
-  }
+  await expect.poll(()=>art.locator('.art-focal').evaluate(el=>getComputedStyle(el).animationName)).not.toBe('none');
   const tile=page.locator('.category-tile').first();
   await expect(tile).toHaveAttribute('data-motion','sequence');
   await tile.focus();
@@ -270,14 +289,14 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
   await expect(page.locator('.app-card .product-symbol img[src="/assets/dq-mark.png"]')).toHaveCount(products.filter(p=>p.icon==='delquro-labs').length);
   await expect(page.locator('.app-card[data-motion]')).toHaveCount(products.length);
   await expect(page.locator('.app-card .card-demo')).toHaveCount(products.length);
-  await expect(page.locator('.app-card .card-demo[data-preview="specific"]')).toHaveCount(6);
-  const quest=page.locator('.app-card').filter({has:page.getByRole('heading',{name:'AI Quest',exact:true})});
-  await expect(quest.locator('.card-demo')).toHaveAttribute('data-preview','specific');
-  await expect(quest.locator('.demo-task')).toHaveCount(3);
-  for(const [name,selector,animation] of [['ChoreMouse','.demo-task','demo-check'],['PlainSlang','.demo-translation','demo-translate'],['PlotPerks','.demo-leaf','demo-grow'],['Megatory Live','.demo-stock','demo-stock'],['VetForm GO','.demo-form-tick','demo-sign']]){
-    const product=page.locator('.app-card').filter({hasText:name});
-    await product.hover();
-    expect(await product.locator(selector).first().evaluate(el=>getComputedStyle(el).animationName)).toBe(animation);
+  await expect(page.locator('.app-card .card-demo[data-preview="specific"]')).toHaveCount(products.length);
+  for(const p of products){
+    const art=page.locator(`#${p.id} .card-demo`);
+    await expect(art).toHaveAttribute('data-demo',p.id);
+    await expect(art).toHaveAttribute('href',`/${p.detail}`);
+    await expect(art).toHaveAttribute('aria-label',`View ${p.name} details`);
+    await expect(art.locator('svg.card-art')).toHaveAttribute('aria-hidden','true');
+    await expect(art.locator('use.art-focal')).toHaveAttribute('href',`/assets/product-scenes.svg#${p.id}`);
   }
 });
 
@@ -292,12 +311,20 @@ test('reduced motion is static immediately and content stays visible',async({pag
   await page.goto('/products.html');await expect(visible(page)).toHaveCount(products.length);
   await page.mouse.move(200,620);
   await expect(page.locator('[data-product]').first()).not.toHaveAttribute('style',/--spot-x/);
-  expect(await page.locator('[data-product] .card-demo .demo-task').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
+  expect(await page.locator('[data-product] .card-demo .art-focal').first().evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
 });
 
 test('video and audio load, play and seek without missing sources',async({page})=>{
   await page.goto('/about.html');
   const video=page.locator('video');await expect(video).toHaveCount(1);
+  await expect(video).toHaveAttribute('poster','assets/william-intro-poster.jpg?v=20261015');
+  const poster=await video.evaluate(async el=>{
+    const image=new Image();image.src=el.poster;await image.decode();
+    return {width:image.naturalWidth,height:image.naturalHeight};
+  });
+  expect(poster).toEqual({width:720,height:1280});
+  expect(fs.existsSync(new URL('../assets/william-delquro-front.jpg',import.meta.url))).toBe(false);
+  expect(fs.existsSync(new URL('../assets/william-delquro-front.webp',import.meta.url))).toBe(false);
   await video.evaluate(async el=>{el.muted=true;await el.play()});
   await expect.poll(()=>video.evaluate(el=>el.currentTime)).toBeGreaterThan(0);
   expect(await video.evaluate(el=>el.error)).toBeNull();

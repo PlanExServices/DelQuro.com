@@ -16,7 +16,7 @@ sections, including client website mockups, are defined in the generator.
 
 As reviewed on October 15, 2026, `catalog/products.json` is a curated,
 public-only manifest of 16 entries. Its four availability stages are
-`available` (1), `preview` (7), `limited-access` (2), and `in-development`
+`available` (2), `preview` (6), `limited-access` (2), and `in-development`
 (6). A listing describes what visitors can currently access; it does not by
 itself certify a production release. Keep the private project inventory
 outside this repository. Add a public listing only when its identity, access

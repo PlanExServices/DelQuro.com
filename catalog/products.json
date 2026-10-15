@@ -49,14 +49,6 @@
       "color": "#84c8dc",
       "name": "Build & learn",
       "description": "Explore, learn, and make something."
-    },
-    {
-      "id": "garden",
-      "icon": "category-garden",
-      "motion": "sway",
-      "color": "#7cc46a",
-      "name": "Garden · 21+",
-      "description": "On-device plant care for adult growers."
     }
   ],
   "products": [
@@ -110,25 +102,6 @@
       "releaseNote": "The public guide is open without an account. Browse the glossary and explore slang by topic.",
       "linkCheck": {
         "titleIncludes": "PlainSlang"
-      }
-    },
-    {
-      "id": "plotperks",
-      "name": "PlotPerks",
-      "icon": "plotperks",
-      "motion": "sway",
-      "color": "#7cc46a",
-      "category": "garden",
-      "description": "Track plants, care plans, and reminders on your device, with 21+ strain guides.",
-      "detail": "apps/plot-perks.html",
-      "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "preview",
-      "launch": "https://delqurolabs.github.io/PlotPerks/",
-      "highlight": true,
-      "releaseNote": "For adults 21+. Progress stays on your device; export a backup to keep a separate copy.",
-      "linkCheck": {
-        "titleIncludes": "PlotPerks"
       }
     },
     {
