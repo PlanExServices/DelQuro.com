@@ -101,6 +101,9 @@ function sourceFiles() {
   function walk(directory) {
     for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
       if (['.git', 'node_modules', '.agents', '.codex'].includes(entry.name)) continue;
+      // Independent deployment packages have their own origin, asset root and
+      // host checker; they are not published by the root website Dockerfile.
+      if (directory === ROOT && entry.name === 'deploy') continue;
       const absolute = path.join(directory, entry.name);
       if (entry.isDirectory()) walk(absolute);
       else if (/\.(html|css|webmanifest)$/i.test(entry.name)) found.push(absolute);

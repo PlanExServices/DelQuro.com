@@ -10,6 +10,36 @@ permissions:
   contents: read
 
 jobs:
+  ai-quest-nginx:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Verify the standalone AI Quest snapshot
+        run: node scripts/check-ai-quest-host.mjs --static
+      - name: Build standalone AI Quest
+        run: docker build --file deploy/ai-quest/Dockerfile --tag delquro-aiquest:ci .
+      - name: Validate and start AI Quest
+        run: |
+          docker run --rm delquro-aiquest:ci nginx -t
+          docker run --detach --name delquro-aiquest-ci --publish 127.0.0.1:8081:80 delquro-aiquest:ci
+      - name: Verify delivered files and HTTP behavior
+        run: node scripts/check-ai-quest-host.mjs http://127.0.0.1:8081 .
+      - name: Install browser verification tools
+        run: |
+          npm ci --ignore-scripts
+          npx playwright install --with-deps chromium
+      - name: Verify AI Quest learning and mobile behavior
+        run: AI_QUEST_URL=http://127.0.0.1:8081 npx playwright test tests/ai-quest-host.spec.mjs
+      - name: Container logs
+        if: always()
+        run: docker logs delquro-aiquest-ci || true
+      - name: Remove the test container
+        if: always()
+        run: docker rm --force delquro-aiquest-ci || true
   static-and-nginx:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
