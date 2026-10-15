@@ -28,6 +28,29 @@ The stylesheet is versioned to avoid mixing new markup with cached old CSS.
 This follow-up is part of the authorized website publication; container CI and
 production verification remain release gates.
 
+## AI Quest public hosting preparation — 2026-10-15
+
+The user explicitly requested public AI Quest at `https://aiquest.delqurolabs.app`
+on the existing Coolify server and a live DelQuro.com listing after verification.
+This release starts from current main `dcb43fe992f160111142d01e8b5df0b11acd519e`;
+the historical draft/older-live statements below describe earlier checkpoints.
+
+`deploy/ai-quest/` is a separate standalone container with its own Dockerfile,
+Dockerfile-specific context allowlist, nginx configuration, delivery manifest,
+and public runtime snapshot. The root website image still excludes `deploy/`.
+Canonical source remains the separate AI Quest project; this is a versioned
+delivery snapshot, not a second editable curriculum. Source pin and reproducible
+export/check instructions are in `deploy/ai-quest/README.md`.
+
+Local verification: all 138 WebPs match canonical bytes; 142 allowlisted served
+files and 170 source hashes; public maintenance metadata excludes private paths
+and reviewer/candidate fields. All three isolated artifact browser tests pass,
+including 375px navigation, lesson feedback, one-time XP after reload, and
+official progress export/import into another fresh context. No learner profile
+was read. Container HTTP checks and public HTTPS verification are release gates;
+preparation alone does not establish live status. Preserve existing private
+Sites/Warehouse deployments and explicit origin-to-origin progress transfers.
+
 ## Authorized release — 2026-10-15
 
 The user explicitly approved publishing the website fixes after seeing the old
