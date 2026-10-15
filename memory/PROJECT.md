@@ -10,13 +10,28 @@ PR #9 was marked ready and merged with its reviewed head pinned to `e07a237`.
 The merge commit is `dcb43fe992f160111142d01e8b5df0b11acd519e`; main-branch
 CI run `38771875231` passed. The local editing home now follows `main`.
 
-Production publication remains unverified: after the merge, fresh homepage and
-catalog requests still matched the old `86e7a13` content and nginx 1.27.5.
-The session has no connected hosting browser or authenticated Coolify API.
-The owner has been asked to connect the Coolify application using
-`PlanExServices/DelQuro.com`, or deploy it there and report back. Deployment
-approval is already granted; do not ask for that approval again. Confirm the
-hosting app/source/branch and verify actual live content before saying fixed.
+Publication was subsequently VERIFIED after the owner started manual deployment
+`a8oqbjwilglxbkzsdpcmx9bp` of `56b0581`. The authenticated Coolify browser
+identified project DelQuro.com, environment production, and application
+`alzcv5djn75qglgxi0du9zyx`, using Public GitHub source
+`PlanExServices/DelQuro.com` on main. Six sampled live files match the reviewed
+release after line-ending normalization. Production passed all 31 nginx checks,
+78 crawled internal URLs, and all 17 browser tests. The new product cards,
+ChoreMouse preview link, and MFCC section are live at www.delquro.com.
+
+Coolify Advanced > Deployment > Auto deploy is already set to Deploy on push
+(webhooks). The application uses Public GitHub, so repository event delivery
+requires a manual GitHub webhook. The observed provider URL is
+`https://coolify.delquro.com/webhooks/source/github/events/manual`.
+Configure the matching private secret directly in Coolify and GitHub, JSON
+payloads, push events, active, and SSL verification enabled. Do not store the
+secret in the repository or chat. GitHub hook existence/delivery has not yet
+been verified; a future main push must create a webhook deployment to prove it.
+
+The apex still serves HTTP 200 rather than redirecting to www. The recording's
+caption/transcript gap remains. Evidence is in live-release-verification.json
+outside the published tree. Release approval is already granted for this
+website; linked apps and DNS remain outside scope.
 
 ## Current catalog — 2026-10-15
 

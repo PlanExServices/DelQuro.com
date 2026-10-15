@@ -52,8 +52,9 @@ React Bits adaptations and source revision are recorded in
 
 Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. The user approved the
 website release on October 15 and PR #9 was merged into main at `dcb43fe`.
-Production publication is still awaiting hosting deployment and live verification;
-a successful push or merge does not establish that the public site has updated.
+The owner manually deployed `56b0581` through Coolify; the refreshed live site
+passed its server, internal-link, and browser checks. Coolify Auto deploy is on,
+but GitHub webhook delivery still needs verification; see the deployment notes.
 The approval covers this website release only. DNS and linked-app changes remain
 outside scope. Do not force-push or put a token in a remote URL.
 

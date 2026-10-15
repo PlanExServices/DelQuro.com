@@ -9,20 +9,39 @@ older 23-app homepage, nginx 1.27.5, and homepage responses for missing routes.
 
 The user approved publication on October 15. PR #9 was merged into main at
 `dcb43fe992f160111142d01e8b5df0b11acd519e`, and main-branch CI run
-`38771875231` passed. Fresh requests after that merge still returned the old
-homepage and catalog; production publication has not yet been verified.
+`38771875231` passed. The owner then started manual Coolify deployment
+`a8oqbjwilglxbkzsdpcmx9bp` of `56b0581`. The refreshed public site is now
+verified: six sampled files match the release, all 31 nginx checks passed,
+78 internal URLs passed the live crawl, and all 17 browser tests passed.
 
 The refresh Dockerfile pins nginx 1.30.5 by digest and
 copies only public site files. Its root `nginx.conf` returns genuine 404s,
 preserves response headers, and uses revalidating asset caches. The older
 configuration under `deploy/nginx/` is not used by that Dockerfile.
 
-The observed live server does not establish the hosting application's source
-branch, automatic deploy setting, or rollback method. GitHub Pages was disabled
-when checked on October 9. A successful push or merge is not evidence of a
-production deployment. Connect the hosting application and deploy from main,
-then verify the real public content. The previous production content corresponds
-to `86e7a13`; confirm the host's rollback method before using it.
+The authenticated dashboard identified Coolify project **DelQuro.com**,
+environment **production**, application **alzcv5djn75qglgxi0du9zyx**. Its source
+is **Public GitHub**, repository **PlanExServices/DelQuro.com**, branch **main**.
+GitHub Pages was disabled when checked on October 9. Keep the former production
+commit `86e7a13` as the rollback reference and verify the available previous
+deployment in Coolify's Rollback view before a future release.
+
+## GitHub push webhook
+
+Advanced > Deployment > Auto deploy already shows **Deploy on push (webhooks)**.
+For this Public GitHub source, configure the provider hook under the application's
+Webhooks > Manual Git webhooks > GitHub, then add or edit the matching hook at
+https://github.com/PlanExServices/DelQuro.com/settings/hooks.
+
+- Payload URL: `https://coolify.delquro.com/webhooks/source/github/events/manual`
+- Content type: `application/json`
+- Secret: the same private value saved in Coolify; copy it directly between UIs.
+- Events: Just the push event; Active and SSL verification enabled.
+
+The branch configured in Coolify is main. Confirm a real main push creates a
+webhook-sourced deployment in Coolify and a successful GitHub delivery. Hook
+existence and delivery have not yet been verified. Keep secrets out of this
+repository. See the [official instructions](https://coolify.io/docs/applications/deployments/manual-webhooks).
 
 ## Release procedure
 
