@@ -1,5 +1,48 @@
 # DelQuro.com project memory
 
+## Current catalog — 2026-10-15
+
+This section supersedes the historical 30-entry catalog and availability claims
+below. The user requested current destinations, honest readiness/access labels,
+and removal of private products from the public site. Work remains in draft
+PR #9 on `codex/delquro-refresh`; no merge, deployment, DNS, or linked-app changes.
+
+The public-only manifest now contains 16 listings: one available guide, seven
+public previews (including the on-site AI Scripts templates), two clinic-access
+products, and six projects in development. Seven listings have verified external
+destinations. PlainSlang is available; its public glossary search was exercised.
+ChoreMouse links to `https://choremouse.app/` as a preview and distinguishes its
+demo from the trial and subsequent paid subscription. What List uses sample
+imports and does not save lists between sessions. DelQuro Zen is a sleep-sounds
+prototype; Cat's Journey is an FE/PE Civil study app. PlotPerks belongs in
+Garden · 21+, with on-device storage and backup limitations disclosed.
+
+Connect and VetForm GO are clinic-access listings with contact actions only.
+The Veterinary Workflow Survey is a resource, and the studio belongs under
+About. Their former detail routes redirect to those public destinations.
+Restricted tools, uncertain product identities, and unverified placeholders
+were withheld. The detailed inventory and evidence stay outside this public
+repository in the task's `catalog-audit-2026-10-15` evidence folder.
+
+`scripts/catalog-model.mjs` defines the four stages and checks explicit public
+visibility declarations. These are structural checks, not proof of release or
+marketing approval. The generator stops before writing if it finds an unlisted
+app page; review such files explicitly. Removed listings must also be absent
+from published detail pages, icons, sitemap, and supporting-page references.
+Preserve the interactive AI Scripts library and its two public aliases.
+
+Run `npm run check:external` for opt-in HTTPS GET and page-identity checks.
+Some healthy apps reject HEAD; do not classify them from HEAD alone. A working
+URL, private/public source repo, login screen, health response, or successful
+build does not establish production readiness or intended public access.
+
+The candidate passed generation/catalog checks, 896 internal references,
+141 anchors, and all 17 browser tests, including clinic gates, preview labels,
+mobile, no-JavaScript, reduced motion, aliases, media, and AI Scripts. Critics
+reviewed classifications, public surfaces, generator behavior, and screenshots.
+Check the PR's exact-commit CI for nginx/container results; Docker is unavailable
+on this Windows host. The live site remains the older main-branch version.
+
 ## Refresh — 2026-10-11
 
 User approved a separate checkout from main, incorporating PR #8's 30-entry

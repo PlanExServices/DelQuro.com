@@ -2,13 +2,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { stages, movedPages, validateCatalog } from './catalog-model.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=name=>fs.readFileSync(path.join(root,name),'utf8');
-const {products,categories}=JSON.parse(read('catalog/products.json'));
-assert.equal(products.length,30,'Approved map has 30 entries');
+const data=JSON.parse(read('catalog/products.json'));
+validateCatalog(data);
+const {products,categories}=data;
 assert.equal(new Set(products.map(p=>p.id)).size,products.length,'Unique product ids');
 assert.equal(new Set(products.map(p=>p.detail)).size,products.length,'Unique detail pages');
-const allowed=new Set(['available','coming-soon','prototype','access-pending','studio']);
+const allowed=new Set(Object.keys(stages));
 const catalog=read('products.html'),home=read('index.html'),sitemap=read('sitemap.xml');
 const iconSprite=read('assets/product-icons.svg');
 const motions=new Set(['sequence','signal','sway','scan','build','orbit','glide','spark','breathe']);
@@ -30,7 +32,7 @@ for(const p of products){
   }
   assert(categories.some(c=>c.id===p.category),`Category for ${p.id}`);
   assert(allowed.has(p.availability),`Availability for ${p.id}`);
-  assert.equal(Boolean(p.launch),p.availability==='available',`Only approved available apps may launch: ${p.id}`);
+  assert.equal(p.visibility,'public',`Only public listings may be generated: ${p.id}`);
   if(p.launch)assert.equal(new URL(p.launch).protocol,'https:');
   assert.match(p.detail,/^apps\/[a-z0-9-]+\.html$/);
   const detail=read(p.detail);
@@ -40,13 +42,24 @@ for(const p of products){
   assert(catalog.includes(`id="${p.id}" data-product data-category="${p.category}" data-availability="${p.availability}"`),`Card for ${p.id}`);
   if(p.highlight){assert(p.launch,`Highlight is launchable: ${p.id}`);assert(home.includes(p.launch),`Home highlight link: ${p.id}`)}
 }
-for(const id of ['delquro-connect','vmta']){const p=products.find(p=>p.id===id);assert.equal(p.availability,'access-pending');assert(!read(p.detail).includes('target="_blank"'),'Gated detail has no app launcher');}
-assert.equal(products.filter(p=>p.launch).length,9);
-assert.equal([...catalog.matchAll(/data-preview="specific"/g)].length,9,'Every available app has a purpose-specific preview');
+for(const p of products.filter(p=>p.availability==='limited-access')){
+  assert(!p.launch,`Clinic-only listing has no launch: ${p.id}`);
+  assert(!read(p.detail).includes('target="_blank"'),'Clinic detail has no app launcher');
+}
+const expectedPages=new Set([...products.map(p=>p.detail),...Object.keys(movedPages),'apps/ai-agent-scripts.html','apps/ai-prompt-scripts.html']);
+for(const file of fs.readdirSync(path.join(root,'apps'))){
+  if(file.endsWith('.html'))assert(expectedPages.has('apps/'+file),`Unlisted app page would be published: ${file}`);
+}
+const expectedIcons=new Set([...products.map(p=>p.icon),...categories.map(c=>c.icon)]);
+for(const [,id] of iconSprite.matchAll(/<symbol id="([^"]+)"/g))assert(expectedIcons.has(id),`Unlisted icon would be published: ${id}`);
+const privateFixture=structuredClone(data);privateFixture.products[0].visibility='private';
+assert.throws(()=>validateCatalog(privateFixture),/Explicit public visibility/,'Private records fail before HTML generation');
+const gatedFixture=structuredClone(data);gatedFixture.products[0].availability='limited-access';gatedFixture.products[0].launch='https://example.invalid/';
+assert.throws(()=>validateCatalog(gatedFixture),/Restricted\/development projects cannot launch/,'Restricted products cannot receive public app buttons');
 assert.equal(products.find(p=>p.id==='megatory-live').category,'veterinary');
 assert.match(products.find(p=>p.id==='solar').description,/K–12/);
 assert(!/solar\.delquro\.com|plainslang\.com|choremouse\.com|99% Match/.test(catalog+home));
 assert(!sitemap.includes('/404.html')&&!sitemap.includes('index-inline'));
 const about=read('about.html');assert.match(about,/AI.rendered character/);assert(!/\.webm[?"']/.test(about));
 assert(read('assets/react-bits-LICENSE.txt').includes('Copyright (c) 2026 David Haz'));
-console.log('Catalog verified: 30 consistent entries, 9 launchable apps, gated access, metadata and source notices.');
+console.log(`Catalog verified: ${products.length} public entries, ${products.filter(p=>p.launch).length} public destinations; release labels, visibility declarations, published pages and metadata agree.`);

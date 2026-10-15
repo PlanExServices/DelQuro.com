@@ -250,6 +250,10 @@ footer{border-top:1px solid var(--line);padding:58px 0 0;background:#091519}.foo
 @media(forced-colors:active){.card-demo{border-color:CanvasText;background:Canvas}.card-demo::before{display:none}}
 
 /* Client website concepts stay separate from the product catalog. */
+.card-release-note{font-size:12px;line-height:1.7;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin:16px 0 18px}
+.availability.preview{color:#d5c8fa;border-color:#716583;background:#282536}
+.availability.in-development{color:#e7c394;border-color:#65533b;background:#29261f}
+.availability.limited-access{color:#ead39f;border-color:#706341;background:#282820}
 .hero-proof{flex-wrap:wrap;align-items:center;row-gap:12px}
 .hero-mockup-link{color:var(--teal);text-underline-offset:4px;min-height:24px}
 .client-websites{border-bottom:1px solid var(--line)}

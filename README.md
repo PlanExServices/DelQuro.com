@@ -14,10 +14,14 @@ availability sections, sitemap, and shared navigation/footer. Supporting-page
 bodies and the interactive AI Scripts library stay hand authored. Homepage
 sections, including client website mockups, are defined in the generator.
 
-Product availability and approved launch URLs are separate from project existence.
-Connect and VMTA have detail/contact actions only, pending confirmed security
-releases. Do not add unshipped feature claims. Source map: PR #8 at
-`be07b229f5bbefb77ab9f027b04962b311e10bca`; this draft does not merge #8 or #7.
+As reviewed on October 15, 2026, `catalog/products.json` is a curated,
+public-only manifest of 16 entries. Its four availability stages are
+`available` (1), `preview` (7), `limited-access` (2), and `in-development`
+(6). A listing describes what visitors can currently access; it does not by
+itself certify a production release. Keep the private project inventory
+outside this repository. Add a public listing only when its identity, access
+path, and release wording have been reviewed. Do not add unshipped feature
+claims or infer a launch from the existence of a repository or working URL.
 
 ## Preview and verification
 
@@ -26,6 +30,10 @@ server does not replace production nginx verification.
 
 Run `npm run check` for generated-file consistency, catalog gates, local assets,
 and anchors. These checks use Node only and do not require dependency installation.
+Run `npm run check:external` to make read-only GET identity checks of linked
+product destinations. This confirms the responses observed at check time; it
+does not establish product release readiness, application security, or that a
+service is suitable for unrestricted public use.
 Browser verification uses the development-only Playwright dependency:
 `npm ci`, `npx playwright install chromium`, and `SITE_URL` pointing to the site
 under test (default http://127.0.0.1:8080), then `npm run test:browser`.
