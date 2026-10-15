@@ -11,6 +11,29 @@ The old screenshot is removed; preview labels, link, dimensions and alt text
 are preserved. Publication follows passing generation, catalog, link and
 container CI checks. Retain all other catalog releases and product access gates.
 
+
+## Webhook investigation and Garden recheck — 2026-10-15
+
+The owner requested fixing GitHub deployment webhooks and an independent agent
+to remove the Garden 21+ card. Fresh direct requests to both apex and www
+homepage/catalog/sitemap match the current generated files; Garden and PlotPerks
+are absent and the old PlotPerks detail route returns 404. No additional catalog
+edit or deployment was necessary.
+
+The repository's Webhooks settings, viewed using the existing PlanExServices
+owner browser session, initially contained no configured hooks. Coolify's website application
+has auto-deploy enabled and provides the GitHub manual endpoint
+`https://coolify.delquro.com/webhooks/source/github/events/manual`.
+The API deploy URL is a different integration and must not be substituted.
+The owner completed GitHub account reauthentication and the credential handoff.
+GitHub webhook `698684385` is now saved with the correct endpoint, JSON format,
+push-only events, SSL verification, Active selected, and a configured secret.
+The initial delivery succeeded. No secret was generated, read, or changed by the
+agent. Automatic deployment is not yet verified; this project-note push is the
+end-to-end verification event.
+Finish with a successful GitHub push delivery and a matching webhook-triggered
+Coolify deployment; a ping or manual deployment alone is insufficient proof.
+
 ## Catalog artwork and William intro correction — 2026-10-15
 
 **VERIFIED LIVE:** PR #12 merged as `4c51e199db3c6698841c39c907aa457afe158ae0`
