@@ -2,6 +2,22 @@
 
 ## Modern website and SEO framework — 2026-10-15
 
+**VERIFIED LIVE:** PR #15 merged as
+`c6598e7172486658dd515404836ef2d3b3b0e1c9` after both container CI jobs passed
+run `38816759692` on reviewed head `84c8b40b66104420a5bf3e994823dd86fe081f6b`.
+Coolify automatically deployed that merge through the GitHub webhook as
+`lpp9gssfb0vetp3wmupdjtef` (Success, 61 seconds). Live verification passed
+37 nginx checks, 84 internal URLs, all 21 website browser cases, and exact
+title/description/canonical/JSON-LD matches across all 25 canonical pages.
+All seven external public destinations also passed GET and page-identity checks;
+this does not change their approved release stages. The apex-to-www 301 is
+verified live with the path and query preserved. Search Console indexing,
+rankings, traffic lift, and field Core Web Vitals were not measured.
+
+The concurrently released MFCC PNG gallery from PR #14 was integrated before
+publication, including its clickable images and preview ZIP. The source home
+remains the clean `main` checkout at `C:\Users\plane\DelQuro.com`.
+
 The owner requested a modern website redesign incorporating an SEO framework.
 The implementation stays in static HTML/CSS/JavaScript and preserves the original
 dimensional DQ artwork, William's corrected video poster, AI Scripts interactions,
@@ -24,14 +40,16 @@ and its Search Console measurement plan in `docs/SEO.md`; no ranking or traffic
 improvement is implied by passing code checks. The nginx change redirects apex
 requests to www, preserving path/query, and has a dedicated container check.
 
-Local verification passed generation consistency, catalog, 1,065 references /
+Local verification passed generation consistency, catalog, 1,069 references /
 191 anchors, all 25-page SEO checks, 18 existing browser cases, and three new
 FAQ/detail/responsive cases. The new layout test isolates the existing external
 analytics script so synthetic visits do not delay or pollute it. Link checking
 excludes unpublished browser reports and test artifacts. Independent design
 review covered desktop/375px captures and corrected preview-footer CTA spacing.
-Container and live release evidence is recorded separately after publication;
-these local results alone do not establish live status.
+Container and live evidence is recorded above. The container redirect check
+uses native HTTP because the runner's fetch replaced the explicit Host header;
+the test now exercises the real apex host rule. Local checks alone must not be
+presented as live verification.
 
 Screenshots and release receipts are kept outside the public repository in the
 task's `modern-seo-redesign` evidence folder. Continue the already authorized
