@@ -50,11 +50,13 @@ React Bits adaptations and source revision are recorded in
 
 ## Publishing and repository history
 
-Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. Current work is in
-draft PR #9 on `codex/delquro-refresh`. Pushing that review branch does not mean
-the public site has been updated. Deployment, merging to main, DNS, and changes
-to linked apps require a separate request. Do not force-push or put a token in
-a remote URL.
+Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. The user approved the
+website release on October 15 and PR #9 was merged into main at `dcb43fe`.
+The owner manually deployed `56b0581` through Coolify; the refreshed live site
+passed its server, internal-link, and browser checks. Coolify Auto deploy is on,
+but GitHub webhook delivery still needs verification; see the deployment notes.
+The approval covers this website release only. DNS and linked-app changes remain
+outside scope. Do not force-push or put a token in a remote URL.
 
 `PlanExServices/delquro-site` is an older marketing site;
 `PlanExServices/DelQuroLabs` is a separate site concept; and

@@ -23,12 +23,46 @@ was read. Container HTTP checks and public HTTPS verification are release gates;
 preparation alone does not establish live status. Preserve existing private
 Sites/Warehouse deployments and explicit origin-to-origin progress transfers.
 
+## Authorized release — 2026-10-15
+
+The user explicitly approved publishing the website fixes after seeing the old
+live links. This supersedes the earlier no-live-changes boundary for this website
+release only; linked apps and DNS are still outside scope.
+
+PR #9 was marked ready and merged with its reviewed head pinned to `e07a237`.
+The merge commit is `dcb43fe992f160111142d01e8b5df0b11acd519e`; main-branch
+CI run `38771875231` passed. The local editing home now follows `main`.
+
+Publication was subsequently VERIFIED after the owner started manual deployment
+`a8oqbjwilglxbkzsdpcmx9bp` of `56b0581`. The authenticated Coolify browser
+identified project DelQuro.com, environment production, and application
+`alzcv5djn75qglgxi0du9zyx`, using Public GitHub source
+`PlanExServices/DelQuro.com` on main. Six sampled live files match the reviewed
+release after line-ending normalization. Production passed all 31 nginx checks,
+78 crawled internal URLs, and all 17 browser tests. The new product cards,
+ChoreMouse preview link, and MFCC section are live at www.delquro.com.
+
+Coolify Advanced > Deployment > Auto deploy is already set to Deploy on push
+(webhooks). The application uses Public GitHub, so repository event delivery
+requires a manual GitHub webhook. The observed provider URL is
+`https://coolify.delquro.com/webhooks/source/github/events/manual`.
+Configure the matching private secret directly in Coolify and GitHub, JSON
+payloads, push events, active, and SSL verification enabled. Do not store the
+secret in the repository or chat. GitHub hook existence/delivery has not yet
+been verified; a future main push must create a webhook deployment to prove it.
+
+The apex still serves HTTP 200 rather than redirecting to www. The recording's
+caption/transcript gap remains. Evidence is in live-release-verification.json
+outside the published tree. Release approval is already granted for this
+website; linked apps and DNS remain outside scope.
+
 ## Current catalog — 2026-10-15
 
 This section supersedes the historical 30-entry catalog and availability claims
 below. The user requested current destinations, honest readiness/access labels,
-and removal of private products from the public site. Work remains in draft
-PR #9 on `codex/delquro-refresh`; no merge, deployment, DNS, or linked-app changes.
+and removal of private products from the public site. This work was prepared in
+PR #9 on `codex/delquro-refresh`; see the authorized-release update above for
+the later merge and current publication status.
 
 The public-only manifest now contains 16 listings: one available guide, seven
 public previews (including the on-site AI Scripts templates), two clinic-access
