@@ -53,6 +53,7 @@ jobs:
           node scripts/generate-site.mjs --check
           node scripts/check-catalog.mjs
           node scripts/check-links.mjs
+          node scripts/check-seo.mjs
       - name: Build the public site image
         run: docker build --tag delquro-site:ci .
       - name: Validate nginx configuration

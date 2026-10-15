@@ -257,8 +257,12 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
     await expect(art.locator('svg.card-art')).toHaveAttribute('aria-hidden','true');
     await expect(art.locator('use.art-focal')).toHaveAttribute('href',`/assets/product-scenes.svg#${id}`);
   }
-  await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#choremouse');
-  await expect(card).toHaveAttribute('data-motion','sequence');
+  // The redesign prioritizes available apps before any public preview.
+  await expect(page.locator('#available .app-card .availability')).toHaveText(['Available','Available']);
+  await expect(page.locator('#available .app-card h3')).toHaveText(['AI Quest','PlainSlang']);
+  await expect(page.locator('#previews .app-card .availability')).toHaveText(Array(4).fill('Public preview'));
+  await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#ai-quest');
+  await expect(card).toHaveAttribute('data-motion',product('ai-quest').motion);
   expect(await card.evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('radial-gradient');
   await card.hover();
   await expect.poll(()=>card.evaluate(el=>el.style.getPropertyValue('--spot-x'))).not.toBe('');

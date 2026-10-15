@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
+import http from 'node:http';
+import https from 'node:https';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const base = new URL(process.argv[2] || 'http://127.0.0.1:8080');
@@ -67,18 +69,36 @@ for (const uri of ['/', '/index.html', '/products.html', '/about.html', '/apps/a
   });
 }
 
-for (const uri of ['/style.css', '/site.js', '/site.webmanifest']) {
+for (const uri of ['/style.css', '/redesign.css', '/site.js', '/site.webmanifest']) {
   await check(`safe caching and headers ${uri}`, async () => {
     const response = await request(uri, { method: 'HEAD' });
     assert.equal(response.status, 200);
     assert.equal(response.headers.get('cache-control'), 'public, max-age=300, must-revalidate');
     assert.doesNotMatch(response.headers.get('cache-control'), /immutable/);
     headers(response);
-    if (uri === '/style.css') assert.match(response.headers.get('content-type') || '', /^text\/css/);
+    if (uri.endsWith('.css')) assert.match(response.headers.get('content-type') || '', /^text\/css/);
     if (uri === '/site.js') assert.match(response.headers.get('content-type') || '', /javascript/);
     if (uri === '/site.webmanifest') assert.match(response.headers.get('content-type') || '', /^application\/manifest\+json/);
   });
 }
+
+await check('apex redirects permanently to canonical www with path and query', async () => {
+  const uri='/products.html?ref=canonical-check';
+  const local=['localhost','127.0.0.1','[::1]'].includes(base.hostname);
+  // Native HTTP preserves the explicit Host header across supported Node
+  // versions; fetch implementations may replace it with the connection host.
+  const target=local?new URL(uri,base):new URL(`https://delquro.com${uri}`);
+  const response=await new Promise((resolve,reject)=>{
+    const transport=target.protocol==='https:'?https:http;
+    const req=transport.get(target,{headers:local?{Host:'delquro.com'}:{}},res=>{
+      res.resume();resolve({status:res.statusCode,location:res.headers.location});
+    });
+    req.setTimeout(5000,()=>req.destroy(new Error('Canonical redirect request timed out')));
+    req.on('error',reject);
+  });
+  assert.equal(response.status,301);
+  assert.equal(response.location,`https://www.delquro.com${uri}`);
+});
 
 await check('asset caching and headers', async () => {
   const response = await request('/assets/app-icon.svg', { method: 'HEAD' });
