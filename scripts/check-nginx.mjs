@@ -96,6 +96,14 @@ await check('catalog icon sprite is published as SVG', async () => {
   assert.match(await response.text(), /<symbol id="choremouse"/);
 });
 
+await check('product illustrations are published as SVG', async () => {
+  const response = await request('/assets/product-scenes.svg');
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get('content-type') || '', /^image\/svg\+xml/);
+  headers(response);
+  assert.match(await response.text(), /<symbol id="choremouse"/);
+});
+
 await check('conditional CSS revalidation', async () => {
   const first = await request('/style.css', { method: 'HEAD' });
   const etag = first.headers.get('etag');
@@ -129,7 +137,7 @@ await check('directory listings are forbidden with security headers', async () =
 });
 
 const custom404 = fs.readFileSync(path.join(root, '404.html'), 'utf8');
-for (const uri of ['/this-page-does-not-exist', '/nope/deep/path.html', '/missing.css', '/health/extra', '/404.html', '/.git/config', '/apps/.env', '/scripts/check-links.mjs', '/catalog/products.json', '/README.md', '/nginx.conf', '/Dockerfile', '/deploy/nginx/nginx.conf']) {
+for (const uri of ['/this-page-does-not-exist', '/nope/deep/path.html', '/missing.css', '/health/extra', '/404.html', '/.git/config', '/apps/.env', '/scripts/check-links.mjs', '/catalog/products.json', '/README.md', '/nginx.conf', '/Dockerfile', '/deploy/nginx/nginx.conf', '/apps/plot-perks.html', '/assets/william-delquro-front.jpg', '/assets/william-delquro-front.webp']) {
   await check(`genuine custom 404 ${uri}`, async () => {
     const response = await request(uri);
     assert.equal(response.status, 404);

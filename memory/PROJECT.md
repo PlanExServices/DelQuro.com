@@ -1,5 +1,33 @@
 # DelQuro.com project memory
 
+## Catalog artwork and William intro correction — 2026-10-15
+
+The owner clarified that PlotPerks is not public. Remove it from the manifest,
+homepage, catalog, sitemap, icons, and published detail pages; its now-empty
+Garden category is removed too. Do not restore it because its URL responds.
+The current public catalog has 15 entries across six categories: one available,
+six public previews, two clinic-access listings, and six in development.
+
+Product cards now receive larger, distinct conceptual illustrations with an
+accessible link to each product's details. Preserve honest stage labels and
+limitations; the illustrations are not screenshots or claims of shipped UI.
+Keep no-JavaScript navigation and static touch/reduced-motion presentations.
+
+The character sheet shown before William's video was the old poster image,
+not a frame inside the clip. Inspection of the first 24 video frames confirms
+the clip already begins with William in the studio. The replacement poster,
+`assets/william-intro-poster.jpg`, is the actual first frame at 720 by 1280.
+The unused character-sheet JPG/WebP are removed; video/audio timing is unchanged.
+The new poster URL prevents reuse of the old cached opening image.
+
+The generator, catalog, and local-link checks pass (885 references, 139 anchors).
+All 18 browser cases passed across the full run and a targeted rerun after
+correcting the artwork-hover target in the test. Independent visual review
+covered all 15 illustrations, mobile overflow, privacy, and the opening poster.
+The stylesheet is versioned to avoid mixing new markup with cached old CSS.
+This follow-up is part of the authorized website publication; container CI and
+production verification remain release gates.
+
 ## Authorized release — 2026-10-15
 
 The user explicitly approved publishing the website fixes after seeing the old

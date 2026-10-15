@@ -21,18 +21,28 @@ const contact = p => `mailto:info@delquro.com?subject=${encodeURIComponent(p.nam
 const iconGlyph = p => p.icon==='delquro-labs'?'<img src="/assets/dq-mark.png" width="96" height="96" alt="">':`<svg viewBox="0 0 32 32" focusable="false"><use href="/assets/product-icons.svg#${esc(p.icon)}"></use></svg>`;
 const productIcon = (p, className) => `<span class="${className}" aria-hidden="true">${iconGlyph(p)}</span>`;
 const categoryEmblem = p => `<span class="category-emblem" aria-hidden="true"><span class="emblem-orbit"></span>${iconGlyph(p)}</span>`;
-const featuredDemos = {
-  choremouse: `<svg viewBox="0 0 320 72" aria-hidden="true"><path class="demo-guide" d="M0 36h320"/><g class="demo-task"><rect x="22" y="13" width="86" height="46" rx="10"/><circle cx="42" cy="27" r="6"/><path d="m39 27 2 2 4-5"/><path d="M55 25h37M55 35h25"/></g><g class="demo-task"><rect x="117" y="13" width="86" height="46" rx="10"/><circle cx="137" cy="27" r="6"/><path d="m134 27 2 2 4-5"/><path d="M150 25h37M150 35h25"/></g><g class="demo-task"><rect x="212" y="13" width="86" height="46" rx="10"/><circle cx="232" cy="27" r="6"/><path d="m229 27 2 2 4-5"/><path d="M245 25h37M245 35h25"/></g></svg>`,
-  clipscript: `<svg viewBox="0 0 320 72" aria-hidden="true"><path class="demo-guide" d="M0 36h320"/><g class="demo-frame"><rect x="24" y="12" width="75" height="43" rx="8"/><path d="m52 23 16 10-16 10z"/></g><g class="demo-frame"><rect x="111" y="12" width="75" height="43" rx="8"/><path d="M124 25h48M124 34h35M124 43h42"/></g><g class="demo-frame"><rect x="198" y="12" width="75" height="43" rx="8"/><path d="M211 25h48M211 34h31M211 43h42"/></g><path class="demo-playhead" d="M31 62h235"/><circle class="demo-playhead-dot" cx="31" cy="62" r="4"/></svg>`,
-  jarvis: `<svg viewBox="0 0 320 72" aria-hidden="true"><path class="demo-link" d="M57 36h75m56 0h75M160 13v11m0 24v11"/><circle class="demo-node" cx="46" cy="36" r="11"/><circle class="demo-node" cx="274" cy="36" r="11"/><circle class="demo-node" cx="160" cy="8" r="6"/><circle class="demo-node" cx="160" cy="64" r="6"/><circle class="demo-hub" cx="160" cy="36" r="24"/><path class="demo-hub-mark" d="M149 37h22m-11-11v22"/></svg>`,
-  'megatory-live': `<svg viewBox="0 0 320 72" aria-hidden="true"><g class="demo-stock"><rect x="26" y="12" width="268" height="14" rx="4"/><path d="M42 19h71m105 0h48"/><circle cx="192" cy="19" r="4"/></g><g class="demo-stock"><rect x="26" y="29" width="268" height="14" rx="4"/><path d="M42 36h96m80 0h48"/><circle cx="192" cy="36" r="4"/></g><g class="demo-stock"><rect x="26" y="46" width="268" height="14" rx="4"/><path d="M42 53h83m93 0h48"/><circle cx="192" cy="53" r="4"/></g></svg>`,
-  plainslang: `<svg viewBox="0 0 320 72" aria-hidden="true"><g class="demo-bubble"><path d="M27 14h93a9 9 0 0 1 9 9v25a9 9 0 0 1-9 9H60l-12 8v-8H27a9 9 0 0 1-9-9V23a9 9 0 0 1 9-9z"/><path d="M42 30h54M42 41h36"/></g><path class="demo-translation" d="M145 36h30m-8-8 8 8-8 8"/><g class="demo-bubble"><path d="M202 14h91a9 9 0 0 1 9 9v25a9 9 0 0 1-9 9h-22v8l-12-8h-57a9 9 0 0 1-9-9V23a9 9 0 0 1 9-9z"/><path d="M214 30h67M214 41h52"/></g></svg>`,
-  'vetform-go': `<svg viewBox="0 0 320 72" aria-hidden="true"><rect class="demo-form" x="64" y="5" width="192" height="62" rx="8"/><path class="demo-form-line" d="M82 20h86M82 31h112M82 42h100M82 53h71"/><rect class="demo-form-check" x="213" y="16" width="24" height="24" rx="5"/><path class="demo-form-tick" d="m219 28 5 5 8-10"/></svg>`,
-  plotperks: `<svg viewBox="0 0 320 72" aria-hidden="true"><path class="demo-garden-line" d="M0 61h320"/><path class="demo-pot" d="M126 39h68l-8 25h-52z"/><path class="demo-stem" d="M160 40V12"/><path class="demo-leaf" d="M160 31c-24 0-28-19-28-19 16-1 27 5 28 19zm0-9c1-17 12-22 28-21-2 14-12 21-28 21z"/><circle class="demo-care" cx="245" cy="30" r="17"/><path class="demo-care-hand" d="M245 20v11l8 5"/><path class="demo-water" d="M79 31c0-9 8-17 8-17s8 8 8 17a8 8 0 0 1-16 0z"/></svg>`,
-  'vet-survey': `<svg viewBox="0 0 320 72" aria-hidden="true"><g class="demo-survey-row"><rect x="51" y="10" width="218" height="14" rx="4"/><rect x="62" y="14" width="7" height="7" rx="2"/><path d="M79 17h93"/></g><g class="demo-survey-row"><rect x="51" y="29" width="218" height="14" rx="4"/><rect x="62" y="33" width="7" height="7" rx="2"/><path d="M79 36h121"/></g><g class="demo-survey-row"><rect x="51" y="48" width="218" height="14" rx="4"/><rect x="62" y="52" width="7" height="7" rx="2"/><path d="M79 55h76"/></g><path class="demo-survey-mark" d="m62 36 2 2 5-6"/></svg>`,
-  'coloring-book-forge': `<svg viewBox="0 0 320 72" aria-hidden="true"><rect class="demo-page" x="87" y="5" width="146" height="62" rx="6"/><circle class="demo-color-petal" cx="145" cy="30" r="11"/><circle class="demo-color-petal" cx="166" cy="30" r="11"/><circle class="demo-color-petal" cx="156" cy="46" r="11"/><circle class="demo-color-center" cx="156" cy="35" r="6"/><path class="demo-color-stroke" d="M189 51c19-1 23-11 37-13"/></svg>`
+const artPalettes = {
+  'note-thyme': ['#8de0a7', '#f4c884'],
+  choremouse: ['#ffd479', '#f88e86'],
+  plainslang: ['#79dce8', '#b2a2ff'],
+  'what-list': ['#8de2b3', '#f6c577'],
+  'delquro-connect': ['#98b4ff', '#78e5d2'],
+  'vetform-go': ['#8fe4bd', '#88baff'],
+  'megatory-live': ['#5debd1', '#9dc8ff'],
+  'ai-scripts': ['#b5a5ff', '#f4a4d6'],
+  'delquro-echo': ['#a7b9ff', '#f2adca'],
+  ghostforge: ['#dea4f5', '#f4b5a9'],
+  'delquro-zen': ['#9de6bb', '#a4b9f6'],
+  'vibe-coding-101': ['#a9c9ff', '#ffe3a2'],
+  solar: ['#ffd976', '#f598a5'],
+  'clt-academy': ['#9bcdf1', '#f8cb8b'],
+  'cats-journey': ['#e5bf8c', '#8dcfe8']
 };
-const cardDemo = p => `<span class="card-demo" data-demo="${p.id}" data-preview="${featuredDemos[p.id]?'specific':'generic'}" aria-hidden="true">${featuredDemos[p.id] || `<span class="demo-generic-glyph">${iconGlyph(p)}</span><span class="demo-generic-lines"><i></i><i></i><i></i></span><span class="demo-generic-dot"></span>`}</span>`;
+const cardDemo = p => {
+  const palette = artPalettes[p.id];
+  if (!palette) throw new Error(`Missing card artwork for ${p.id}`);
+  return `<a class="card-demo" data-demo="${p.id}" data-preview="specific" href="/${p.detail}" aria-label="View ${esc(p.name)} details" style="--art-a:${palette[0]};--art-b:${palette[1]}"><svg class="card-art" viewBox="0 0 320 160" aria-hidden="true" focusable="false"><use class="art-focal" href="/assets/product-scenes.svg#${p.id}"></use></svg><span class="art-open" aria-hidden="true">View details <span>↗</span></span></a>`;
+};
 const logo = `<a class="brand" href="/" aria-label="DelQuro Labs home"><img src="/assets/dq-mark.png" width="44" height="44" alt=""><img class="brand-word" src="/assets/wordmark-light.svg" width="152" height="28" alt="DelQuro Labs"></a>`;
 function nav(active) {
   return `<header class="topbar"><div class="wrap navrow">${logo}<button class="menu" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button><nav id="primary-navigation" class="nav pill-nav" aria-label="Primary">${[['Home','/'],['Products','/products.html'],['About','/about.html'],['Resources','/resources.html'],['Support','/support.html']].map(([name,url])=>`<a href="${url}"${name===active?' class="active" aria-current="page"':''}><span>${name}</span></a>`).join('')}</nav></div></header>`;
@@ -41,7 +51,7 @@ function footer() {
   return `<footer><div class="wrap"><div class="footer-grid"><div class="footer-brand">${logo}<p>Small, focused software.<br>Made for the everyday.</p></div><div><div class="footer-title">Explore</div><div class="footer-links"><a href="/products.html">All ${products.length} products</a><a href="/#client-websites">Client website mockups</a><a href="/about.html">Our studio</a><a href="/resources.html">Resources</a><a href="/Sounds/">Sound Library</a></div></div><div><div class="footer-title">Get in touch</div><div class="footer-links"><a href="/support.html">Product support</a><a href="mailto:info@delquro.com">info@delquro.com</a></div></div><div><div class="footer-title">Details</div><div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/account-deletion.html">Account deletion</a><a href="/assets/react-bits-LICENSE.txt">Component notices</a></div></div></div><div class="copyright"><span>© 2026 DelQuro Labs, LLC.</span><span>Built thoughtfully in Virginia</span></div></div></footer>`;
 }
 function head(title, description, url, extras = '') {
-  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.delquro.com${url}"><meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://www.delquro.com${url}"><meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css">${extras}`;
+  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(description)}"><meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://www.delquro.com${url}"><meta property="og:type" content="website"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://www.delquro.com${url}"><meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg"><meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-cards">${extras}`;
 }
 const page = (title,description,url,active,body,headExtras='',scripts='') => `<!doctype html>\n<html lang="en"><head>${head(title,description,url,headExtras)}</head><body><a class="skip" href="#main">Skip to content</a>${nav(active)}<main id="main">${body}</main>${footer()}<script src="/site.js" defer></script>${scripts}</body></html>\n`;
 function actions(p, full=false) {
@@ -129,7 +139,7 @@ for(const name of supporting) {
     html=html.replace(/<section class="section generated-status"[\s\S]*?<\/section>/g,'');
     html=html.replace('</main>',`${status(p)}</main>`);
   }
-  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css"></head>');
+  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261015-cards"></head>');
   html=html.replace(/[ \t]+$/gm,'');
   write(name,html);
 }

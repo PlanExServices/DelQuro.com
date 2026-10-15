@@ -8,11 +8,17 @@ const read=name=>fs.readFileSync(path.join(root,name),'utf8');
 const data=JSON.parse(read('catalog/products.json'));
 validateCatalog(data);
 const {products,categories}=data;
+assert(!products.some(p=>p.id==='plotperks'),'Private PlotPerks is not a public catalog entry');
+assert(!categories.some(c=>c.id==='garden'),'Empty Garden category is not public');
+assert(!fs.existsSync(path.join(root,'apps/plot-perks.html')),'Private PlotPerks detail route is not published');
 assert.equal(new Set(products.map(p=>p.id)).size,products.length,'Unique product ids');
 assert.equal(new Set(products.map(p=>p.detail)).size,products.length,'Unique detail pages');
 const allowed=new Set(Object.keys(stages));
 const catalog=read('products.html'),home=read('index.html'),sitemap=read('sitemap.xml');
 const iconSprite=read('assets/product-icons.svg');
+const sceneSprite=read('assets/product-scenes.svg');
+assert.deepEqual([...sceneSprite.matchAll(/<symbol id="([^"]+)"/g)].map(([,id])=>id).sort(),products.map(p=>p.id).sort(),'One unique card scene for every public product');
+assert(!/plot-?perks|category-garden|Garden · 21\+/i.test(catalog+home+sitemap+iconSprite+sceneSprite),'Private PlotPerks artwork, links and copy are absent from published pages');
 const motions=new Set(['sequence','signal','sway','scan','build','orbit','glide','spark','breathe']);
 assert.equal([...catalog.matchAll(/data-product /g)].length,products.length);
 for(const c of categories){
