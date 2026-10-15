@@ -1,0 +1,43 @@
+{
+  "name": "Midlothian Family Chiropractic Center",
+  "liveUrl": "https://mfcc.delqurolabs.dev/",
+  "download": "/assets/client-mockups/mfcc-proof-of-concept-2026-10-15.zip",
+  "screenshots": [
+    {
+      "id": "homepage",
+      "label": "Desktop homepage",
+      "url": "https://mfcc.delqurolabs.dev/",
+      "src": "/assets/client-mockups/mfcc-homepage-2026-10-15.png",
+      "width": 1280,
+      "height": 800,
+      "alt": "Desktop homepage of the Midlothian Family Chiropractic website concept"
+    },
+    {
+      "id": "doctors",
+      "label": "Meet the doctors",
+      "url": "https://mfcc.delqurolabs.dev/about-us/",
+      "src": "/assets/client-mockups/mfcc-doctors-2026-10-15.png",
+      "width": 1280,
+      "height": 800,
+      "alt": "Meet the doctors of the Midlothian Family Chiropractic website concept"
+    },
+    {
+      "id": "patients",
+      "label": "Patient resources",
+      "url": "https://mfcc.delqurolabs.dev/patients/",
+      "src": "/assets/client-mockups/mfcc-patients-2026-10-15.png",
+      "width": 1280,
+      "height": 800,
+      "alt": "Patient resources of the Midlothian Family Chiropractic website concept"
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile homepage",
+      "url": "https://mfcc.delqurolabs.dev/",
+      "src": "/assets/client-mockups/mfcc-mobile-2026-10-15.png",
+      "width": 390,
+      "height": 844,
+      "alt": "Mobile homepage of the Midlothian Family Chiropractic website concept"
+    }
+  ]
+}
