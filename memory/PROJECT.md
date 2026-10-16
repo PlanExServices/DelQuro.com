@@ -492,3 +492,18 @@ The four original PNGs and a local HTML sheet with live links are bundled in
 assets/client-mockups/mfcc-proof-of-concept-2026-10-15.zip for sharing. Preserve
 the Design preview label, no watermark, no checked dates and unchanged product
 catalog. The gallery is static HTML and supports no-JavaScript navigation.
+
+## Services storefront separation — 2026-10-16
+
+The user is moving service projects to delqurolabs.com and requested removal of
+the MFCC showcase from DelQuro.com. Removed its homepage gallery, shared
+navigation/footer links, FAQ, manifest, and published screenshot/ZIP assets.
+The homepage discovery strip now links to app categories. The app catalog,
+product availability, access gates, and linked applications are unchanged.
+Original gallery assets and manifest were copied outside the published tree to
+`C:/Users/plane/Nexus-Forge/delquro-mfcc-image-evidence/storefront-migration-2026-10-16`.
+
+The separate `DelQuroLabs/delqurolabs-com` services repository already contains
+the MFCC sample. At verification, delqurolabs.com still redirects to
+www.delquro.com and www.delqurolabs.com does not resolve. This removal is not a
+storefront launch or DNS change. Do not claim the migration is complete.
