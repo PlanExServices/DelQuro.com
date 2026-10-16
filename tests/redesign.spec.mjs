@@ -48,6 +48,6 @@ test('redesigned routes fit mobile and tablet and retain forced-color content',a
   await page.emulateMedia({forcedColors:'active',reducedMotion:'reduce'});
   await page.goto('/');
   await expect(page.getByRole('link',{name:'Explore available apps',exact:true})).toBeVisible();
-  await expect(page.getByRole('heading',{name:'Client website mockups',exact:true})).toBeVisible();
-  await expect(page.getByRole('link',{name:/Open live preview/})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'Different days. Different possibilities.'})).toBeVisible();
+  await expect(page.getByRole('link',{name:'Browse all products',exact:true}).first()).toBeVisible();
 });

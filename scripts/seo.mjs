@@ -70,7 +70,7 @@ export function resolveSeo({ path, title, description, catalog, canonicalPath, n
   const product = catalog.products.find(entry => `/${entry.detail}` === route);
   const defaults = route === '/' ? {
     title: 'Useful Apps & Independent Product Studio — DelQuro Labs',
-    description: 'Discover focused apps for families, veterinary teams, creators, and learners. Explore available tools, public previews, and client website concepts.',
+    description: 'Discover focused apps for families, veterinary teams, creators, and learners. Explore available tools, public previews, and clearly labeled projects.',
     name: SITE_NAME, type: 'WebPage',
   } : route === '/products.html' ? {
     title: 'Apps & Product Previews — DelQuro Labs',
