@@ -1,0 +1,1045 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "commit": "0c4ba03f8fd7064a7cb94a1930e27485cab28543",
+    "registryVersion": "1.9.0",
+    "registrySha256": "ef396085dfa758848af0548f5c2dfa574c807e5ae7878925406156e58c7dfce9",
+    "inputHashes": {
+      "src/academy-upgrade.css": "d736137963ffb40cff80670c8842fe3dbabb7b43c6da132f409d04a1380210b3",
+      "src/card-artwork.css": "826ab7436ac6d0af6e25227a570758fb7b064c8add1b43aa326a92a5478cadff",
+      "src/card-surfaces.css": "e630243fc7d32767fe40ed522d9f8a9d6489a438c75c9818e0b97ea99fba1125",
+      "src/CardArtwork.tsx": "d3eba314e32247004229033b891880cab8c44b302a7cd8d6cb539df417d0379e",
+      "src/Challenges.tsx": "cdd60f629d06391a9d43d28a05fa818bf0a022476fc96cec49b48017920a11d5",
+      "src/command-library.css": "80d41f5606716b7b9de8b57e7c3e0fc55708f6d33bc99f381e1895c1288d879d",
+      "src/CommandLibrary.tsx": "846bb16457bbc905ba5a11a0e10074f9c5a8476f719d1705e0cba5d9e12eb5f6",
+      "src/companion.css": "925f29bbc4ca663fe12bd2a06d073acf11d40e358eb6923a5993f9459eb134ca",
+      "src/Companion.tsx": "865a6642f5e5fcb5197c3580fb541b660e2f4122d957d6a4a3d368d72bb69286",
+      "src/content.ts": "f96466c9f72ff9b483350868a2fbd59755119292bfa9826212b486ffb03f7d57",
+      "src/data/card-art.json": "308ecf764a9b5a5044011e4eb24325e55e92f431117c580e1eeeb152e900ca67",
+      "src/data/registry.json": "ef396085dfa758848af0548f5c2dfa574c807e5ae7878925406156e58c7dfce9",
+      "src/engine.ts": "4dd7eb3e78aa923bbfc3bf9e5a71d5581e4f30999032659928f3c55cad13a0ca",
+      "src/experience.css": "f675b6ba617be362d3fd90fc771d7a0863aaf20525af3fe40c0437a708c3d745",
+      "src/LearningSupport.tsx": "f5a08be45840d2b42c7dd335469e7f9881923bb4ad06156de20f4182772507d9",
+      "src/lesson-player.css": "58eeb552734b33539c6705b830a8cc99cdc854aa343973d7ef5aac53442af0fa",
+      "src/LessonPlayer.tsx": "b6bb2420cf56480b5847b314bcc64e130739577d49c50a7223d5d4627aa7e377",
+      "src/library.css": "635d437cd6752b2476b4251e7fc53209fc7d60514818392492bf5ec18a32eaa2",
+      "src/main.tsx": "aff95091a02a8e7926669bcca326634cdd675444fccb6c8323dd1105e65e2bbb",
+      "src/ModelCatalog.tsx": "f99757bacdc97d2046a1507a3f441b977267a08b01a0c9178fe3a1a015a9bb4e",
+      "src/PracticePacket.tsx": "a626f7789a13e6d3bf2852107cc9ae0d974338b78f03f29a6e6535dd780c0d40",
+      "src/progression.ts": "60c1c718772891e965801d42091e6e6a7b59a1ce52f0baf84e1a8f64888fe66b",
+      "src/QuestionCard.tsx": "cbeefaedaa02067d887b54d0c949321450e5051979e5d604b808df5615768258",
+      "src/QuestViews.tsx": "c2e228ec9ca433ec24c7bf96333cdcf9f0ad9024bf437b68193b4cc9efc7cfa5",
+      "src/ResourceLibrary.tsx": "4ecdcbee29c957ee32155ff67c5b601829831ba56b41b08f22de83207bf71395",
+      "src/styles.css": "24f3d29c632a043abeab2f39e1c4d7f218e8266c5cfb9166266326fb35af0938",
+      "public/art/claude-guide-small.webp": "4064635c90031db1f7f8ce650eba4f50d5baa1b441fd0fa556946b2525c861e9",
+      "public/art/claude-guide.webp": "9bab9f721ac4c0e609da25799157e2f8bb5a3a38c883431d5aff48a8e60eae75",
+      "public/art/comet-small.webp": "195e27a1c0a8ce761f5c503fe830a96436f8f238c1c45abacb120c883e7f2fe4",
+      "public/art/comet.webp": "18f2fd29e240a9cb55ea091d581f277eac34683bc2ac65b706ee8c3f4d117882",
+      "public/art/constellation-small.webp": "75cdd1f9ad2a03f519489bce6331ace87b222904947aaf6ca039a1b1379a0b50",
+      "public/art/constellation.webp": "943a61ffdafa7782a3ed29472ec3ae940b9a85a6661240f5496381faf9864882",
+      "public/art/crystal-small.webp": "6769af78bc064fd55fb1c305bcdc16f0eda195276b0fbdd091493e490fc656cd",
+      "public/art/crystal.webp": "7d440d281b2130077f17304a7baa36464e589ea6545d55d9b82b696eb7c41868",
+      "public/art/lunar-small.webp": "80e0a70198e9fe38f3758f2a12a1dac51942a0b2288ad5159c7456c2128f1d57",
+      "public/art/lunar.webp": "870d1a87a39b8c84bb5d8f0ef9c3d427134a7860aab3aa6ae6d3dbb729e016db",
+      "public/art/mission-bug-repro-small.webp": "a4c680b6ce8a3ec2b9360acb9b9c9f5de7a67a2f703237307a31e1863c389ae4",
+      "public/art/mission-bug-repro.webp": "579c88719a3ec9ad717575b866ac239bceaf2750b2cdc32359771757d7a1e420",
+      "public/art/mission-code-detective-small.webp": "6e3a4c1af0b42865e725a61742f99a79cbb63d44803e6cd9f37d4a93d786bfa5",
+      "public/art/mission-code-detective.webp": "340e6ee61866623cd27f927c51ea06bdfdf53e173d11dedf6cf6a645462ae0c6",
+      "public/art/mission-fact-hunt-small.webp": "7be3cf0af28e3ac51b95b88ab110b5a46df0e2465cf6a8bccd8d773f8494c63d",
+      "public/art/mission-fact-hunt.webp": "0fdd9eb379dce12da840d58ba46e7367fa50a3e42b7f654f1a6c939fe7396fcd",
+      "public/art/mission-file-scout-small.webp": "e0d0a794030ac4dc4721cca218f6cec1b868f0515c2eece82ca3b309dc6f4880",
+      "public/art/mission-file-scout.webp": "c10b3a3d8bf216df063e87b1d2236889536e1e506f03117f869e906ab660b83e",
+      "public/art/mission-formula-trail-small.webp": "c5d3b825263d0acef42b0b9029c0c37dc9ba088d83d1983696ae6ebe9592c988",
+      "public/art/mission-formula-trail.webp": "38dd611483729f2171ba1bbb4632373ba9e298d07501660dcae4b1f8f6c6abdd",
+      "public/art/mission-independent-review-small.webp": "06ad02f65a8b421e57f75c8e4e7a5484d0ade9fc022df2acc4c5244588b67f12",
+      "public/art/mission-independent-review.webp": "c6f6b18117ab6e0459e612a703e493c0b550a6cb5c616ce25fb14f676b8d3120",
+      "public/art/mission-matchmaker-small.webp": "358a1ddaee6adc11a614923774e529a1ef03fc5524b584315dd3644026de56bd",
+      "public/art/mission-matchmaker.webp": "7bcabd8fffc55d8a12a6d833c537571f79f477bcf61728712920c81b6ad6f0e2",
+      "public/art/mission-pigeon-small.webp": "659dc04dea953e034c788defe5f536c83a5f7a969100605132855dc0af0fdbe5",
+      "public/art/mission-pigeon.webp": "8a7b7d1b1c59931fd115edc2d5f8b7fdb1878db0bea19791b9c3a78f42f00441",
+      "public/art/mission-privacy-small.webp": "92f433e52d3c06d5a8162361bb09acc4c83afa45f640936682ba2637d5e7bd60",
+      "public/art/mission-privacy.webp": "89c497c4705864cbbd04a529dd6dd8a348dc3d3b55c6812541befecf9f1101fd",
+      "public/art/mission-question-trail-small.webp": "0f5ada97b5762a94c057448d4b3950d8390ba660777a290a8180f89396a1116e",
+      "public/art/mission-question-trail.webp": "e3ab4c52ba8248dcde6c8b1145f2fa7c03b73404cd65adbc4afc1d227a2f94d8",
+      "public/art/mission-regression-small.webp": "6741bbee3815169ac463faffb2d9867cc338db4281d4bdb7a7f162dfe8553071",
+      "public/art/mission-regression.webp": "f0ea9a4279c8642aa67d9c8ccd0a492c8b872b27b555884bc5179cf9049ba4ad",
+      "public/art/mission-revision-small.webp": "e7ca47d3dc9a2ddfe2566a7b4bb823ccabf1e4f97c8aa88ed08ecede31ac3aee",
+      "public/art/mission-revision.webp": "b261c531a636c479ac924d98be2a3a52a17e49a346451a5617f78d36619f59b4",
+      "public/art/mission-source-detective-small.webp": "c92820bb104229da8419c22e5de48e80cd4e038a14071d581a3089ec31d04bd1",
+      "public/art/mission-source-detective.webp": "e1e3f0b9a6abf1ad43688844081f7b9b48cd6201d1f0a9cf27a7c779d2ebfff1",
+      "public/art/mission-surfaces-small.webp": "352f347376afc4c3cff8349f34f00cd2cdf9a78dd0154a4e44f6559df3ec6ca3",
+      "public/art/mission-surfaces.webp": "aaf5100566e8cb7580d3a963b5b1429d75bccb2d31ed9a23acfdaad49629ffe6",
+      "public/art/mission-template-safety-small.webp": "40eb26c60af61f51ba40d7adca87f4593b147c0d29485446af363b56ee9adca9",
+      "public/art/mission-template-safety.webp": "d739b0f9a1f4280249b4343e8d542b59dd44a57387c3fa0c1db2648812779e91",
+      "public/art/mission-test-boundaries-small.webp": "a6baa62f0631e14ea324e372c17e15b34184ad886be3045927aa4d075508b299",
+      "public/art/mission-test-boundaries.webp": "593080815fa04aedac1ad7eac6163dd42028bb964dda59baf38008afb2b6f2f1",
+      "public/art/mission-workflow-gates-small.webp": "f7cbd37a15f3d7a9264457143ec64ebcc00a6cd3f46ace1707fd19d3233ec72e",
+      "public/art/mission-workflow-gates.webp": "29f53b15fad8f0d4db401f449790fe3bf04edce9fa2fea0a965cbc7f90af4a9f",
+      "public/art/mission-workflow-recovery-small.webp": "32de0b1c753bd429cfcb372e262e0c5d069a08c2ac9f19afef9853207bb96bad",
+      "public/art/mission-workflow-recovery.webp": "859b8f3e3e7d0eb0a9c577f0d594d93f18cda0f2ecb46131dedb773832345507",
+      "public/art/orbit-small.webp": "3100bfb60b595cef2e0049c1cc8f6d9d0fe65b105f99cf668f1e9fe598f6e6c0",
+      "public/art/orbit.webp": "3f6117223df5bb222a97390ecf545e0a0ade14aab93308a95c75777a48f647de",
+      "public/art/playbook-announcement-review-small.webp": "54e91f858ab47535b0728a0a0a3fce883b3aea9da4c31f05bc10d1ae579e4c29",
+      "public/art/playbook-announcement-review.webp": "488cf242f13bed395dcb7429659a81bab84090427a182d51cf99b0ec790749e4",
+      "public/art/playbook-approved-import-small.webp": "4f23d61bcbafc2a3e39c55e5175cd247234b2ab23ee6cd66fdfaa4ef831df441",
+      "public/art/playbook-approved-import.webp": "0ceef3de4d3032f038a0fead63de2488c4e9f63d54bcdce10e30de03a0d9f742",
+      "public/art/playbook-author-intent-small.webp": "1a327a42338aa4b4d6c0b6e30e1b7fbece5f00fffe957a29f5d2ce8103f16937",
+      "public/art/playbook-author-intent.webp": "66951ef8c8235ad215b6e4b83d15c04cd6a8ae9d94e71b8b0aa43e7e650646ef",
+      "public/art/playbook-bounded-delegation-small.webp": "2203394d0b0a661154c43c24f457f40ac49a15f83b684a4ebd32507d9347b1c4",
+      "public/art/playbook-bounded-delegation.webp": "0339a18246a9e1e5682250ad6e52d200f3d3b7b3108ea4ba329d1dc0f88f40e6",
+      "public/art/playbook-bounded-fix-small.webp": "96abb1c16ff61214871f37e4be725379579c9d41dd8d263a924cf8a09ac9ee41",
+      "public/art/playbook-bounded-fix.webp": "c29da3a12745e97618ac1dc2416321d81d2436a4598cbb0c034193289746322e",
+      "public/art/playbook-decision-tradeoffs-small.webp": "152d863703633190ba9b27df5af8baa4af8fcb8d23882ce31272f5d621eb56ef",
+      "public/art/playbook-decision-tradeoffs.webp": "058e1f5986597ef39294315bf6c0a332ea53cf695f7e11ed4f1cf63c60a8cff9",
+      "public/art/playbook-file-summary-small.webp": "bd9ff58e927b46a990b10439814e29cd3abb6ae5ae9f0c70ee6b7bdf365006f6",
+      "public/art/playbook-file-summary.webp": "14e8881565165807edcce0be3f6a31951b5d77469d36835bfa9a0b443a9064eb",
+      "public/art/playbook-independent-practice-small.webp": "f7124154e59d2791a04e304685bf4fbf9d8fe2c8c0d12f26f8eb0a5c5314a053",
+      "public/art/playbook-independent-practice.webp": "41823c9274b628fa06cd5a463be1488d9f7a913d3abddcb06b537a75de65c2e1",
+      "public/art/playbook-newcomer-guide-small.webp": "f159d7b1ec1dde14651595fd585d019a40a1c0674028b08944e8cfb60c8ef53a",
+      "public/art/playbook-newcomer-guide.webp": "519226f59cfd7863ca7366b43f46bbefdf52917b60172fce2c58dd281d1c2932",
+      "public/art/playbook-project-context-small.webp": "eba5c7fa476f9ace5a7ca84dbb189bf247b3aed18b528e5ee9b862082cf7834f",
+      "public/art/playbook-project-context.webp": "86ae42ca4944176618e4e969b8fc72f5d16e7345518310d02026d9a3e59df898",
+      "public/art/playbook-research-evidence-small.webp": "6d7e3771eb3a60386f3cc839ad540d48b650d30517e5c50bb20ceaf7d91e35a9",
+      "public/art/playbook-research-evidence.webp": "ef386a9468f5ea165d226d14eceb30e5e958aef904d6e7d24d5ca49428bf71db",
+      "public/art/playbook-reversible-cleanup-small.webp": "cf4427a5a5559c940d846a5eb820010123b633f5636ee04a3cec0c4f60857704",
+      "public/art/playbook-reversible-cleanup.webp": "da94608cba08ba177e51eb7c154fafeb1fbbb1a6001cbc71fdd509b94a90169b",
+      "public/art/portal-small.webp": "1b3fb99492dd0819eb3f9b6acfca80f558453510d1c20af0aef4c069f2ba089a",
+      "public/art/portal.webp": "387f0aa4e3b1797eb2bbb03db55396825cf959d16aca1aa49995da79555f8a3f",
+      "public/art/prism-small.webp": "61f5d89470dc63cc3ca04dfd20b5200151a0a0bfc889b6584e3e739180af0235",
+      "public/art/prism.webp": "3f5b336b7b35ea354c0f896cc33a391d5101062e1ef5c05757d3f486cebf0526",
+      "public/art/prompt-answer-shape-small.webp": "2d2ddc02ea7c2369095b36d5cc5aa97ee4f5bbb704c59b5cd3db5022bd31671c",
+      "public/art/prompt-answer-shape.webp": "3508028cad07e3ac307274abe7ce771f147ff2c5b36eec09cd2287c043b05c72",
+      "public/art/prompt-area-lesson-small.webp": "ed40ee8d9649c49d1d21a35470cc4a1aa18b811eb189074e18de2dc37073cefa",
+      "public/art/prompt-area-lesson.webp": "b83e322318856acf5db464c46ffb49ba7383a5e8f20be2388a3df8729e877fff",
+      "public/art/prompt-argument-outline-small.webp": "5421066607a94f5808284d7a46ab2018e04ffc0b9847934e699b7abd047b7886",
+      "public/art/prompt-argument-outline.webp": "c292694edd1353a7e400f686cf34de3286120b0f8618ee5e2f6a5de7ed5ebd18",
+      "public/art/prompt-assumption-audit-small.webp": "34ac8b507876a5939fb17b4d3c393441687d0fc66decf63b4fc38ede1a2a7c49",
+      "public/art/prompt-assumption-audit.webp": "d5b87f5f64c899a140ddc4f9c90331fd470e999b79ce6ca86a867a1ac3d04dcc",
+      "public/art/prompt-behavior-contract-small.webp": "47880c6cf68db47f3fe14dc57283824b7c8e088cb03b84474c5aee5777bb2183",
+      "public/art/prompt-behavior-contract.webp": "5e2b8d7116dd6364f69fb7e0bcab81e8c2dbaec220c80db71c64b1d44a0bd322",
+      "public/art/prompt-bounded-edit-small.webp": "d41b8c2c0a8b9c3e8afafd10eb788a5c286b1f05a25dbf746170cd31638b9105",
+      "public/art/prompt-bounded-edit.webp": "7501e07b715761a9ee346e836b536c5784dbc3637cfd022b9432550fbf67c632",
+      "public/art/prompt-cautious-summary-small.webp": "2b0da80eb3e1f8a2b54f102c923a76feab8e4723bb42efb482d158e03faa6959",
+      "public/art/prompt-cautious-summary.webp": "a82ed319c7957637162eaf696ebe5279ac588395667e050dc194cf9efbf3708b",
+      "public/art/prompt-checklist-proof-small.webp": "10e4cc2a124492de23f3365228a76075f8dc5e3b8ba3d2fea7d278df43008d44",
+      "public/art/prompt-checklist-proof.webp": "3630123aa6672dbb83afb96a00e2b8bd28be783ec858d4d40b694f62e74c439f",
+      "public/art/prompt-claim-audit-small.webp": "9fe0cead74b287d3df639515af6802a91e42ca58d5b4c1498b60403b14d985c9",
+      "public/art/prompt-claim-audit.webp": "1cf399f16f23b2107351ae1b57d6b99ccd80e32155323bc6abe3086968635e39",
+      "public/art/prompt-clarify-task-small.webp": "5593ea1f794697c36a16ffcfc2f3efd9bce7ba610778d5280dc68c3cc7083063",
+      "public/art/prompt-clarify-task.webp": "473714c9582eda54a7055b4eb71b79ef5b7170ec636f8993a12f7dce117200df",
+      "public/art/prompt-code-walkthrough-small.webp": "83f111b220f52dc8dccf580e937ebc33a8ea1aab33796061d3f41862680a2c95",
+      "public/art/prompt-code-walkthrough.webp": "001c1b08dec4f782b3c59e63e837758486f66dcbe856b8cc16270a5b93fbb0f1",
+      "public/art/prompt-conditional-plans-small.webp": "013e384f4b7148e0993110f06efcb1d4c4350e772c41fb18aa5423a4a5dc9b6d",
+      "public/art/prompt-conditional-plans.webp": "68cc96f2efecaaaaf825ee1c49d10d47afcc4ebaaf3798d81a198e9401ee7663",
+      "public/art/prompt-current-source-plan-small.webp": "78ea92525fc3ffd0f88878fc7dba98cb67c2570fb3bca62c30f3d713877aaaab",
+      "public/art/prompt-current-source-plan.webp": "fc0a4f9947770ffa83ca19b6958b56daf2bea413ef48de07c12389b171414447",
+      "public/art/prompt-data-dictionary-small.webp": "fd6d8242e67a314fc325130fe8cd7c6622605334bbb5a93757f0043203a66c41",
+      "public/art/prompt-data-dictionary.webp": "8d27d2486b03ad49086c43c7c24310aefb8c7cae80fd01c834750bda90f422b2",
+      "public/art/prompt-fair-comparison-small.webp": "10f8e60879ea725c6719c5bc7840bcdbafe2d3829e5e1fa485bda8894acb04a1",
+      "public/art/prompt-fair-comparison.webp": "4b57ffbaf9648055b12ca83993a1afaddad769f8574c2255d74714a9d45e6224",
+      "public/art/prompt-inquiry-map-small.webp": "46c92ded7d4c4e7cf8a87b5e0bdf5dd7e5bae0d178a8fde73e13ffc19b23e93f",
+      "public/art/prompt-inquiry-map.webp": "f03f623564539d43fceb29af83468e47dea2e2e9da46b5dd83f35504c73cc98a",
+      "public/art/prompt-kind-boundary-small.webp": "291dd988e9538d6b2ecb2399879271b4722d47450121ecc7d03c781ad779828e",
+      "public/art/prompt-kind-boundary.webp": "4e40c457700682f9f27bdb7247082e3285b1902e5ce84eb01af5808c8b2d8a03",
+      "public/art/prompt-learning-error-small.webp": "3b9e35c750fb093693ef5e8027b50309c635957ee5360f84b20849bf61a5a09d",
+      "public/art/prompt-learning-error.webp": "7c0a161f94e143755e612fea4064ffa025092d2798939897b7deaaff0b66e102",
+      "public/art/prompt-meaning-preserved-small.webp": "5f7a064a66bb675b50c5076a7c189ace955721fd761ff144d6b5da46571f0e57",
+      "public/art/prompt-meaning-preserved.webp": "a6765d635c209cfcf78d5baab3961dd49701ff754a0955aa7c4974e6525cb943",
+      "public/art/prompt-minimized-data-small.webp": "b3aa8e9ef39ffae836a8c39d9060823acb282a332af83c68f9813c34202da0a3",
+      "public/art/prompt-minimized-data.webp": "b72d2fef18f900eb9be851a3e799db91582d9f05949086d5a187b581b707149f",
+      "public/art/prompt-observed-bug-small.webp": "1b80c7a3ccd4ba8252a0366f61d097ff8b88abeef1c88c4c39072c3f8869aaae",
+      "public/art/prompt-observed-bug.webp": "324e2b6e11c733b08dc853bdcb380152477cb5ec323a25b5119317d1470022ab",
+      "public/art/prompt-organize-notes-small.webp": "c71ac2c699b22cfbc94e867d8b33411e65bbb723c48c9ea454ffe77883bbb0e7",
+      "public/art/prompt-organize-notes.webp": "e8a7da786c9b639deaa19828bedc16eedaf3c125577d4515fc09043cfeae60e6",
+      "public/art/prompt-practice-ladder-small.webp": "43acb2e9457f2b49dada8ba2b54dd7b7c017c365498fb626e1f77b2057798c71",
+      "public/art/prompt-practice-ladder.webp": "c585869e9d35525e21eb221d0cd06cb16c516d615996f7edcd4ffdc6f30734c1",
+      "public/art/prompt-priority-edit-small.webp": "b9ce156df269f8988a480af74abb861ffd0541bd4859eb962802aca3d070ee2e",
+      "public/art/prompt-priority-edit.webp": "7fdae3f2b96ddc204b1f679f21cd3a9ad9ce9d8ebe991dcb841ee47dd7464bfe",
+      "public/art/prompt-process-guide-small.webp": "66c566b7e6449498199e39f90bcdc22b64ce4dfa621c542c5c05f4e971d90979",
+      "public/art/prompt-process-guide.webp": "3a7c38db2891f85678c8b2c798e4bd8a4ecf5d1fc0538b600bdd9c965eb87fd0",
+      "public/art/prompt-project-plan-small.webp": "58beee3e5bf50e6c5ae6a369388739a20f10c3d2a78c48541ea6f91727d6f149",
+      "public/art/prompt-project-plan.webp": "fdb2c88cfd8400e4846c6cb287c2cdeac518f3ece4063601b8c3dcf38ca8f84d",
+      "public/art/prompt-reader-summary-small.webp": "484a942da78ec613bdf0a4c59101b16eeed5224f94b73e0a0aadc324464976ec",
+      "public/art/prompt-reader-summary.webp": "2a7beeeeab05c76ff5d8951562a284950e511d74094aa62acefaeabda159e716",
+      "public/art/prompt-reversible-cleanup-small.webp": "86496339ef695a00b117220fe9632795148025f640c493de0ce379f2011e8586",
+      "public/art/prompt-reversible-cleanup.webp": "911add297ff0c2d077eb0acfc92820c077f79d0d9cf13c5763e1ddda2f40eded",
+      "public/art/prompt-small-steps-small.webp": "a0cb87842644a44bdc7e3be9b34a318f9f7f45472686b52ab5685c59b0cb626f",
+      "public/art/prompt-small-steps.webp": "a73803005cbf153b24632aafb7b7b40fb1edb653a3e629f1b181baff31b9857e",
+      "public/art/prompt-study-cards-small.webp": "f8277b98213c8c3eef82c1071043337595467c7bb29d22dad8637047424b6b9f",
+      "public/art/prompt-study-cards.webp": "e5e5d0c2e9d684dd725ee44959a1d2ecc21cfe4847377e1e8b729b12d6e2363c",
+      "public/art/solar-small.webp": "1e682675b95d086bfb84fb16dedaae9bb8d8511051af0930676bf37af1da84b3",
+      "public/art/solar.webp": "e6270b716f7476756475a2db9876370a40040d8b07b4b173a7b4ed99b96c488a",
+      "public/maintenance.json": "5d5a61c8bbcc35f86b6f0a76bee38ae46e795a64d1457bff126a46c8bd0d6260",
+      "index.html": "a150cbaeb9628ceb99bcb9310a1a852a0f347e2143f7fb3bebb290e4b864eef1",
+      "package.json": "b9b706ac75629d862625b3ed64dc3597080b0e82d0b56422f82fdf6c86e67174",
+      "package-lock.json": "70aa546d72a8870dca931d3336390e350a09612feee383dafbcde19435ee11aa",
+      "tsconfig.json": "bd72a4793541410b44c14c3dce8e73c9ad49b4a46e888236cf2bf4ece924f60d",
+      "vite.config.ts": "0ea84b4e2909b04e4c1cb1b92392a9f85bcb46605472763b15935d3498ba8ed3"
+    }
+  },
+  "counts": {
+    "lessons": 180,
+    "worlds": 30,
+    "resources": 749,
+    "decisions": 420,
+    "bespokeArtwork": 60,
+    "webpArtwork": 138
+  },
+  "base": "/",
+  "learnerStorage": "browser-local; separate origin; explicit export/import only",
+  "reportPolicy": "Published public source metadata only; excludes maintenance snapshot paths, reviewer identity and local candidate identifiers",
+  "files": [
+    {
+      "path": "art/claude-guide-small.webp",
+      "mime": "image/webp",
+      "bytes": 27088,
+      "sha256": "4064635c90031db1f7f8ce650eba4f50d5baa1b441fd0fa556946b2525c861e9"
+    },
+    {
+      "path": "art/claude-guide.webp",
+      "mime": "image/webp",
+      "bytes": 74376,
+      "sha256": "9bab9f721ac4c0e609da25799157e2f8bb5a3a38c883431d5aff48a8e60eae75"
+    },
+    {
+      "path": "art/comet-small.webp",
+      "mime": "image/webp",
+      "bytes": 28956,
+      "sha256": "195e27a1c0a8ce761f5c503fe830a96436f8f238c1c45abacb120c883e7f2fe4"
+    },
+    {
+      "path": "art/comet.webp",
+      "mime": "image/webp",
+      "bytes": 85414,
+      "sha256": "18f2fd29e240a9cb55ea091d581f277eac34683bc2ac65b706ee8c3f4d117882"
+    },
+    {
+      "path": "art/constellation-small.webp",
+      "mime": "image/webp",
+      "bytes": 27526,
+      "sha256": "75cdd1f9ad2a03f519489bce6331ace87b222904947aaf6ca039a1b1379a0b50"
+    },
+    {
+      "path": "art/constellation.webp",
+      "mime": "image/webp",
+      "bytes": 80144,
+      "sha256": "943a61ffdafa7782a3ed29472ec3ae940b9a85a6661240f5496381faf9864882"
+    },
+    {
+      "path": "art/crystal-small.webp",
+      "mime": "image/webp",
+      "bytes": 20928,
+      "sha256": "6769af78bc064fd55fb1c305bcdc16f0eda195276b0fbdd091493e490fc656cd"
+    },
+    {
+      "path": "art/crystal.webp",
+      "mime": "image/webp",
+      "bytes": 61616,
+      "sha256": "7d440d281b2130077f17304a7baa36464e589ea6545d55d9b82b696eb7c41868"
+    },
+    {
+      "path": "art/lunar-small.webp",
+      "mime": "image/webp",
+      "bytes": 14960,
+      "sha256": "80e0a70198e9fe38f3758f2a12a1dac51942a0b2288ad5159c7456c2128f1d57"
+    },
+    {
+      "path": "art/lunar.webp",
+      "mime": "image/webp",
+      "bytes": 61844,
+      "sha256": "870d1a87a39b8c84bb5d8f0ef9c3d427134a7860aab3aa6ae6d3dbb729e016db"
+    },
+    {
+      "path": "art/mission-bug-repro-small.webp",
+      "mime": "image/webp",
+      "bytes": 22428,
+      "sha256": "a4c680b6ce8a3ec2b9360acb9b9c9f5de7a67a2f703237307a31e1863c389ae4"
+    },
+    {
+      "path": "art/mission-bug-repro.webp",
+      "mime": "image/webp",
+      "bytes": 56086,
+      "sha256": "579c88719a3ec9ad717575b866ac239bceaf2750b2cdc32359771757d7a1e420"
+    },
+    {
+      "path": "art/mission-code-detective-small.webp",
+      "mime": "image/webp",
+      "bytes": 29234,
+      "sha256": "6e3a4c1af0b42865e725a61742f99a79cbb63d44803e6cd9f37d4a93d786bfa5"
+    },
+    {
+      "path": "art/mission-code-detective.webp",
+      "mime": "image/webp",
+      "bytes": 78666,
+      "sha256": "340e6ee61866623cd27f927c51ea06bdfdf53e173d11dedf6cf6a645462ae0c6"
+    },
+    {
+      "path": "art/mission-fact-hunt-small.webp",
+      "mime": "image/webp",
+      "bytes": 25434,
+      "sha256": "7be3cf0af28e3ac51b95b88ab110b5a46df0e2465cf6a8bccd8d773f8494c63d"
+    },
+    {
+      "path": "art/mission-fact-hunt.webp",
+      "mime": "image/webp",
+      "bytes": 66892,
+      "sha256": "0fdd9eb379dce12da840d58ba46e7367fa50a3e42b7f654f1a6c939fe7396fcd"
+    },
+    {
+      "path": "art/mission-file-scout-small.webp",
+      "mime": "image/webp",
+      "bytes": 20608,
+      "sha256": "e0d0a794030ac4dc4721cca218f6cec1b868f0515c2eece82ca3b309dc6f4880"
+    },
+    {
+      "path": "art/mission-file-scout.webp",
+      "mime": "image/webp",
+      "bytes": 53808,
+      "sha256": "c10b3a3d8bf216df063e87b1d2236889536e1e506f03117f869e906ab660b83e"
+    },
+    {
+      "path": "art/mission-formula-trail-small.webp",
+      "mime": "image/webp",
+      "bytes": 30128,
+      "sha256": "c5d3b825263d0acef42b0b9029c0c37dc9ba088d83d1983696ae6ebe9592c988"
+    },
+    {
+      "path": "art/mission-formula-trail.webp",
+      "mime": "image/webp",
+      "bytes": 78554,
+      "sha256": "38dd611483729f2171ba1bbb4632373ba9e298d07501660dcae4b1f8f6c6abdd"
+    },
+    {
+      "path": "art/mission-independent-review-small.webp",
+      "mime": "image/webp",
+      "bytes": 23706,
+      "sha256": "06ad02f65a8b421e57f75c8e4e7a5484d0ade9fc022df2acc4c5244588b67f12"
+    },
+    {
+      "path": "art/mission-independent-review.webp",
+      "mime": "image/webp",
+      "bytes": 63288,
+      "sha256": "c6f6b18117ab6e0459e612a703e493c0b550a6cb5c616ce25fb14f676b8d3120"
+    },
+    {
+      "path": "art/mission-matchmaker-small.webp",
+      "mime": "image/webp",
+      "bytes": 26314,
+      "sha256": "358a1ddaee6adc11a614923774e529a1ef03fc5524b584315dd3644026de56bd"
+    },
+    {
+      "path": "art/mission-matchmaker.webp",
+      "mime": "image/webp",
+      "bytes": 70344,
+      "sha256": "7bcabd8fffc55d8a12a6d833c537571f79f477bcf61728712920c81b6ad6f0e2"
+    },
+    {
+      "path": "art/mission-pigeon-small.webp",
+      "mime": "image/webp",
+      "bytes": 27094,
+      "sha256": "659dc04dea953e034c788defe5f536c83a5f7a969100605132855dc0af0fdbe5"
+    },
+    {
+      "path": "art/mission-pigeon.webp",
+      "mime": "image/webp",
+      "bytes": 69584,
+      "sha256": "8a7b7d1b1c59931fd115edc2d5f8b7fdb1878db0bea19791b9c3a78f42f00441"
+    },
+    {
+      "path": "art/mission-privacy-small.webp",
+      "mime": "image/webp",
+      "bytes": 26960,
+      "sha256": "92f433e52d3c06d5a8162361bb09acc4c83afa45f640936682ba2637d5e7bd60"
+    },
+    {
+      "path": "art/mission-privacy.webp",
+      "mime": "image/webp",
+      "bytes": 75354,
+      "sha256": "89c497c4705864cbbd04a529dd6dd8a348dc3d3b55c6812541befecf9f1101fd"
+    },
+    {
+      "path": "art/mission-question-trail-small.webp",
+      "mime": "image/webp",
+      "bytes": 29030,
+      "sha256": "0f5ada97b5762a94c057448d4b3950d8390ba660777a290a8180f89396a1116e"
+    },
+    {
+      "path": "art/mission-question-trail.webp",
+      "mime": "image/webp",
+      "bytes": 86002,
+      "sha256": "e3ab4c52ba8248dcde6c8b1145f2fa7c03b73404cd65adbc4afc1d227a2f94d8"
+    },
+    {
+      "path": "art/mission-regression-small.webp",
+      "mime": "image/webp",
+      "bytes": 29614,
+      "sha256": "6741bbee3815169ac463faffb2d9867cc338db4281d4bdb7a7f162dfe8553071"
+    },
+    {
+      "path": "art/mission-regression.webp",
+      "mime": "image/webp",
+      "bytes": 76872,
+      "sha256": "f0ea9a4279c8642aa67d9c8ccd0a492c8b872b27b555884bc5179cf9049ba4ad"
+    },
+    {
+      "path": "art/mission-revision-small.webp",
+      "mime": "image/webp",
+      "bytes": 19662,
+      "sha256": "e7ca47d3dc9a2ddfe2566a7b4bb823ccabf1e4f97c8aa88ed08ecede31ac3aee"
+    },
+    {
+      "path": "art/mission-revision.webp",
+      "mime": "image/webp",
+      "bytes": 54852,
+      "sha256": "b261c531a636c479ac924d98be2a3a52a17e49a346451a5617f78d36619f59b4"
+    },
+    {
+      "path": "art/mission-source-detective-small.webp",
+      "mime": "image/webp",
+      "bytes": 30178,
+      "sha256": "c92820bb104229da8419c22e5de48e80cd4e038a14071d581a3089ec31d04bd1"
+    },
+    {
+      "path": "art/mission-source-detective.webp",
+      "mime": "image/webp",
+      "bytes": 86136,
+      "sha256": "e1e3f0b9a6abf1ad43688844081f7b9b48cd6201d1f0a9cf27a7c779d2ebfff1"
+    },
+    {
+      "path": "art/mission-surfaces-small.webp",
+      "mime": "image/webp",
+      "bytes": 24398,
+      "sha256": "352f347376afc4c3cff8349f34f00cd2cdf9a78dd0154a4e44f6559df3ec6ca3"
+    },
+    {
+      "path": "art/mission-surfaces.webp",
+      "mime": "image/webp",
+      "bytes": 71894,
+      "sha256": "aaf5100566e8cb7580d3a963b5b1429d75bccb2d31ed9a23acfdaad49629ffe6"
+    },
+    {
+      "path": "art/mission-template-safety-small.webp",
+      "mime": "image/webp",
+      "bytes": 24636,
+      "sha256": "40eb26c60af61f51ba40d7adca87f4593b147c0d29485446af363b56ee9adca9"
+    },
+    {
+      "path": "art/mission-template-safety.webp",
+      "mime": "image/webp",
+      "bytes": 64862,
+      "sha256": "d739b0f9a1f4280249b4343e8d542b59dd44a57387c3fa0c1db2648812779e91"
+    },
+    {
+      "path": "art/mission-test-boundaries-small.webp",
+      "mime": "image/webp",
+      "bytes": 23588,
+      "sha256": "a6baa62f0631e14ea324e372c17e15b34184ad886be3045927aa4d075508b299"
+    },
+    {
+      "path": "art/mission-test-boundaries.webp",
+      "mime": "image/webp",
+      "bytes": 64634,
+      "sha256": "593080815fa04aedac1ad7eac6163dd42028bb964dda59baf38008afb2b6f2f1"
+    },
+    {
+      "path": "art/mission-workflow-gates-small.webp",
+      "mime": "image/webp",
+      "bytes": 23376,
+      "sha256": "f7cbd37a15f3d7a9264457143ec64ebcc00a6cd3f46ace1707fd19d3233ec72e"
+    },
+    {
+      "path": "art/mission-workflow-gates.webp",
+      "mime": "image/webp",
+      "bytes": 61734,
+      "sha256": "29f53b15fad8f0d4db401f449790fe3bf04edce9fa2fea0a965cbc7f90af4a9f"
+    },
+    {
+      "path": "art/mission-workflow-recovery-small.webp",
+      "mime": "image/webp",
+      "bytes": 20824,
+      "sha256": "32de0b1c753bd429cfcb372e262e0c5d069a08c2ac9f19afef9853207bb96bad"
+    },
+    {
+      "path": "art/mission-workflow-recovery.webp",
+      "mime": "image/webp",
+      "bytes": 53862,
+      "sha256": "859b8f3e3e7d0eb0a9c577f0d594d93f18cda0f2ecb46131dedb773832345507"
+    },
+    {
+      "path": "art/orbit-small.webp",
+      "mime": "image/webp",
+      "bytes": 18372,
+      "sha256": "3100bfb60b595cef2e0049c1cc8f6d9d0fe65b105f99cf668f1e9fe598f6e6c0"
+    },
+    {
+      "path": "art/orbit.webp",
+      "mime": "image/webp",
+      "bytes": 54334,
+      "sha256": "3f6117223df5bb222a97390ecf545e0a0ade14aab93308a95c75777a48f647de"
+    },
+    {
+      "path": "art/playbook-announcement-review-small.webp",
+      "mime": "image/webp",
+      "bytes": 10564,
+      "sha256": "54e91f858ab47535b0728a0a0a3fce883b3aea9da4c31f05bc10d1ae579e4c29"
+    },
+    {
+      "path": "art/playbook-announcement-review.webp",
+      "mime": "image/webp",
+      "bytes": 29834,
+      "sha256": "488cf242f13bed395dcb7429659a81bab84090427a182d51cf99b0ec790749e4"
+    },
+    {
+      "path": "art/playbook-approved-import-small.webp",
+      "mime": "image/webp",
+      "bytes": 10978,
+      "sha256": "4f23d61bcbafc2a3e39c55e5175cd247234b2ab23ee6cd66fdfaa4ef831df441"
+    },
+    {
+      "path": "art/playbook-approved-import.webp",
+      "mime": "image/webp",
+      "bytes": 33266,
+      "sha256": "0ceef3de4d3032f038a0fead63de2488c4e9f63d54bcdce10e30de03a0d9f742"
+    },
+    {
+      "path": "art/playbook-author-intent-small.webp",
+      "mime": "image/webp",
+      "bytes": 10266,
+      "sha256": "1a327a42338aa4b4d6c0b6e30e1b7fbece5f00fffe957a29f5d2ce8103f16937"
+    },
+    {
+      "path": "art/playbook-author-intent.webp",
+      "mime": "image/webp",
+      "bytes": 26822,
+      "sha256": "66951ef8c8235ad215b6e4b83d15c04cd6a8ae9d94e71b8b0aa43e7e650646ef"
+    },
+    {
+      "path": "art/playbook-bounded-delegation-small.webp",
+      "mime": "image/webp",
+      "bytes": 14898,
+      "sha256": "2203394d0b0a661154c43c24f457f40ac49a15f83b684a4ebd32507d9347b1c4"
+    },
+    {
+      "path": "art/playbook-bounded-delegation.webp",
+      "mime": "image/webp",
+      "bytes": 46038,
+      "sha256": "0339a18246a9e1e5682250ad6e52d200f3d3b7b3108ea4ba329d1dc0f88f40e6"
+    },
+    {
+      "path": "art/playbook-bounded-fix-small.webp",
+      "mime": "image/webp",
+      "bytes": 25738,
+      "sha256": "96abb1c16ff61214871f37e4be725379579c9d41dd8d263a924cf8a09ac9ee41"
+    },
+    {
+      "path": "art/playbook-bounded-fix.webp",
+      "mime": "image/webp",
+      "bytes": 67076,
+      "sha256": "c29da3a12745e97618ac1dc2416321d81d2436a4598cbb0c034193289746322e"
+    },
+    {
+      "path": "art/playbook-decision-tradeoffs-small.webp",
+      "mime": "image/webp",
+      "bytes": 10380,
+      "sha256": "152d863703633190ba9b27df5af8baa4af8fcb8d23882ce31272f5d621eb56ef"
+    },
+    {
+      "path": "art/playbook-decision-tradeoffs.webp",
+      "mime": "image/webp",
+      "bytes": 27948,
+      "sha256": "058e1f5986597ef39294315bf6c0a332ea53cf695f7e11ed4f1cf63c60a8cff9"
+    },
+    {
+      "path": "art/playbook-file-summary-small.webp",
+      "mime": "image/webp",
+      "bytes": 15532,
+      "sha256": "bd9ff58e927b46a990b10439814e29cd3abb6ae5ae9f0c70ee6b7bdf365006f6"
+    },
+    {
+      "path": "art/playbook-file-summary.webp",
+      "mime": "image/webp",
+      "bytes": 46176,
+      "sha256": "14e8881565165807edcce0be3f6a31951b5d77469d36835bfa9a0b443a9064eb"
+    },
+    {
+      "path": "art/playbook-independent-practice-small.webp",
+      "mime": "image/webp",
+      "bytes": 12078,
+      "sha256": "f7124154e59d2791a04e304685bf4fbf9d8fe2c8c0d12f26f8eb0a5c5314a053"
+    },
+    {
+      "path": "art/playbook-independent-practice.webp",
+      "mime": "image/webp",
+      "bytes": 35858,
+      "sha256": "41823c9274b628fa06cd5a463be1488d9f7a913d3abddcb06b537a75de65c2e1"
+    },
+    {
+      "path": "art/playbook-newcomer-guide-small.webp",
+      "mime": "image/webp",
+      "bytes": 20152,
+      "sha256": "f159d7b1ec1dde14651595fd585d019a40a1c0674028b08944e8cfb60c8ef53a"
+    },
+    {
+      "path": "art/playbook-newcomer-guide.webp",
+      "mime": "image/webp",
+      "bytes": 58170,
+      "sha256": "519226f59cfd7863ca7366b43f46bbefdf52917b60172fce2c58dd281d1c2932"
+    },
+    {
+      "path": "art/playbook-project-context-small.webp",
+      "mime": "image/webp",
+      "bytes": 23490,
+      "sha256": "eba5c7fa476f9ace5a7ca84dbb189bf247b3aed18b528e5ee9b862082cf7834f"
+    },
+    {
+      "path": "art/playbook-project-context.webp",
+      "mime": "image/webp",
+      "bytes": 70578,
+      "sha256": "86ae42ca4944176618e4e969b8fc72f5d16e7345518310d02026d9a3e59df898"
+    },
+    {
+      "path": "art/playbook-research-evidence-small.webp",
+      "mime": "image/webp",
+      "bytes": 22056,
+      "sha256": "6d7e3771eb3a60386f3cc839ad540d48b650d30517e5c50bb20ceaf7d91e35a9"
+    },
+    {
+      "path": "art/playbook-research-evidence.webp",
+      "mime": "image/webp",
+      "bytes": 56392,
+      "sha256": "ef386a9468f5ea165d226d14eceb30e5e958aef904d6e7d24d5ca49428bf71db"
+    },
+    {
+      "path": "art/playbook-reversible-cleanup-small.webp",
+      "mime": "image/webp",
+      "bytes": 16626,
+      "sha256": "cf4427a5a5559c940d846a5eb820010123b633f5636ee04a3cec0c4f60857704"
+    },
+    {
+      "path": "art/playbook-reversible-cleanup.webp",
+      "mime": "image/webp",
+      "bytes": 48622,
+      "sha256": "da94608cba08ba177e51eb7c154fafeb1fbbb1a6001cbc71fdd509b94a90169b"
+    },
+    {
+      "path": "art/portal-small.webp",
+      "mime": "image/webp",
+      "bytes": 22812,
+      "sha256": "1b3fb99492dd0819eb3f9b6acfca80f558453510d1c20af0aef4c069f2ba089a"
+    },
+    {
+      "path": "art/portal.webp",
+      "mime": "image/webp",
+      "bytes": 71096,
+      "sha256": "387f0aa4e3b1797eb2bbb03db55396825cf959d16aca1aa49995da79555f8a3f"
+    },
+    {
+      "path": "art/prism-small.webp",
+      "mime": "image/webp",
+      "bytes": 21064,
+      "sha256": "61f5d89470dc63cc3ca04dfd20b5200151a0a0bfc889b6584e3e739180af0235"
+    },
+    {
+      "path": "art/prism.webp",
+      "mime": "image/webp",
+      "bytes": 66730,
+      "sha256": "3f5b336b7b35ea354c0f896cc33a391d5101062e1ef5c05757d3f486cebf0526"
+    },
+    {
+      "path": "art/prompt-answer-shape-small.webp",
+      "mime": "image/webp",
+      "bytes": 21174,
+      "sha256": "2d2ddc02ea7c2369095b36d5cc5aa97ee4f5bbb704c59b5cd3db5022bd31671c"
+    },
+    {
+      "path": "art/prompt-answer-shape.webp",
+      "mime": "image/webp",
+      "bytes": 56294,
+      "sha256": "3508028cad07e3ac307274abe7ce771f147ff2c5b36eec09cd2287c043b05c72"
+    },
+    {
+      "path": "art/prompt-area-lesson-small.webp",
+      "mime": "image/webp",
+      "bytes": 15276,
+      "sha256": "ed40ee8d9649c49d1d21a35470cc4a1aa18b811eb189074e18de2dc37073cefa"
+    },
+    {
+      "path": "art/prompt-area-lesson.webp",
+      "mime": "image/webp",
+      "bytes": 41368,
+      "sha256": "b83e322318856acf5db464c46ffb49ba7383a5e8f20be2388a3df8729e877fff"
+    },
+    {
+      "path": "art/prompt-argument-outline-small.webp",
+      "mime": "image/webp",
+      "bytes": 7510,
+      "sha256": "5421066607a94f5808284d7a46ab2018e04ffc0b9847934e699b7abd047b7886"
+    },
+    {
+      "path": "art/prompt-argument-outline.webp",
+      "mime": "image/webp",
+      "bytes": 21286,
+      "sha256": "c292694edd1353a7e400f686cf34de3286120b0f8618ee5e2f6a5de7ed5ebd18"
+    },
+    {
+      "path": "art/prompt-assumption-audit-small.webp",
+      "mime": "image/webp",
+      "bytes": 9542,
+      "sha256": "34ac8b507876a5939fb17b4d3c393441687d0fc66decf63b4fc38ede1a2a7c49"
+    },
+    {
+      "path": "art/prompt-assumption-audit.webp",
+      "mime": "image/webp",
+      "bytes": 25442,
+      "sha256": "d5b87f5f64c899a140ddc4f9c90331fd470e999b79ce6ca86a867a1ac3d04dcc"
+    },
+    {
+      "path": "art/prompt-behavior-contract-small.webp",
+      "mime": "image/webp",
+      "bytes": 8554,
+      "sha256": "47880c6cf68db47f3fe14dc57283824b7c8e088cb03b84474c5aee5777bb2183"
+    },
+    {
+      "path": "art/prompt-behavior-contract.webp",
+      "mime": "image/webp",
+      "bytes": 26192,
+      "sha256": "5e2b8d7116dd6364f69fb7e0bcab81e8c2dbaec220c80db71c64b1d44a0bd322"
+    },
+    {
+      "path": "art/prompt-bounded-edit-small.webp",
+      "mime": "image/webp",
+      "bytes": 7178,
+      "sha256": "d41b8c2c0a8b9c3e8afafd10eb788a5c286b1f05a25dbf746170cd31638b9105"
+    },
+    {
+      "path": "art/prompt-bounded-edit.webp",
+      "mime": "image/webp",
+      "bytes": 21508,
+      "sha256": "7501e07b715761a9ee346e836b536c5784dbc3637cfd022b9432550fbf67c632"
+    },
+    {
+      "path": "art/prompt-cautious-summary-small.webp",
+      "mime": "image/webp",
+      "bytes": 7900,
+      "sha256": "2b0da80eb3e1f8a2b54f102c923a76feab8e4723bb42efb482d158e03faa6959"
+    },
+    {
+      "path": "art/prompt-cautious-summary.webp",
+      "mime": "image/webp",
+      "bytes": 21178,
+      "sha256": "a82ed319c7957637162eaf696ebe5279ac588395667e050dc194cf9efbf3708b"
+    },
+    {
+      "path": "art/prompt-checklist-proof-small.webp",
+      "mime": "image/webp",
+      "bytes": 14304,
+      "sha256": "10e4cc2a124492de23f3365228a76075f8dc5e3b8ba3d2fea7d278df43008d44"
+    },
+    {
+      "path": "art/prompt-checklist-proof.webp",
+      "mime": "image/webp",
+      "bytes": 44214,
+      "sha256": "3630123aa6672dbb83afb96a00e2b8bd28be783ec858d4d40b694f62e74c439f"
+    },
+    {
+      "path": "art/prompt-claim-audit-small.webp",
+      "mime": "image/webp",
+      "bytes": 21136,
+      "sha256": "9fe0cead74b287d3df639515af6802a91e42ca58d5b4c1498b60403b14d985c9"
+    },
+    {
+      "path": "art/prompt-claim-audit.webp",
+      "mime": "image/webp",
+      "bytes": 58978,
+      "sha256": "1cf399f16f23b2107351ae1b57d6b99ccd80e32155323bc6abe3086968635e39"
+    },
+    {
+      "path": "art/prompt-clarify-task-small.webp",
+      "mime": "image/webp",
+      "bytes": 15726,
+      "sha256": "5593ea1f794697c36a16ffcfc2f3efd9bce7ba610778d5280dc68c3cc7083063"
+    },
+    {
+      "path": "art/prompt-clarify-task.webp",
+      "mime": "image/webp",
+      "bytes": 42206,
+      "sha256": "473714c9582eda54a7055b4eb71b79ef5b7170ec636f8993a12f7dce117200df"
+    },
+    {
+      "path": "art/prompt-code-walkthrough-small.webp",
+      "mime": "image/webp",
+      "bytes": 9150,
+      "sha256": "83f111b220f52dc8dccf580e937ebc33a8ea1aab33796061d3f41862680a2c95"
+    },
+    {
+      "path": "art/prompt-code-walkthrough.webp",
+      "mime": "image/webp",
+      "bytes": 28248,
+      "sha256": "001c1b08dec4f782b3c59e63e837758486f66dcbe856b8cc16270a5b93fbb0f1"
+    },
+    {
+      "path": "art/prompt-conditional-plans-small.webp",
+      "mime": "image/webp",
+      "bytes": 16260,
+      "sha256": "013e384f4b7148e0993110f06efcb1d4c4350e772c41fb18aa5423a4a5dc9b6d"
+    },
+    {
+      "path": "art/prompt-conditional-plans.webp",
+      "mime": "image/webp",
+      "bytes": 45388,
+      "sha256": "68cc96f2efecaaaaf825ee1c49d10d47afcc4ebaaf3798d81a198e9401ee7663"
+    },
+    {
+      "path": "art/prompt-current-source-plan-small.webp",
+      "mime": "image/webp",
+      "bytes": 10762,
+      "sha256": "78ea92525fc3ffd0f88878fc7dba98cb67c2570fb3bca62c30f3d713877aaaab"
+    },
+    {
+      "path": "art/prompt-current-source-plan.webp",
+      "mime": "image/webp",
+      "bytes": 32400,
+      "sha256": "fc0a4f9947770ffa83ca19b6958b56daf2bea413ef48de07c12389b171414447"
+    },
+    {
+      "path": "art/prompt-data-dictionary-small.webp",
+      "mime": "image/webp",
+      "bytes": 13060,
+      "sha256": "fd6d8242e67a314fc325130fe8cd7c6622605334bbb5a93757f0043203a66c41"
+    },
+    {
+      "path": "art/prompt-data-dictionary.webp",
+      "mime": "image/webp",
+      "bytes": 41462,
+      "sha256": "8d27d2486b03ad49086c43c7c24310aefb8c7cae80fd01c834750bda90f422b2"
+    },
+    {
+      "path": "art/prompt-fair-comparison-small.webp",
+      "mime": "image/webp",
+      "bytes": 19644,
+      "sha256": "10f8e60879ea725c6719c5bc7840bcdbafe2d3829e5e1fa485bda8894acb04a1"
+    },
+    {
+      "path": "art/prompt-fair-comparison.webp",
+      "mime": "image/webp",
+      "bytes": 55094,
+      "sha256": "4b57ffbaf9648055b12ca83993a1afaddad769f8574c2255d74714a9d45e6224"
+    },
+    {
+      "path": "art/prompt-inquiry-map-small.webp",
+      "mime": "image/webp",
+      "bytes": 10908,
+      "sha256": "46c92ded7d4c4e7cf8a87b5e0bdf5dd7e5bae0d178a8fde73e13ffc19b23e93f"
+    },
+    {
+      "path": "art/prompt-inquiry-map.webp",
+      "mime": "image/webp",
+      "bytes": 33078,
+      "sha256": "f03f623564539d43fceb29af83468e47dea2e2e9da46b5dd83f35504c73cc98a"
+    },
+    {
+      "path": "art/prompt-kind-boundary-small.webp",
+      "mime": "image/webp",
+      "bytes": 8468,
+      "sha256": "291dd988e9538d6b2ecb2399879271b4722d47450121ecc7d03c781ad779828e"
+    },
+    {
+      "path": "art/prompt-kind-boundary.webp",
+      "mime": "image/webp",
+      "bytes": 24532,
+      "sha256": "4e40c457700682f9f27bdb7247082e3285b1902e5ce84eb01af5808c8b2d8a03"
+    },
+    {
+      "path": "art/prompt-learning-error-small.webp",
+      "mime": "image/webp",
+      "bytes": 21330,
+      "sha256": "3b9e35c750fb093693ef5e8027b50309c635957ee5360f84b20849bf61a5a09d"
+    },
+    {
+      "path": "art/prompt-learning-error.webp",
+      "mime": "image/webp",
+      "bytes": 52624,
+      "sha256": "7c0a161f94e143755e612fea4064ffa025092d2798939897b7deaaff0b66e102"
+    },
+    {
+      "path": "art/prompt-meaning-preserved-small.webp",
+      "mime": "image/webp",
+      "bytes": 16428,
+      "sha256": "5f7a064a66bb675b50c5076a7c189ace955721fd761ff144d6b5da46571f0e57"
+    },
+    {
+      "path": "art/prompt-meaning-preserved.webp",
+      "mime": "image/webp",
+      "bytes": 45088,
+      "sha256": "a6765d635c209cfcf78d5baab3961dd49701ff754a0955aa7c4974e6525cb943"
+    },
+    {
+      "path": "art/prompt-minimized-data-small.webp",
+      "mime": "image/webp",
+      "bytes": 7066,
+      "sha256": "b3aa8e9ef39ffae836a8c39d9060823acb282a332af83c68f9813c34202da0a3"
+    },
+    {
+      "path": "art/prompt-minimized-data.webp",
+      "mime": "image/webp",
+      "bytes": 19296,
+      "sha256": "b72d2fef18f900eb9be851a3e799db91582d9f05949086d5a187b581b707149f"
+    },
+    {
+      "path": "art/prompt-observed-bug-small.webp",
+      "mime": "image/webp",
+      "bytes": 22242,
+      "sha256": "1b80c7a3ccd4ba8252a0366f61d097ff8b88abeef1c88c4c39072c3f8869aaae"
+    },
+    {
+      "path": "art/prompt-observed-bug.webp",
+      "mime": "image/webp",
+      "bytes": 66788,
+      "sha256": "324e2b6e11c733b08dc853bdcb380152477cb5ec323a25b5119317d1470022ab"
+    },
+    {
+      "path": "art/prompt-organize-notes-small.webp",
+      "mime": "image/webp",
+      "bytes": 13724,
+      "sha256": "c71ac2c699b22cfbc94e867d8b33411e65bbb723c48c9ea454ffe77883bbb0e7"
+    },
+    {
+      "path": "art/prompt-organize-notes.webp",
+      "mime": "image/webp",
+      "bytes": 45736,
+      "sha256": "e8a7da786c9b639deaa19828bedc16eedaf3c125577d4515fc09043cfeae60e6"
+    },
+    {
+      "path": "art/prompt-practice-ladder-small.webp",
+      "mime": "image/webp",
+      "bytes": 9350,
+      "sha256": "43acb2e9457f2b49dada8ba2b54dd7b7c017c365498fb626e1f77b2057798c71"
+    },
+    {
+      "path": "art/prompt-practice-ladder.webp",
+      "mime": "image/webp",
+      "bytes": 27800,
+      "sha256": "c585869e9d35525e21eb221d0cd06cb16c516d615996f7edcd4ffdc6f30734c1"
+    },
+    {
+      "path": "art/prompt-priority-edit-small.webp",
+      "mime": "image/webp",
+      "bytes": 7182,
+      "sha256": "b9ce156df269f8988a480af74abb861ffd0541bd4859eb962802aca3d070ee2e"
+    },
+    {
+      "path": "art/prompt-priority-edit.webp",
+      "mime": "image/webp",
+      "bytes": 20712,
+      "sha256": "7fdae3f2b96ddc204b1f679f21cd3a9ad9ce9d8ebe991dcb841ee47dd7464bfe"
+    },
+    {
+      "path": "art/prompt-process-guide-small.webp",
+      "mime": "image/webp",
+      "bytes": 6998,
+      "sha256": "66c566b7e6449498199e39f90bcdc22b64ce4dfa621c542c5c05f4e971d90979"
+    },
+    {
+      "path": "art/prompt-process-guide.webp",
+      "mime": "image/webp",
+      "bytes": 19120,
+      "sha256": "3a7c38db2891f85678c8b2c798e4bd8a4ecf5d1fc0538b600bdd9c965eb87fd0"
+    },
+    {
+      "path": "art/prompt-project-plan-small.webp",
+      "mime": "image/webp",
+      "bytes": 35468,
+      "sha256": "58beee3e5bf50e6c5ae6a369388739a20f10c3d2a78c48541ea6f91727d6f149"
+    },
+    {
+      "path": "art/prompt-project-plan.webp",
+      "mime": "image/webp",
+      "bytes": 102054,
+      "sha256": "fdb2c88cfd8400e4846c6cb287c2cdeac518f3ece4063601b8c3dcf38ca8f84d"
+    },
+    {
+      "path": "art/prompt-reader-summary-small.webp",
+      "mime": "image/webp",
+      "bytes": 20070,
+      "sha256": "484a942da78ec613bdf0a4c59101b16eeed5224f94b73e0a0aadc324464976ec"
+    },
+    {
+      "path": "art/prompt-reader-summary.webp",
+      "mime": "image/webp",
+      "bytes": 52704,
+      "sha256": "2a7beeeeab05c76ff5d8951562a284950e511d74094aa62acefaeabda159e716"
+    },
+    {
+      "path": "art/prompt-reversible-cleanup-small.webp",
+      "mime": "image/webp",
+      "bytes": 15582,
+      "sha256": "86496339ef695a00b117220fe9632795148025f640c493de0ce379f2011e8586"
+    },
+    {
+      "path": "art/prompt-reversible-cleanup.webp",
+      "mime": "image/webp",
+      "bytes": 48050,
+      "sha256": "911add297ff0c2d077eb0acfc92820c077f79d0d9cf13c5763e1ddda2f40eded"
+    },
+    {
+      "path": "art/prompt-small-steps-small.webp",
+      "mime": "image/webp",
+      "bytes": 14022,
+      "sha256": "a0cb87842644a44bdc7e3be9b34a318f9f7f45472686b52ab5685c59b0cb626f"
+    },
+    {
+      "path": "art/prompt-small-steps.webp",
+      "mime": "image/webp",
+      "bytes": 38568,
+      "sha256": "a73803005cbf153b24632aafb7b7b40fb1edb653a3e629f1b181baff31b9857e"
+    },
+    {
+      "path": "art/prompt-study-cards-small.webp",
+      "mime": "image/webp",
+      "bytes": 16492,
+      "sha256": "f8277b98213c8c3eef82c1071043337595467c7bb29d22dad8637047424b6b9f"
+    },
+    {
+      "path": "art/prompt-study-cards.webp",
+      "mime": "image/webp",
+      "bytes": 49816,
+      "sha256": "e5e5d0c2e9d684dd725ee44959a1d2ecc21cfe4847377e1e8b729b12d6e2363c"
+    },
+    {
+      "path": "art/solar-small.webp",
+      "mime": "image/webp",
+      "bytes": 23674,
+      "sha256": "1e682675b95d086bfb84fb16dedaae9bb8d8511051af0930676bf37af1da84b3"
+    },
+    {
+      "path": "art/solar.webp",
+      "mime": "image/webp",
+      "bytes": 71230,
+      "sha256": "e6270b716f7476756475a2db9876370a40040d8b07b4b173a7b4ed99b96c488a"
+    },
+    {
+      "path": "assets/index-CzTSRV_b.js",
+      "mime": "text/javascript",
+      "bytes": 1502024,
+      "sha256": "71350b501c2ba60cf9658d08304c54b691c666417ef9fb94e9ec7ca8a7052d4a"
+    },
+    {
+      "path": "assets/index-Di1rwKVI.css",
+      "mime": "text/css",
+      "bytes": 146254,
+      "sha256": "2f124d9eba1e9d76618a06f8b3c2c0128e6e7b825b4f2ce168d75364448159ee"
+    },
+    {
+      "path": "index.html",
+      "mime": "text/html",
+      "bytes": 597,
+      "sha256": "135903e0135434af94ee9a53539920a9425d1bf489771b17c6443352e7b624ef"
+    },
+    {
+      "path": "maintenance.json",
+      "mime": "application/json",
+      "bytes": 17792,
+      "sha256": "033f2c3dc1ddd1c9628bca2df0a5afec380eab550cc4db774e4f0f7f0408433a"
+    }
+  ]
+}

@@ -1,42 +1,69 @@
-# DelQuro Labs — delquro.com
+# DelQuro.com
 
-Modern high-tech startup site ("DQ/OS" design system, v5) — ink charcoal `#060C12` + circuit teal `#2FD9BC` + brushed silver, monospace engineering accents, engineering grid backdrop, terminal-style library index. Vision: *"One studio. A library of small, focused apps."*
+The canonical editing home for [DelQuro Labs](https://www.delquro.com/) is
+[PlanExServices/DelQuro.com](https://github.com/PlanExServices/DelQuro.com).
+The site uses static HTML, CSS, and native JavaScript. No application framework
+or runtime npm dependency is required. The published image contains only public
+site files.
 
-All static references are cache-busted (`?v=5`) — deploys take effect immediately and stale-CSS rendering bugs cannot recur. nginx serves HTML as `no-cache` and versioned statics as 30-day immutable.
+## Catalog and shared layout
 
-## Brand (Sep 2026 redesign)
-- Palette matched to the adopted logo: ink `#0B1218`, teal `#2FD9BC`, silver `#C9CFCE`
-- `assets/logo-mark.svg` — flat transparent monogram derived from the master art "DQ Labs logo.png" (used site-wide in topbar, CTA, footers)
-- `assets/wordmark-light.svg` / `wordmark.svg` — two-tone "DelQuro Labs" text lockups
-- `assets/dq-lockup.png` (59KB) — flat adopted logo lockup (monogram + wordmark, dark-bg variant), centerpiece of the home hero
-- `assets/dq-mark.png` (10KB) — transparent monogram used in topbar, CTA, and every footer
-- `assets/og-image.jpg` (34KB) — social card from the adopted end card
-- `assets/apple-touch-icon.png`, `favicon.png`, `favicon.ico` — D-with-circuits from the flat mark
-- `assets/app-icon.svg` — rounded-chip vector icon (site favicon)
+Edit `catalog/products.json`, then run `node scripts/generate-site.mjs`. Commit
+the generated HTML. The generator produces the homepage, catalog, detail pages,
+availability sections, sitemap, and shared navigation/footer. Supporting-page
+bodies and the interactive AI Scripts library stay hand authored. Homepage
+sections, including client website mockups, are defined in the generator.
 
-## Pages
-- `index.html` — centered brand hero (logo plate), library metrics (23 / 4 live / 1 studio), 6 featured volumes, category chips, principles, CTA
-- `products.html` — "The Library": 23-product catalog in 7 shelves (Family, Veterinary, AI, Inventory, Create, Sleep, Build & learn, Studio)
-- `apps/` — 6 expanded product pages (note-thyme, choremouse, delquro-connect, megatory-live, vmta, jarvis)
-- `privacy.html` (incl. COPPA / children section), `terms.html`, `support.html`, `resources.html`, `account-deletion.html`
+As reviewed on October 15, 2026, `catalog/products.json` is a curated,
+public-only manifest of 16 entries. Its four availability stages are
+`available` (2), `preview` (6), `limited-access` (2), and `in-development`
+(6). A listing describes what visitors can currently access; it does not by
+itself certify a production release. Keep the private project inventory
+outside this repository. Add a public listing only when its identity, access
+path, and release wording have been reviewed. Do not add unshipped feature
+claims or infer a launch from the existence of a repository or working URL.
 
-## Notes
-- Live volumes: PlainSlang (plainslang.com), S.O.L.A.R. (solar.delquro.com), Megatory Live (megatory-live.delqurolabs.app), VMTA (vmta.delqurolabs.app)
-- Catalog cards for unreleased volumes link to `apps/*.html` pages that are not yet built (they 404 until written — same as the previous release)
-- No JavaScript framework; single `style.css` + `site.js` (reveal-on-scroll, sticky topbar, mobile menu)
+## Preview and verification
 
-## Deployable size
-≈460KB total · largest single file is `products.html` at 56KB
+Run `node scripts/preview.mjs` and open http://127.0.0.1:4173/. This local review
+server does not replace production nginx verification.
 
-## Deploy
-### Coolify (Docker)
-- Build pack: **Dockerfile** (nginx:1.27-alpine) · Port: **80**
-- Private repo: add a GitHub PAT or GitHub App in Coolify → see `COOLIFY_FIX.md`
-- Or upload these files directly to the repo's `main` branch
+Run `npm run check` for generated-file consistency, catalog gates, local assets,
+and anchors. These checks use Node only and do not require dependency installation.
+Run `npm run check:external` to make read-only GET identity checks of linked
+product destinations. This confirms the responses observed at check time; it
+does not establish product release readiness, application security, or that a
+service is suitable for unrestricted public use.
+Browser verification uses the development-only Playwright dependency:
+`npm ci`, `npx playwright install chromium`, and `SITE_URL` pointing to the site
+under test (default http://127.0.0.1:8080), then `npm run test:browser`.
 
-### Cloudflare Pages
-1. `wrangler pages deploy . --project-name=delquro-com --branch=main`
-2. Custom domains: delquro.com + www.delquro.com
+GitHub CI builds the image, validates nginx, and tests actual response statuses,
+headers, caching, redirects, publication boundaries, media ranges, and browser
+behavior. Run the same container checks with
+`node scripts/check-nginx.mjs http://127.0.0.1:8080`.
 
-### Manual preview
-`python3 -m http.server 8000` → http://localhost:8000/
+React Bits adaptations and source revision are recorded in
+`THIRD_PARTY_NOTICES.md`; the full license ships at
+`assets/react-bits-LICENSE.txt`. Persistent project context lives in
+`memory/PROJECT.md`.
+
+## Publishing and repository history
+
+The latest verified website release is `4c51e19` (PR #12): private PlotPerks
+removed, illustrated product cards, and William's opening poster corrected.
+It passed container CI and live server, link, and browser checks. AI Quest's
+concurrently merged public listing is retained.
+
+Read [DEPLOYMENT.md](DEPLOYMENT.md) before a release. The user approved the
+website release on October 15 and PR #9 was merged into main at `dcb43fe`.
+The owner manually deployed `56b0581` through Coolify; the refreshed live site
+passed its server, internal-link, and browser checks. Coolify Auto deploy is on,
+but GitHub webhook delivery still needs verification; see the deployment notes.
+The approval covers this website release only. DNS and linked-app changes remain
+outside scope. Do not force-push or put a token in a remote URL.
+
+`PlanExServices/delquro-site` is an older marketing site;
+`PlanExServices/DelQuroLabs` is a separate site concept; and
+`DelQuroLabs/DelQuroLabs.app` is a different product launchpad. Confirm hosting
+connections before archiving or removing any repository.

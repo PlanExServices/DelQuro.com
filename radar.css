@@ -1,0 +1,12 @@
+/* Radar © 2026 David Haz, adapted from the user-supplied React Bits CSS.
+   Full notice: /assets/react-bits-LICENSE.txt. */
+.radar-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,430px);gap:28px;align-items:center;margin-top:32px;padding:26px 32px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,#10272a,#0d1c22);overflow:hidden}
+.radar-copy{max-width:480px}.radar-copy .eyebrow{margin-bottom:10px}.radar-copy h3{font-size:clamp(24px,2.5vw,32px);margin-bottom:12px}.radar-copy p:not(.eyebrow){margin:0 0 14px;color:var(--muted);font-size:14px;line-height:1.8}.radar-copy .text-link{margin-top:5px}
+.radar-panel{position:relative;min-width:0;height:255px;border:1px solid rgba(85,223,197,.16);border-radius:14px;background:radial-gradient(circle at center,rgba(85,223,197,.1),rgba(11,23,27,.2) 60%,#0a1b1e);overflow:hidden}
+.radar-container{position:relative;width:100%;height:100%;overflow:hidden;background:repeating-radial-gradient(circle at center,transparent 0 33px,rgba(85,223,197,.11) 34px,transparent 35px 59px),linear-gradient(90deg,transparent calc(50% - .5px),rgba(85,223,197,.1) 50%,transparent calc(50% + .5px));opacity:.9}
+.radar-container[data-radar-state^="active"]{background:radial-gradient(circle at center,rgba(85,223,197,.035),transparent 65%)}
+.radar-canvas{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+.radar-panel-label{position:absolute;left:16px;bottom:12px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#a8c5be;pointer-events:none}
+@media(max-width:760px){.radar-band{grid-template-columns:1fr;gap:20px;padding:24px}.radar-panel{height:230px}}
+@media(max-width:480px){.radar-band{padding:20px}.radar-panel{height:205px}}
+@media(prefers-reduced-motion:reduce){.radar-container,.radar-container[data-radar-state^="active"]{background:repeating-radial-gradient(circle at center,transparent 0 33px,rgba(85,223,197,.11) 34px,transparent 35px 59px),linear-gradient(90deg,transparent calc(50% - .5px),rgba(85,223,197,.1) 50%,transparent calc(50% + .5px))}.radar-canvas{display:none}}
