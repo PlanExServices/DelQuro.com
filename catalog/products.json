@@ -178,7 +178,8 @@
       "audience": "Clinic staff and pet owners with a clinic-issued form link.",
       "useCases": [
         "Access clinic forms through a protected staff inbox.",
-        "Complete a form using an individual link from your clinic."
+        "Complete a form using an individual link from your clinic.",
+        "Lay out care options, costs, and ways to pay in writing, and record the owner's choice."
       ],
       "detail": "apps/vetform-go.html",
       "visibility": "public",

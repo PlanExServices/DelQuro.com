@@ -507,3 +507,10 @@ The separate `DelQuroLabs/delqurolabs-com` services repository already contains
 the MFCC sample. At verification, delqurolabs.com still redirects to
 www.delquro.com and www.delqurolabs.com does not resolve. This removal is not a
 storefront launch or DNS change. Do not claim the migration is complete.
+
+## PR #7 refresh — 2026-10-17
+
+VetForm GO's Treatment Options and Costs form shipped (DelQuroLabs/VetFormGO#3,
+merged 2026-10-11), so PR #7 now adds only that one VetForm GO use case to
+`catalog/products.json`. Its earlier hand-edited app pages were dropped in favor
+of the generated pages; VMTA stays withheld and has no public page.
