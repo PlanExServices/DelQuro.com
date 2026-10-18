@@ -14,14 +14,14 @@ test('home answers are keyboard accessible and work without JavaScript',async({b
   await expect(answer.getByRole('link',{name:'AI Quest',exact:true})).toHaveAttribute('href','/apps/ai-quest.html');
   await question.press('Enter');
   await expect(answer).not.toHaveAttribute('open','');
-  await expect(page.locator('#available .app-card h3')).toHaveText(['AI Quest','PlainSlang']);
+  await expect(page.locator('#available .app-card h3')).toHaveText(products.filter(p=>p.availability==='available').sort((a,b)=>a.name.localeCompare(b.name,'en')).map(p=>p.name));
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await context.close();
 });
 
 test('product detail pages show real audience, uses, stage, and breadcrumb navigation',async({page})=>{
   await page.setViewportSize({width:375,height:812});
-  for(const id of ['ai-quest','choremouse','delquro-connect','ghostforge']){
+  for(const id of ['ai-quest','choremouse','delquro-connect','vmta','note-thyme']){
     const product=products.find(p=>p.id===id);
     await page.goto('/'+product.detail);
     await expect(page).toHaveTitle(product.seoTitle+' | DelQuro Labs');

@@ -1,5 +1,70 @@
 # DelQuro.com project memory
 
+## Owner catalog decisions and S.O.L.A.R. hosting check — 2026-10-18
+
+The owner instructed: ChoreMouse live; VMTA in the clinic section; Note Thyme
+coming soon; investigate S.O.L.A.R. as an expected live app; hide the other
+recommended development projects. This supersedes the earlier audit's pending
+recommendations. Existing website publication authorization applies to these
+requested website changes; linked application releases remain separate.
+
+Implemented from current remote main `3f24e11`: ChoreMouse is available,
+Note Thyme has a distinct Coming soon stage, VMTA is a contact-only clinic demo,
+and Echo, GhostForge, CLT Academy and Vibe Coding 101 are removed from the public
+manifest, generated pages, sitemap and artwork. The empty Create category is
+removed. Catalog groups separate public apps/previews, clinic access, and
+coming-soon/in-progress projects. Empty groups hide with search/filter results;
+the complete catalog and group headings work without JavaScript. The latest
+VetForm GO treatment-choice content and the prior MFCC removal are preserved.
+
+S.O.L.A.R. is the K–12 learning game from `PlanExServices/SOLAR`, not the old
+gardening catalog description. Its saved GitHub Pages address returns 404;
+the old app hostname fails TLS. GitHub Pages hosting is absent, its migration
+PR #1 is open with deploy skipped, and the signed-in Coolify production project
+has zero resources. No alternate live address was found. Retain its existing
+in-development stage without a broken launch button, with a release note that
+the previous address is unavailable. Restoring its app hosting needs separate
+authorization; this task does not deploy or modify that app.
+
+Local verification: generation/catalog checks, 895 references / 119 anchors,
+22 canonical-page SEO checks, 22 browser cases and all 7 external app URL/identity
+checks passed. Release container checks and live verification follow via CI and
+the existing website webhook. Status at this source checkpoint is
+IMPLEMENTED_NOT_LIVE_VERIFIED; the release receipt is kept outside the public
+repository in `catalog-update-2026-10-18` under this task's evidence folder.
+
+## Website versus Warehouse app inventory audit — 2026-10-18
+
+Read-only audit requested before deciding what belongs on the public site.
+The live homepage, catalog and 16 detail pages match remote main
+`3f24e11f8f7d05a6e509e21dafd01d419903aef3`; this checkout remains at the older
+`0138c29` release. Refresh from remote main before implementing later edits.
+The newer live site has removed the MFCC section and added a VetForm GO use case;
+do not reintroduce older generated pages from this checkout.
+
+Current website: 2 available, 6 previews, 2 clinic-access and 6 development entries.
+All 7 external public launch destinations freshly passed HTTP/page-identity
+checks. This does not upgrade readiness or prove complete customer workflows.
+The signed-in Warehouse Products view has 40 records (12 Up, 9 trouble,
+19 unchecked), and Our apps lists 11 overlapping rooms. Warehouse's Live/Up
+labels include redirects and protected responses. Its Storefront has no
+listings and delivery is off; it does not currently feed this site's catalog.
+
+An independent critic reviewed the recommendation: lead with the 8 tryable
+entries, separate the 2 clinic tools, and hide the 6 development cards pending
+the owner's decision. Preserve existing private exclusions and access gates.
+No catalog, live site, Warehouse data or linked application was changed, and
+no release is requested by this audit. The owner has not yet chosen the final
+public collection. The detailed report contains private inventory and stays
+outside the public repository at:
+`C:\Users\plane\.codex\visualizations\2026\10\09\01a1229a-a7af-7db1-937c-a44abf15faa4\warehouse-site-audit-2026-10-18\website-app-decisions.md`.
+
+Warehouse reconciliation includes missing public destinations, alias/category
+differences and former standalone addresses now replaced by private rooms.
+Confirm a product's identity and public release decision before publishing it;
+reachability alone is insufficient. The audit receipts are beside the report
+and in the sibling `warehouse13-audit-2026-10-18` folder. No paid calls ran.
+
 ## Modern website and SEO framework — 2026-10-15
 
 **VERIFIED LIVE:** PR #15 merged as
