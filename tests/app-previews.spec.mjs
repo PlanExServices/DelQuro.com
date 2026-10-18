@@ -99,3 +99,22 @@ for(const id of ['ai-quest','vetform-go','delquro-zen','cats-journey']){
   await c.close();
  });
 }
+
+
+test('monitor stands stay centered under every screen on cards details and galleries',async({browser,baseURL})=>{
+ const c=await browser.newContext({javaScriptEnabled:false,reducedMotion:'reduce'});const p=await c.newPage();
+ for(const width of [320,768,1440]){
+  await p.setViewportSize({width,height:1000});
+  for(const path of ['/','/products.html','/apps/ai-quest.html','/apps/vmta.html']){
+   await p.goto(baseURL+path);
+   const positions=await p.locator('.store-monitor').evaluateAll(els=>els.map(el=>{
+    const panel=el.querySelector('.store-monitor-panel').getBoundingClientRect();const center=panel.left+panel.width/2;
+    return ['.store-monitor-neck','.store-monitor-base'].map(selector=>{const r=el.querySelector(selector).getBoundingClientRect();return{offset:Math.abs(r.left+r.width/2-center),width:r.width}});
+   }).flat());
+   expect(positions.length).toBeGreaterThan(0);
+   for(const part of positions){expect(part.width).toBeGreaterThan(0);expect(part.offset).toBeLessThan(1);}
+   expect(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  }
+ }
+ await c.close();
+});

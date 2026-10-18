@@ -386,7 +386,6 @@
 }
 .store-dual .store-device.store-desktop,
 .app-card .store-dual .store-device.store-desktop {
-  display:block;
   width:100%;
   height:auto;
   margin:0;
