@@ -1,5 +1,36 @@
 # DelQuro.com project memory
 
+## App-store-style screenshot previews — 2026-10-18
+
+The owner requested screenshot previews for every product card and upgraded
+graphics. Implemented from main `302dcbd` on `codex/app-store-previews` without
+changing product availability, linked applications or access boundaries.
+
+Every one of the 13 cards now has a branded preview panel, larger icon tile,
+headline and explicit image type. There are 17 real screenshots across nine
+products: the eight publicly reachable tools (including AI Scripts on this site)
+and S.O.L.A.R.'s isolated offline setup build. ChoreMouse and What List are
+labeled demo screenshots; Megatory is explicitly an access screen; S.O.L.A.R.
+is explicitly an offline build preview and remains unavailable publicly.
+Connect, VetForm GO, VMTA and Note Thyme use labeled original concept artwork.
+No authenticated clinic or patient/staff screen is published. Raw source captures
+and private provenance receipts stay outside this public repository.
+
+The catalog's new `preview` data drives `scripts/product-previews.mjs`,
+`app-store.css`, and native product galleries. Full-size WebPs total about
+583 KB and have smaller card versions; no remote image hosting is required.
+Gallery links enlarge images and keyboard scrolling works without JavaScript.
+Static motion on touch/reduced-motion, phone layouts, real image dimensions and
+honest captions are preserved. See `docs/APP_PREVIEWS.md` for maintenance rules.
+
+Generation, catalog, 1,010 references / 112 anchors, 22-page SEO, and 24 browser
+cases passed locally. Independent source/asset review found no blocking issue;
+desktop and measured 375px detail captures were reviewed. The browser's viewport
+override did not affect its screenshot dimensions, so phone visual evidence uses
+the tested 375px browser context instead. Container CI and live verification
+follow before publication. Status here: IMPLEMENTED_NOT_LIVE_VERIFIED.
+Evidence: task visualization folder `app-store-previews-2026-10-18`.
+
 ## Owner catalog decisions and S.O.L.A.R. hosting check — 2026-10-18
 
 The owner instructed: ChoreMouse live; VMTA in the clinic section; Note Thyme

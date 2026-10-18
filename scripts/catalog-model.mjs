@@ -30,6 +30,19 @@ export function validateCatalog({products, categories, reviewedOn}) {
     assert(Array.isArray(p.useCases) && p.useCases.length >= 2 && p.useCases.length <= 3, `Two or three use cases required: ${p.id}`);
     assert(p.useCases.every(item => typeof item === 'string' && item.trim().length > 0), `Use cases must be non-empty text: ${p.id}`);
     assert.match(p.reviewedOn || '', /^\d{4}-\d{2}-\d{2}$/);
+    const preview=p.preview;
+    assert(preview&&['screenshot','demo','access','development','concept'].includes(preview.kind), `Explicit preview type required: ${p.id}`);
+    assert(preview.headline&&preview.note, `Preview headline and disclosure required: ${p.id}`);
+    if(preview.kind==='concept') assert(!preview.screens?.length, `Concepts cannot claim screenshots: ${p.id}`);
+    else {
+      assert.match(preview.capturedOn||'', /^\d{4}-\d{2}-\d{2}$/);
+      assert(preview.screens?.length>0&&preview.screens.length<=4, `One to four real screenshots required: ${p.id}`);
+      for(const screen of preview.screens){
+        assert.match(screen.src, /^\/assets\/app-previews\/[a-z0-9-]+\.webp$/);
+        assert.match(screen.thumbnail, /^\/assets\/app-previews\/[a-z0-9-]+\.webp$/);
+        assert(Number.isInteger(screen.width)&&screen.width>0&&Number.isInteger(screen.height)&&screen.height>0&&screen.caption, `Screenshot dimensions and caption required: ${p.id}`);
+      }
+    }
     assert.match(p.id, /^[a-z0-9-]+$/);
     assert.match(p.detail, /^apps\/[a-z0-9-]+\.html$/);
     assert(categories.some(c => c.id === p.category), `Category required: ${p.id}`);

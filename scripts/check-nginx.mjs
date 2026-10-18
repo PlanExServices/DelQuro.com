@@ -69,7 +69,7 @@ for (const uri of ['/', '/index.html', '/products.html', '/about.html', '/apps/a
   });
 }
 
-for (const uri of ['/style.css', '/redesign.css', '/site.js', '/site.webmanifest']) {
+for (const uri of ['/style.css', '/redesign.css', '/app-store.css', '/site.js', '/site.webmanifest']) {
   await check(`safe caching and headers ${uri}`, async () => {
     const response = await request(uri, { method: 'HEAD' });
     assert.equal(response.status, 200);
