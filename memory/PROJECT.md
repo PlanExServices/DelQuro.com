@@ -1,5 +1,23 @@
 # DelQuro.com project memory
 
+## Connect and PlainSlang mobile previews — 2026-10-18
+
+The owner clarified that Connect and PlainSlang are mobile apps. Both now use
+explicit phone frames on homepage/catalog cards, detail heroes and galleries,
+with true 390-by-844 touch/mobile viewport captures at 2x resolution. Connect
+shows the actual isolated application huddle and time-off screens with synthetic
+demo team data; its clinic access gate is unchanged. PlainSlang shows the current
+public mobile home and glossary from a fresh disposable context. No linked app,
+account, backend or real data changed. Old screenshot versions remain available
+for previously opened pages; current manifest references the new mobile assets.
+
+Generation, catalog, 1,038 references / 105 anchors and 22-page SEO checks passed.
+Phone regressions now include both apps, preserving no-JavaScript galleries,
+image ratios and 320px layouts. All 30 browser cases passed locally.
+Independent critic found no blockers. Container/publication receipts follow. Raw captures/provenance remain outside the public tree in
+task visualization folder connect-plainslang-mobile-2026-10-18.
+
+
 ## Veterinary suite and complete screenshot coverage — 2026-10-18
 
 The owner requested Megatory Live alongside the veterinary suite and screenshot

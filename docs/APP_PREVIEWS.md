@@ -8,7 +8,7 @@ Catalog `preview` data drives each card and its native product-page gallery. All
 - **Demo screenshot:** ChoreMouse and What List public demos, plus isolated actual Connect and VetForm GO interfaces with synthetic team data or empty demo storage.
 - **Offline build preview:** Megatory’s archived September 2026 inventory build, VMTA’s isolated development frontend, and Note Thyme’s current Expo development source. These do not establish production readiness or equivalence to a live deployment.
 
-Captured October 18, 2026. Connect shows team huddle and time-off planning. VetForm GO shows its built-in clinical form library and empty dashboard. VMTA shows synthetic voicemail triage and rules; messages, scores and status indicators are demonstration data. Note Thyme shows a synthetic meal plan and grocery list and remains Coming soon.
+Captured October 18, 2026. Connect shows mobile team huddle and time-off planning. VetForm GO shows its built-in clinical form library and empty dashboard. VMTA shows synthetic voicemail triage and rules; messages, scores and status indicators are demonstration data. Note Thyme shows a synthetic meal plan and grocery list and remains Coming soon.
 
 Megatory shows actual sample inventory and add-item workflows instead of the clock/PIN access screen. Its archived build automatically seeds fictional sample stock. Only the tenant header was replaced with Demo clinic in the temporary capture response. The original source and live app were unchanged. Its gallery discloses that the current public destination still opens at clinic clock/PIN entry.
 
@@ -20,7 +20,7 @@ The homepage and catalog group Megatory Live with Connect, VetForm GO and VMTA. 
 
 - Real optimized WebPs live in `assets/app-previews/`, with separate card thumbnails. Old versioned assets may remain for previously opened pages; only manifest-referenced images appear in current cards.
 - Preserve the complete captured screen with `object-fit: contain`, true dimensions, descriptive captions, local paths, lazy loading and native image links.
-- ChoreMouse, S.O.L.A.R., Megatory and Note Thyme use explicit `preview.device: "phone"`. Captures use a genuine 390×844 viewport at 2× density; decorative speaker/home indicators stay outside the image. Phone framing does not claim native-platform or store availability.
+- ChoreMouse, S.O.L.A.R., Megatory, Note Thyme, Connect and PlainSlang use explicit `preview.device: "phone"`. Captures use a genuine 390×844 viewport at 2× density; decorative speaker/home indicators stay outside the image. Phone framing does not claim native-platform or store availability.
 - Fresh disposable contexts and isolated local builds keep existing accounts and real records out of captures. Do not publish real patient/staff information, tenant identities, credentials or production progress. Use synthetic demo fixtures, documented outside the public repository.
 - Raw captures, source hashes, temporary local app copies, fixture data and private provenance receipts remain outside the published tree. This release’s evidence folder is `all-product-screens-2026-10-18` in the task visualization workspace.
 - Never invent a product interface. Obtain real source or an approved demo before listing a new screenshot card. `scripts/check-catalog.mjs` rejects cards without a useful screenshot.
