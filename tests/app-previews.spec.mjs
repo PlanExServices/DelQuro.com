@@ -12,6 +12,9 @@ test('every card has an honest preview and every captured screen loads',async({p
     expect(['screenshot','demo','development']).toContain(p.preview.kind);
     await expect(preview.locator('img')).toHaveCount(p.preview.device==='both'?2:1);
     await expect(preview.locator('svg.card-art')).toHaveCount(0);
+    await expect(preview.locator('.store-monitor')).toHaveCount(p.preview.device==='phone'?0:1);
+    await expect(preview.locator('.store-browser')).toHaveCount(0);
+    if(p.preview.device!=='phone') await expect(preview.locator('.store-monitor-base')).toBeVisible();
     for(const img of await preview.locator('img').all()){
       await expect.poll(()=>img.evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
       expect(await img.evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
@@ -82,7 +85,7 @@ for(const id of ['ai-quest','vetform-go','delquro-zen','cats-journey']){
   for(const route of ['/','/products.html','/apps/'+id+'.html']){
    await p.goto(baseURL+route);const preview=p.locator('[data-demo="'+id+'"]').first();await preview.scrollIntoViewIfNeeded();
    await expect(preview).toHaveAttribute('data-preview-device','both');await expect(preview).toContainText('Phone + desktop');
-   await expect(preview.locator('img')).toHaveCount(2);await expect(preview.locator('.store-browser')).toHaveCount(1);await expect(preview.locator('.store-phone')).toHaveCount(1);
+   await expect(preview.locator('img')).toHaveCount(2);await expect(preview.locator('.store-browser')).toHaveCount(0);await expect(preview.locator('.store-monitor')).toHaveCount(1);await expect(preview.locator('.store-phone')).toHaveCount(1);
    for(const image of await preview.locator('img').all()){
     await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
     const d=await image.evaluate(e=>({ratio:e.clientWidth/e.clientHeight,natural:e.naturalWidth/e.naturalHeight}));expect(d.ratio).toBeCloseTo(d.natural,1);

@@ -1,5 +1,23 @@
 # DelQuro.com project memory
 
+## Computer monitor preview frames — 2026-10-18
+
+The owner requested computer monitor styling for web/desktop previews. The shared
+renderer now uses a bezel, chin, neck and base around every desktop screenshot,
+including desktop-only cards, paired phone/desktop previews and galleries.
+Browser-window dots are removed. Decorative hardware stays outside screenshot
+pixels; original ratios and complete interfaces remain visible. Phone frames,
+all 34 screenshots, catalog decisions, clinic gates and linked apps are unchanged.
+The stylesheet URL is versioned 20261018-monitors.
+
+Generation, catalog, 1,066 references / 105 anchors, 22-page SEO and all 34 browser
+cases pass locally. Visual proof covers paired AI Quest and standalone VMTA;
+320px/no-JavaScript behavior and phone previews remain verified. Evidence lives
+outside the public tree in task visualization folder monitor-frames-2026-10-18.
+Independent critic found no blockers, including its own 320px/no-JavaScript
+aspect, stand and native-gallery checks. Container/publication receipts follow.
+
+
 ## AI Quest, VetForm GO, Zen and Cat’s Journey on both devices — 2026-10-18
 
 The owner requested both phone and desktop previews for these four apps. Each

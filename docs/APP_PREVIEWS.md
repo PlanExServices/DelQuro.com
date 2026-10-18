@@ -31,4 +31,8 @@ This refresh preserves release stages, private-product exclusions, clinic gates,
 
 ## Phone and desktop previews
 
-AI Quest, VetForm GO, DelQuro Zen and Cat’s Journey explicitly use `preview.device: "both"`. Each screenshot declares `device: "desktop"` or `device: "phone"`; validation requires both real orientations. Cards and detail heroes show a desktop frame and phone together with a visible Phone + desktop label. Narrow containers stack both complete frames. Galleries retain all four captures with matching frames and native enlargement links, without JavaScript. The other products keep their existing presentation and release stages.
+AI Quest, VetForm GO, DelQuro Zen and Cat’s Journey explicitly use `preview.device: "both"`. Each screenshot declares `device: "desktop"` or `device: "phone"`; validation requires both real orientations. Cards and detail heroes show a computer monitor and phone together with a visible Phone + desktop label. Narrow containers stack both complete frames. Galleries retain all four captures with matching monitor/phone frames and native enlargement links, without JavaScript. The other products keep their existing presentation and release stages.
+
+## Computer monitor frames
+
+Every desktop screenshot now sits inside a monitor bezel with a chin, neck and base, including desktop-only cards and desktop images in paired previews and galleries. Decorative hardware stays outside the captured pixels. Browser-window dots are removed; phone frames and screenshot assets are unchanged. Monitor frames preserve aspect ratios and support forced colors, reduced motion, print and native no-JavaScript image links.
