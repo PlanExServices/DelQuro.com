@@ -272,22 +272,28 @@
     {
       "id": "solar",
       "name": "S.O.L.A.R.",
-      "seoTitle": "S.O.L.A.R. — K–12 Adventure Learning Game in Development",
+      "seoTitle": "S.O.L.A.R. — Pre-K–12 Adventure Learning Game",
       "icon": "solar",
       "motion": "orbit",
       "color": "#f5cb67",
       "category": "build",
-      "description": "A choose-your-own-adventure learning game for grades K–12.",
-      "audience": "Students in grades K–12.",
+      "description": "A choose-your-own-adventure learning game for Pre-K–12, with state-themed quests and progress saved in your browser.",
+      "audience": "Students from Pre-K through grade 12.",
       "useCases": [
-        "Planned: learn through a choose-your-own-adventure game.",
-        "Planned: explore a learning experience for grades K–12."
+        "Choose your state and grade to begin a new learning adventure.",
+        "Practice mathematics, reading, science, history, and world languages.",
+        "Keep your progress in the current browser without an account."
       ],
       "detail": "apps/solar.html",
       "visibility": "public",
       "reviewedOn": "2026-10-18",
-      "availability": "in-development",
-      "releaseNote": "The learning game’s previous public address is unavailable. Contact the studio for current release updates."
+      "availability": "available",
+      "releaseNote": "Available to play in your browser. No account required; progress stays in this browser.",
+      "launch": "https://solar.delqurolabs.app/",
+      "highlight": true,
+      "linkCheck": {
+        "titleIncludes": "S.O.L.A.R."
+      }
     },
     {
       "id": "cats-journey",
