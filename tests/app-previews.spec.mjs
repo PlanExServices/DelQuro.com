@@ -10,10 +10,12 @@ test('every card has an honest preview and every captured screen loads',async({p
     await expect(preview).toHaveAttribute('data-preview-kind',p.preview.kind);
     await expect(preview.locator('.store-preview-headline')).toHaveText(p.preview.headline);
     expect(['screenshot','demo','development']).toContain(p.preview.kind);
-    await expect(preview.locator('img')).toHaveCount(1);
+    await expect(preview.locator('img')).toHaveCount(p.preview.device==='both'?2:1);
     await expect(preview.locator('svg.card-art')).toHaveCount(0);
-    await expect.poll(()=>preview.locator('img').evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
-    expect(await preview.locator('img').evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
+    for(const img of await preview.locator('img').all()){
+      await expect.poll(()=>img.evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
+      expect(await img.evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
+    }
   }
   await expect(page.locator('#megatory-live .store-preview-kind')).toHaveText('Offline build preview');
   await expect(page.locator('#solar .store-preview-kind')).toHaveText('App screenshot');
@@ -71,5 +73,26 @@ for(const id of ['choremouse','solar','megatory-live','delquro-connect','plainsl
   await gallery.focus();await mobile.keyboard.press('ArrowRight');await expect.poll(()=>gallery.evaluate(el=>el.scrollLeft)).toBeGreaterThan(0);
   await mobile.screenshot({path:'test-results/'+id+'-phone-preview.png',fullPage:true});
   await context.close();
+ });
+}
+
+for(const id of ['ai-quest','vetform-go','delquro-zen','cats-journey']){
+ test(id+' shows real desktop and phone previews without JavaScript',async({browser,baseURL})=>{
+  const c=await browser.newContext({javaScriptEnabled:false,viewport:{width:320,height:812},reducedMotion:'reduce'});const p=await c.newPage();
+  for(const route of ['/','/products.html','/apps/'+id+'.html']){
+   await p.goto(baseURL+route);const preview=p.locator('[data-demo="'+id+'"]').first();await preview.scrollIntoViewIfNeeded();
+   await expect(preview).toHaveAttribute('data-preview-device','both');await expect(preview).toContainText('Phone + desktop');
+   await expect(preview.locator('img')).toHaveCount(2);await expect(preview.locator('.store-browser')).toHaveCount(1);await expect(preview.locator('.store-phone')).toHaveCount(1);
+   for(const image of await preview.locator('img').all()){
+    await expect.poll(()=>image.evaluate(e=>e.complete&&e.naturalWidth>0)).toBe(true);
+    const d=await image.evaluate(e=>({ratio:e.clientWidth/e.clientHeight,natural:e.naturalWidth/e.naturalHeight}));expect(d.ratio).toBeCloseTo(d.natural,1);
+   }
+   expect(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  }
+  const gallery=p.locator('.screenshot-track');await gallery.scrollIntoViewIfNeeded();await expect(gallery.locator('figure')).toHaveCount(4);await expect(gallery.locator('.store-phone')).toHaveCount(2);
+  await gallery.focus();await p.keyboard.press('ArrowRight');await expect.poll(()=>gallery.evaluate(e=>e.scrollLeft)).toBeGreaterThan(0);
+  const href=await gallery.locator('a').last().getAttribute('href');await gallery.locator('a').last().click();await expect(p).toHaveURL(baseURL+href);
+  if(id==='vetform-go'){await p.goto(baseURL+'/apps/vetform-go.html');await expect(p.locator('main a[href^="https:"]')).toHaveCount(0);}
+  await c.close();
  });
 }

@@ -366,3 +366,56 @@
   .store-device.store-phone,.app-card .store-device.store-phone { box-shadow:none; }
   .store-shot.store-shot-phone { width:260px; max-width:100%; }
 }
+
+/* Paired previews show two complete captures, with no screen covering another. */
+.store-preview[data-preview-device="both"] { container-type:inline-size; }
+.store-preview-device {
+  display:block;
+  color:#d5e9e5;
+  font-size:11px;
+  font-weight:650;
+  letter-spacing:.04em;
+}
+.store-dual {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(72px,.39fr);
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  width:100%;
+}
+.store-dual .store-device.store-desktop,
+.app-card .store-dual .store-device.store-desktop {
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0;
+}
+.store-dual .store-device.store-desktop .store-screen,
+.app-card .store-dual .store-device.store-desktop .store-screen {
+  display:block;
+  flex:none;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.store-dual .store-device.store-phone,
+.detail-store-preview .store-dual .store-device.store-phone {
+  --phone-screen-height:250px;
+  margin:0;
+  justify-self:center;
+}
+.store-shot-desktop { align-self:flex-start; }
+.store-shot-desktop .store-shot-link { aspect-ratio:auto; overflow:visible; background:transparent; }
+.store-shot-desktop .store-device { margin:0; }
+.store-shot-desktop .store-screen { width:100%; height:auto; object-fit:contain; }
+@container (max-width:340px) {
+  .store-dual { grid-template-columns:minmax(0,1fr); gap:16px; }
+  .store-dual .store-device.store-phone { --phone-screen-height:254px; }
+}
+@media (forced-colors:active) {
+  .store-preview-device { color:CanvasText; }
+}
+@media print {
+  .store-preview-device { color:#29423b; }
+}

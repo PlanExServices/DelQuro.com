@@ -295,7 +295,7 @@
       "preview": {
         "kind": "demo",
         "headline": "Clear forms. Connected care.",
-        "note": "Actual application interface rendered locally with an empty demo workspace and built-in form templates. No patient submissions are shown. Clinic access remains restricted.",
+        "note": "Actual application interface rendered locally with an empty demo workspace and built-in form templates. No patient submissions are shown. Clinic access remains restricted. Includes desktop and mobile captures.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
@@ -303,16 +303,35 @@
             "thumbnail": "/assets/app-previews/vetform-go-demo-1-20261018-card.webp",
             "width": 1280,
             "height": 800,
-            "caption": "Demo workspace · clinical form library"
+            "caption": "Desktop · Demo workspace · clinical form library",
+            "device": "desktop"
           },
           {
             "src": "/assets/app-previews/vetform-go-demo-2-20261018.webp",
             "thumbnail": "/assets/app-previews/vetform-go-demo-2-20261018-card.webp",
             "width": 1280,
             "height": 800,
-            "caption": "Demo workspace · front desk dashboard"
+            "caption": "Desktop · Demo workspace · front desk dashboard",
+            "device": "desktop"
+          },
+          {
+            "src": "/assets/app-previews/vetform-go-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/vetform-go-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile demo · clinical form library",
+            "device": "phone"
+          },
+          {
+            "src": "/assets/app-previews/vetform-go-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/vetform-go-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile demo · front desk dashboard",
+            "device": "phone"
           }
-        ]
+        ],
+        "device": "both"
       }
     },
     {
@@ -474,7 +493,7 @@
       "preview": {
         "kind": "screenshot",
         "headline": "Find your quiet.",
-        "note": "Screenshots of the public sound-library prototype. Features and supported devices are still being tested.",
+        "note": "Screenshots of the public sound-library prototype. Features and supported devices are still being tested. Includes desktop and mobile captures.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
@@ -482,16 +501,35 @@
             "thumbnail": "/assets/app-previews/delquro-zen-1-20261018-card.webp",
             "width": 1265,
             "height": 712,
-            "caption": "Sound library home"
+            "caption": "Desktop · Sound library home",
+            "device": "desktop"
           },
           {
             "src": "/assets/app-previews/delquro-zen-2-20261018.webp",
             "thumbnail": "/assets/app-previews/delquro-zen-2-20261018-card.webp",
             "width": 1265,
             "height": 712,
-            "caption": "Browse calming sounds"
+            "caption": "Desktop · Browse calming sounds",
+            "device": "desktop"
+          },
+          {
+            "src": "/assets/app-previews/delquro-zen-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-zen-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile sound library home",
+            "device": "phone"
+          },
+          {
+            "src": "/assets/app-previews/delquro-zen-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-zen-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile · browse calming sounds",
+            "device": "phone"
           }
-        ]
+        ],
+        "device": "both"
       }
     },
     {
@@ -570,7 +608,7 @@
       "preview": {
         "kind": "screenshot",
         "headline": "Build your exam confidence.",
-        "note": "Screenshots of the public FE and PE study preview. Study progress remains browser-local.",
+        "note": "Screenshots of the public FE and PE study preview. Study progress remains browser-local. Includes desktop and mobile captures.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
@@ -578,16 +616,35 @@
             "thumbnail": "/assets/app-previews/cats-journey-1-20261018-card.webp",
             "width": 1270,
             "height": 714,
-            "caption": "Choose your study path"
+            "caption": "Desktop · Choose your study path",
+            "device": "desktop"
           },
           {
             "src": "/assets/app-previews/cats-journey-2-20261018.webp",
             "thumbnail": "/assets/app-previews/cats-journey-2-20261018-card.webp",
             "width": 1270,
             "height": 714,
-            "caption": "Explore the study guide"
+            "caption": "Desktop · Explore the study guide",
+            "device": "desktop"
+          },
+          {
+            "src": "/assets/app-previews/cats-journey-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/cats-journey-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile study dashboard",
+            "device": "phone"
+          },
+          {
+            "src": "/assets/app-previews/cats-journey-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/cats-journey-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile study guide",
+            "device": "phone"
           }
-        ]
+        ],
+        "device": "both"
       }
     },
     {
@@ -618,7 +675,7 @@
       "preview": {
         "kind": "screenshot",
         "headline": "Make AI your next skill.",
-        "note": "Screenshots of the public learning app. Progress stays in your browser.",
+        "note": "Screenshots of the public learning app. Progress stays in your browser. Includes desktop and mobile captures.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
@@ -626,16 +683,35 @@
             "thumbnail": "/assets/app-previews/ai-quest-1-20261018-card.webp",
             "width": 1265,
             "height": 712,
-            "caption": "Your learning dashboard"
+            "caption": "Desktop · Your learning dashboard",
+            "device": "desktop"
           },
           {
             "src": "/assets/app-previews/ai-quest-2-20261018.webp",
             "thumbnail": "/assets/app-previews/ai-quest-2-20261018-card.webp",
             "width": 1265,
             "height": 712,
-            "caption": "Explore the lesson library"
+            "caption": "Desktop · Explore the lesson library",
+            "device": "desktop"
+          },
+          {
+            "src": "/assets/app-previews/ai-quest-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/ai-quest-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile learning dashboard",
+            "device": "phone"
+          },
+          {
+            "src": "/assets/app-previews/ai-quest-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/ai-quest-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile lesson library",
+            "device": "phone"
           }
-        ]
+        ],
+        "device": "both"
       }
     }
   ]

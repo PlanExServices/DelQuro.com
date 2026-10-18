@@ -42,13 +42,18 @@ export function validateCatalog({products, categories, reviewedOn}) {
     const preview=p.preview;
     assert(preview&&['screenshot','demo','access','development','concept'].includes(preview.kind), `Explicit preview type required: ${p.id}`);
     assert(preview.headline&&preview.note, `Preview headline and disclosure required: ${p.id}`);
-    assert(!preview.device||preview.device==='phone', `Supported preview device required: ${p.id}`);
+    assert(!preview.device||['phone','both'].includes(preview.device), `Supported preview device required: ${p.id}`);
+    if(preview.device==='both') {
+      assert(preview.screens?.some(s=>s.device==='phone')&&preview.screens.some(s=>s.device==='desktop'), `Both-device previews require real phone and desktop captures: ${p.id}`);
+      assert(preview.screens.every(s=>['phone','desktop'].includes(s.device)), `Each mixed-gallery screen needs a device: ${p.id}`);
+    }
     if(preview.kind==='concept') assert(!preview.screens?.length, `Concepts cannot claim screenshots: ${p.id}`);
     else {
       assert.match(preview.capturedOn||'', /^\d{4}-\d{2}-\d{2}$/);
       assert(preview.screens?.length>0&&preview.screens.length<=4, `One to four real screenshots required: ${p.id}`);
       for(const screen of preview.screens){
-        if(preview.device==='phone') assert(screen.width<screen.height, `Phone previews require portrait captures: ${p.id}`);
+        if(preview.device==='phone'||screen.device==='phone') assert(screen.width<screen.height, `Phone previews require portrait captures: ${p.id}`);
+        if(screen.device==='desktop') assert(screen.width>screen.height, `Desktop previews require landscape captures: ${p.id}`);
         assert.match(screen.src, /^\/assets\/app-previews\/[a-z0-9-]+\.webp$/);
         assert.match(screen.thumbnail, /^\/assets\/app-previews\/[a-z0-9-]+\.webp$/);
         assert(Number.isInteger(screen.width)&&screen.width>0&&Number.isInteger(screen.height)&&screen.height>0&&screen.caption, `Screenshot dimensions and caption required: ${p.id}`);

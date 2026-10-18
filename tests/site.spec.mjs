@@ -249,7 +249,7 @@ test('product previews show real screenshots and preserve pointer and keyboard a
     await expect(art).toHaveAttribute('href',`/${p.detail}`);
     await expect(art).toHaveAttribute('aria-label',`View ${p.name} details`);
     await expect(art).toHaveAttribute('data-preview-kind',p.preview.kind);
-    await expect(art.locator('.store-screen')).toHaveAttribute('src',p.preview.screens[0].thumbnail);
+    await expect(art.locator('.store-screen').first()).toHaveAttribute('src',p.preview.screens[0].thumbnail);
   }
   // The redesign prioritizes available apps before any public preview.
   await expect(page.locator('#available .app-card .availability')).toHaveText(products.filter(p=>p.availability==='available').map(()=>'Available'));
@@ -264,7 +264,7 @@ test('product previews show real screenshots and preserve pointer and keyboard a
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
   const art=card.locator('.card-demo');
   await art.hover();
-  await expect.poll(()=>art.locator('.art-focal').evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
+  await expect.poll(()=>art.locator('.art-focal').first().evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
   const [preview,copy]=await Promise.all([card.locator('.card-demo').evaluate(el=>el.getBoundingClientRect().toJSON()),card.locator('.card-description').evaluate(el=>el.getBoundingClientRect().toJSON())]);
   expect(preview.bottom).toBeLessThan(copy.top);
   expect(preview.height).toBeGreaterThan(120);
@@ -275,7 +275,7 @@ test('product previews show real screenshots and preserve pointer and keyboard a
   await expect(art).toBeFocused();
   await page.mouse.move(0,0);
   await expect.poll(()=>card.evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('1');
-  await expect.poll(()=>art.locator('.art-focal').evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
+  await expect.poll(()=>art.locator('.art-focal').first().evaluate(el=>getComputedStyle(el).transform)).not.toBe('none');
   const tile=page.locator('.category-tile').first();
   await expect(tile).toHaveAttribute('data-motion','sequence');
   await tile.focus();
@@ -303,7 +303,7 @@ test('product previews show real screenshots and preserve pointer and keyboard a
       await expect(art.locator('use.art-focal')).toHaveAttribute('href',`/assets/product-scenes.svg#${p.id}`);
       await expect(art.locator('.store-preview-kind')).toHaveText('Concept preview');
     }else{
-      await expect(art.locator('.store-screen')).toHaveAttribute('src',p.preview.screens[0].thumbnail);
+      await expect(art.locator('.store-screen').first()).toHaveAttribute('src',p.preview.screens[0].thumbnail);
     }
   }
 });
