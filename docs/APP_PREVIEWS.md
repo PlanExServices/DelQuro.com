@@ -7,7 +7,7 @@ The catalog's `preview` object controls each card and its native product-page ga
 - **App screenshot:** a real public interface, including prototypes with their existing limitations.
 - **Demo screenshot:** an explicitly public demo with sample data (ChoreMouse and What List).
 - **Access screen:** Megatory Live's clinic clock registration gate. It is not an inventory dashboard.
-- **Offline build preview:** S.O.L.A.R. build 2026.07.30-5, captured locally without starting a quest. Public hosting remains unavailable.
+- **Offline build preview:** S.O.L.A.R. build 2026.07.30-5, captured locally without starting a quest. The screenshot source is separate from its current public release status.
 - **Concept preview:** original vector artwork for Connect, VetForm GO, VMTA and Note Thyme. These are illustrations, not screenshots of private or released UI.
 
 ## October 18, 2026 captures

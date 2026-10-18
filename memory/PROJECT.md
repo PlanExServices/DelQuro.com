@@ -11,7 +11,10 @@ headline and explicit image type. There are 17 real screenshots across nine
 products: the eight publicly reachable tools (including AI Scripts on this site)
 and S.O.L.A.R.'s isolated offline setup build. ChoreMouse and What List are
 labeled demo screenshots; Megatory is explicitly an access screen; S.O.L.A.R.
-is explicitly an offline build preview and remains unavailable publicly.
+is explicitly an offline build preview. During this task, the separately owned
+S.O.L.A.R. release went live and website PR #18 merged as `9d7d64c`; its verified
+public URL and Available stage were integrated before this screenshot release.
+The screenshot still accurately discloses its isolated offline source build.
 Connect, VetForm GO, VMTA and Note Thyme use labeled original concept artwork.
 No authenticated clinic or patient/staff screen is published. Raw source captures
 and private provenance receipts stay outside this public repository.
@@ -23,7 +26,7 @@ Gallery links enlarge images and keyboard scrolling works without JavaScript.
 Static motion on touch/reduced-motion, phone layouts, real image dimensions and
 honest captions are preserved. See `docs/APP_PREVIEWS.md` for maintenance rules.
 
-Generation, catalog, 1,010 references / 112 anchors, 22-page SEO, and 24 browser
+Generation, catalog, 1,017 references / 113 anchors, 22-page SEO, and 24 browser
 cases passed locally. Independent source/asset review found no blocking issue;
 desktop and measured 375px detail captures were reviewed. The browser's viewport
 override did not affect its screenshot dimensions, so phone visual evidence uses
@@ -620,3 +623,21 @@ VetForm GO's Treatment Options and Costs form shipped (DelQuroLabs/VetFormGO#3,
 merged 2026-10-11), so PR #7 now adds only that one VetForm GO use case to
 `catalog/products.json`. Its earlier hand-edited app pages were dropped in favor
 of the generated pages; VMTA stays withheld and has no public page.
+
+## S.O.L.A.R. public launch listing — 2026-10-18
+
+The owner requested publication to DelQuro.com after restoring SOLAR hosting.
+SOLAR was deployed separately from PlanExServices/SOLAR main dc1e775 to the
+previously empty Coolify project. Deployment vylwgfem17rylpf926d0cjpw succeeded;
+https://solar.delqurolabs.app responds 200 with valid TLS, HTTP redirects to
+HTTPS, and a Virginia grade-4 browser quest passed setup, answering, branching
+and progression to question 2. All four existing SOLAR suites passed. DNS already
+pointed to 13.140.43.0 and was unchanged.
+
+This website change marks SOLAR Available with its verified launch URL, replaces
+planned/unavailable copy with the existing Pre-K through grade-12 game features,
+and includes it in the homepage available-app collection. Other release stages
+and clinic access gates are preserved. Generation, catalog, internal links and
+all 22 canonical-page SEO checks pass locally. CI and publication are pending;
+record final deployment evidence after release. Hosting evidence is saved at
+C:/Users/plane/Nexus-Forge/solar-deployment-evidence/release-receipt.json.
