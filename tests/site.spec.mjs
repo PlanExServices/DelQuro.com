@@ -233,7 +233,7 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
 test('product previews stay clear and animate for pointer and keyboard focus',async({page})=>{
   await page.goto('/');
   const card=page.locator('.app-card').first();
-  const highlighted=['choremouse','plainslang','megatory-live','delquro-zen','cats-journey','ai-quest'];
+  const highlighted=['choremouse','plainslang','megatory-live','delquro-zen','solar','cats-journey','ai-quest'];
   expect(products.filter(p=>p.highlight).map(p=>p.id)).toEqual(highlighted);
   await expect(page.locator('.app-card')).toHaveCount(highlighted.length);
   await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(highlighted.length);
