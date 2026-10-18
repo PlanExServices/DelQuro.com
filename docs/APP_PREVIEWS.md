@@ -1,6 +1,6 @@
 # Product preview images
 
-Catalog `preview` data drives each card and its native product-page gallery. All 13 products have two real screenshots (26 total); no public card uses concept art or an access screen. Availability remains separate from screenshot type.
+Catalog `preview` data drives each card and its native product-page gallery. All 13 products have real screenshots (34 total); AI Quest, VetForm GO, Zen and Cat’s Journey each have two desktop and two phone captures; no public card uses concept art or an access screen. Availability remains separate from screenshot type.
 
 ## Image types and sources
 
@@ -28,3 +28,7 @@ The homepage and catalog group Megatory Live with Connect, VetForm GO and VMTA. 
 - Run generation consistency, catalog, links, SEO, browser and container checks before publishing. Verify the deployed revision and live image loading after deployment Success.
 
 This refresh preserves release stages, private-product exclusions, clinic gates, legal content, William’s media and AI Scripts interactions. It changes no linked application, account, backend or DNS setting.
+
+## Phone and desktop previews
+
+AI Quest, VetForm GO, DelQuro Zen and Cat’s Journey explicitly use `preview.device: "both"`. Each screenshot declares `device: "desktop"` or `device: "phone"`; validation requires both real orientations. Cards and detail heroes show a desktop frame and phone together with a visible Phone + desktop label. Narrow containers stack both complete frames. Galleries retain all four captures with matching frames and native enlargement links, without JavaScript. The other products keep their existing presentation and release stages.

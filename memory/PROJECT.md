@@ -1,5 +1,26 @@
 # DelQuro.com project memory
 
+## AI Quest, VetForm GO, Zen and Cat’s Journey on both devices — 2026-10-18
+
+The owner requested both phone and desktop previews for these four apps. Each
+now declares preview.device both, retains its two desktop images and adds two
+real 390×844 mobile captures at 2× resolution. Screens declare phone/desktop explicitly. Cards
+and detail heroes show both complete frames with a Phone + desktop label; narrow
+containers stack them. Mixed galleries keep matching frames and native image
+links without JavaScript. The catalog now has 34 screens across 13 products.
+
+AI Quest, Zen and Cat’s Journey captures use fresh public mobile contexts with
+no learner answers, progress or playback. VetForm GO reuses the verified isolated
+empty demo workspace/mobile captures, with neutral practice branding and built-in
+forms only. Clinic gates, stages, linked apps and other products are unchanged.
+Mobile thumbnail srcset handling preserves actual 390px card dimensions. Old image
+versions remain available. Raw/provenance lives outside the public tree in task
+visualization folder dual-device-previews-2026-10-18.
+
+Generation, catalog, 1,066 references / 105 anchors and 22-page SEO checks pass.
+Independent image/source/generatedmarkup critic found no blockers. All 34 browser cases passed locally. Container and publication receipts follow.
+
+
 ## Connect and PlainSlang mobile previews — 2026-10-18
 
 The owner clarified that Connect and PlainSlang are mobile apps. Both now use
