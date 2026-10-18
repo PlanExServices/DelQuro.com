@@ -294,3 +294,70 @@
 .app-card .store-device .store-screen { flex:1; min-height:0; height:calc(100% - 19px); object-fit:contain; }
 .app-card .store-concept { height:200px; aspect-ratio:auto; }
 .app-card .store-preview-caption { min-height:34px; }
+
+/* Explicit mobile-app previews use complete portrait captures. The speaker and
+   home indicator live in the frame, outside the screenshot's pixels. */
+.store-device.store-phone,
+.app-card .store-device.store-phone {
+  --phone-screen-height:236px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  width:min(100%,calc(var(--phone-screen-height) * var(--screen-ratio) + 14px));
+  height:auto;
+  margin:3px auto 5px;
+  padding:6px;
+  border:1px solid #c5dbdd8a;
+  border-radius:21px;
+  background:linear-gradient(110deg,#09131a,#17242d 46%,#081119);
+  box-shadow:0 15px 25px #020b1766,0 0 0 2px #07101966,0 1px 0 #ffffff30 inset;
+}
+.store-device.store-phone .store-screen,
+.app-card .store-device.store-phone .store-screen {
+  display:block;
+  flex:none;
+  width:100%;
+  height:auto;
+  max-height:none;
+  aspect-ratio:var(--screen-ratio);
+  object-fit:contain;
+  border-radius:0;
+}
+.store-phone-speaker {
+  display:block;
+  flex:none;
+  width:24px;
+  height:3px;
+  margin:1px auto 6px;
+  border-radius:4px;
+  background:#607078;
+}
+.store-phone-home {
+  display:block;
+  flex:none;
+  width:36%;
+  height:3px;
+  margin:6px auto 1px;
+  border-radius:4px;
+  background:#b3c5c8;
+}
+.detail-store-preview .store-device.store-phone { --phone-screen-height:366px; }
+.store-shot.store-shot-phone { flex-basis:min(320px,84%); }
+.store-shot-phone .store-shot-link { aspect-ratio:auto; background:transparent; overflow:visible; }
+.store-shot-phone .store-device.store-phone { --phone-screen-height:406px; margin-block:4px; }
+@media (max-width:760px) {
+  .store-shot.store-shot-phone { flex-basis:min(300px,90%); }
+}
+@media (max-width:380px) {
+  .detail-store-preview .store-device.store-phone { --phone-screen-height:326px; }
+  .store-shot.store-shot-phone { flex-basis:94%; }
+}
+@media (forced-colors:active) {
+  .store-device.store-phone,.app-card .store-device.store-phone { background:Canvas; border-color:CanvasText; box-shadow:none; }
+  .store-phone-speaker,.store-phone-home { background:CanvasText; }
+}
+@media print {
+  .store-device.store-phone,.app-card .store-device.store-phone { box-shadow:none; }
+  .store-shot.store-shot-phone { width:260px; max-width:100%; }
+}
