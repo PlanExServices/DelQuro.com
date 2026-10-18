@@ -589,3 +589,21 @@ VetForm GO's Treatment Options and Costs form shipped (DelQuroLabs/VetFormGO#3,
 merged 2026-10-11), so PR #7 now adds only that one VetForm GO use case to
 `catalog/products.json`. Its earlier hand-edited app pages were dropped in favor
 of the generated pages; VMTA stays withheld and has no public page.
+
+## S.O.L.A.R. public launch listing — 2026-10-18
+
+The owner requested publication to DelQuro.com after restoring SOLAR hosting.
+SOLAR was deployed separately from PlanExServices/SOLAR main dc1e775 to the
+previously empty Coolify project. Deployment vylwgfem17rylpf926d0cjpw succeeded;
+https://solar.delqurolabs.app responds 200 with valid TLS, HTTP redirects to
+HTTPS, and a Virginia grade-4 browser quest passed setup, answering, branching
+and progression to question 2. All four existing SOLAR suites passed. DNS already
+pointed to 13.140.43.0 and was unchanged.
+
+This website change marks SOLAR Available with its verified launch URL, replaces
+planned/unavailable copy with the existing Pre-K through grade-12 game features,
+and includes it in the homepage available-app collection. Other release stages
+and clinic access gates are preserved. Generation, catalog, internal links and
+all 22 canonical-page SEO checks pass locally. CI and publication are pending;
+record final deployment evidence after release. Hosting evidence is saved at
+C:/Users/plane/Nexus-Forge/solar-deployment-evidence/release-receipt.json.
