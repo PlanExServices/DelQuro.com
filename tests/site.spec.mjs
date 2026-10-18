@@ -235,11 +235,12 @@ test('product previews show real screenshots and preserve pointer and keyboard a
   const card=page.locator('.app-card').first();
   const highlighted=['choremouse','plainslang','megatory-live','delquro-zen','solar','cats-journey','ai-quest'];
   expect(products.filter(p=>p.highlight).map(p=>p.id)).toEqual(highlighted);
-  await expect(page.locator('.app-card')).toHaveCount(highlighted.length);
-  await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(highlighted.length);
+  const homeProducts=products.filter(p=>p.highlight||p.category==='veterinary');
+  await expect(page.locator('.app-card')).toHaveCount(homeProducts.length);
+  await expect(page.locator('.app-card .product-symbol svg use')).toHaveCount(homeProducts.length);
   for(const id of highlighted){
     const p=product(id);
-    const homeCard=page.locator('.releases .app-card').filter({has:page.getByRole('heading',{name:p.name,exact:true})});
+    const homeCard=page.locator('.app-card').filter({has:page.getByRole('heading',{name:p.name,exact:true})});
     await expect(homeCard).toHaveCount(1);
     await expect(homeCard.locator('.availability')).toHaveText(stages[p.availability].label);
     await expect(homeCard.locator('.card-actions .btn')).toHaveAttribute('href',p.launch);
@@ -253,7 +254,7 @@ test('product previews show real screenshots and preserve pointer and keyboard a
   // The redesign prioritizes available apps before any public preview.
   await expect(page.locator('#available .app-card .availability')).toHaveText(products.filter(p=>p.availability==='available').map(()=>'Available'));
   await expect(page.locator('#available .app-card h3')).toHaveText(products.filter(p=>p.availability==='available').sort((a,b)=>a.name.localeCompare(b.name,'en')).map(p=>p.name));
-  await expect(page.locator('#previews .app-card .availability')).toHaveText(products.filter(p=>p.highlight&&p.availability==='preview').map(()=>'Public preview'));
+  await expect(page.locator('#previews .app-card .availability')).toHaveText(products.filter(p=>p.highlight&&p.availability==='preview'&&p.category!=='veterinary').map(()=>'Public preview'));
   await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#ai-quest');
   await expect(card).toHaveAttribute('data-motion',product('ai-quest').motion);
   expect(await card.evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('radial-gradient');

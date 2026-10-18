@@ -1,5 +1,40 @@
 # DelQuro.com project memory
 
+## Veterinary suite and complete screenshot coverage — 2026-10-18
+
+The owner requested Megatory Live alongside the veterinary suite and screenshot
+imagery on every product card, with useful Megatory workflow screens instead of
+its access screen. The catalog and homepage now present a four-app veterinary
+suite: Megatory, Connect, VetForm GO and VMTA. Megatory remains Public preview;
+the other three keep clinic-arranged access. Shared model grouping keeps visible
+catalog order and its SEO ItemList aligned, with every product listed once.
+
+All 13 products now have two real screenshots, 26 total. New imagery comes from
+actual isolated app builds using synthetic fixtures: Connect team huddle/time
+off, VetForm built-in forms/empty dashboard, VMTA triage/rules, Note Thyme meal
+plan/groceries and Megatory inventory/add-item workflows. Megatory is an archived
+September inventory build and explicitly distinguished from the current public
+clock/PIN destination; only its temporary tenant header became Demo clinic.
+VMTA is an isolated older frontend; scores/status indicators are simulated.
+Note Thyme uses current private PlanExServices/Note_Thyme source 506ca6af and
+remains Coming soon. No patient/staff records, real learner progress or existing
+authenticated session was captured. No linked app, backend, account or DNS changed.
+
+Connect/VetForm screenshots are labeled Demo; Megatory/VMTA/Note Thyme are labeled
+Offline build preview, with full provenance disclosures on detail pages. Existing
+ChoreMouse/SOLAR phone captures remain unchanged. Note Thyme and Megatory also
+use true phone captures. Old versioned screenshot assets remain available for
+previously opened pages. Raw captures, fixtures, hashes and private provenance
+stay outside the public repository in all-product-screens-2026-10-18 under the
+task visualization directory. docs/APP_PREVIEWS.md explains maintenance rules.
+
+Independent source/image/grouping critic found no blocking findings. Generation,
+catalog, 1,044 references / 105 anchors, and 22-page SEO checks passed locally.
+All 28 browser cases passed locally, including screenshot loading, veterinary
+grouping without JavaScript, phone frames, clinic gates and AI Scripts.
+Container checks and publication receipts follow after verification.
+
+
 ## ChoreMouse and S.O.L.A.R. mobile previews — 2026-10-18
 
 The owner corrected the screenshot release: these two products should be shown

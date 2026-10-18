@@ -8,6 +8,15 @@ export const stages = {
   'in-development': { label: 'In development', action: 'Ask about progress', order: 3 },
 };
 
+// Shared visible grouping keeps catalog markup and its structured list aligned.
+export const catalogSections = [
+  {id:'public-apps',title:'Apps & public previews',note:'Open an available app or explore a clearly labeled preview.',matches:p=>p.category!=='veterinary'&&['available','preview'].includes(p.availability)},
+  {id:'clinic-access',title:'Veterinary suite',note:'Tools for veterinary teams. Public previews and clinic-arranged access are labeled on each card.',matches:p=>p.category==='veterinary'},
+  {id:'coming-soon',title:'Coming soon & in progress',note:'A look ahead. These projects do not have a public app to open yet.',matches:p=>p.category!=='veterinary'&&['coming-soon','in-development'].includes(p.availability)},
+];
+export const orderProducts = products => [...products].sort((a,b)=>stages[a.availability].order-stages[b.availability].order||a.name.localeCompare(b.name,'en'));
+export const catalogOrder = products => catalogSections.flatMap(section=>orderProducts(products).filter(section.matches));
+
 // Public pages moved out of the product grid retain useful destinations.
 export const movedPages = {
   'apps/vet-survey.html': '/resources.html#veterinary-workflow-survey',

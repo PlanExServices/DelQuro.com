@@ -1,6 +1,6 @@
 // One static metadata contract for the site's generated and hand-authored pages.
 // Keep product publication decisions in catalog/products.json, not in SEO copy.
-import { stages, validateCatalog } from './catalog-model.mjs';
+import { stages, validateCatalog, catalogOrder } from './catalog-model.mjs';
 
 export const SITE_ORIGIN = 'https://www.delquro.com';
 export const SITE_NAME = 'DelQuro Labs';
@@ -136,7 +136,7 @@ function structuredData(metadata, catalog) {
   if (metadata.path === '/products.html') {
     const listId = `${metadata.canonical}#products`;
     page.mainEntity = { '@id': listId };
-    const ordered = [...catalog.products].sort((a, b) => stages[a.availability].order - stages[b.availability].order || a.name.localeCompare(b.name, 'en'));
+    const ordered = catalogOrder(catalog.products);
     graph.push({
       '@type': 'ItemList', '@id': listId, name: 'DelQuro public product catalog',
       numberOfItems: ordered.length,
