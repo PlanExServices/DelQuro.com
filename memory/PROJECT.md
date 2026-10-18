@@ -17,7 +17,14 @@ neck and base centers within 1px on home/catalog/details/galleries at 320/768/14
 with JavaScript off and no page overflow. Independent critic found no blockers.
 Evidence: task visualization folder monitor-alignment-2026-10-18. Earlier local
 card screenshot includes sticky header capture artifact; stand alignment is clear.
-Container and live publication receipts follow verification.
+VERIFIED LIVE: PR #25 merged as bc0ac29d2ae4ce6410b824bf1cdd24e24b3034fc
+after required CI run 39143891908 passed at reviewed head
+839ff86bbba348e91bf16f3ee999cfd95162b0fd. Main CI 39143999196 passed.
+Coolify webhook deployment for bc0ac29 reported Success in 59 seconds. All 12 live
+preview cases passed, including measured centering at all 3 viewport widths;
+38 server checks and 127 internal URLs passed. Live measurements confirm all 7 catalog
+monitor bases offset0px. Clean proof: live-after-ai-quest-card.png in evidence.
+Source home is main.
 
 
 ## Computer monitor preview frames — 2026-10-18
