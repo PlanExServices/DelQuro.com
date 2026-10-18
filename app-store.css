@@ -294,6 +294,11 @@
 .app-card .store-device .store-screen { flex:1; min-height:0; height:calc(100% - 19px); object-fit:contain; }
 .app-card .store-concept { height:200px; aspect-ratio:auto; }
 .app-card .store-preview-caption { min-height:34px; }
+.veterinary-section { border-top:1px solid var(--line); }
+.veterinary-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px; }
+@media (max-width:760px) {
+  .veterinary-grid { grid-template-columns:1fr; }
+}
 
 /* Explicit mobile-app previews use complete portrait captures. The speaker and
    home indicator live in the frame, outside the screenshot's pixels. */

@@ -42,6 +42,8 @@ for(const p of products){
   if(p.launch)assert.equal(new URL(p.launch).protocol,'https:');
   assert.match(p.detail,/^apps\/[a-z0-9-]+\.html$/);
   const detail=read(p.detail);
+  assert(p.preview.screens?.length>0,`Every card needs real screenshot imagery: ${p.id}`);
+  assert(!['concept','access'].includes(p.preview.kind),`Show a product workflow rather than an illustration or access screen: ${p.id}`);
   assert(catalog.includes(`data-preview-kind="${p.preview.kind}"`),`Preview type is disclosed: ${p.id}`);
   assert(detail.includes('id="screenshots"'),`Native preview gallery for ${p.id}`);
   for(const screen of p.preview.screens||[]){

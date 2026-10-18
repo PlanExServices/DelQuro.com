@@ -9,15 +9,13 @@ test('every card has an honest preview and every captured screen loads',async({p
     await preview.scrollIntoViewIfNeeded();
     await expect(preview).toHaveAttribute('data-preview-kind',p.preview.kind);
     await expect(preview.locator('.store-preview-headline')).toHaveText(p.preview.headline);
-    if(p.preview.kind==='concept'){
-      await expect(preview).toContainText('Concept preview');
-      await expect(preview.locator('img')).toHaveCount(0);
-    }else{
-      await expect.poll(()=>preview.locator('img').evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
-      expect(await preview.locator('img').evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
-    }
+    expect(['screenshot','demo','development']).toContain(p.preview.kind);
+    await expect(preview.locator('img')).toHaveCount(1);
+    await expect(preview.locator('svg.card-art')).toHaveCount(0);
+    await expect.poll(()=>preview.locator('img').evaluate(el=>el.complete&&el.naturalWidth>0)).toBe(true);
+    expect(await preview.locator('img').evaluate(el=>getComputedStyle(el).objectFit)).toBe('contain');
   }
-  await expect(page.locator('#megatory-live .store-preview-kind')).toHaveText('Access screen');
+  await expect(page.locator('#megatory-live .store-preview-kind')).toHaveText('Offline build preview');
   await expect(page.locator('#solar .store-preview-kind')).toHaveText('App screenshot');
 });
 
@@ -39,13 +37,13 @@ test('screenshots enlarge without JavaScript and galleries remain keyboard scrol
   await link.click();
   await expect(page).toHaveURL(/choremouse-mobile-1-20261018\.webp$/);
   await page.goto(baseURL+'/apps/vmta.html');
-  await expect(page.locator('.preview-disclosure')).toContainText('Concept illustration');
+  await expect(page.locator('.preview-disclosure')).toContainText('synthetic');
   await expect(page.locator('main a[href^="https:"]')).toHaveCount(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
   await context.close();
 });
 
-for(const id of ['choremouse','solar']){
+for(const id of ['choremouse','solar','megatory-live']){
  test(id+' uses uncropped mobile screenshots and phone frames throughout',async({page,browser,baseURL})=>{
   for(const route of ['/','/products.html','/apps/'+id+'.html']){
    await page.goto(route);

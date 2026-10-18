@@ -1,33 +1,30 @@
 # Product preview images
 
-The catalog's `preview` object controls each card and its native product-page gallery. Readiness remains in `availability`; a screenshot never upgrades a release stage.
+Catalog `preview` data drives each card and its native product-page gallery. All 13 products have two real screenshots (26 total); no public card uses concept art or an access screen. Availability remains separate from screenshot type.
 
-## Image types
+## Image types and sources
 
-- **App screenshot:** a real public interface, including prototypes with their existing limitations.
-- **Demo screenshot:** an explicitly public demo with sample data (ChoreMouse and What List).
-- **Access screen:** Megatory Live's clinic clock registration gate. It is not an inventory dashboard.
-- **Offline build preview:** reserved for captures from an explicitly disclosed isolated source build; no current card uses this type.
-- **Concept preview:** original vector artwork for Connect, VetForm GO, VMTA and Note Thyme. These are illustrations, not screenshots of private or released UI.
+- **App screenshot:** actual public interfaces: AI Quest, PlainSlang, AI Scripts Library, DelQuro Zen, Cat’s Journey and S.O.L.A.R.
+- **Demo screenshot:** ChoreMouse and What List public demos, plus isolated actual Connect and VetForm GO interfaces with synthetic team data or empty demo storage.
+- **Offline build preview:** Megatory’s archived September 2026 inventory build, VMTA’s isolated development frontend, and Note Thyme’s current Expo development source. These do not establish production readiness or equivalence to a live deployment.
 
-## October 18, 2026 captures
+Captured October 18, 2026. Connect shows team huddle and time-off planning. VetForm GO shows its built-in clinical form library and empty dashboard. VMTA shows synthetic voicemail triage and rules; messages, scores and status indicators are demonstration data. Note Thyme shows a synthetic meal plan and grocery list and remains Coming soon.
 
-Seventeen images cover nine products: AI Quest, ChoreMouse, PlainSlang, What List, DelQuro Zen, Cat's Journey, Megatory Live, AI Scripts Library and S.O.L.A.R. The first eight were captured from their public app, demo or access interface; AI Scripts uses this site's unchanged template interactions. S.O.L.A.R. now uses the public release welcome and setup at mobile size. No login, registration, payment, progress edit, patient record or staff screen was captured for publication.
+Megatory shows actual sample inventory and add-item workflows instead of the clock/PIN access screen. Its archived build automatically seeds fictional sample stock. Only the tenant header was replaced with Demo clinic in the temporary capture response. The original source and live app were unchanged. Its gallery discloses that the current public destination still opens at clinic clock/PIN entry.
 
-The source destinations are the approved public launch URLs already in `catalog/products.json`, the site's own AI Scripts page, and S.O.L.A.R.’s public release. Screens and capture dates are explicitly captioned. PlainSlang's empty outer page margins were cropped; its interface was preserved.
+## Veterinary suite
 
-## Asset rules
+The homepage and catalog group Megatory Live with Connect, VetForm GO and VMTA. Megatory retains Public preview; the other three retain Clinic access and have no public launch buttons. Catalog grouping and SEO ItemList ordering share `scripts/catalog-model.mjs`. Every product appears once in the catalog. Filters and the full listing work without JavaScript.
 
-- Approved WebP files live in `assets/app-previews/`. Each full image also has a smaller card variant.
-- Preserve the entire captured interface: frames and galleries use `object-fit: contain`. Use original width/height, descriptive captions, lazy loading and local paths.
-- Raw captures and private provenance receipts remain outside the public repository. Never copy an authenticated clinic session or a screen containing actual patient/staff records into this folder.
-- Do not manufacture a screenshot to fill a gap. Use the explicit concept type until an approved screenshot exists.
-- Update the manifest first, then run `node scripts/generate-site.mjs`. Product pages and cards share `scripts/product-previews.mjs` and `app-store.css`.
-- Galleries are ordinary image links in a keyboard-focusable scrolling region. They work without JavaScript and respect reduced motion.
-- Run the generator, catalog, links, SEO, browser and container checks before publishing. `tests/app-previews.spec.mjs` verifies preview types, image loading, keyboard enlargement, phone layout and clinic gates.
+## Asset and capture rules
 
-The preview refresh preserves all owner release decisions, private-product exclusions, clinic access gates, legal content, William's media and AI Scripts interactions. It adds no ratings, download counts, purchases or tracking.
+- Real optimized WebPs live in `assets/app-previews/`, with separate card thumbnails. Old versioned assets may remain for previously opened pages; only manifest-referenced images appear in current cards.
+- Preserve the complete captured screen with `object-fit: contain`, true dimensions, descriptive captions, local paths, lazy loading and native image links.
+- ChoreMouse, S.O.L.A.R., Megatory and Note Thyme use explicit `preview.device: "phone"`. Captures use a genuine 390×844 viewport at 2× density; decorative speaker/home indicators stay outside the image. Phone framing does not claim native-platform or store availability.
+- Fresh disposable contexts and isolated local builds keep existing accounts and real records out of captures. Do not publish real patient/staff information, tenant identities, credentials or production progress. Use synthetic demo fixtures, documented outside the public repository.
+- Raw captures, source hashes, temporary local app copies, fixture data and private provenance receipts remain outside the published tree. This release’s evidence folder is `all-product-screens-2026-10-18` in the task visualization workspace.
+- Never invent a product interface. Obtain real source or an approved demo before listing a new screenshot card. `scripts/check-catalog.mjs` rejects cards without a useful screenshot.
+- Edit the manifest, then run `node scripts/generate-site.mjs`. Product cards/galleries share `scripts/product-previews.mjs` and `app-store.css`.
+- Run generation consistency, catalog, links, SEO, browser and container checks before publishing. Verify the deployed revision and live image loading after deployment Success.
 
-## Mobile app presentation
-
-ChoreMouse and S.O.L.A.R. explicitly use `preview.device: "phone"`. Their four captures are genuine 390×844 mobile viewports at 2× resolution, taken in a fresh disposable context. ChoreMouse shows only the public sample-family demo; S.O.L.A.R. shows default welcome/setup without creating a quest or learner progress. Phone frames omit browser chrome, preserve the entire screenshot, and keep decorative speaker/home indicators outside the image. This presentation makes no native-platform or app-store availability claim. Other products retain their existing presentation.
+This refresh preserves release stages, private-product exclusions, clinic gates, legal content, William’s media and AI Scripts interactions. It changes no linked application, account, backend or DNS setting.

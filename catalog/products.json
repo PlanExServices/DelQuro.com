@@ -64,9 +64,27 @@
       "availability": "coming-soon",
       "releaseNote": "Coming soon. We are building meal planning with saved recipes, family preferences, and grocery lists. A public launch date has not been announced.",
       "preview": {
-        "kind": "concept",
+        "kind": "development",
         "headline": "Good meals start with a plan.",
-        "note": "Coming-soon concept illustration. This is not a screenshot of a released app."
+        "note": "Screenshots of the actual development app rendered locally with a synthetic meal plan and grocery list. Note Thyme is coming soon; these screens do not establish production readiness.",
+        "capturedOn": "2026-10-18",
+        "screens": [
+          {
+            "src": "/assets/app-previews/note-thyme-demo-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/note-thyme-demo-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Meal plan · development demo"
+          },
+          {
+            "src": "/assets/app-previews/note-thyme-demo-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/note-thyme-demo-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Grocery list · development demo"
+          }
+        ],
+        "device": "phone"
       }
     },
     {
@@ -230,9 +248,26 @@
       "availability": "limited-access",
       "releaseNote": "Access is arranged for participating clinics. Contact the studio about availability; there is no public self-service launch.",
       "preview": {
-        "kind": "concept",
+        "kind": "demo",
         "headline": "Keep your team in sync.",
-        "note": "Concept illustration of team coordination. Clinic screens are protected and are not shown here."
+        "note": "Actual application interface rendered locally with synthetic demo team data. Clinic access remains restricted.",
+        "capturedOn": "2026-10-18",
+        "screens": [
+          {
+            "src": "/assets/app-previews/delquro-connect-demo-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-connect-demo-1-20261018-card.webp",
+            "width": 1280,
+            "height": 800,
+            "caption": "Demo workspace · team huddle"
+          },
+          {
+            "src": "/assets/app-previews/delquro-connect-demo-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-connect-demo-2-20261018-card.webp",
+            "width": 1280,
+            "height": 800,
+            "caption": "Demo workspace · time-off planning"
+          }
+        ]
       }
     },
     {
@@ -256,9 +291,26 @@
       "availability": "limited-access",
       "releaseNote": "Staff sign-in is required. Access is arranged with a clinic; pet owners receive individual form links.",
       "preview": {
-        "kind": "concept",
+        "kind": "demo",
         "headline": "Clear forms. Connected care.",
-        "note": "Concept illustration of clinic forms. No patient records or staff screens are shown."
+        "note": "Actual application interface rendered locally with an empty demo workspace and built-in form templates. No patient submissions are shown. Clinic access remains restricted.",
+        "capturedOn": "2026-10-18",
+        "screens": [
+          {
+            "src": "/assets/app-previews/vetform-go-demo-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/vetform-go-demo-1-20261018-card.webp",
+            "width": 1280,
+            "height": 800,
+            "caption": "Demo workspace · clinical form library"
+          },
+          {
+            "src": "/assets/app-previews/vetform-go-demo-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/vetform-go-demo-2-20261018-card.webp",
+            "width": 1280,
+            "height": 800,
+            "caption": "Demo workspace · front desk dashboard"
+          }
+        ]
       }
     },
     {
@@ -281,9 +333,26 @@
       "availability": "limited-access",
       "releaseNote": "A protected clinic demo with sample data and simulated mailbox behavior. Contact the studio to arrange access.",
       "preview": {
-        "kind": "concept",
+        "kind": "development",
         "headline": "Make room for the next call.",
-        "note": "Concept illustration of voicemail triage. The protected clinic demo uses sample data and simulated mailbox behavior."
+        "note": "Screenshots of an isolated local development build with synthetic clinic, client and patient messages and simulated mailbox behavior. Scores and status indicators are demonstration data, not measured clinical accuracy or production readiness.",
+        "capturedOn": "2026-10-18",
+        "screens": [
+          {
+            "src": "/assets/app-previews/vmta-demo-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/vmta-demo-1-20261018-card.webp",
+            "width": 1440,
+            "height": 1000,
+            "caption": "Synthetic demo · voicemail triage"
+          },
+          {
+            "src": "/assets/app-previews/vmta-demo-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/vmta-demo-2-20261018-card.webp",
+            "width": 1440,
+            "height": 1000,
+            "caption": "Synthetic demo · triage rules and filters"
+          }
+        ]
       }
     },
     {
@@ -311,19 +380,27 @@
         "titleIncludes": "Megatory Live"
       },
       "preview": {
-        "kind": "access",
-        "headline": "Your clinic starts here.",
-        "note": "Screenshot of the current clinic clock access screen. This is not an inventory-dashboard screenshot; clinic registration requires a site PIN.",
+        "kind": "development",
+        "headline": "A clearer view of clinic stock.",
+        "note": "Inventory screens from an archived September 2026 offline build, using built-in sample stock and a neutral demo clinic header. These images show the inventory workflow; the current public destination still opens at clinic clock/PIN entry.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
-            "src": "/assets/app-previews/megatory-live-1-20261018.webp",
-            "thumbnail": "/assets/app-previews/megatory-live-1-20261018-card.webp",
-            "width": 1280,
-            "height": 720,
-            "caption": "Clinic clock access screen"
+            "src": "/assets/app-previews/megatory-live-demo-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/megatory-live-demo-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Offline demo · inventory stock list"
+          },
+          {
+            "src": "/assets/app-previews/megatory-live-demo-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/megatory-live-demo-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Offline demo · add inventory"
           }
-        ]
+        ],
+        "device": "phone"
       }
     },
     {
