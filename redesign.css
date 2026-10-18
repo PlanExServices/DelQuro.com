@@ -296,3 +296,7 @@ footer { padding-top:64px; }
   .contact-band h2,.contact-band p,.client-websites h2,.client-websites h3 { color:CanvasText; }
   .faq-list summary::after { color:CanvasText; }
 }
+
+/* Keep clinic access and upcoming work distinct from public apps. */
+.catalog-group + .catalog-group { margin-top:64px; padding-top:48px; border-top:1px solid var(--line); }
+.catalog-group .section-head h2 { font-size:clamp(27px,4vw,38px); }

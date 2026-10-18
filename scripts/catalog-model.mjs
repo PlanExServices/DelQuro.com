@@ -4,6 +4,7 @@ export const stages = {
   available: { label: 'Available', action: 'Open app', order: 0 },
   preview: { label: 'Public preview', action: 'Try preview', order: 1 },
   'limited-access': { label: 'Clinic access', action: 'Ask about access', order: 2 },
+  'coming-soon': { label: 'Coming soon', action: 'Ask about launch', order: 3 },
   'in-development': { label: 'In development', action: 'Ask about progress', order: 3 },
 };
 

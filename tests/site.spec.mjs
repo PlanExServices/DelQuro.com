@@ -71,11 +71,11 @@ test('release labels, notes, and actions match the public catalog',async({page})
   await expect(page.locator('#what-list .card-release-note')).toContainText('recipe imports use sample content');
   await expect(page.locator('#what-list .card-release-note')).toContainText('not saved between sessions');
   await expect(page.locator('#megatory-live .card-release-note')).toContainText('still in progress');
-  await expect(page.locator('#vmta')).toHaveCount(0);
+  await expect(page.locator('#clinic-access #vmta')).toHaveCount(1);
 });
 
 test('clinic-only products have contact actions and no public app links',async({page})=>{
-  for(const id of ['delquro-connect','vetform-go']){
+  for(const id of ['delquro-connect','vetform-go','vmta']){
     const p=product(id);
     expect(p.availability).toBe('limited-access');
     expect(p.launch).toBeUndefined();
@@ -91,7 +91,7 @@ test('clinic-only products have contact actions and no public app links',async({
 });
 
 test('public previews identify their destination and limits on detail pages',async({page})=>{
-  for(const id of ['choremouse','what-list','megatory-live']){
+  for(const id of ['what-list','megatory-live']){
     const p=product(id);
     expect(p.availability).toBe('preview');
     await page.goto(`/${p.detail}`);
@@ -251,9 +251,9 @@ test('product previews stay clear and animate for pointer and keyboard focus',as
     await expect(art.locator('use.art-focal')).toHaveAttribute('href',`/assets/product-scenes.svg#${id}`);
   }
   // The redesign prioritizes available apps before any public preview.
-  await expect(page.locator('#available .app-card .availability')).toHaveText(['Available','Available']);
-  await expect(page.locator('#available .app-card h3')).toHaveText(['AI Quest','PlainSlang']);
-  await expect(page.locator('#previews .app-card .availability')).toHaveText(Array(4).fill('Public preview'));
+  await expect(page.locator('#available .app-card .availability')).toHaveText(products.filter(p=>p.availability==='available').map(()=>'Available'));
+  await expect(page.locator('#available .app-card h3')).toHaveText(products.filter(p=>p.availability==='available').sort((a,b)=>a.name.localeCompare(b.name,'en')).map(p=>p.name));
+  await expect(page.locator('#previews .app-card .availability')).toHaveText(products.filter(p=>p.highlight&&p.availability==='preview').map(()=>'Public preview'));
   await expect(card.locator('.product-symbol use')).toHaveAttribute('href','/assets/product-icons.svg#ai-quest');
   await expect(card).toHaveAttribute('data-motion',product('ai-quest').motion);
   expect(await card.evaluate(el=>getComputedStyle(el,'::before').backgroundImage)).toContain('radial-gradient');

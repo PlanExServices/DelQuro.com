@@ -1,6 +1,6 @@
 {
   "source": "Public product listing reviewed against current project and anonymous destination evidence. Private inventory is maintained separately.",
-  "reviewedOn": "2026-10-15",
+  "reviewedOn": "2026-10-18",
   "categories": [
     {
       "id": "family",
@@ -27,14 +27,6 @@
       "description": "Useful help for everyday work."
     },
     {
-      "id": "create",
-      "icon": "category-create",
-      "motion": "spark",
-      "color": "#eb9d98",
-      "name": "Create",
-      "description": "Make room for your next idea."
-    },
-    {
       "id": "sleep",
       "icon": "category-sleep",
       "motion": "breathe",
@@ -55,7 +47,7 @@
     {
       "id": "note-thyme",
       "name": "Note Thyme",
-      "seoTitle": "Note Thyme — Family Meal Planning Project",
+      "seoTitle": "Note Thyme — Family Meal Planning, Coming Soon",
       "icon": "note-thyme",
       "motion": "sequence",
       "color": "#78b394",
@@ -68,14 +60,14 @@
       ],
       "detail": "apps/note-thyme.html",
       "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "in-development",
-      "releaseNote": "The app is in development. A public release address is not yet confirmed."
+      "reviewedOn": "2026-10-18",
+      "availability": "coming-soon",
+      "releaseNote": "Coming soon. We are building meal planning with saved recipes, family preferences, and grocery lists. A public launch date has not been announced."
     },
     {
       "id": "choremouse",
       "name": "ChoreMouse",
-      "seoTitle": "ChoreMouse — Family Chores, Points & Rewards Preview",
+      "seoTitle": "ChoreMouse — Family Chores, Points & Rewards",
       "icon": "choremouse",
       "motion": "sequence",
       "color": "#f2bd6a",
@@ -88,11 +80,11 @@
       ],
       "detail": "apps/choremouse.html",
       "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "preview",
+      "reviewedOn": "2026-10-18",
+      "availability": "available",
       "launch": "https://choremouse.app/",
       "highlight": true,
-      "releaseNote": "A demo is open. The full app offers a 7-day trial, then a paid subscription. Full release verification is pending.",
+      "releaseNote": "ChoreMouse is live. Explore the demo or start a 7-day trial; a paid subscription follows the trial.",
       "linkCheck": {
         "titleIncludes": "ChoreMouse"
       }
@@ -188,6 +180,26 @@
       "releaseNote": "Staff sign-in is required. Access is arranged with a clinic; pet owners receive individual form links."
     },
     {
+      "id": "vmta",
+      "name": "VMTA",
+      "seoTitle": "VMTA — Veterinary Voicemail Triage Demo",
+      "icon": "vmta",
+      "motion": "signal",
+      "color": "#79bccc",
+      "category": "veterinary",
+      "description": "A veterinary voicemail triage demo for reviewing messages and organizing follow-up.",
+      "audience": "Veterinary teams exploring voicemail triage with clinic-arranged access.",
+      "useCases": [
+        "Explore sample voicemail triage and follow-up workflows.",
+        "Discuss clinic access and the requirements for real mailbox integration."
+      ],
+      "detail": "apps/vmta.html",
+      "visibility": "public",
+      "reviewedOn": "2026-10-18",
+      "availability": "limited-access",
+      "releaseNote": "A protected clinic demo with sample data and simulated mailbox behavior. Contact the studio to arrange access."
+    },
+    {
       "id": "megatory-live",
       "name": "Megatory Live",
       "seoTitle": "Megatory Live — Veterinary Inventory Counting Preview",
@@ -233,46 +245,6 @@
       "releaseNote": "A browser-based prototype with local templates. It does not run an AI service or submit prompts to a provider."
     },
     {
-      "id": "delquro-echo",
-      "name": "DelQuro Echo",
-      "seoTitle": "DelQuro Echo — Inbox Organization & Daily Summaries Project",
-      "icon": "delquro-echo",
-      "motion": "signal",
-      "color": "#829ae4",
-      "category": "ai",
-      "description": "A communication-assistant project exploring inbox organization and daily summaries.",
-      "audience": "People interested in inbox organization and daily summaries.",
-      "useCases": [
-        "Exploring ways to organize an inbox.",
-        "Exploring daily communication summaries."
-      ],
-      "detail": "apps/delquro-echo.html",
-      "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "in-development",
-      "releaseNote": "In development. A functioning public app is not yet available."
-    },
-    {
-      "id": "ghostforge",
-      "name": "GhostForge",
-      "seoTitle": "GhostForge — Manuscript Writing Project",
-      "icon": "ghostforge",
-      "motion": "glide",
-      "color": "#d494e4",
-      "category": "create",
-      "description": "A writing project for developing a manuscript from an idea to a draft.",
-      "audience": "People developing an idea into a manuscript.",
-      "useCases": [
-        "Planned: develop a manuscript idea.",
-        "Planned: work from an idea toward a draft."
-      ],
-      "detail": "apps/ghostforge.html",
-      "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "in-development",
-      "releaseNote": "In development. A public release and launch address have not been confirmed."
-    },
-    {
       "id": "delquro-zen",
       "name": "DelQuro Zen",
       "seoTitle": "DelQuro Zen — Calming Sounds & Sleep Timer Prototype",
@@ -298,26 +270,6 @@
       }
     },
     {
-      "id": "vibe-coding-101",
-      "name": "Vibe Coding 101",
-      "seoTitle": "Vibe Coding 101 — AI-Assisted App Development Learning Project",
-      "icon": "vibe-coding-101",
-      "motion": "scan",
-      "color": "#90b9ee",
-      "category": "build",
-      "description": "An introductory learning project about making apps with AI-assisted coding.",
-      "audience": "People learning about AI-assisted app development.",
-      "useCases": [
-        "Planned: introduce AI-assisted coding.",
-        "Planned: explore making apps with AI."
-      ],
-      "detail": "apps/vibe-coding-101.html",
-      "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "in-development",
-      "releaseNote": "The learning project is in development. There is no verified public app destination yet."
-    },
-    {
       "id": "solar",
       "name": "S.O.L.A.R.",
       "seoTitle": "S.O.L.A.R. — K–12 Adventure Learning Game in Development",
@@ -333,29 +285,9 @@
       ],
       "detail": "apps/solar.html",
       "visibility": "public",
-      "reviewedOn": "2026-10-15",
+      "reviewedOn": "2026-10-18",
       "availability": "in-development",
-      "releaseNote": "The game is in development. A public release address has not been confirmed."
-    },
-    {
-      "id": "clt-academy",
-      "name": "CLT Academy",
-      "seoTitle": "CLT Academy — Classic Learning Test Study Project",
-      "icon": "clt-academy",
-      "motion": "sequence",
-      "color": "#8dbce0",
-      "category": "build",
-      "description": "A Classic Learning Test study project with practice exams, topic drills, and flashcards.",
-      "audience": "People studying for the Classic Learning Test.",
-      "useCases": [
-        "Planned: prepare with independent practice exams.",
-        "Planned: review topics through drills and flashcards."
-      ],
-      "detail": "apps/clt-academy.html",
-      "visibility": "public",
-      "reviewedOn": "2026-10-15",
-      "availability": "in-development",
-      "releaseNote": "In development. Independent study material; not affiliated with Classic Learning Initiatives."
+      "releaseNote": "The learning game’s previous public address is unavailable. Contact the studio for current release updates."
     },
     {
       "id": "cats-journey",
