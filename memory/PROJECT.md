@@ -32,7 +32,15 @@ Independent source/image/grouping critic found no blocking findings. Generation,
 catalog, 1,044 references / 105 anchors, and 22-page SEO checks passed locally.
 All 28 browser cases passed locally, including screenshot loading, veterinary
 grouping without JavaScript, phone frames, clinic gates and AI Scripts.
-Container checks and publication receipts follow after verification.
+VERIFIED LIVE: PR #21 merged as 5864aca2925b0e8ae029813bf08a7b8293d0c953
+at 2026-10-18T15:24:59Z after both required jobs passed run 39140260310
+at reviewed head 4f541d13fb30dcf08b80a249ef2f4ce6ee95a573. Main CI
+39140377152 passed. Coolify webhook deployment sytsesaovsqkg76r1hlxyn2j
+reported Success in 78 seconds. Post-deployment checks passed all seven targeted
+live browser cases, 38 server checks and 115 internal URLs. Production visual
+proof includes live-megatory-preview.png and live-veterinary-suite.png in the
+evidence folder. The latter long element screenshot has a sticky-header capture
+artifact; the Megatory hero proof is clean. Source home remains main.
 
 
 ## ChoreMouse and S.O.L.A.R. mobile previews — 2026-10-18
