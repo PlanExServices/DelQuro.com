@@ -1,5 +1,25 @@
 # DelQuro.com project memory
 
+## Monitor stand alignment correction — 2026-10-18
+
+The owner reported desktop monitors sitting off to the side. Live measurements
+confirmed the four paired cards (AI Quest, VetForm GO, Zen, Cat’s Journey) used
+display:block from a more-specific older paired-card rule. That overrode the
+monitor flex layout and moved the stand base 84px left at 1440px. Detail heroes,
+standalone monitors and galleries were already centered. Removed only the obsolete
+display declaration and versioned the stylesheet 20261018-centered. All seven
+catalog monitors now measure base offset 0px; screenshot pixels, phone frames,
+assets, catalog/access decisions and linked apps are unchanged.
+
+Generation, catalog, 1,066 references / 105 anchors and 22-page SEO checks passed.
+All 12 preview browser cases passed locally. New measured regression checks panel,
+neck and base centers within 1px on home/catalog/details/galleries at 320/768/1440,
+with JavaScript off and no page overflow. Independent critic found no blockers.
+Evidence: task visualization folder monitor-alignment-2026-10-18. Earlier local
+card screenshot includes sticky header capture artifact; stand alignment is clear.
+Container and live publication receipts follow verification.
+
+
 ## Computer monitor preview frames — 2026-10-18
 
 The owner requested computer monitor styling for web/desktop previews. The shared
