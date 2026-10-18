@@ -16,8 +16,15 @@ presentations and release/access decisions are preserved.
 Local generation, catalog, 1,005 references / 113 anchors, 22-page SEO and all
 26 browser cases passed. New regression checks cover both apps across home,
 catalog and detail, true portrait ratio, no browser chrome, reduced motion,
-320px/no-JavaScript overflow and keyboard gallery scrolling. Publication and
-container CI pending. Raw/provenance evidence is outside the public repository
+320px/no-JavaScript overflow and keyboard gallery scrolling. PR #20 merged as
+46dd199742336b4f131a22255e7a5a88c2b43c29 after both container jobs passed
+run 39139164707 at head 9b1d7b04be6dcdf40f5920baf8dfba1297b0104a. Main
+CI run 39139268618 passed. Coolify webhook deployment
+dfgpmwpbxs3lirkfzi7tnfhk succeeded in 64 seconds. VERIFIED LIVE: 38 server
+checks, 103 internal URLs and all four targeted preview browser cases passed.
+An earlier live run overlapped deployment and saw old HTML; the complete repeat
+after deployment Success passed. Independent final critic found no blockers.
+Raw/provenance evidence is outside the public repository
 in task visualization folder mobile-app-previews-2026-10-18.
 
 
