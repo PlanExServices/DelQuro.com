@@ -26,12 +26,22 @@ in-development stage without a broken launch button, with a release note that
 the previous address is unavailable. Restoring its app hosting needs separate
 authorization; this task does not deploy or modify that app.
 
-Local verification: generation/catalog checks, 895 references / 119 anchors,
-22 canonical-page SEO checks, 22 browser cases and all 7 external app URL/identity
-checks passed. Release container checks and live verification follow via CI and
-the existing website webhook. Status at this source checkpoint is
-IMPLEMENTED_NOT_LIVE_VERIFIED; the release receipt is kept outside the public
-repository in `catalog-update-2026-10-18` under this task's evidence folder.
+**VERIFIED LIVE:** PR #17 merged as
+`ff2fa8a62951762b1fe56b82b5410dfcafbc6c59` after both container jobs passed CI
+run `39135500307` on reviewed head `c928182680d1292cc7ba21b4950d921236a34009`.
+The website webhook deployment `0m1myh5dmpt5bppttjp4jvlp` succeeded in 58 seconds;
+main's CI run `39135613527` passed too. Production passed all 37 server checks,
+a 76-URL internal crawl and four targeted browser journeys covering the owner
+decisions, no-JavaScript discovery, clinic gates and phone/tablet layouts. All
+four removed detail routes return genuine 404s. The catalog has 13 entries:
+3 available, 5 previews, 3 clinic-access, Note Thyme coming soon and S.O.L.A.R.
+in development pending hosting restoration. No linked app or DNS was changed.
+
+Local verification also passed generation/catalog checks, 895 references /
+119 anchors, 22 canonical-page SEO checks, all 22 website browser cases and all
+7 external app URL/identity checks. Independent review found no remaining
+actionable issues. The live screenshot and release receipt are outside the
+public repository in `catalog-update-2026-10-18` under this task's evidence folder.
 
 ## Website versus Warehouse app inventory audit — 2026-10-18
 
