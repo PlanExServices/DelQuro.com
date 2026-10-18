@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { stages, movedPages, validateCatalog } from './catalog-model.mjs';
+import { renderPreview, renderGallery } from './product-previews.mjs';
 import { renderSeo, applySeo, renderBreadcrumbs, publicRoutes, SITE_ORIGIN } from './seo.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const catalogData = JSON.parse(fs.readFileSync(path.join(root, 'catalog/products.json'), 'utf8'));
@@ -36,11 +37,7 @@ const artPalettes = {
   solar: ['#ffd976', '#f598a5'],
   'cats-journey': ['#e5bf8c', '#8dcfe8']
 };
-const cardDemo = p => {
-  const palette = artPalettes[p.id];
-  if (!palette) throw new Error(`Missing card artwork for ${p.id}`);
-  return `<a class="card-demo" data-demo="${p.id}" data-preview="specific" href="/${p.detail}" aria-label="View ${esc(p.name)} details" style="--art-a:${palette[0]};--art-b:${palette[1]}"><svg class="card-art" viewBox="0 0 320 160" aria-hidden="true" focusable="false"><use class="art-focal" href="/assets/product-scenes.svg#${p.id}"></use></svg><span class="art-open" aria-hidden="true">View details <span>↗</span></span></a>`;
-};
+const cardDemo = p => renderPreview(p,{palette:artPalettes[p.id]});
 const logo = `<a class="brand" href="/" aria-label="DelQuro Labs home"><img src="/assets/dq-mark.png" width="44" height="44" alt=""><img class="brand-word" src="/assets/wordmark-light.svg" width="152" height="28" alt="DelQuro Labs"></a>`;
 function nav(active) {
   return `<header class="topbar"><div class="wrap navrow">${logo}<button class="menu" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button><nav id="primary-navigation" class="nav pill-nav" aria-label="Primary">${[['Home','/'],['Products','/products.html'],['About','/about.html'],['Resources','/resources.html'],['Support','/support.html']].map(([name,url])=>`<a href="${url}"${name===active?' class="active" aria-current="page"':''}><span>${name}</span></a>`).join('')}</nav></div></header>`;
@@ -49,7 +46,7 @@ function footer() {
   return `<footer><div class="wrap"><div class="footer-grid"><div class="footer-brand">${logo}<p>Small, focused software.<br>Made for the everyday.</p></div><div><div class="footer-title">Explore</div><div class="footer-links"><a href="/products.html">All ${products.length} products</a><a href="/about.html">Our studio</a><a href="/resources.html">Resources</a><a href="/Sounds/">Sound Library</a></div></div><div><div class="footer-title">Get in touch</div><div class="footer-links"><a href="/support.html">Product support</a><a href="mailto:info@delquro.com">info@delquro.com</a></div></div><div><div class="footer-title">Details</div><div class="footer-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/account-deletion.html">Account deletion</a><a href="/assets/react-bits-LICENSE.txt">Component notices</a></div></div></div><div class="copyright"><span>© 2026 DelQuro Labs, LLC.</span><span>Built thoughtfully in Virginia</span></div></div></footer>`;
 }
 function head(title, description, url, extras = '') {
-  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${renderSeo({path:url,title,description,catalog:catalogData})}<meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261018-catalog">${extras}<link rel="stylesheet" href="/redesign.css?v=20261018-catalog">`;
+  return `<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${renderSeo({path:url,title,description,catalog:catalogData})}<meta name="theme-color" content="#0b171b"><link rel="icon" href="/assets/app-icon.svg"><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261018-screens">${extras}<link rel="stylesheet" href="/redesign.css?v=20261018-screens"><link rel="stylesheet" href="/app-store.css?v=20261018-screens">`;
 }
 const page = (title,description,url,active,body,headExtras='',scripts='') => `<!doctype html>\n<html lang="en"><head>${head(title,description,url,headExtras)}</head><body><a class="skip" href="#main">Skip to content</a>${nav(active)}<main id="main">${body}</main>${footer()}<script src="/site.js" defer></script>${scripts}</body></html>\n`;
 function actions(p, full=false) {
@@ -106,7 +103,7 @@ for(const p of products) {
   if(p.id==='ai-scripts') continue; // preserve the interactive library, enhance its shared shell below
   const related=ordered.filter(other=>other.category===p.category && other.id!==p.id).slice(0,3);
   const [artA,artB]=artPalettes[p.id];
-  const body=`<section class="app-hero product-detail"><div class="wrap">${renderBreadcrumbs({path:'/'+p.detail,catalog:catalogData})}<div class="detail-layout"><div><p class="eyebrow">${esc(category(p.category).name)}</p><h1>${esc(p.name)}</h1><p class="lead">${esc(p.description)}</p>${actions(p,true)}</div><div class="detail-art spotlight" style="--product:${p.color};--art-a:${artA};--art-b:${artB}"><div class="detail-art-top">${productIcon(p,'detail-symbol')}<span class="availability ${p.availability}">${label(p)}</span></div><svg class="detail-scene" viewBox="0 0 320 160" aria-hidden="true" focusable="false"><use href="/assets/product-scenes.svg#${p.id}"></use></svg><p>Concept illustration · ${esc(category(p.category).name)}</p></div></div></div></section>${status(p)}
+  const body=`<section class="app-hero product-detail"><div class="wrap">${renderBreadcrumbs({path:'/'+p.detail,catalog:catalogData})}<div class="detail-layout"><div>${productIcon(p,"detail-store-icon")}<p class="eyebrow">${esc(category(p.category).name)}</p><h1>${esc(p.name)}</h1><p class="lead">${esc(p.description)}</p>${actions(p,true)}</div><div class="detail-store-preview">${renderPreview(p,{href:'#screenshots',palette:[artA,artB],detail:true})}</div></div></div></section>${status(p)}${renderGallery(p)}
   <section class="section"><div class="wrap detail-content-grid"><div><p class="eyebrow">Made with a purpose</p><h2>${['in-development','coming-soon'].includes(p.availability)?'What we are exploring':'A closer look'}</h2><p>${esc(p.audience)}</p><ul class="use-case-list">${p.useCases.map(use=>`<li>${esc(use)}</li>`).join('')}</ul></div><aside class="detail-access"><p class="eyebrow">Before you begin</p><h2>${p.availability==='limited-access'?'Access through your clinic':['in-development','coming-soon'].includes(p.availability)?'Follow its progress':p.availability==='preview'?'Explore the preview':'Ready to explore'}</h2><p>${p.availability==='limited-access'?'This listing is for participating clinics. Contact the studio about availability and the appropriate access route.':['in-development','coming-soon'].includes(p.availability)?'This is a project in development. There is no public app to open yet. Contact the studio to ask about progress.':p.availability==='preview'?'This is a public preview. Review the release note above for current limitations before you get started.':'The public app is open. Check the release note above for access and progress details.'}</p><a class="text-link" href="/support.html">Get product support <span aria-hidden="true">→</span></a></aside></div></section>
   <section class="section related-section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Keep exploring</p><h2>${related.length?'More in '+esc(category(p.category).name):'Find your next useful app.'}</h2></div><a class="text-link" href="/products.html#${p.category}">Browse ${esc(category(p.category).name)} <span aria-hidden="true">→</span></a></div>${related.length?`<div class="related-links">${related.map(other=>`<a href="/${other.detail}"><span class="availability ${other.availability}">${label(other)}</span><strong>${esc(other.name)} <span aria-hidden="true">↗</span></strong><p>${esc(other.description)}</p></a>`).join('')}</div>`:'<p class="lead">Discover available apps, public previews, and projects in the full collection.</p>'}</div></section>`;
   write(p.detail,page(undefined,undefined,`/${p.detail}`,'Products',body));
@@ -119,7 +116,7 @@ for(const name of supporting) {
   const active = name.startsWith('apps/')?'Products':name==='about.html'?'About':name==='resources.html'||name.startsWith('Sounds/')?'Resources':name==='support.html'?'Support':'';
   html=html.replace(/<header\b[^>]*>[\s\S]*?<\/header>/i,nav(active)).replace(/<footer\b[^>]*>[\s\S]*?<\/footer>/i,footer());
   html=html.replace(/<script\b[^>]*src="(?:\.\.\/)?site\.js[^"<>]*"[^>]*><\/script>/gi,'<script src="/site.js" defer></script>');
-  html=html.replace(/<link\b[^>]*href="(?:\.\.\/|\/)?(?:style|refresh|redesign)\.css[^"<>]*"[^>]*>/gi,'');
+  html=html.replace(/<link\b[^>]*href="(?:\.\.\/|\/)?(?:style|refresh|redesign|app-store)\.css[^"<>]*"[^>]*>/gi,'');
   if(!/<link[^>]+rel="canonical"/i.test(html)) html=html.replace('</head>',`<link rel="canonical" href="https://www.delquro.com/${name==='Sounds/index.html'?'Sounds/':name}"></head>`);
   if(!/property="og:image"/.test(html))html=html.replace('</head>','<meta property="og:image" content="https://www.delquro.com/assets/og-image.jpg"><meta name="twitter:card" content="summary_large_image"></head>');
   if(!/name="viewport"/.test(html))html=html.replace('</head>','<meta name="viewport" content="width=device-width,initial-scale=1"></head>');
@@ -134,9 +131,10 @@ for(const name of supporting) {
   if(name==='apps/ai-scripts.html') {
     const p=products.find(p=>p.id==='ai-scripts');
     html=html.replace(/<section class="section generated-status"[\s\S]*?<\/section>/g,'');
-    html=html.replace('</main>',`${status(p)}</main>`);
+    html=html.replace(/<section class="section screenshot-gallery"[\s\S]*?<\/section>/g,'');
+    html=html.replace('</main>',`${renderGallery(p)}${status(p)}</main>`);
   }
-  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261018-catalog"><link rel="stylesheet" href="/redesign.css?v=20261018-catalog"></head>');
+  html=html.replace(/<\/head>/i,'<link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/refresh.css?v=20261018-screens"><link rel="stylesheet" href="/redesign.css?v=20261018-screens"><link rel="stylesheet" href="/app-store.css?v=20261018-screens"></head>');
   html=html.replace(/[ \t]+$/gm,'');
   if(!name.includes('ai-agent-scripts')&&!name.includes('ai-prompt-scripts')) html=applySeo(html,{path:name==='Sounds/index.html'?'/Sounds/':'/'+name,catalog:catalogData});
   write(name,html);

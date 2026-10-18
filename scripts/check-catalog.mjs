@@ -42,6 +42,12 @@ for(const p of products){
   if(p.launch)assert.equal(new URL(p.launch).protocol,'https:');
   assert.match(p.detail,/^apps\/[a-z0-9-]+\.html$/);
   const detail=read(p.detail);
+  assert(catalog.includes(`data-preview-kind="${p.preview.kind}"`),`Preview type is disclosed: ${p.id}`);
+  assert(detail.includes('id="screenshots"'),`Native preview gallery for ${p.id}`);
+  for(const screen of p.preview.screens||[]){
+    for(const image of [screen.src,screen.thumbnail]) assert(fs.statSync(path.join(root,image)).size>100,`Published screenshot exists: ${p.id}`);
+    assert(detail.includes(screen.src),`Full-size screenshot on product detail: ${p.id}`);
+  }
   if(p.id!=='ai-scripts'&&p.id!=='delquro-labs')assert(detail.includes(`/assets/product-icons.svg#${p.icon}`),`Detail icon for ${p.id}`);
   assert(detail.includes(`data-product-status="${p.id}" data-availability="${p.availability}"`),`Detail status for ${p.id}`);
   assert(sitemap.includes(`/${p.detail}</loc>`),`Sitemap for ${p.id}`);
