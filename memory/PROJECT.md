@@ -30,9 +30,23 @@ Generation, catalog, 1,017 references / 113 anchors, 22-page SEO, and 24 browser
 cases passed locally. Independent source/asset review found no blocking issue;
 desktop and measured 375px detail captures were reviewed. The browser's viewport
 override did not affect its screenshot dimensions, so phone visual evidence uses
-the tested 375px browser context instead. Container CI and live verification
-follow before publication. Status here: IMPLEMENTED_NOT_LIVE_VERIFIED.
-Evidence: task visualization folder `app-store-previews-2026-10-18`.
+the tested 375px browser context instead.
+
+**VERIFIED LIVE:** screenshot PR #19 merged as
+`c2d528e01d4ac8e618f12366bfa0ec3f993e10e6` after both container jobs and the full
+browser suite passed run `39137657630` at combined head
+`537b30850ebe69819f331811cd61f23873a5e291`. The earlier pre-integration run also
+passed. Coolify webhook deployment `ncfhpdtbndpv0qw7c5gpdzzk` succeeded in 48
+seconds; main's run `39137776975` passed. Production passed 38 server checks,
+103 internal URLs and six targeted browser journeys for image loading, galleries,
+phone/tablet layout, no-JavaScript behavior and clinic/release decisions. All
+eight external public app destinations, including S.O.L.A.R., passed fresh
+GET/page-identity checks. There are still 13 public listings: 4 available,
+5 previews, 3 clinic-access and Note Thyme coming soon.
+
+The final live card screenshot and release receipt are in task visualization
+folder `app-store-previews-2026-10-18`. Source home is main; the screenshot task
+made no linked application, account, private data or DNS change.
 
 ## Owner catalog decisions and S.O.L.A.R. hosting check — 2026-10-18
 
