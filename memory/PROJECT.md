@@ -14,7 +14,14 @@ for previously opened pages; current manifest references the new mobile assets.
 Generation, catalog, 1,038 references / 105 anchors and 22-page SEO checks passed.
 Phone regressions now include both apps, preserving no-JavaScript galleries,
 image ratios and 320px layouts. All 30 browser cases passed locally.
-Independent critic found no blockers. Container/publication receipts follow. Raw captures/provenance remain outside the public tree in
+Independent critic found no blockers. VERIFIED LIVE: PR #22 merged as
+4dc13b79fe025eabb6b777139bd5f71a4b4c321c after both required jobs passed
+run 39141591364 at reviewed head ee21e7b308e27d18a19990f3044bdf2084e94783.
+Main CI run 39141703887 passed. Coolify webhook deployment
+pfzgjcf9xvas3byh1izv4kut succeeded in 52 seconds. All seven targeted live
+browser cases, 38 server checks and 115 internal URLs passed. Production
+hero proof images are live-delquro-connect-phone.png and live-plainslang-phone.png
+in the evidence folder. Source home is main. Raw captures/provenance remain outside the public tree in
 task visualization folder connect-plainslang-mobile-2026-10-18.
 
 
