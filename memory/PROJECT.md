@@ -15,7 +15,13 @@ cases pass locally. Visual proof covers paired AI Quest and standalone VMTA;
 320px/no-JavaScript behavior and phone previews remain verified. Evidence lives
 outside the public tree in task visualization folder monitor-frames-2026-10-18.
 Independent critic found no blockers, including its own 320px/no-JavaScript
-aspect, stand and native-gallery checks. Container/publication receipts follow.
+aspect, stand and native-gallery checks. VERIFIED LIVE: PR #24 merged as
+b89740eb329a60455b63fb871bed97827c74373a after required CI run 39142793515
+passed at head 2d1a3fd68e450a3eb86c332e3914608a54c039bb. Main CI
+39142932572 passed. Coolify webhook deployment for b89740e reported Success in
+93 seconds. All 11 targeted live browser cases, 38 server checks and 127 internal
+URLs passed. Live AI Quest/VMTA monitor proofs are in the evidence folder.
+Source home remains main.
 
 
 ## AI Quest, VetForm GO, Zen and Cat’s Journey on both devices — 2026-10-18
