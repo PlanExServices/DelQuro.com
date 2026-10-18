@@ -1,5 +1,26 @@
 # DelQuro.com project memory
 
+## ChoreMouse and S.O.L.A.R. mobile previews — 2026-10-18
+
+The owner corrected the screenshot release: these two products should be shown
+as mobile apps. Their catalog previews now explicitly use device phone, genuine
+390-by-844 mobile captures at 2x resolution, and phone frames without browser
+chrome on home/catalog cards, detail heroes and portrait galleries. Decorative
+speaker/home indicators sit outside the screenshot. All pixels remain visible.
+ChoreMouse uses only its public sample-family demo (dashboard/chore list).
+S.O.L.A.R. now uses the default public release welcome/setup, replacing the
+previous offline desktop captures. No existing session, real family data or
+learner progress was captured; no linked app was changed. Other product
+presentations and release/access decisions are preserved.
+
+Local generation, catalog, 1,005 references / 113 anchors, 22-page SEO and all
+26 browser cases passed. New regression checks cover both apps across home,
+catalog and detail, true portrait ratio, no browser chrome, reduced motion,
+320px/no-JavaScript overflow and keyboard gallery scrolling. Publication and
+container CI pending. Raw/provenance evidence is outside the public repository
+in task visualization folder mobile-app-previews-2026-10-18.
+
+
 ## App-store-style screenshot previews — 2026-10-18
 
 The owner requested screenshot previews for every product card and upgraded

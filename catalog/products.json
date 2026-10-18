@@ -96,24 +96,25 @@
       "preview": {
         "kind": "demo",
         "headline": "Little chores. Big wins.",
-        "note": "Screenshots of the public demo with sample family data. Your own family requires an account.",
+        "note": "Mobile screenshots of the public demo with sample family data. Your own family requires an account.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
-            "src": "/assets/app-previews/choremouse-1-20261018.webp",
-            "thumbnail": "/assets/app-previews/choremouse-1-20261018-card.webp",
-            "width": 1270,
-            "height": 714,
-            "caption": "Family dashboard · public demo"
+            "src": "/assets/app-previews/choremouse-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/choremouse-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile family dashboard · public demo"
           },
           {
-            "src": "/assets/app-previews/choremouse-2-20261018.webp",
-            "thumbnail": "/assets/app-previews/choremouse-2-20261018-card.webp",
-            "width": 1270,
-            "height": 714,
-            "caption": "Chores and rewards · public demo"
+            "src": "/assets/app-previews/choremouse-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/choremouse-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile chore list · public demo"
           }
-        ]
+        ],
+        "device": "phone"
       }
     },
     {
@@ -440,26 +441,27 @@
         "titleIncludes": "S.O.L.A.R."
       },
       "preview": {
-        "kind": "development",
+        "kind": "screenshot",
         "headline": "Turn learning into an adventure.",
-        "note": "Screenshots captured from an isolated offline copy of build 2026.07.30-5. See the release note for current public access and browser-local progress details.",
+        "note": "Mobile screenshots of the public app welcome and learning setup. Progress stays in your browser; no learner progress is shown.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
-            "src": "/assets/app-previews/solar-1-20261018.webp",
-            "thumbnail": "/assets/app-previews/solar-1-20261018-card.webp",
-            "width": 1265,
-            "height": 712,
-            "caption": "Offline build · learning setup"
+            "src": "/assets/app-previews/solar-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/solar-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile app · welcome"
           },
           {
-            "src": "/assets/app-previews/solar-2-20261018.webp",
-            "thumbnail": "/assets/app-previews/solar-2-20261018-card.webp",
-            "width": 1265,
-            "height": 712,
-            "caption": "Offline build · grade and subject choices"
+            "src": "/assets/app-previews/solar-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/solar-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile app · learning setup"
           }
-        ]
+        ],
+        "device": "phone"
       }
     },
     {
