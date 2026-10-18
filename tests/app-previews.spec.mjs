@@ -43,7 +43,7 @@ test('screenshots enlarge without JavaScript and galleries remain keyboard scrol
   await context.close();
 });
 
-for(const id of ['choremouse','solar','megatory-live']){
+for(const id of ['choremouse','solar','megatory-live','delquro-connect','plainslang']){
  test(id+' uses uncropped mobile screenshots and phone frames throughout',async({page,browser,baseURL})=>{
   for(const route of ['/','/products.html','/apps/'+id+'.html']){
    await page.goto(route);

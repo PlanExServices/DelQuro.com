@@ -162,24 +162,25 @@
       "preview": {
         "kind": "screenshot",
         "headline": "Speak their language.",
-        "note": "Screenshots of the public guide, with its home screen and searchable glossary.",
+        "note": "Mobile screenshots of the public guide, with its home screen and searchable glossary.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
-            "src": "/assets/app-previews/plainslang-1-20261018.webp",
-            "thumbnail": "/assets/app-previews/plainslang-1-20261018-card.webp",
-            "width": 554,
-            "height": 712,
-            "caption": "Slang meanings at a glance"
+            "src": "/assets/app-previews/plainslang-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/plainslang-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile app · slang at a glance"
           },
           {
-            "src": "/assets/app-previews/plainslang-2-20261018.webp",
-            "thumbnail": "/assets/app-previews/plainslang-2-20261018-card.webp",
-            "width": 554,
-            "height": 712,
-            "caption": "Browse the glossary"
+            "src": "/assets/app-previews/plainslang-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/plainslang-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile app · browse the glossary"
           }
-        ]
+        ],
+        "device": "phone"
       }
     },
     {
@@ -250,24 +251,25 @@
       "preview": {
         "kind": "demo",
         "headline": "Keep your team in sync.",
-        "note": "Actual application interface rendered locally with synthetic demo team data. Clinic access remains restricted.",
+        "note": "Mobile screenshots of the actual application rendered locally with synthetic demo team data. Clinic access remains restricted.",
         "capturedOn": "2026-10-18",
         "screens": [
           {
-            "src": "/assets/app-previews/delquro-connect-demo-1-20261018.webp",
-            "thumbnail": "/assets/app-previews/delquro-connect-demo-1-20261018-card.webp",
-            "width": 1280,
-            "height": 800,
-            "caption": "Demo workspace · team huddle"
+            "src": "/assets/app-previews/delquro-connect-mobile-1-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-connect-mobile-1-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile demo · team huddle"
           },
           {
-            "src": "/assets/app-previews/delquro-connect-demo-2-20261018.webp",
-            "thumbnail": "/assets/app-previews/delquro-connect-demo-2-20261018-card.webp",
-            "width": 1280,
-            "height": 800,
-            "caption": "Demo workspace · time-off planning"
+            "src": "/assets/app-previews/delquro-connect-mobile-2-20261018.webp",
+            "thumbnail": "/assets/app-previews/delquro-connect-mobile-2-20261018-card.webp",
+            "width": 780,
+            "height": 1688,
+            "caption": "Mobile demo · time-off planning"
           }
-        ]
+        ],
+        "device": "phone"
       }
     },
     {
