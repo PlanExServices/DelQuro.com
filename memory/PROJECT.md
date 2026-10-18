@@ -18,7 +18,13 @@ versions remain available. Raw/provenance lives outside the public tree in task
 visualization folder dual-device-previews-2026-10-18.
 
 Generation, catalog, 1,066 references / 105 anchors and 22-page SEO checks pass.
-Independent image/source/generatedmarkup critic found no blockers. All 34 browser cases passed locally. Container and publication receipts follow.
+Independent image/source/generatedmarkup critic found no blockers. All 34 browser cases passed locally. VERIFIED LIVE: PR #23 merged as
+90d241f0eb7fa8f72f797d192dba1fdb3cbfe54e after required CI run 39142215573
+passed at head fbd523b59e49889e92e617476881b33bc206ffd1. Main CI 39142361214
+passed. Coolify webhook deployment msxjzoo4naeglglmqq6673na succeeded in 66 seconds.
+Post-deployment checks passed 11 targeted browser cases, 38 server checks and 127
+internal URLs. All four production hero proofs were visually reviewed; files
+live-{product-id}-both.png are in the evidence folder. Source home is main.
 
 
 ## Connect and PlainSlang mobile previews — 2026-10-18
