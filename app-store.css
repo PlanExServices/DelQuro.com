@@ -467,3 +467,101 @@
 @media print {
   .store-monitor-panel,.store-monitor-base { box-shadow:none; }
 }
+
+/* Homepage critique follow-up, 2026-10-22. Product names lead each card,
+   labels stay readable on phones, the veterinary suite scrolls sideways on
+   phones, and navigation targets reach 44px. Owner decisions are unchanged:
+   original logo and glitch, TechText heading, explicit image types, and all
+   four veterinary apps with previews on the homepage. */
+
+/* The product name is the card's headline; the marketing line supports it. */
+.app-card .store-preview-headline { font-size:clamp(17px,1.5vw,20px); font-weight:600; letter-spacing:-.02em; line-height:1.25; min-height:2.5em; color:#dcebe8; }
+.app-grid .app-card h3,.app-grid .app-card h2 { font-size:clamp(28px,2.6vw,32px); letter-spacing:-.03em; }
+.store-preview-top .store-preview-device { display:inline; flex-shrink:0; font-size:inherit; letter-spacing:inherit; color:inherit; opacity:.88; }
+.app-card .store-preview-caption { padding-right:118px; }
+.detail-store-preview .store-preview-caption { padding-right:128px; }
+
+/* Hero panel: no external-link arrow; the logo link now opens the About page. */
+.studio-art .studio-art-top>span { font-size:inherit; }
+
+/* Contact: show the address itself, with support as a fallback for webmail users. */
+.contact-actions { display:flex; flex-direction:column; align-items:flex-start; gap:6px; flex-shrink:0; }
+.contact-band .text-link { color:#173e32; }
+.contact-band .text-link:hover { text-decoration:underline; }
+
+/* Category tiles no longer carry index numbers; keep the title clear of the emblem. */
+.category-tile h3 { margin-top:50px; }
+@media (min-width:801px) {
+  .category-grid>.category-tile:last-child:nth-child(3n+2) { grid-column:span 2; }
+  .category-grid>.category-tile:last-child:nth-child(3n+1) { grid-column:1/-1; }
+}
+@media (max-width:800px) {
+  .category-grid>.category-tile:last-child:nth-child(odd) { grid-column:1/-1; }
+}
+
+/* Touch targets: 44px rows for navigation, card links and footer links. */
+.pill-nav a { min-height:44px; display:flex; align-items:center; }
+.app-card .card-actions a { min-width:44px; justify-content:center; }
+.footer-links { gap:0; }
+.footer-links a { min-height:44px; display:flex; align-items:center; }
+
+/* Loading phone screens show a tinted surface instead of a black frame. */
+.store-device.store-phone .store-screen,
+.app-card .store-device.store-phone .store-screen { background:#1a3438; }
+
+.suite-swipe-hint { display:none; }
+
+@media (max-width:800px) {
+  /* Stack the open menu as full-width rows. */
+  .js .pill-nav.open { flex-direction:column; align-items:stretch; flex-wrap:nowrap; justify-content:flex-start; gap:2px; padding:6px; }
+  .js .pill-nav.open a { justify-content:flex-start; padding:12px 16px; font-size:15px; border-radius:8px; }
+  /* A shorter hero panel brings the first app up sooner. */
+  .studio-art { min-height:0; padding:52px 20px 50px; }
+  .studio-art .hero-logo-glitch { width:72%; max-width:170px; }
+  .contact-band .btn { margin-top:0; }
+  .contact-actions { margin-top:24px; }
+}
+
+@media (max-width:760px) {
+  .category-tile h3 { margin-top:62px; }
+  /* Readable labels: nothing under 12px on phones. */
+  .store-preview-top { font-size:12px; letter-spacing:.05em; }
+  .app-card .availability { font-size:12px; }
+  .card-demo.store-preview .art-open { font-size:12px; padding:8px 12px; }
+  .app-card .card-category { font-size:12px; }
+  .store-preview-caption { font-size:12px; }
+  .category-bottom { font-size:12px; }
+  .hero-copy .eyebrow { font-size:12px; }
+  .studio-art-top,.studio-art-bottom,.studio-art .art-coordinate { font-size:12px; }
+  /* The open-screens link sits in the flow, so captions keep their full width. */
+  .card-demo.store-preview .art-open,.detail-store-preview .art-open { position:static; justify-self:start; }
+  .store-preview-caption,.app-card .store-preview-caption,.detail-store-preview .store-preview-caption { padding-right:0; padding-bottom:0; min-height:0; }
+  /* The veterinary suite keeps all four apps but scrolls sideways. */
+  .veterinary-section .veterinary-grid { grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:min(86%,360px); gap:14px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x mandatory; padding-bottom:14px; scrollbar-width:thin; scrollbar-color:#3c6257 transparent; }
+  .veterinary-section .veterinary-grid { align-items:start; }
+  .veterinary-section .veterinary-grid>.app-card { scroll-snap-align:start; }
+  .suite-swipe-hint { display:block; margin:-6px 0 14px; color:var(--muted); font-size:13px; }
+}
+
+@media (max-width:560px) {
+  /* The starting-point strip becomes one compact row. */
+  .discovery-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+  .discovery-grid>a,.discovery-grid>a:first-child,.discovery-grid>a:last-child { flex-direction:column; align-items:flex-start; gap:2px; padding:14px 0; border:0; }
+  .discovery-grid>a>span { font-size:13px; line-height:1.3; }
+  .discovery-grid small,.discovery-grid>a>span:last-child { display:none; }
+  .discovery-grid b { font-size:26px; min-width:0; line-height:1.1; }
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  .veterinary-section .veterinary-grid { scroll-behavior:smooth; }
+}
+@media (forced-colors:active) {
+  .contact-band .text-link { color:LinkText; }
+}
+@media (max-width:760px) {
+  /* Section labels and small hero text reach 12px on phones too. */
+  .eyebrow,.hero-location,.radar-panel-label { font-size:12px; }
+}
+@media (max-width:560px) {
+  .hero-copy .eyebrow { letter-spacing:.02em; }
+}

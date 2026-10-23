@@ -113,7 +113,8 @@
     }
     ctx.font = '10px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
     ctx.fillStyle = 'rgba(85,223,197,.75)';
-    ctx.fillText(`${g.char}  ${Math.round(g.x2 - g.x1)} × ${Math.round(g.y2 - g.y1)}`, x1, Math.max(10, y1 - 7));
+    // Letter only: pixel measurements read as a debugging overlay to most visitors.
+    ctx.fillText(g.char, x1, Math.max(10, y1 - 7));
   }
 
   const setActive = index => {
