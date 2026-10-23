@@ -1,5 +1,42 @@
 # DelQuro.com project memory
 
+## Homepage design-critique follow-up — 2026-10-22
+
+The owner approved applying a design critique of the live homepage. Work is on
+branch `claude/homepage-critique-fixes`; commit, CI, merge and deployment were not
+done in that session. Earlier owner decisions were kept: the original lockup and
+GlitchText, the TechText heading, explicit image-type labels, Phone + desktop
+labels, and all four veterinary apps with previews on the homepage.
+
+- Cards: the product name (28–32px) now leads; the preview headline is a 17–20px
+  subhead. The screen count moved into "See N screens"; Phone + desktop moved
+  into the preview's top row.
+- One arrow rule: ↗ leaves the site in a new tab, → opens another page here,
+  ↓ jumps down this page. Applied to hero actions, the discovery strip, category
+  tiles, support links, related links and preview links (detail heroes use ↓).
+- Decorative numbers removed: section eyebrows (01–05) and category tile indexes.
+  Discovery counts are plain numbers.
+- Hero panel: its decorative ↗ is gone and the glitch logo links to /about.html
+  ("About DelQuro Labs"), still keyboard-focusable. The panel is shorter on phones.
+- Contact band: "Email info@delquro.com" plus "Or visit product support →".
+- Phones: the veterinary suite scrolls sideways with a hint; the discovery strip is
+  one compact row; the open menu stacks full-width rows; no homepage text under 12px.
+- Category grid: the last tile spans the empty slot. Navigation, footer and Details
+  targets are 44px. Available-app previews load eagerly; phone screens show a tint
+  while loading. TechText's letter label no longer shows pixel dimensions.
+- Stylesheet URL is versioned `app-store.css?v=20261022-critique`. The touch test
+  now cancels the logo's About navigation before its no-glitch tap check.
+
+Not changed: AI Quest's single Build & learn category (catalog decision), the
+GitHub Pages preview hostname (hosting/DNS), and replacing the hero logo panel with
+product screens (conflicts with the logo and GlitchText decisions).
+
+Local verification: `npm run check` passed (1,067 references / 105 anchors, 22
+SEO pages). Playwright with the Chrome channel against `scripts/preview.mjs`: 35
+passed, 3 skipped (AI Quest host smoke needs AI_QUEST_URL); not yet run against
+the nginx container. Same-script measurements at 375×812, live versus branch:
+page 15,741 → 13,230px; first app card 1.77 → 1.52 screens.
+
 ## Monitor stand alignment correction — 2026-10-18
 
 The owner reported desktop monitors sitting off to the side. Live measurements

@@ -222,6 +222,8 @@ test('touch layouts do not overflow and pointer effects stay off',async({browser
   expect(emblem.bottom).toBeLessThanOrEqual(title.top);
   expect(await categoryTile.locator('.category-emblem svg').evaluate(el=>getComputedStyle(el).animationName)).toBe('none');
   await page.screenshot({path:'test-results/category-motion-mobile.png'});
+  // The hero logo links to the About page; keep this tap on the homepage so the touch check can run.
+  await page.locator('.hero-logo-glitch').evaluate(el=>el.addEventListener('click',e=>e.preventDefault(),{once:true}));
   await page.locator('.hero-logo-glitch').tap();
   expect(await page.locator('.hero-logo-glitch').evaluate(el=>getComputedStyle(el,'::before').opacity)).toBe('0');
   await page.locator('[data-tech-text]').tap();
