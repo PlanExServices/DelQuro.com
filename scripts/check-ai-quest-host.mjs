@@ -32,7 +32,7 @@ const html=readFileSync(join(site,'index.html'),'utf8');assert.match(html,/id="r
 const css=manifest.files.filter(f=>f.path.endsWith('.css')).map(f=>readFileSync(join(site,f.path),'utf8')).join('\n');
 assert.match(css,/https:\/\/fonts\.googleapis\.com/);
 const conf=read('nginx.conf'),docker=read('Dockerfile'),ignore=read('Dockerfile.dockerignore');
-assert.match(docker,/^FROM nginx:1\.30\.5-alpine@sha256:[a-f0-9]{64}$/m);
+assert.match(docker,/^FROM nginx:1\.30\.6-alpine@sha256:[a-f0-9]{64}$/m);
 assert.match(docker,/EXPOSE 80/);assert.match(docker,/127\.0\.0\.1\/health/);
 const copyLines=docker.split('\n').filter(l=>l.startsWith('COPY '));assert.equal(copyLines.length,4);assert.ok(copyLines.every(l=>l.startsWith('COPY deploy/ai-quest/')));
 assert.ok(copyLines.every(l=>!l.includes('release-manifest')&&!l.includes('README')));
@@ -43,6 +43,7 @@ assert.match(conf,/font-src 'self' https:\/\/fonts\.gstatic\.com/);assert.match(
 assert.match(conf,/location \/ \{\s*return 404;/);
 assert.match(conf,/immutable/);assert.match(conf,/no-cache, must-revalidate/);
 const rootDocker=readFileSync(join(root,'Dockerfile'),'utf8'),rootIgnore=readFileSync(join(root,'.dockerignore'),'utf8');
+assert.equal(rootDocker.split('\n').find(line=>line.startsWith('FROM ')),docker.split('\n').find(line=>line.startsWith('FROM ')));
 assert.ok(!rootDocker.split('\n').filter(l=>l.startsWith('COPY ')).some(l=>l.includes('deploy/')));
 assert.ok(!rootIgnore.includes('!deploy'));
 pass('separate pinned container, Docker context allowlist, font-compatible CSP, no shared root publication');

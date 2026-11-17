@@ -24,7 +24,7 @@ The user approved publication on October 15. PR #9 was merged into main at
 verified: six sampled files match the release, all 31 nginx checks passed,
 78 internal URLs passed the live crawl, and all 17 browser tests passed.
 
-The refresh Dockerfile pins nginx 1.30.5 by digest and
+The refresh Dockerfile pins nginx 1.30.6 by digest and
 copies only public site files. Its root `nginx.conf` returns genuine 404s,
 preserves response headers, and uses revalidating asset caches. The older
 configuration under `deploy/nginx/` is not used by that Dockerfile.
