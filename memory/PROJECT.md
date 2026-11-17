@@ -1,4 +1,22 @@
 # DelQuro.com project memory
+## Nginx image security backport prepared — 2026-11-17
+
+Both public-site Dockerfiles now run `apk upgrade --no-cache` after the existing
+nginx digest pin, refreshing installed Alpine packages from its existing
+repositories. Public COPY allowlists, nginx configuration and product files are
+unchanged by this patch.
+
+This backport starts at AI Quest's deployed `86a7794` source. The Dockerfile
+changes from the main security patch apply cleanly. Its project-memory note was
+adapted to retain this revision's existing notes. The entire served AI Quest
+snapshot, nginx configuration, context allowlist and release manifest match the
+main source; the root marketing site's later content changes were excluded.
+
+Local backport verification passed `npm run check` (generation, catalog, 896
+references / 141 anchors) and all three standalone AI Quest structural checks.
+Docker build, nginx HTTP checks, package-version checks and a fresh image scan
+are blocked locally because Docker is unavailable. Publication, deployment and
+confirmation of fixed runtime package versions await approval.
 
 ## AI Quest public hosting preparation — 2026-10-15
 
