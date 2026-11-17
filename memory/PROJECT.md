@@ -1,5 +1,23 @@
 # DelQuro.com project memory
 
+## Nginx image security patch prepared — 2026-11-17
+
+Both public-site Dockerfiles now run `apk upgrade --no-cache` after the existing
+nginx digest pin. Rebuilding the digest alone retains its old installed libraries;
+the package layer refreshes Alpine's installed security packages from its existing
+repositories. Public COPY allowlists, nginx configuration and product files are
+unchanged by this patch.
+
+DelQuro.com's deployed source is `a50d8f7`; AI Quest uses `86a7794`. Both
+Dockerfiles and all AI Quest runtime inputs are identical between those revisions.
+Keep AI Quest's source revision when backporting this image-only patch.
+
+Local verification on main passed `npm run check` (generation, catalog, 1,067
+references / 105 anchors and 22 SEO pages) and all three standalone AI Quest
+structural checks. Docker build, nginx HTTP checks, package-version checks and a
+fresh image scan are blocked locally because Docker is unavailable. Publication,
+deployment and confirmation of the fixed runtime package versions await approval.
+
 ## Homepage design-critique follow-up — 2026-10-22
 
 The owner approved applying a design critique of the live homepage. Work is on

@@ -1,5 +1,8 @@
 # Standalone public AI Quest only. Same reviewed nginx digest as the root site.
 FROM nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+# Refresh installed Alpine packages when this pinned image is rebuilt.
+RUN apk upgrade --no-cache
+
 COPY deploy/ai-quest/nginx.conf /etc/nginx/conf.d/default.conf
 # Explicit allowlist: no manifest, scripts, docs, canonical source or provenance.
 COPY deploy/ai-quest/site/index.html deploy/ai-quest/site/maintenance.json /usr/share/nginx/ai-quest/
