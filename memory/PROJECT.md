@@ -885,4 +885,4 @@ all 22 canonical-page SEO checks pass locally. CI and publication are pending;
 record final deployment evidence after release. Hosting evidence is saved at
 C:/Users/plane/Nexus-Forge/solar-deployment-evidence/release-receipt.json.
 
-The November 23 maintenance branch pins the official NGINX 1.30.7 Alpine image in both Dockerfiles. Production verification requires deploying this source and rescanning the running image.
+The November 24 maintenance branch pins the official NGINX 1.30.8 Alpine image in both Dockerfiles. Production verification requires deploying this source and rescanning the running image.
