@@ -319,4 +319,4 @@ Detailed audit evidence and desktop/mobile screenshots are stored outside the
 published tree in the task's `website-audit-2026-10-15` evidence folder under
 `C:\Users\plane\.codex\visualizations\2026\10\09\01a1229a-a7af-7db1-937c-a44abf15faa4`.
 
-The November 23 maintenance branch pins the official NGINX 1.30.7 Alpine image in both Dockerfiles. Production verification requires deploying this source and rescanning the running image.
+The November 24 maintenance branch pins the official NGINX 1.30.8 Alpine image in both Dockerfiles. Production verification requires deploying this source and rescanning the running image.
