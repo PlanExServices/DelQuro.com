@@ -1,5 +1,5 @@
 # DelQuro.com — the public static site only, with nginx's stable security fixes.
-FROM nginx:1.30.6-alpine@sha256:901e593c95dc85f5a729f5765516321366ef4ac401821431d408897e95287d0a
+FROM nginx:1.30.7-alpine@sha256:caf4e1e032a20f9c3c5e28fc7f25ffd768ad8677b4975c54193075997b3a97e3
 
 # Refresh installed Alpine packages when this pinned image is rebuilt.
 RUN apk upgrade --no-cache
